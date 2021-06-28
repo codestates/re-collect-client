@@ -1,0 +1,8 @@
+@import './util.scss';
+
+body {
+  background-color: blue;
+  @include mobile {
+    background-color: red;
+  }
+}
