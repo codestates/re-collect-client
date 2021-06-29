@@ -1,0 +1,89 @@
+@import './util';
+
+.collectview {
+  display: flex;
+  height: calc(100vh - 80px);
+  width: 100vw;
+  // height: #{100% - 80px};
+
+  &__right {
+    flex: 1;
+    // display: flex;
+    // flex-direction: column;
+    padding: {
+      right: 100px;
+      left: 100px;
+    }
+    display: grid;
+
+    grid-template: {
+      areas: 'title title title title' 'alarm alarm alarm search'
+        'bookmarks bookmarks bookmarks bookmarks';
+      columns: 25% 25% 25% 25%;
+      rows: auto 70px auto;
+    }
+  }
+
+  &__title {
+    grid-area: title;
+    padding: {
+      top: 64px;
+      bottom: 24px;
+    }
+    font-size: #{$headerfont};
+    color: #{$blue};
+  }
+
+  &__alarm {
+    grid-area: alarm;
+    height: 40px;
+    line-height: 40px;
+    background-color: #{$alarmcolor};
+    text-align: center;
+  }
+
+  &__search {
+    grid-area: search;
+    // padding-right: ;
+  }
+
+  &__searchBar {
+    width: 260px;
+    height: 40px;
+    border-radius: 0;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+
+    float: right;
+  }
+
+  &__searchBtn {
+    width: 40px;
+    height: 40px;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+    border-left: transparent;
+    border-radius: 0;
+    background-color: white;
+    float: right;
+  }
+
+  &__bookmarks {
+    grid-area: bookmarks;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    // width: 100%;
+    // align-items: center;
+    // justify-items: space-evenly;
+    justify-content: space-between;
+    // justify-content: stretch;
+    height: calc(100vh - 285px);
+    overflow: {
+      y: scroll;
+      x: hidden;
+    }
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}

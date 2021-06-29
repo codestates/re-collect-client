@@ -1,0 +1,118 @@
+@import './util';
+
+.sidebar {
+  height: auto;
+  transition: 0.5s ease;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__toggleButton {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid white;
+    border-left: 15px solid white;
+    border-right: 15px solid blue;
+    border-bottom: 10px solid white;
+    background-color: transparent;
+    position: absolute;
+    left: 5px;
+    outline: none;
+    z-index: 1;
+  }
+
+  &__collectInputBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__input,
+  &__input--url {
+    border-radius: 0;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+    width: 220px;
+
+    &:focus {
+      border: 1px #{$blue} solid;
+      outline: 1px #{$blue} solid;
+    }
+  }
+
+  &__input {
+    margin-bottom: 15px;
+    height: 36px;
+  }
+  &__input--url {
+    height: 180px;
+  }
+
+  &__customizingSection {
+    width: 220px;
+    height: 20px;
+    margin: 17px 0px;
+    display: flex;
+  }
+
+  &__colorPick {
+    width: 76px;
+    display: inline-block;
+  }
+
+  &__color-circle {
+    &--blue,
+    &--green,
+    &--red {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 0;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+      }
+    }
+    &--blue {
+      background-color: #{$blue};
+      margin-right: 8px;
+    }
+
+    &--green {
+      background-color: #{$green};
+      margin-right: 8px;
+      // flex: 1 1;
+    }
+
+    &--red {
+      background-color: #{$red};
+      // flex: 1 1;
+    }
+  }
+
+  &__importantPick {
+    flex: 1;
+    text-align: right;
+  }
+
+  &__btnSection {
+    width: 220px;
+    display: inline-block;
+    text-align: unset;
+  }
+
+  &__btn {
+    width: 70px;
+    height: 36px;
+    border: 1px solid;
+    background-color: white;
+    &.left {
+      float: left;
+    }
+    &.right {
+      float: right;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import './util';
+
+.categorybox {
+  width: 300px;
+  height: 400px;
+  border: 1px solid;
+
+  // 카테고리 박스의 구성요소는 헤더, 뷰, 북마크
+
+  &__header {
+    height: 24px;
+    border-bottom: 1px solid;
+    font-size: #{$bookmarkfont};
+    text-align: right;
+    line-height: 24px;
+  }
+
+  &__header-editbtn {
+    background-color: transparent;
+    color: rgba(128, 128, 128, 0.6);
+    border-style: none;
+    font-size: #{$bookmarkfont};
+
+    &:hover {
+      color: blue;
+    }
+  }
+
+  &__view {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 400px - 24px;
+    padding: 35px 5px 35px 15px;
+    background-color: white;
+    border-bottom: 1px solid;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 10%;
+      background-color: rgba(0, 0, 0, 0.3);
+      background-clip: padding-box;
+      border-right: 3px solid transparent;
+      border-top: 5px solid transparent;
+      // border-bottom: 96% solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: white;
+    }
+  }
+
+  &__bookmark {
+    border: 1px solid blue;
+    margin-bottom: 11px;
+    padding-left: 5px;
+    height: 24px;
+    font-size: #{$bookmarkfont};
+    text-align: left;
+    line-height: 24px;
+  }
+
+  &__bookmark-editbtn {
+    float: right;
+    background-color: transparent;
+    border-style: hidden;
+    line-height: 20px;
+    color: transparent;
+
+    &:hover {
+      color: gray;
+    }
+  }
+
+  &__bookmark-triangle {
+    width: 0px;
+    height: 0px;
+    border: {
+      top: 11px solid transparent;
+      left: 12px solid transparent;
+      right: 12px solid blue;
+      bottom: 11px solid transparent;
+    }
+    float: right;
+    margin-left: -10px;
+  }
+}
