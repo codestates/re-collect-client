@@ -1,23 +1,30 @@
-import Bookmark from './Bookmark';
+import CollectBookmark from './CollectBookmark';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
 export default function CategoryBox() {
   return (
     <div className="categorybox">
       <div className="categorybox__header">
         <button className="categorybox__header-editbtn">edit</button>
-        <span>this is header</span>
+        <span className="categorybox__header-text">this is header</span>
+        <div className="categorybox__header-pencil">
+          <FontAwesomeIcon icon={faPencilAlt} />
+        </div>
       </div>
       <div className="categorybox__view">
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
-        <Bookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
+        <CollectBookmark />
       </div>
+      <div className="categorybox__footer"></div>
     </div>
   );
 }

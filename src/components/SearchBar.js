@@ -1,12 +1,17 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 export default function SearchBar() {
   return (
     <div className="collectview__search">
-      <button className="collectview__searchBtn"></button>
       <input
         className="collectview__searchBar"
         type="text"
-        placeholder="search"
+        placeholder="Search"
       />
+      <button className="collectview__searchBtn">
+        <FontAwesomeIcon icon={faSearch} />
+      </button>
     </div>
   );
 }

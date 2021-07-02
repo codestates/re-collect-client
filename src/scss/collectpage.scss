@@ -1,31 +1,23 @@
 @import './util';
 
 .collectview {
+  background: white;
   display: flex;
-  height: calc(100vh - 80px);
+  height: calc(100vh);
   width: 100vw;
-  // height: #{100% - 80px};
+  padding: 0%;
 
   &__right {
-    flex: 1;
-    // display: flex;
-    // flex-direction: column;
+    flex: 1 1;
     padding: {
-      right: 100px;
-      left: 100px;
+      right: 6%;
+      left: 6%;
     }
-    display: grid;
-
-    grid-template: {
-      areas: 'title title title title' 'alarm alarm alarm search'
-        'bookmarks bookmarks bookmarks bookmarks';
-      columns: 25% 25% 25% 25%;
-      rows: auto 70px auto;
-    }
+    display: flex;
+    flex-direction: column;
   }
 
   &__title {
-    grid-area: title;
     padding: {
       top: 64px;
       bottom: 24px;
@@ -34,8 +26,15 @@
     color: #{$blue};
   }
 
+  &__nav {
+    display: grid;
+    grid-template-columns: 1fr 30px 1fr 30px 1fr 30px 1fr;
+    height: 70px;
+  }
+
   &__alarm {
-    grid-area: alarm;
+    grid-column-start: 1;
+    grid-column-end: 6;
     height: 40px;
     line-height: 40px;
     background-color: #{$alarmcolor};
@@ -43,47 +42,152 @@
   }
 
   &__search {
-    grid-area: search;
-    // padding-right: ;
+    grid-column-start: 7;
+    grid-column-end: 8;
+    display: flex;
+    justify-content: flex-end;
   }
 
   &__searchBar {
-    width: 260px;
+    width: 100%;
     height: 40px;
     border-radius: 0;
-    border: 1px rgba(0, 0, 0, 0.5) solid;
+    border: 1px rgba(0, 0, 0, 0.3) solid;
+    padding-left: 10px;
+    padding-right: 40px;
+    margin-right: -40px;
+    font-size: 16px;
+    font-family: 'IBM Plex Mono';
 
-    float: right;
+    &:focus {
+      border: 1px rgba(0, 0, 0, 0.3) solid;
+      outline: 0;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
   }
 
   &__searchBtn {
-    width: 40px;
     height: 40px;
-    border: 1px rgba(0, 0, 0, 0.5) solid;
-    border-left: transparent;
+    width: 40px;
+    border-style: none;
     border-radius: 0;
-    background-color: white;
-    float: right;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: #{$blue};
+    }
   }
 
   &__bookmarks {
     grid-area: bookmarks;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    // width: 100%;
-    // align-items: center;
-    // justify-items: space-evenly;
-    justify-content: space-between;
-    // justify-content: stretch;
-    height: calc(100vh - 285px);
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 30px;
+
+    height: calc(100vh - 253px);
     overflow: {
       y: scroll;
       x: hidden;
     }
+
     &::-webkit-scrollbar {
       width: 0;
+    }
+  }
+}
+@include laptop {
+  .collectview {
+    &__nav {
+      display: grid;
+      grid-template-columns: 1fr 30px 1fr 30px 1fr;
+    }
+
+    &__alarm {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+
+    &__search {
+      grid-column-start: 5;
+      grid-column-end: 6;
+    }
+
+    &__bookmarks {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@include tablet {
+  .collectview {
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 93px;
+      justify-content: space-between;
+    }
+
+    &__alarm {
+      width: 100%;
+      height: 38px;
+      font-size: 2.3vw;
+      text-overflow: clip;
+    }
+
+    &__search {
+      width: 100%;
+    }
+
+    &__bookmarks {
+      margin-top: 25px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@include mobile {
+  .collectview {
+    &__title {
+      display: none;
+    }
+
+    &__right {
+      justify-content: initial;
+      padding: 0;
+    }
+
+    &__nav {
+      margin-top: 88px;
+      height: 93px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__alarm {
+      width: 300px;
+    }
+
+    &__search {
+      width: 300px;
+      height: 38px;
+      line-height: 38px;
+    }
+
+    &__bookmarks {
+      margin-top: 17px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      grid-template-columns: none;
+      grid-template-rows: none;
     }
   }
 }
