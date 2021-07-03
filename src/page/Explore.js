@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
-import ExploreProfile from '../components/ExploreProfile';
-import { IsValidateEmail } from '../validation';
+import React, { useEffect } from "react";
+import ExploreProfile from "../components/ExploreProfile";
+import { IsValidateEmail } from "../util/validation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Explore(props) {
   // Open-Popup
@@ -41,7 +43,7 @@ function Explore(props) {
       {/* Modal 팝업 */}
       <div className="modalWrapper">
         <div className="closeBtn" onClick={isClose}>
-          <i className="fas fa-times"></i>
+          <FontAwesomeIcon icon={faTimes} />
         </div>
         <div className="contents">
           <p>
@@ -61,7 +63,7 @@ function Explore(props) {
           <div className="searchBar">
             <input type="text" placeholder="search" />
             <button>
-              <i className="fas fa-search"></i>
+              <FontAwesomeIcon icon={faSearch} />
             </button>
           </div>
           <div className="exploreSearchRecommendation">
