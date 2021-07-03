@@ -33,7 +33,6 @@ export default function Sidebar() {
         <button
           onClick={() => {
             sidebarToggleHandler();
-            console.log(window.outerWidth);
           }}
           className="sidebar__toggleButton"
           style={{

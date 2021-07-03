@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const customStyles = {
   container: (provided, state) => ({
@@ -31,6 +33,23 @@ const customStyles = {
 };
 
 function CollectInputBox({ place }) {
+  const [colorPick, setColorPick] = useState([false, false, false]);
+
+  useEffect(() => {
+    setColorPick([false, false, false]);
+  }, []);
+
+  const colorPickHandler = (e) => {
+    const idx = Number(e.target.id);
+    if (colorPick[idx]) {
+      setColorPick([false, false, false]);
+      return;
+    }
+    const newColorPick = [false, false, false];
+    newColorPick[idx] = true;
+    setColorPick(newColorPick);
+  };
+
   return (
     <div className={`${place}__collectInputBox`}>
       <AsyncCreatableSelect
@@ -43,9 +62,39 @@ function CollectInputBox({ place }) {
       <input className={`${place}__input--url`} type="url" placeholder="Url" />
       <div className={`${place}__customizingSection`}>
         <div className={`${place}__colorPick`}>
-          <button className={`${place}__color-circle--blue`}></button>
-          <button className={`${place}__color-circle--green`}></button>
-          <button className={`${place}__color-circle--red`}></button>
+          <button
+            id="0"
+            className={`${place}__color-circle--blue${
+              colorPick[0] ? ' active' : ''
+            }`}
+            onClick={(e) => {
+              colorPickHandler(e);
+            }}
+          >
+            {colorPick[0] ? <FontAwesomeIcon icon={faCheck} /> : ''}
+          </button>
+          <button
+            id="1"
+            className={`${place}__color-circle--green${
+              colorPick[1] ? ' active' : ''
+            }`}
+            onClick={(e) => {
+              colorPickHandler(e);
+            }}
+          >
+            {colorPick[1] ? <FontAwesomeIcon icon={faCheck} /> : ''}
+          </button>
+          <button
+            id="2"
+            className={`${place}__color-circle--red${
+              colorPick[2] ? ' active' : ''
+            }`}
+            onClick={(e) => {
+              colorPickHandler(e);
+            }}
+          >
+            {colorPick[2] ? <FontAwesomeIcon icon={faCheck} /> : ''}
+          </button>
         </div>
         <div className={`${place}__importantPick`}>
           <input

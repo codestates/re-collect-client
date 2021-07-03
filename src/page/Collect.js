@@ -18,7 +18,7 @@ export default function Collect() {
     <>
       {recollectView ? (
         <>
-          <ToCollectBtn />
+          <ToCollectBtn viewHandler={recollectViewHandler} />
           <Recollect />
         </>
       ) : (
@@ -28,7 +28,7 @@ export default function Collect() {
             <div className="collectview__right">
               <div className="collectview__title">collect</div>
               <div className="collectview__nav">
-                <UnreadAlarm />
+                <UnreadAlarm viewHandler={recollectViewHandler} />
                 <SearchBar />
               </div>
               <div className="collectview__bookmarks">

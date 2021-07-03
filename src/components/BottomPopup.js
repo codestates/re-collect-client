@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import AsyncCreatableSelect from 'react-select/async-creatable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CollectInputBox from './CollectInputBox';
@@ -46,6 +45,7 @@ function BottomPopup() {
               onClick={bottomPopupToggleHandler}
             ></div>
             <div className="bottomPopup__contentsBackground">
+              <span>북마크 추가하기</span>
               <CollectInputBox place="bottomPopup" />
             </div>
           </>
