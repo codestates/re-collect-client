@@ -57,6 +57,15 @@
 
 body {
   @include tablet {
+
+      .nav-container{
+        &__inner-container{
+          width: 50vw;
+          //background-color: khaki;
+        }
+      }
+
+
   }
   @include mobile {
     .nav-container {

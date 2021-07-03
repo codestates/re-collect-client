@@ -946,6 +946,7 @@ body {
   margin-top: 60px;
   float: right;
   border: solid 1px #f24626;
+  border-right: transparent;
   justify-content: flex-start;
 }
 .landing .slicered .triangle-right {
@@ -953,12 +954,14 @@ body {
   height: 0px;
   border-top: 3.2vh solid transparent;
   border-left: 5vh solid #f24626;
+  border-right: 4vh solid none;
   border-bottom: 3.2vh solid transparent;
 }
 .landing .sliceblue {
   margin-top: 10%;
   float: right;
   border: solid 1px #214bc8;
+  border-right: transparent;
   display: flex;
   justify-content: flex-start;
 }
@@ -1238,27 +1241,28 @@ body {
   width: 100%;
 }
 .landing .landing__inner--fifth {
-  margin-top: 26%;
+  margin-top: 23%;
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-left: 0;
+  justify-content: center;
+  margin-left: 10px;
 }
 .landing .landing__inner--fifth .profile-wrapper {
-  width: 95vw;
+  width: 90vw;
+  padding-left: 10%;
+  padding-right: 10%;
   display: flex;
   justify-content: center;
   background-color: rgba(233, 229, 229, 0.425);
 }
-.landing .landing__inner--fifth .profile-wrapper .profile {
-  width: 14rem;
-  padding-bottom: 30%;
-  margin-left: 2vw;
-  border: solid 1px #000;
+.landing .landing__inner--fifth .profile-wrapper #profile {
+  text-align: center;
+  margin-left: 1%;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
-.landing .landing__inner--fifth .profile-wrapper .profile:nth-child(1) {
-  margin-left: 0;
+.landing .landing__inner--fifth .profile-wrapper #profile:nth-child(1) {
+  background-color: khaki;
 }
 .landing .landing__inner--fifth .collection-desc {
   margin-top: 5%;
@@ -1351,6 +1355,42 @@ body {
 }
 
 @media (max-width: 834px) {
+  body {
+    background-color: #cedbbd;
+  }
+  body .landing .sectionslice {
+    margin-top: 13vh;
+  }
+  body .landing .sectionslice .triangle {
+    border-top: 2.1vh solid transparent;
+    border-right: 3.4vh solid #214bc8;
+    border-bottom: 2.1vh solid transparent;
+  }
+  body .landing .slicegreen .triangle {
+    border-right: 3.4vh solid #0eae61;
+  }
+  body .landing .slicered-left {
+    border: solid 1px #f24626;
+    border-left: none;
+  }
+  body .landing .slicered-left .triangle {
+    border-right: 3.4vh solid #f24626;
+  }
+  body .landing .slicered {
+    margin-top: 8%;
+  }
+  body .landing .slicered .triangle-right {
+    width: 0px;
+    height: 0px;
+    border-top: 2.1vh solid transparent;
+    border-left: 3.4vh solid #f24626;
+    border-bottom: 2.1vh solid transparent;
+  }
+  body .landing .sliceblue .triangle-right {
+    border-top: 2.1vh solid transparent;
+    border-left: 3.4vh solid #214bc8;
+    border-bottom: 2.1vh solid transparent;
+  }
   body .landing {
     width: 100vw;
   }
@@ -1359,6 +1399,13 @@ body {
   }
   body .landing__inner--first .first-wrap .introtext button {
     padding: 4.5% 0;
+  }
+  body .landing__inner--fifth .profile-wrapper {
+    width: 90%;
+    display: flex;
+  }
+  body .landing__inner--fifth .profile-wrapper #profile:nth-child(1) {
+    background-color: #474214;
   }
 }
 @media (max-width: 600px) {
@@ -1897,6 +1944,11 @@ body .landing__inner--second .desc-wrap--3 p {
   display: none;
 }
 
+@media (max-width: 834px) {
+  body .nav-container__inner-container {
+    width: 50vw;
+  }
+}
 @media (max-width: 600px) {
   body .nav-container {
     height: auto;
@@ -2005,7 +2057,7 @@ body .landing__inner--second .desc-wrap--3 p {
   border-radius: 50%;
   color: #214bc8;
   font-weight: 600;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.753);
   border: solid 2px #214bc8;
   position: fixed;
   top: 87%;

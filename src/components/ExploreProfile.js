@@ -51,7 +51,7 @@ function ExploreProfile(props) {
       <div className="searchProfileWrapper">
         <div className="searchProfileLists">
           {userInfoLists.map((el) => (
-            // console.log(el.id)
+            //console.log(el.id)
             <ExploreProfileList />
           ))}
         </div>
