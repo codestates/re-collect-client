@@ -1,19 +1,27 @@
 import './App.css';
-import { Nav, Footer } from './components';
-import { Link, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import React from 'react';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Landing from './page/Landing';
+import ScrollToTop from "./components/ScrollToTop";
+import { Link, Switch, Route, BrowserRouter as Router, Redirect, withRouter } from 'react-router-dom';
 
 function App() {
-  return;
-  <Router>
+  return(
+    <Router>
     <Nav />
     <Switch>
-      <Route path="/collect" />
-      <Route path="/profile" />
-      <Route path="/explore" />
-      <Route exact path="/" />
+      <Route path="/collect"></Route>
+      <Route path="/profile"></Route>
+      <Route path="/explore"></Route>
+      <Route exact path="/" component={Landing}></Route>
     </Switch>
+    <ScrollToTop />
     <Footer />
-  </Router>;
+    </Router>
+    
+  )
+
 }
 
 export default withRouter(App);

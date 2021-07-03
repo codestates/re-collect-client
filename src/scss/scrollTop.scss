@@ -1,0 +1,30 @@
+@import "./util.scss";
+
+.top-btn{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color:#{$logocolor};
+  font-weight: 600;
+  background-color: transparent;
+  border: solid 2px #{$logocolor};
+  position: fixed;
+  top: 87%;
+  left: 90vw;
+  box-shadow: 1px 1px 15px rgba(22, 25, 209, 0.3);
+
+
+  &:hover{
+    cursor: pointer;
+    background-color: #{$logocolor};
+    color: #fff;
+  }
+
+  @include tablet{
+    left: 87%;
+  }
+
+  @include mobile{
+    left: 84%;
+  }
+}
