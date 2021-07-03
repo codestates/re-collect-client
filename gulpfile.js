@@ -1,11 +1,12 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass')(require('sass'));
-var concat = require('gulp-concat');
-var sourcemaps = require('gulp-sourcemaps');
+var gulp = require("gulp");
+var sass = require("gulp-sass")(require("sass"));
+var concat = require("gulp-concat");
+var sourcemaps = require("gulp-sourcemaps");
+var browserSync = require("browser-sync").create();
 
-gulp.task('sass', () => {
+gulp.task("sass", () => {
   return gulp
-    .src('./src/scss/*.scss') // 입력 경로
+    .src("./src/scss/*.scss") // 입력 경로
     .pipe(sourcemaps.init())
     .pipe(sass({sourceComments: true}).on('error', sass.logError))//true 설정
     .pipe(concat('App.css'))
