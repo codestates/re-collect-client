@@ -46,7 +46,7 @@ function BottomPopup() {
             ></div>
             <div className="bottomPopup__contentsBackground">
               <div className="bottomPopup__text">북마크 추가하기</div>
-              <CollectInputBox place="bottomPopup" />
+              <CollectInputBox className="bottomPopup" />
             </div>
           </>
         )}

@@ -6,6 +6,7 @@ import UnreadAlarm from '../components/UnreadAlarm';
 import BottomPopup from '../components/BottomPopup';
 import Recollect from '../components/Recollect';
 import ToCollectBtn from '../components/ToCollectBtn';
+import CollectBookmark from '../components/CollectBookmark';
 
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
@@ -32,15 +33,16 @@ export default function Collect() {
                 <SearchBar />
               </div>
               <div className="collectview__bookmarks">
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
-                <CategoryBox />
+                <CategoryBox id="box_1">
+                  <CollectBookmark id="bookmark_1">
+                    이것은 북마크 1 입니다.
+                  </CollectBookmark>
+                </CategoryBox>
+                <CategoryBox id="box_2">
+                  <CollectBookmark id="bookmark_2">
+                    이것은 북마크 2 입니다.
+                  </CollectBookmark>
+                </CategoryBox>
               </div>
             </div>
           </div>
