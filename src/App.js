@@ -6,7 +6,8 @@ import Landing from './page/Landing';
 import ScrollToTop from './components/ScrollToTop';
 import Collect from './page/Collect';
 import Explore from './page/Explore';
-import Loading from './page/Loading';
+import Loading from './components/Loading';
+import Error from './components/Error';
 import {
   Link,
   Switch,
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <Nav />
       <Switch>
+        <Route path="/error" component={Error}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
         <Route path="/profile"></Route>
