@@ -1,3 +1,584 @@
-.App {
+.exploreContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid #214bc8;
+}
+@media (max-width: 834px) {
+  .exploreContainer {
+    background-color: blue;
+    color: white;
+  }
+  .exploreContainer .exploreProfileCarousal .searchProfileWrapper {
+    position: static;
+    width: 592px;
+    overflow: hidden;
+  }
+  .exploreContainer .exploreProfileCarousal .searchProfileLists {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 592px;
+    transition: transform 0.2s;
+  }
+}
+@media (max-width: 500px) {
+  .exploreContainer {
+    background-color: pink;
+    color: black;
+  }
+  .exploreContainer .searchBar {
+    width: 310px;
+    height: 35px;
+    margin-top: 50px;
+  }
+  .exploreContainer .searchBar input {
+    width: 90%;
+    height: 100%;
+    outline: none;
+  }
+  .exploreContainer .searchBar button {
+    width: 10%;
+    height: 100%;
+  }
+  .exploreContainer .searchBar button:hover {
+    cursor: pointer;
+  }
+  .exploreContainer .exploreSearchRecommendation {
+    width: 310px;
+    margin-top: 30px;
+    display: inline-block;
+    justify-content: center;
+    align-content: center;
+  }
+  .exploreContainer .exploreSearchRecommendation .recommendTitle {
+    color: gray;
+    margin-left: 5px;
+  }
+  .exploreContainer .exploreSearchRecommendation .recommendTags {
+    flex: 1;
+  }
+  .exploreContainer .exploreSearchRecommendation .recommendTag {
+    font-size: 9px;
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border: 1px solid black;
+  }
+  .exploreContainer .exploreSearchRecommendation .recommendTag:hover {
+    cursor: pointer;
+    color: black;
+  }
+  .exploreContainer .exploreProfileCarousal .searchProfileWrapper {
+    width: 295px;
+    overflow: hidden;
+  }
+  .exploreContainer .exploreProfileCarousal .searchProfileLists {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 295px;
+    transition: transform 0.2s;
+  }
+  .exploreContainer .interestingBookmarksCategory {
+    margin-top: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  .exploreContainer .interestingBookmarksCategory p {
+    font-size: 24px;
+    margin: 0;
+  }
+  .exploreContainer .interestingBookmarksCategory ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+  .exploreContainer .interestingBookmarksCategory ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 293px;
+    height: 25px;
+    border: 1px solid black;
+    margin: 12px;
+  }
+  .exploreContainer .interestingBookmarksCategory ul li:hover {
+    cursor: pointer;
+    color: #214bc8;
+  }
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.exploreHeader {
+  font-size: 30px;
+  margin-top: 64px;
+}
+
+.searchBar {
+  width: 560px;
+  height: 40px;
+  margin-top: 50px;
+}
+.searchBar input {
+  width: 90%;
+  height: 100%;
+  outline: none;
+}
+.searchBar button {
+  width: 10%;
+  height: 100%;
+}
+.searchBar button:hover {
+  cursor: pointer;
+}
+
+.exploreSearchRecommendation {
+  width: 560px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.exploreSearchRecommendation div {
+  color: gray;
+}
+.exploreSearchRecommendation .recommendTags {
+  flex: 1;
+}
+.exploreSearchRecommendation .recommendTag {
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  border: 1px solid black;
+}
+.exploreSearchRecommendation .recommendTag:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.exploreProfileCarousal {
+  margin-top: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex: 1;
+}
+.exploreProfileCarousal .searchProfileWrapper {
+  position: static;
+  width: 1182px;
+  overflow: hidden;
+}
+.exploreProfileCarousal .searchProfileLists {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 1182px;
+  transition: transform 0.2s;
+}
+.exploreProfileCarousal .searchProfile:hover {
+  cursor: pointer;
+}
+.exploreProfileCarousal .prevBtn,
+.exploreProfileCarousal .nextBtn {
+  font-size: 30px;
+}
+.exploreProfileCarousal .prevBtn:hover,
+.exploreProfileCarousal .nextBtn:hover {
+  cursor: pointer;
+}
+
+.searchProfile {
+  width: 255px;
+  height: 340px;
+  margin: 0 28px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.searchProfile .profileImage {
+  margin-top: 25px;
+  font-size: 85px;
+}
+.searchProfile p {
+  margin-top: 0px;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+.searchProfile .socialInfo {
+  margin-top: 20px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchProfile .socialInfo div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+.searchProfile .companyInfo {
+  margin-top: 20px;
+  font-size: 12px;
+}
+.searchProfile .companyInfo div {
+  margin: 5px;
+}
+
+.interestingBookmarksCategory {
+  margin-top: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.interestingBookmarksCategory p {
+  font-size: 30px;
+  margin: 0;
+}
+.interestingBookmarksCategory ul {
+  list-style: none;
+  padding: 0;
   text-align: center;
 }
+.interestingBookmarksCategory ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 530px;
+  height: 45px;
+  border: 1px solid black;
+  margin: 12.5px;
+}
+.interestingBookmarksCategory ul li:hover {
+  cursor: pointer;
+  color: #214bc8;
+}
+
+.modalWrapper {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  top: 25%;
+  left: 40%;
+  width: 230px;
+  height: 240px;
+  justify-content: center;
+  align-items: center;
+}
+.modalWrapper .contents {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  background-color: white;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+.modalWrapper .contents p {
+  text-align: center;
+}
+.modalWrapper .contents input {
+  width: 180px;
+  height: 30px;
+  outline: none;
+}
+.modalWrapper .contents button {
+  width: 180px;
+  height: 30px;
+  color: #214bc8;
+  background-color: white;
+  margin: 10px 0px;
+  border: 1px black solid;
+}
+.modalWrapper .contents button:hover {
+  color: white;
+  background-color: #214bc8;
+  border: none;
+}
+.modalWrapper .contents .errorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
+.modalWrapper .closeBtn {
+  color: black;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  text-align: end;
+}
+.modalWrapper .closeBtn i {
+  font-size: 14px;
+}
+.modalWrapper .closeBtn:hover {
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .modalContainer {
+  width: 230px;
+  margin-top: 40px;
+}
+.wrapper .buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .buttonContainer i:hover {
+  cursor: pointer;
+}
+.wrapper .logo {
+  margin-top: 0px;
+}
+.wrapper .errorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
+.wrapper button {
+  width: 180px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #214bc8;
+  color: #214bc8;
+}
+.wrapper button:hover {
+  cursor: pointer;
+  background-color: #214bc8;
+  color: white;
+}
+.wrapper .buttonContainer {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .buttonContainer div {
+  border: none;
+  margin-top: 8px;
+  background-color: white;
+  color: black;
+  font-size: 10px;
+}
+.wrapper .buttonContainer div:hover {
+  cursor: pointer;
+  color: #214bc8;
+}
+.wrapper .closeBtn {
+  color: black;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  text-align: end;
+}
+.wrapper .closeBtn i {
+  font-size: 14px;
+}
+.wrapper .closeBtn:hover {
+  cursor: pointer;
+}
+.wrapper .joinModalWrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 310px;
+  color: #214bc8;
+  font-size: 14px;
+}
+.wrapper .joinModalWrapper p {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.wrapper .joinModalWrapper button {
+  margin-bottom: 10px;
+}
+.wrapper .signUpModalWrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 310px;
+  color: #214bc8;
+  font-size: 14px;
+}
+.wrapper .signUpModalWrapper .inputContainer {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .signUpModalWrapper .inputContainer input {
+  margin-bottom: 10px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.wrapper .signUpModalWrapper .signUperrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
+.wrapper .successSignUpModalWrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 270px;
+  color: #214bc8;
+  font-size: 14px;
+}
+.wrapper .successSignUpModalWrapper .logo {
+  margin-bottom: 60px;
+}
+.wrapper .successSignUpModalWrapper p {
+  text-align: center;
+  margin-bottom: 45px;
+}
+.wrapper .loginModalWrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 270px;
+  color: #214bc8;
+  font-size: 14px;
+}
+.wrapper .loginModalWrapper .inputContainer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .loginModalWrapper .inputContainer input {
+  margin-bottom: 10px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.wrapper .loginModalWrapper .loginErrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+  margin-top: 0px;
+}
+.wrapper .loginModalWrapper button {
+  margin-top: 15px;
+}
+.wrapper .findPwdModalWrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 270px;
+  color: #214bc8;
+  font-size: 14px;
+}
+.wrapper .findPwdModalWrapper p {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+.wrapper .findPwdModalWrapper input {
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.wrapper .findPwdModalWrapper button {
+  margin-top: 15px;
+}
+.wrapper .findPwdModalWrapper .findPwdErrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
+.wrapper .deleteAccountModalWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  background-color: white;
+  width: 100%;
+  height: 215px;
+  color: #214bc8;
+  font-size: 14px;
+}
+.wrapper .deleteAccountModalWrapper p {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+.wrapper .deleteAccountModalWrapper input {
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.wrapper .deleteAccountModalWrapper button {
+  margin-top: 15px;
+}
+.wrapper .deleteAccountModalWrapper .deleteErrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
+#root {
+  height: 100vh;
+}
+/*# sourceMappingURL=../maps/App.css.map */

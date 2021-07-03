@@ -1,0 +1,41 @@
+// Break Point
+$mobile: 500px;
+$tablet: 834px;
+$laptop: 1440px;
+
+$logocolor: "#214bc8";
+$red: "#f24626";
+$blue: "#214bc8";
+$green: "#0eae61";
+$boxshadow: "10px 10px 10px rgba(0, 0, 0, 0.1)";
+$btnboxshadow: "5px 5px 4px rgba(0, 0, 0, 0.1)";
+$alarmcolor: "#EBFF9D";
+$errorcolor: "#FF0000";
+$modalblur: "blur(4px)";
+
+//font-size
+$bookmarkfont: "11px";
+$bookmarkbigfont: "20px";
+$headerfont: "36px";
+$alarmfont: "16px";
+$navfont: "16px";
+$btninputfont: "14px";
+
+// Mixins
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
