@@ -1,0 +1,50 @@
+@import "./util.scss";
+
+.footer{
+  color: rgb(82, 81, 81);
+  border-top: solid 1px rgba(119, 119, 119, 0.425);
+  width: 100vw;
+  height: 130px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  
+  font-size: 13px;
+
+  &__inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+  }
+
+  .about, a{
+    margin-left: 5%;
+    text-decoration : none;
+    color: rgb(82, 81, 81);
+
+    &:hover{
+      color: #{$logocolor};
+      
+    }
+  }
+
+}
+
+body {
+  @include tablet {
+    .footer{
+      &__inner{
+        width: 40vw;
+        //background-color: ivory;
+      }
+    }
+  }
+  @include mobile{
+    .footer a{
+      display: none;
+    }
+  }
+}
