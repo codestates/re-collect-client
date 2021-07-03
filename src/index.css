@@ -11,6 +11,6 @@ body,
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
   font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace, sans-serif;
 }
