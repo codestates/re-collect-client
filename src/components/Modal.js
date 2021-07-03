@@ -3,7 +3,7 @@ import {
   IsValidateEmail,
   IsValidiateUsername,
   IsValidiatePassword,
-} from "../validation";
+} from "../util/validation";
 
 function Modal(props) {
   const isClose = (className) => {

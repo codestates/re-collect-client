@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Nav() {
   const [isvisible, setVisible] = useState(false);
@@ -20,10 +22,8 @@ function Nav() {
   return (
     <div className="nav-container">
       <Link to="/" className="nav-container__logo">logo</Link>
-      <div className="toggle-btn"
-      onClick={handleToggleBtn}>
-        toggle
-      </div>
+      <FontAwesomeIcon icon={faBars} className="toggle-btn" onClick={handleToggleBtn}/>
+
       <div className={isvisible? 
         "nav-container__inner-container toggle" 
         : "nav-container__inner-container toggle on"}>
