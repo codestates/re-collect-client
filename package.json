@@ -10,13 +10,10 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-<<<<<<< HEAD
     "react-select": "^4.3.1",
-=======
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.27.3",
     "gulp-postcss": "^9.0.0",
->>>>>>> fdb03d0465d30362122e7f3a0eb237a8498786e8
     "web-vitals": "^1.0.1"
   },
   "scripts": {

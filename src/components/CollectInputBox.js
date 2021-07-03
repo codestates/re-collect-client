@@ -12,6 +12,7 @@ const customStyles = {
     fontSize: 16,
     marginBottom: 15,
     display: 'flex',
+    background: 'white',
   }),
 
   control: () => ({

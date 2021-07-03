@@ -1,31 +1,31 @@
-import React, { useEffect } from "react";
-import ExploreProfile from "./components/ExploreProfile";
-import { IsValidateEmail } from "./validation";
+import React, { useEffect } from 'react';
+import ExploreProfile from '../components/ExploreProfile';
+import { IsValidateEmail } from '../validation';
 
 function Explore(props) {
   // Open-Popup
   const isOpen = () => {
-    const popup = document.querySelector(".modalWrapper");
-    const bkg = document.querySelector(".exploreContainer");
-    popup.style.display = "flex";
-    bkg.style.backgroundColor = "rgba(0, 0, 0, 0.6)";
+    const popup = document.querySelector('.modalWrapper');
+    const bkg = document.querySelector('.exploreContainer');
+    popup.style.display = 'flex';
+    bkg.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
   };
   // Close-Popup
   const isClose = () => {
-    const popup = document.querySelector(".modalWrapper");
-    const bkg = document.querySelector(".exploreContainer");
-    popup.style.display = "none";
-    bkg.style.backgroundColor = "white";
+    const popup = document.querySelector('.modalWrapper');
+    const bkg = document.querySelector('.exploreContainer');
+    popup.style.display = 'none';
+    bkg.style.backgroundColor = 'white';
   };
   // Validation check
   const isValid = () => {
-    const emailForSubscribe = document.querySelector(".emailForSubscribe")
-      .value;
+    const emailForSubscribe =
+      document.querySelector('.emailForSubscribe').value;
     if (IsValidateEmail(emailForSubscribe)) {
       isClose();
     } else {
-      const error = document.querySelector(".errorMessage");
-      error.style.display = "flex";
+      const error = document.querySelector('.errorMessage');
+      error.style.display = 'flex';
     }
   };
 

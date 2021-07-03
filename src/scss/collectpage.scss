@@ -3,9 +3,9 @@
 .collectview {
   background: white;
   display: flex;
-  height: calc(100vh);
+  height: 120vh;
   width: 100vw;
-  padding: 0%;
+  padding-top: 80px;
 
   &__right {
     flex: 1 1;
@@ -39,6 +39,7 @@
     line-height: 40px;
     background-color: #{$alarmcolor};
     text-align: center;
+    cursor: pointer;
   }
 
   &__search {
@@ -89,7 +90,7 @@
     grid-auto-rows: 1fr;
     gap: 30px;
 
-    height: calc(100vh - 253px);
+    height: calc(720px);
     overflow: {
       y: scroll;
       x: hidden;
