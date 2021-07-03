@@ -1,4 +1,4 @@
-@import "./util.scss";
+@import './util.scss';
 
 .nav-container {
   position: fixed;
@@ -17,7 +17,7 @@
     height: 100%;
     text-indent: -9999px;
     margin-left: 6vw;
-    background-image: url("./logo.png");
+    background-image: url('./logo.png');
     background-repeat: no-repeat;
     background-size: 95px auto;
     background-position: center;
@@ -63,7 +63,7 @@ body {
       height: auto;
       padding: 10px 10px;
       &__logo {
-        display:flex;
+        display: flex;
         text-indent: -9999px;
         margin-left: 10px;
         padding: 4.5%;
@@ -79,12 +79,12 @@ body {
         line-height: 33px;
         padding-top: 1.5%;
         margin-top: 1%;
-        a{
+        a {
           margin-left: 0;
         }
       }
 
-      .toggle.on{
+      .toggle.on {
         display: flex;
         justify-content: space-around;
         width: 95vw;
@@ -93,7 +93,7 @@ body {
         line-height: 33px;
         padding-top: 1.5%;
         margin-top: 1%;
-        a{
+        a {
           display: flex;
         }
       }
@@ -106,7 +106,7 @@ body {
         height: 6vw;
         color: rgb(69, 69, 70);
 
-        &:hover{
+        &:hover {
           cursor: pointer;
           color: #{$logocolor};
         }
