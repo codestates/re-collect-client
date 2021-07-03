@@ -1,32 +1,27 @@
-import "./App.css";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Explore from "./explore";
-import Modal from "./components/Modal";
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route,
-  Redirect,
-  withRouter,
-} from "react-router-dom";
+import './App.css';
+import React from 'react';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import Landing from './page/Landing';
+import ScrollToTop from "./components/ScrollToTop";
+import { Link, Switch, Route, BrowserRouter as Router, Redirect, withRouter } from 'react-router-dom';
 
 function App() {
-  return (
+  return(
     <Router>
-      <Nav />
-      <Switch>
-        <Route path="/collect" />
-        <Route path="/profile" />
-        <Route path="/explore" render={() => <Explore />} />
-        <Route path="/login" render={() => <Modal />} />
-        <Route exact path="/" />
-      </Switch>
-      <Footer />
+    <Nav />
+    <Switch>
+      <Route path="/collect"></Route>
+      <Route path="/profile"></Route>
+      <Route path="/explore"></Route>
+      <Route exact path="/" component={Landing}></Route>
+    </Switch>
+    <ScrollToTop />
+    <Footer />
     </Router>
-  );
+    
+  )
+
 }
 
 export default withRouter(App);
