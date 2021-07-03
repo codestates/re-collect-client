@@ -4,6 +4,7 @@ import { Flip, Fade, Zoom, Bounce } from "react-reveal";
 import Pulse from "react-reveal/Pulse";
 import Jello from "react-reveal/Jello";
 
+
 function Landing() {
 
   ///새로고침시 최상단이동//
@@ -23,11 +24,7 @@ function Landing() {
                 <Flip bottom cascade>
                   <h1>Recollect</h1>
                 </Flip>
-
                 <p>Re+collect 기억해내다+모아서 다시보다</p>
-                {/* <p>
-                  똑똑한 북마크 관리툴
-                </p> */}
                 <Bounce>
                   <Link to={`./collect`}>
                     <button>Recollect 시작하기</button>
@@ -36,16 +33,11 @@ function Landing() {
               </div>
 
               <Fade duration={3000}>
-                {/* <div className="introgif"> */}
                 <img src="introgifsample.png" alt="introgif" />
-                {/* </div> */}
               </Fade>
 
               <div className="mobile-introtext">
-                {/* <p className="mobile-p">
-                  Re+collect 
-                  기억해내다+모아서 다시보다
-                </p> */}
+
                 <Bounce>
                   <Link to={`./collect`}>
                     <button className="mobile-btn">Recollect 시작하기</button>
