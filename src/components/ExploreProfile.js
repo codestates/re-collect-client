@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ExploreProfileList from "./ExploreProfileList";
 import { userInfoLists } from "./Explore_temp";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight  } from '@fortawesome/free-solid-svg-icons';
 
 function ExploreProfile(props) {
   const [index, setIndex] = useState(0);
@@ -43,7 +45,7 @@ function ExploreProfile(props) {
   return (
     <div className="exploreProfileCarousal">
       <div className="prevBtn" onClick={prevBtnClick}>
-        <i className="fas fa-arrow-left"></i>
+        <FontAwesomeIcon icon={faArrowLeft} />
       </div>
 
       <div className="searchProfileWrapper">
@@ -55,7 +57,7 @@ function ExploreProfile(props) {
         </div>
       </div>
       <div className="nextBtn" onClick={nexBtnClick}>
-        <i className="fas fa-arrow-right"></i>
+        <FontAwesomeIcon icon={faArrowRight} />
       </div>
     </div>
   );

@@ -101,14 +101,14 @@ body {
         display: flex;
         float: right;
         margin-right: 38px;
-        margin-top: 11px;
-        width: 7vw;
-        height: 7vw;
-        border: solid 1px;
-        text-indent: -9999px;
+        margin-top: 15px;
+        width: 6vw;
+        height: 6vw;
+        color: rgb(69, 69, 70);
 
         &:hover{
           cursor: pointer;
+          color: #{$logocolor};
         }
       }
     }

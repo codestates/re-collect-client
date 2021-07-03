@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle, faLaptop,  } from '@fortawesome/free-solid-svg-icons';
+import { faGithub  } from '@fortawesome/free-brands-svg-icons';
 
 function ExploreProfileList(props) {
   return (
     <div className="searchProfile">
       <div className="profileImage">
-        <i className="fas fa-user-circle"></i>
+      <FontAwesomeIcon icon={faUserCircle} />
       </div>
       <p> 정리벽 개발자 </p>
       <div className="socialInfo">
@@ -23,10 +26,10 @@ function ExploreProfileList(props) {
       </div>
       <div className="companyInfo">
         <div>
-          <i className="fas fa-laptop"></i> Programmer at KaKao
+          <FontAwesomeIcon icon={faLaptop} /> Programmer at KaKao
         </div>
         <div>
-          <i className="fab fa-github"></i> github.com/re-collect
+        <FontAwesomeIcon icon={faGithub} /> github.com/re-collect
         </div>
       </div>
     </div>
