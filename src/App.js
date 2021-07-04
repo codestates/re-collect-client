@@ -19,6 +19,7 @@ import {
   Redirect,
   withRouter,
 } from "react-router-dom";
+import Profile from "./page/Profile";
 
 function App() {
   const [modalMode, setModalMode] = useState("");
@@ -55,7 +56,7 @@ function App() {
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
         <Route path="/collect" component={Collect}></Route>
-        <Route path="/profile"></Route>
+        <Route path="/profile" component={Profile}></Route>
         <Route path="/explore" component={Explore}></Route>
         <Route exact path="/" component={Landing}></Route>
       </Switch>

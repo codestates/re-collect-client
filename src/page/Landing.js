@@ -3,10 +3,11 @@ import { Link, withRouter } from "react-router-dom";
 import { Flip, Fade, Zoom, Bounce } from "react-reveal";
 import Pulse from "react-reveal/Pulse";
 import Jello from "react-reveal/Jello";
-
+//import ExploreProfile from "../components/ExploreProfile";
+import ExploreProfileList from "../components/ExploreProfileList";
+import { userInfoLists } from "../components/Explore_temp";
 
 function Landing() {
-
   ///새로고침시 최상단이동//
   useEffect(() => {
     window.onbeforeunload = function() {
@@ -37,7 +38,6 @@ function Landing() {
               </Fade>
 
               <div className="mobile-introtext">
-
                 <Bounce>
                   <Link to={`./collect`}>
                     <button className="mobile-btn">Recollect 시작하기</button>
@@ -56,7 +56,7 @@ function Landing() {
           <div className="landing__inner--second">
             <div className="desc-wrap desc-wrap--1">
               <Zoom duration={2300}>
-                <img clasName="desc1-img" src="desc01.png" alt="desc1" />
+                <img className="desc1-img" src="desc01.png" alt="desc1" />
 
                 <p className="desc1">
                   자주 들어가는 웹사이트
@@ -72,11 +72,11 @@ function Landing() {
                   <br />
                   여기저기 흩어져있는 북마크들...
                 </p>
-                <img clasName="desc2-img" src="desc002.png" alt="desc2" />
+                <img className="desc2-img" src="desc002.png" alt="desc2" />
               </Zoom>
             </div>
             <div className="desc-wrap desc-wrap--3">
-              <img clasName="desc3-img" src="desc03.png" alt="desc3" />
+              <img className="desc3-img" src="desc03.png" alt="desc3" />
               <Zoom>
                 <p className="desc3">
                   저장만 해두고
@@ -195,13 +195,15 @@ function Landing() {
           <div className="landing__inner--fifth">
             <Pulse left cascade delay={1000}>
               <div className="profile-wrapper">
+                {/* <div className="profile"></div>
                 <div className="profile"></div>
                 <div className="profile"></div>
-                <div className="profile"></div>
-                <div className="profile"></div>
+                <div className="profile"></div> */}
+                {userInfoLists.slice(0, 4).map((userInfo) => (
+                  <ExploreProfileList key={userInfo.id} id="profile"/>
+                ))}
               </div>
             </Pulse>
-
             <div className="collection-desc">
               <Fade duration={3000}>
                 <p>
