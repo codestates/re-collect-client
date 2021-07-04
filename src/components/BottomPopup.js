@@ -4,7 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CollectInputBox from './CollectInputBox';
 
 function BottomPopup() {
-  const [yposition, setYposition] = useState(-100);
+  const [yposition, setYposition] = useState(-120);
 
   useEffect(() => {
     setYposition(0);
@@ -12,7 +12,7 @@ function BottomPopup() {
 
   const bottomPopupToggleHandler = () => {
     if (yposition === 0) {
-      setYposition(-100);
+      setYposition(-120);
     } else {
       setYposition(0);
     }
@@ -45,8 +45,8 @@ function BottomPopup() {
               onClick={bottomPopupToggleHandler}
             ></div>
             <div className="bottomPopup__contentsBackground">
-              <span>북마크 추가하기</span>
-              <CollectInputBox place="bottomPopup" />
+              <div className="bottomPopup__text">북마크 추가하기</div>
+              <CollectInputBox className="bottomPopup" />
             </div>
           </>
         )}

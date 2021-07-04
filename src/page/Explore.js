@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import ExploreProfile from "../components/ExploreProfile";
-import { IsValidateEmail } from "../util/validation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
-import BigBookmark from "../components/BigBookmark";
+import React, { useEffect } from 'react';
+import ExploreProfile from '../components/ExploreProfile';
+import { IsValidateEmail } from '../util/validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
+import BigBookmark from '../components/BigBookmark';
 
 function Explore(props) {
   return (
