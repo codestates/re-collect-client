@@ -9,11 +9,11 @@ import { userInfoLists } from "../components/Explore_temp";
 
 function Landing() {
   ///새로고침시 최상단이동//
-  // useEffect(() => {
-  //   window.onbeforeunload = function() {
-  //     window.scrollTo(0, 0);
-  //   };
-  // }, []);
+  useEffect(() => {
+    window.onbeforeunload = function() {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
   return (
     <>
