@@ -42,6 +42,15 @@ export default function Collect() {
                   <CollectBookmark id="bookmark_2">
                     이것은 북마크 2 입니다.
                   </CollectBookmark>
+                  <CollectBookmark id="bookmark_3">
+                    이것은 북마크 3 입니다.
+                  </CollectBookmark>
+                  <CollectBookmark id="bookmark_4">
+                    이것은 북마크 4 입니다.
+                  </CollectBookmark>
+                  <CollectBookmark id="bookmark_5">
+                    이것은 북마크 5 입니다.
+                  </CollectBookmark>
                 </CategoryBox>
               </div>
             </div>

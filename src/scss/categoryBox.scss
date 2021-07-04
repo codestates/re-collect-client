@@ -73,6 +73,7 @@
     border: 1px solid #{$blue};
     margin-bottom: 11px;
     padding-left: 5px;
+    width: auto;
     height: 24px;
     font-size: #{$bookmarkfont};
     text-align: left;
@@ -80,6 +81,7 @@
   }
 
   &__bookmark-text {
+    cursor: pointer;
     flex: 1;
   }
   &__bookmark-ellipsis {
@@ -99,6 +101,7 @@
   }
 
   &__bookmark-triangle {
+    cursor: grab;
     width: 0px;
     height: 0px;
     border: {
@@ -107,8 +110,12 @@
       right: 17.5px solid #{$blue};
       bottom: 11px solid transparent;
     }
+    z-index: 0;
 
     margin-left: -10px;
+    &:active {
+      cursor: grabbing;
+    }
   }
 
   &__footer {
