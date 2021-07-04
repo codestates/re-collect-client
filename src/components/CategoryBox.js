@@ -2,7 +2,20 @@ import CollectBookmark from './CollectBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-export default function CategoryBox() {
+export default function CategoryBox(props) {
+  const dropHandler = (e) => {
+    console.log('떨어지는 곳', e.target.children);
+    const bookmark_id = e.dataTransfer.getData('bookmark_id');
+
+    const bookmark = document.getElementById(bookmark_id);
+
+    e.target.appendChild(bookmark);
+  };
+
+  const dragOverHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="categorybox">
       <div className="categorybox__header">
@@ -12,17 +25,13 @@ export default function CategoryBox() {
           <FontAwesomeIcon icon={faPencilAlt} />
         </div>
       </div>
-      <div className="categorybox__view">
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
-        <CollectBookmark />
+      <div
+        id={props.id}
+        onDrop={dropHandler}
+        onDragOver={dragOverHandler}
+        className="categorybox__view"
+      >
+        {props.children}
       </div>
       <div className="categorybox__footer"></div>
     </div>

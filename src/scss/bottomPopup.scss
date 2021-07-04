@@ -60,9 +60,12 @@
         top-left-radius: 30px;
         top-right-radius: 30px;
       }
-      span {
-        margin-bottom: 50px;
-      }
+    }
+
+    &__text {
+      height: 100px;
+      text-align: center;
+      line-height: 50px;
     }
   }
 }

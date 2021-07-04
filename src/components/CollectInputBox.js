@@ -33,7 +33,7 @@ const customStyles = {
   },
 };
 
-function CollectInputBox({ place }) {
+function CollectInputBox({ className }) {
   const [colorPick, setColorPick] = useState([false, false, false]);
 
   useEffect(() => {
@@ -52,20 +52,24 @@ function CollectInputBox({ place }) {
   };
 
   return (
-    <div className={`${place}__collectInputBox`}>
+    <div className={`${className}__collectInputBox`}>
       <AsyncCreatableSelect
-        className={`${place}__select`}
+        className={`${className}__select`}
         isClearable
         styles={customStyles}
         placeholder="Category"
       />
-      <input className={`${place}__input`} type="text" placeholder="Text" />
-      <input className={`${place}__input--url`} type="url" placeholder="Url" />
-      <div className={`${place}__customizingSection`}>
-        <div className={`${place}__colorPick`}>
+      <input className={`${className}__input`} type="text" placeholder="Text" />
+      <input
+        className={`${className}__input--url`}
+        type="url"
+        placeholder="Url"
+      />
+      <div className={`${className}__customizingSection`}>
+        <div className={`${className}__colorPick`}>
           <button
             id="0"
-            className={`${place}__color-circle--blue${
+            className={`${className}__color-circle--blue${
               colorPick[0] ? ' active' : ''
             }`}
             onClick={(e) => {
@@ -76,7 +80,7 @@ function CollectInputBox({ place }) {
           </button>
           <button
             id="1"
-            className={`${place}__color-circle--green${
+            className={`${className}__color-circle--green${
               colorPick[1] ? ' active' : ''
             }`}
             onClick={(e) => {
@@ -87,7 +91,7 @@ function CollectInputBox({ place }) {
           </button>
           <button
             id="2"
-            className={`${place}__color-circle--red${
+            className={`${className}__color-circle--red${
               colorPick[2] ? ' active' : ''
             }`}
             onClick={(e) => {
@@ -97,18 +101,18 @@ function CollectInputBox({ place }) {
             {colorPick[2] ? <FontAwesomeIcon icon={faCheck} /> : ''}
           </button>
         </div>
-        <div className={`${place}__importantPick`}>
+        <div className={`${className}__importantPick`}>
           <input
-            className={`${place}__important`}
+            className={`${className}__important`}
             type="checkbox"
             name="important"
           />
           <label for="important">중요</label>
         </div>
       </div>
-      <div className={`${place}__btnSection`}>
-        <button className={`${place}__btn left`}>추가</button>
-        <button className={`${place}__btn right`}>삭제</button>
+      <div className={`${className}__btnSection`}>
+        <button className={`${className}__btn left`}>추가</button>
+        <button className={`${className}__btn right`}>삭제</button>
       </div>
     </div>
   );
