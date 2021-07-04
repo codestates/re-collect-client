@@ -3,6 +3,7 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 export default function CollectBookmark(props) {
   const dragStartHandler = (e) => {
+    console.log('드래그 잡힌 북마크', e.target);
     const target = e.target;
 
     e.dataTransfer.setData('bookmark_id', target.id);
