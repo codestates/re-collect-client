@@ -1,60 +1,13 @@
-import React, { useEffect } from "react";
-import ExploreProfile from "../components/ExploreProfile";
-import { IsValidateEmail } from "../util/validation";
+import React, { useEffect } from 'react';
+import ExploreProfile from '../components/ExploreProfile';
+import { IsValidateEmail } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
+import BigBookmark from '../components/BigBookmark';
 
 function Explore(props) {
-  // Open-Popup
-  const isOpen = () => {
-    const popup = document.querySelector('.modalWrapper');
-    const bkg = document.querySelector('.exploreContainer');
-    popup.style.display = 'flex';
-    bkg.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
-  };
-  // Close-Popup
-  const isClose = () => {
-    const popup = document.querySelector('.modalWrapper');
-    const bkg = document.querySelector('.exploreContainer');
-    popup.style.display = 'none';
-    bkg.style.backgroundColor = 'white';
-  };
-  // Validation check
-  const isValid = () => {
-    const emailForSubscribe =
-      document.querySelector('.emailForSubscribe').value;
-    if (IsValidateEmail(emailForSubscribe)) {
-      isClose();
-    } else {
-      const error = document.querySelector('.errorMessage');
-      error.style.display = 'flex';
-    }
-  };
-
-  useEffect(() => {
-    isOpen();
-    return () => {
-      isClose();
-    };
-  });
-
   return (
     <div>
-      {/* Modal 팝업 */}
-      <div className="modalWrapper">
-        <div className="closeBtn" onClick={isClose}>
-          <FontAwesomeIcon icon={faTimes} />
-        </div>
-        <div className="contents">
-          <p>
-            아직 준비중인 서비스 입니다 <br /> 기대해주세요!
-          </p>
-          <input className="emailForSubscribe" placeholder="Email" />
-          <button onClick={isValid}>업데이트 소식받기</button>
-          <div className="errorMessage"> 이메일을 확인해주세요 </div>
-        </div>
-      </div>
-
       {/* 메인 컨텐츠 */}
       <div className="exploreContainer">
         {/* Search 검색바  */}
@@ -85,11 +38,11 @@ function Explore(props) {
         <div className="interestingBookmarksCategory">
           <p> Interesting Bookmarks</p>
           <ul>
-            <li> 리액트 상태관리 </li>
-            <li> AWS s3 정복하기 </li>
-            <li> 천재개발자가 자주들어가는 블로그 </li>
-            <li> Git 명령어 모음 </li>
-            <li> 리액트 훅 vs 리덕스 </li>
+            <BigBookmark />
+            <BigBookmark />
+            <BigBookmark />
+            <BigBookmark />
+            <BigBookmark />
           </ul>
         </div>
       </div>

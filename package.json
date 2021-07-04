@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/highlight": "^7.14.5",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "eslint": "^7.29.0",

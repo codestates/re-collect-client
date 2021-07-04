@@ -1,0 +1,188 @@
+@import "./util.scss";
+
+.profile-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #{$logocolor};
+  &__inner {
+    width: 28vw;
+    height: 90vh;
+    text-align: center;
+  }
+  &__inner--left {
+    margin-right: 5vw;
+    width:30vw;
+    height: 50%;
+    font-size: 14px;
+
+    
+    .profilebox {
+      margin-top: 7vh;
+      
+      &__photo {
+        .photo-icon {
+          height: 100%;
+          width: 80px;
+          font-weight: lighter;
+        }
+      }
+
+      &__userinfo {
+        h1 {
+          font-size: 20px;
+          .edit-username {
+            width: 18px;
+            margin-left: 2px;
+            padding-top: 7px;
+            color: grey;
+            //position: fixed;
+
+            &:hover {
+              cursor: pointer;
+              color: #{$logocolor};
+            }
+          }
+        }
+        p{
+          word-spacing: -3px;
+        }
+      }
+
+      &__follow {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        p {
+          width: 100px;
+          margin-left: 1.5vw;
+          &:nth-child(1) {
+            margin-left: 0;
+          }
+        }
+      }
+
+      &__btns {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        button {
+          border: none;
+          background-color: transparent;
+          font-size: 14px;
+          font-weight: 600;
+          margin-top: 20px;
+          color: rgb(78, 78, 78);
+
+          &:hover {
+            cursor: pointer;
+            color: #{$logocolor};
+          }
+        }
+      }
+    }
+  }
+
+  .slicebox {
+    width: 1px;
+    height: 60vh;
+    margin-top: 90px;
+    border-right: solid 1px;
+  }
+
+  &__inner--right {
+    //background-color: whitesmoke;
+    width:35vw;
+    margin-left: 5vw;
+    .popular-recollect {
+      margin-top: 40vh;
+      h1 {
+        font-size: 1.5vw;
+        margin-left: -3px;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.profile-container {
+  @include tablet {
+
+    &__inner {
+      transform: scale(0.9);
+    }
+    &__inner--left {
+      width: 55vw;
+      display:flex;
+      justify-content: center;
+      margin-left: -13vw;
+      margin-right: -3vw;
+      .profilebox {
+        height: fit-content;
+        &__follow {
+          margin-top:0;
+        }
+      }
+    }
+    &__inner--right {
+      margin-left: 5vw;
+      margin-right:-5vw;
+      .popular-recollect {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h1 {
+          font-size: 2.5vw;
+        }
+      }
+    }
+  }
+  @include mobile {
+    //background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__inner {
+      transform: scale(1);
+      margin-top: 15vh;
+      width:70vw;
+      margin-left:0;
+
+    }
+    &__inner--left{
+      margin-left:-5px;
+      .profilebox{
+        &__follow{
+          margin-top: -15px;
+        }      
+      }
+    }
+    .slicebox{
+      display: none;
+    }
+    .slicebox-row{
+      width:80vw;
+      border-top:solid 1px;
+      margin-top:50px;
+    }
+    &__inner--right{
+      margin-left:-5vw;
+      margin-top:50px;
+      
+      height: fit-content;
+      margin-bottom: 80px;
+      
+      .popular-recollect{
+        margin-top:0; 
+
+      
+        h1{
+          font-size: 4.3vw;
+        }
+
+      }
+    }
+  }
+}
