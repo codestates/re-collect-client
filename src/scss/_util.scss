@@ -1,25 +1,26 @@
 // Break Point
-$mobile: 375px;
-$tablet: 768px;
-$laptop: 1024px;
+$mobile: 600px;
+$tablet: 834px;
+$laptop: 1440px;
+$laptop2: 1100px; // explore 캐러셀을 위해 추가
 
-$logocolor: '#214bc8';
-$red: '#f24626';
-$blue: '#214bc8';
-$green: '#0eae61';
-$boxshadow: '10px 10px 10px rgba(0, 0, 0, 0.1)';
-$btnboxshadow: '5px 5px 4px rgba(0, 0, 0, 0.1)';
-$alarmcolor: '#EBFF9D';
-$errorcolor: '#FF0000';
-$modalblur: 'blur(4px)';
+$logocolor: "#214bc8";
+$red: "#f24626";
+$blue: "#214bc8";
+$green: "#0eae61";
+$boxshadow: "10px 10px 10px rgba(0, 0, 0, 0.1)";
+$btnboxshadow: "5px 5px 4px rgba(0, 0, 0, 0.1)";
+$alarmcolor: "#EBFF9D";
+$errorcolor: "#FF0000";
+$modalblur: "blur(4px)";
 
 //font-size
-$bookmarkfont: '11px';
-$bookmarkbigfont: '20px';
-$headerfont: '36px';
-$alarmfont: '16px';
-$navfont: '16px';
-$btninputfont: '14px';
+$bookmarkfont: "11px";
+$bookmarkbigfont: "20px";
+$headerfont: "36px";
+$alarmfont: "16px";
+$navfont: "16px";
+$btninputfont: "14px";
 
 // Mixins
 @mixin mobile {
@@ -36,6 +37,12 @@ $btninputfont: '14px';
 
 @mixin laptop {
   @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin laptop2 {
+  @media (max-width: #{$laptop2}) {
     @content;
   }
 }

@@ -1,0 +1,65 @@
+@import './util';
+
+.recollect {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: calc(100vh);
+  padding-top: 80px;
+  // width: 100%;
+  &__toCollectBtn {
+    position: fixed;
+    top: 94px;
+    left: 15vw;
+    font-size: 30px;
+    cursor: pointer;
+    &:hover {
+      color: #{$blue};
+    }
+  }
+  &__title {
+    padding: {
+      top: 64px;
+      bottom: 94px;
+    }
+    font-size: #{$headerfont};
+    color: #{$blue};
+  }
+
+  &__bookmarks {
+    width: 36vw;
+    min-width: 530px;
+  }
+}
+
+@include tablet {
+  .recollect {
+    &__toCollectBtn {
+      top: 80px;
+      left: 5vw;
+    }
+  }
+}
+
+@include mobile {
+  .recollect {
+    &__toCollectBtn {
+      left: 15vw;
+      font-size: 22px;
+    }
+    &__title {
+      padding: {
+        top: 100px;
+        bottom: 35px;
+      }
+      font-size: 22px;
+      color: #{$blue};
+    }
+
+    &__bookmarks {
+      width: 71vw;
+      min-width: 200px;
+    }
+  }
+}

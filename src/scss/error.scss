@@ -1,0 +1,26 @@
+@import './util';
+
+.error {
+  height: 100vh;
+  &__box {
+    position: absolute;
+    top: calc(50% - 120px);
+    left: calc(50% - 268.805px);
+    text-align: center;
+    height: 163px;
+  }
+
+  &__text {
+    font-size: 28px;
+    margin: {
+      top: 0;
+      bottom: 60px;
+    }
+  }
+
+  &__toHomeBtn {
+    font-size: 24px;
+    text-decoration: none;
+    color: #{$blue};
+  }
+}

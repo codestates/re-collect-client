@@ -1,0 +1,167 @@
+@import './util';
+
+.categorybox {
+  min-width: 240px;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+
+  // 카테고리 박스의 구성요소는 헤더, 뷰, 북마크
+
+  &__header {
+    height: 24px;
+    padding: 0 15px;
+    border-bottom: 1px solid;
+    font-size: #{$bookmarkfont};
+    text-align: right;
+    line-height: 24px;
+  }
+
+  &__header-editbtn {
+    background-color: transparent;
+    color: rgba(128, 128, 128, 0.6);
+    border-style: none;
+    font-size: #{$bookmarkfont};
+    cursor: pointer;
+
+    &:hover {
+      color: #{$blue};
+    }
+  }
+  &__header-pencil {
+    display: none;
+  }
+
+  &__header-text {
+    padding: {
+      left: 5px;
+    }
+  }
+
+  &__view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    padding: 35px 5px 0 15px;
+    background-color: white;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 10%;
+      background-color: rgba(0, 0, 0, 0.3);
+      background-clip: padding-box;
+      border-right: 3px solid transparent;
+      border-top: 35px solid transparent;
+      // border-bottom: 96% solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: white;
+    }
+  }
+
+  &__bookmark {
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid #{$blue};
+    margin-bottom: 11px;
+    padding-left: 5px;
+    width: auto;
+    height: 24px;
+    font-size: #{$bookmarkfont};
+    text-align: left;
+    line-height: 24px;
+  }
+
+  &__bookmark-text {
+    cursor: pointer;
+    flex: 1;
+  }
+  &__bookmark-ellipsis {
+    display: none;
+  }
+
+  &__bookmark-editbtn {
+    background-color: transparent;
+    border-style: hidden;
+    line-height: 20px;
+    color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      color: gray;
+    }
+  }
+
+  &__bookmark-triangle {
+    cursor: grab;
+    width: 0px;
+    height: 0px;
+    border: {
+      top: 11px solid transparent;
+      left: 17.5px solid transparent;
+      right: 17.5px solid #{$blue};
+      bottom: 11px solid transparent;
+    }
+    z-index: 0;
+
+    margin-left: -10px;
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__footer {
+    height: 35px;
+  }
+}
+
+@include tablet {
+  .categorybox {
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@include mobile {
+  .categorybox {
+    max-width: 300px;
+    &__header {
+      text-align: center;
+    }
+
+    &__header-editbtn,
+    &__bookmark-editbtn {
+      display: none;
+    }
+
+    &__bookmark-ellipsis {
+      display: initial;
+      text-align: center;
+      color: rgba(0, 0, 0, 0.2);
+      width: 23px;
+      font-size: 15px;
+      cursor: pointer;
+      &:hover {
+        color: #{$blue};
+      }
+    }
+
+    &__header-pencil {
+      display: initial;
+      float: right;
+      cursor: pointer;
+      &:hover {
+        color: #{$blue};
+      }
+    }
+  }
+}

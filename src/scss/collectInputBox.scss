@@ -1,0 +1,151 @@
+@import './util';
+
+.sidebar {
+  &__collectInputBox {
+    padding-bottom: 120px;
+  }
+}
+
+.sidebar,
+.bottomPopup {
+  &__collectInputBox {
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__input,
+  &__input--url {
+    border-radius: 0;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+    width: 80%;
+    padding-left: 8px;
+    font-size: 16px;
+    font-family: 'IBM Plex Mono';
+    background: white;
+
+    &:hover,
+    &:focus {
+      border: 1px rgba(0, 0, 0, 0.5) solid;
+      outline: 0;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__select:hover {
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+    outline: 0;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  &__input {
+    margin-bottom: 15px;
+    height: 36px;
+  }
+  &__input--url {
+    height: 180px;
+  }
+
+  &__customizingSection {
+    width: 80%;
+    height: 20px;
+    margin: 17px 0px;
+    display: flex;
+  }
+
+  &__colorPick {
+    width: 90px;
+    display: flex;
+  }
+
+  &__color-circle {
+    &--blue,
+    &--green,
+    &--red {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 0;
+      cursor: pointer;
+      margin-right: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 9px;
+      line-height: 20px;
+      text-overflow: unset;
+
+      &:hover {
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+      }
+    }
+    &--blue {
+      background-color: #{$blue};
+      &.active {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 0;
+        background-color: #{$blue};
+        margin-right: 8px;
+        box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px rgb(0, 0, 0);
+      }
+    }
+
+    &--green {
+      background-color: #{$green};
+      &.active {
+        box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px rgb(0, 0, 0);
+      }
+    }
+
+    &--red {
+      background-color: #{$red};
+      &.active {
+        box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 3px rgb(0, 0, 0);
+      }
+    }
+  }
+
+  &__importantPick {
+    flex: 1;
+    text-align: right;
+  }
+
+  &__btnSection {
+    width: 80%;
+    display: inline-block;
+    text-align: unset;
+  }
+
+  &__btn {
+    width: 70px;
+    height: 36px;
+    border: 1px rgba(0, 0, 0, 0.5) solid;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: 'Noto Sans KR';
+    cursor: pointer;
+    &.left {
+      float: left;
+    }
+    &.right {
+      float: right;
+    }
+    &:hover {
+      box-shadow: #{$btnboxshadow};
+    }
+  }
+}
+
+@include mobile {
+  .bottomPopup {
+    &__collectInputBox {
+      width: 80%;
+    }
+  }
+}

@@ -1,0 +1,392 @@
+@import "./util";
+
+.exploreContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+  //// Laptop2 (mini-version) /////
+  @include laptop2 {
+    //// Profile Carousal Laptop2
+    .searchBar,
+    .exploreSearchRecommendation {
+      width: 560px;
+    }
+    .recommendTag {
+      font-size: 12px;
+    }
+    .exploreProfileCarousal {
+      .searchProfileWrapper {
+        width: 886.5px;
+        overflow: hidden;
+      }
+      .searchProfileLists {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 886.5px;
+        transition: transform 0.2s;
+      }
+    }
+  }
+
+  //// Tablet ////
+  @include tablet {
+    color: black;
+    .exploreHeader {
+      font-size: 30px;
+      margin-top: 94px;
+      // nav-bar가 커져서 64px => 94px로 변경
+    }
+    //// searchbar Tablet
+    .searchBar {
+      width: 560px;
+      height: 40px;
+      margin-top: 50px;
+      input {
+        width: 90%;
+        height: 100%;
+        outline: none;
+      }
+      button {
+        width: 10%;
+        height: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    //// Recommendation Tablet
+    .exploreSearchRecommendation {
+      display: inline-flex;
+      width: 560px;
+      margin-top: 30px;
+      justify-content: center;
+      align-content: center;
+      .recommendTitle {
+        color: gray;
+        margin-left: 5px;
+      }
+      .recommendTags {
+        flex: 1;
+      }
+      .recommendTag {
+        font-size: 9px;
+        display: inline-flex;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        border: 1px solid black;
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
+      }
+    }
+    //// Carousal Tablet
+    .exploreProfileCarousal {
+      .searchProfileWrapper {
+        width: 592px;
+        overflow: hidden;
+      }
+      .searchProfileLists {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 592px;
+        transition: transform 0.2s;
+      }
+    }
+
+    //// interestingBookmark Tablet
+    .interestingBookmarksCategory {
+      margin-top: 105px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      p {
+        font-size: 28px;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+    }
+  }
+
+  //// Mobile ////
+  @include mobile {
+    //// Explore Header mobile
+    .exploreHeader {
+      font-size: 30px;
+      margin-top: 94px;
+      // nav-bar가 커져서 64px => 94px로 변경
+    }
+    //// search-bar mobile
+    .searchBar {
+      width: 310px;
+      height: 35px;
+      margin-top: 50px;
+      input {
+        width: 90%;
+        height: 100%;
+        outline: none;
+      }
+      button {
+        width: 10%;
+        height: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    //// recommendation mobile
+    .exploreSearchRecommendation {
+      width: 310px;
+      margin-top: 30px;
+      display: inline-block;
+      justify-content: center;
+      align-content: center;
+      .recommendTitle {
+        color: gray;
+        margin-left: 5px;
+      }
+      .recommendTags {
+        flex: 1;
+      }
+      .recommendTag {
+        font-size: 9px;
+        display: inline-flex;
+        height: 30px;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        border: 1px solid black;
+        &:hover {
+          cursor: pointer;
+          color: black;
+        }
+      }
+    }
+    //// explore carousal mobile
+    .exploreProfileCarousal {
+      .searchProfileWrapper {
+        width: 295px;
+        overflow: hidden;
+      }
+      .searchProfileLists {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        width: 295px;
+        transition: transform 0.2s;
+      }
+    }
+
+    //// interestingBookmark mobile
+    .interestingBookmarksCategory {
+      margin-top: 105px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      p {
+        font-size: 24px;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+        width: 292px;
+
+        // li {
+        //   display: flex;
+        //   align-items: center;
+        //   justify-content: center;
+        //   width: 293px;
+        //   height: 25px;
+        //   border: 1px solid black;
+        //   margin: 12px;
+        // }
+        // li:hover {
+        //   cursor: pointer;
+        //   color: #214bc8;
+        // }
+      }
+    }
+  }
+}
+
+/// Laptop ////
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+//// explore header Laptop
+.exploreHeader {
+  color: #{$logocolor};
+  font-size: 2.8vw;
+  margin-top: 8%;
+  // nav-bar가 커져서 64px => 94px로 변경
+}
+//// search bar Laptop
+.searchBar {
+  width: 560px;
+  // width: 38vw;
+  height: 40px;
+  margin-top: 50px;
+  input {
+    width: 90%;
+    height: 100%;
+    outline: none;
+  }
+
+  button {
+    width: 10%;
+    height: 100%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+//// recommendation Laptop
+.exploreSearchRecommendation {
+  width: 560px;
+  // min-width: 560px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  div {
+    color: gray;
+  }
+  .recommendTags {
+    flex: 1;
+  }
+  .recommendTag {
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border: 1px solid black;
+    &:hover {
+      cursor: pointer;
+      color: black;
+    }
+  }
+}
+//// profile carousal Laptop
+.exploreProfileCarousal {
+  margin-top: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex: 1;
+  .searchProfileWrapper {
+    position: static;
+    width: 1182px;
+    overflow: hidden;
+  }
+  .searchProfileLists {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 1182px;
+    transition: transform 0.2s;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .prevBtn,
+  .nextBtn {
+    font-size: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.searchProfile {
+  width: 255px;
+  height: 340px;
+  margin: 0 28px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .profileImage {
+    margin-top: 25px;
+    font-size: 85px;
+  }
+  p {
+    margin-top: 0px;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+  .socialInfo {
+    margin-top: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+    }
+  }
+  .companyInfo {
+    margin-top: 20px;
+    font-size: 12px;
+    div {
+      margin: 5px;
+    }
+  }
+}
+//// interesting bookmark Laptop
+.interestingBookmarksCategory {
+  margin-top: 105px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  p {
+    // font-size: 30px;
+    font-size: 2.4vw;
+    margin: 0;
+  }
+  ul {
+    margin-top: 30px;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 530px;
+  }
+}
