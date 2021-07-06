@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faLaptop,  } from '@fortawesome/free-solid-svg-icons';
-import { faGithub  } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle, faLaptop } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { userInfoLists } from "./Explore_temp";
 
 function ExploreProfileList(props) {
   return (
-    <div className="searchProfile">
+    // react-reveal 'Pulse cascade'적용을 위한 props 전달 //
+    <div className="searchProfile" {...props}>
       <div className="profileImage">
-      <FontAwesomeIcon icon={faUserCircle} />
+        <FontAwesomeIcon icon={faUserCircle} />
       </div>
       <p> 정리벽 개발자 </p>
       <div className="socialInfo">
@@ -29,7 +31,7 @@ function ExploreProfileList(props) {
           <FontAwesomeIcon icon={faLaptop} /> Programmer at KaKao
         </div>
         <div>
-        <FontAwesomeIcon icon={faGithub} /> github.com/re-collect
+          <FontAwesomeIcon icon={faGithub} /> github.com/re-collect
         </div>
       </div>
     </div>

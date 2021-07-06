@@ -2,6 +2,7 @@
 $mobile: 600px;
 $tablet: 834px;
 $laptop: 1440px;
+$laptop2: 1100px; // explore 캐러셀을 위해 추가
 
 $logocolor: "#214bc8";
 $red: "#f24626";
@@ -40,3 +41,8 @@ $btninputfont: "14px";
   }
 }
 
+@mixin laptop2 {
+  @media (max-width: #{$laptop2}) {
+    @content;
+  }
+}

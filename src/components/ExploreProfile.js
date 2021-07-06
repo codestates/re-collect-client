@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ExploreProfileList from "./ExploreProfileList";
 import { userInfoLists } from "./Explore_temp";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight  } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 function ExploreProfile(props) {
   const [index, setIndex] = useState(0);
@@ -22,10 +22,9 @@ function ExploreProfile(props) {
 
   const nexBtnClick = () => {
     const lists = document.querySelector(".searchProfileLists");
-    console.log(lists.clientWidth);
     if (lists.clientWidth === 1182) {
       if (index === setMaxIdx(4)) return;
-    } else if (lists.clientWidth === 900) {
+    } else if (lists.clientWidth === 886.5) {
       if (index === setMaxIdx(3)) return;
     } else if (lists.clientWidth === 592) {
       if (index === setMaxIdx(2)) return;
@@ -51,7 +50,6 @@ function ExploreProfile(props) {
       <div className="searchProfileWrapper">
         <div className="searchProfileLists">
           {userInfoLists.map((el) => (
-            // console.log(el.id)
             <ExploreProfileList />
           ))}
         </div>
