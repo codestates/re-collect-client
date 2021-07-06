@@ -11,6 +11,8 @@ import SignUpModal from './components/SignUpModal';
 import FindPwdModal from './components/FindPwdModal';
 import SuccessSignUpModal from './components/SuccessSignUpModal';
 import ExploreModal from './components/ExploreModal';
+import Loading from './components/Loading';
+import Error from './components/Error';
 import {
   Link,
   Switch,
@@ -55,6 +57,8 @@ function App() {
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
+        <Route path="/error" component={Error}></Route>
+        <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
         <Route path="/profile" component={Profile}></Route>
         <Route path="/explore" component={Explore}></Route>

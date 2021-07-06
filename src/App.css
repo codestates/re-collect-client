@@ -1719,7 +1719,7 @@ body .landing__inner--second .desc-wrap--3 p {
   line-height: 30px;
   margin: 0 auto;
   color: #214bc8;
-  animation: typing 3s steps(9, start) infinite, blink-caret 0.5s step-end infinite;
+  animation: typing 2s steps(9, start) infinite, blink-caret 0.5s step-end infinite;
   display: inline-block;
   overflow: clip;
   white-space: nowrap;

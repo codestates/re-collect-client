@@ -15,6 +15,15 @@ export default function Collect() {
     setRecollectView(!recollectView);
   };
 
+  // 북마크 불러오기 → 카테고리 별로 묶고 그 안에서 또 저장된 순서대로 정렬 그리고 화면에 뿌려준다
+  // 북마크 작성 ⇒ input 입력내용, category 입력내용 인식
+  // 북마크 작성 정보 전송
+  // 북마크 수정 정보 전송
+  // 북마크 드래그앤드롭시 카테고리 변경내용, 카테고리 박스 내 순서 변경 내용 서버로 전송
+  // 북마크 검색
+  // 북마크 카테고리 조회
+  // 안 읽은 북마크 모으기
+
   return (
     <>
       {recollectView ? (
