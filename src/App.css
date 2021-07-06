@@ -1052,7 +1052,7 @@ body {
   padding: 3.7% 0;
   background-color: #214bc8;
   border: none;
-  border-radius: 3px;
+  border-radius: 2px;
   color: white;
   font-size: 1.8vw;
   text-align: center;
@@ -1382,7 +1382,7 @@ body {
   padding: 4.5% 0;
   background-color: #214bc8;
   border: none;
-  border-radius: 3px;
+  border-radius: 2px;
   color: white;
   font-size: 2.5vw;
   text-align: center;
@@ -1944,7 +1944,7 @@ body .landing__inner--second .desc-wrap--3 p {
   color: black;
   font-size: 9px;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2073,8 +2073,7 @@ body .landing__inner--second .desc-wrap--3 p {
   text-align: center;
 }
 .profile-container__inner--left {
-  margin-right: 5vw;
-  width: 30vw;
+  width: 40vw;
   height: 50%;
   font-size: 14px;
 }
@@ -2086,24 +2085,43 @@ body .landing__inner--second .desc-wrap--3 p {
   width: 80px;
   font-weight: lighter;
 }
-.profile-container__inner--left .profilebox__userinfo h1 {
-  font-size: 20px;
+.profile-container__inner--left .profilebox__userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.profile-container__inner--left .profilebox__userinfo h1 .edit-username {
-  width: 18px;
-  margin-left: 2px;
-  padding-top: 7px;
+.profile-container__inner--left .profilebox__userinfo .usernamebox {
+  margin-bottom: 1vh;
+}
+.profile-container__inner--left .profilebox__userinfo input {
+  margin-top: 1.5vh;
+  font-family: IBM Plex Mono;
+  font-size: 20px;
+  width: 50%;
+  margin-left: 1.5vw;
+  margin-right: 0.5vw;
+  border: none;
+  border-bottom: dotted 1px #214bc8;
+  text-align: center;
+}
+.profile-container__inner--left .profilebox__userinfo input::placeholder {
+  text-align: center;
+  font-family: IBM Plex Mono;
+  color: #214bc8;
+}
+.profile-container__inner--left .profilebox__userinfo .edit-info {
   color: grey;
 }
-.profile-container__inner--left .profilebox__userinfo h1 .edit-username:hover {
-  cursor: pointer;
+.profile-container__inner--left .profilebox__userinfo .edit-info:hover {
   color: #214bc8;
+  cursor: pointer;
 }
 .profile-container__inner--left .profilebox__userinfo p {
   word-spacing: -3px;
+  line-height: 0.3vh;
 }
 .profile-container__inner--left .profilebox__follow {
-  margin-top: 20px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
 }
@@ -2113,6 +2131,34 @@ body .landing__inner--second .desc-wrap--3 p {
 }
 .profile-container__inner--left .profilebox__follow p:nth-child(1) {
   margin-left: 0;
+}
+.profile-container__inner--left .profilebox__companyngitrepo {
+  display: flex;
+  flex-direction: column;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner {
+  margin-top: 1.5vh;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input {
+  font-family: IBM Plex Mono;
+  width: 50%;
+  margin-right: 0.5vw;
+  border: none;
+  border-bottom: dotted 1px #214bc8;
+  text-align: center;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input::placeholder {
+  text-align: center;
+  color: #214bc8;
+  font-size: 14px;
+  font-family: IBM Plex Mono;
+}
+.profile-container__inner--left .profilebox__companyngitrepo .edit-info {
+  color: grey;
+}
+.profile-container__inner--left .profilebox__companyngitrepo .edit-info:hover {
+  color: #214bc8;
+  cursor: pointer;
 }
 .profile-container__inner--left .profilebox__btns {
   margin-top: 25px;
@@ -2138,15 +2184,17 @@ body .landing__inner--second .desc-wrap--3 p {
   border-right: solid 1px;
 }
 .profile-container__inner--right {
-  width: 35vw;
-  margin-left: 5vw;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
 }
 .profile-container__inner--right .popular-recollect {
   margin-top: 40vh;
+  margin-left: 5vw;
+  width: 75%;
 }
 .profile-container__inner--right .popular-recollect h1 {
-  font-size: 1.5vw;
-  margin-left: -3px;
+  font-size: 20px;
   white-space: nowrap;
 }
 
@@ -2167,15 +2215,11 @@ body .landing__inner--second .desc-wrap--3 p {
   .profile-container__inner--left .profilebox__follow {
     margin-top: 0;
   }
-  .profile-container__inner--right {
-    margin-left: 5vw;
-    margin-right: -5vw;
-  }
   .profile-container__inner--right .popular-recollect {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    width: 90%;
   }
   .profile-container__inner--right .popular-recollect h1 {
     font-size: 2.5vw;
@@ -2197,7 +2241,7 @@ body .landing__inner--second .desc-wrap--3 p {
     margin-left: -5px;
   }
   .profile-container__inner--left .profilebox__follow {
-    margin-top: -15px;
+    margin-top: -5px;
   }
   .profile-container .slicebox {
     display: none;

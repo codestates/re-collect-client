@@ -6,7 +6,7 @@ import { userInfoLists } from "./Explore_temp";
 
 
 function ExploreProfileList(props) {
-  console.log('props:' ,props);
+  //console.log('props:' ,props);
   return (
     // react-reveal 'Pulse cascade'적용을 위한 props 전달 //
       <div className="searchProfile" {...props}> 

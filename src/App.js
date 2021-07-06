@@ -1,15 +1,20 @@
 import './App.css';
 import React, { useState } from 'react';
+import Error from './components/Error';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Landing from './page/Landing';
 import ScrollToTop from './components/ScrollToTop';
 import Collect from './page/Collect';
 import Explore from './page/Explore';
+import Profile from './page/Profile';
 import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
 import FindPwdModal from './components/FindPwdModal';
 import SuccessSignUpModal from './components/SuccessSignUpModal';
+import ChangePwdModal from './components/ChangePwdModal';
+import LogoutModal from './components/LogoutModal';
+import DelAccountModal from './components/DelAccountModal';
 import ExploreModal from './components/ExploreModal';
 import {
   Link,
@@ -19,7 +24,7 @@ import {
   Redirect,
   withRouter,
 } from 'react-router-dom';
-import Profile from './page/Profile';
+
 
 function App() {
   const [modalMode, setModalMode] = useState('');
@@ -52,13 +57,19 @@ function App() {
       ) : (
         <></>
       )}
+      {modalMode === 'changePwd' && <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />}
+      {modalMode === 'logout' && <LogoutModal modalMode={modalMode} setModalMode={setModalMode} />}
+      {modalMode === 'delAccount' && <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
         <Route path="/collect" component={Collect}></Route>
-        <Route path="/profile" component={Profile}></Route>
+        <Route path="/profile">
+          <Profile modalMode={modalMode} setModalMode={setModalMode}/>
+        </Route>
         <Route path="/explore" component={Explore}></Route>
         <Route exact path="/" component={Landing}></Route>
+        <Route component={Error}/>
       </Switch>
       <ScrollToTop />
       <Footer />

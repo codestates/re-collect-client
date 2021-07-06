@@ -132,7 +132,7 @@ body {
           padding: 3.7% 0;
           background-color: #{$logocolor};
           border: none;
-          border-radius: 3px;
+          border-radius: 2px;
           color: white;
           font-size: 1.8vw;
           text-align: center;
@@ -462,6 +462,7 @@ body {
         background-color: rgba(233, 229, 229, 0.425);
 
         #profile {
+          
           // border: solid 1px #000; //테두리
           //width: 20%;
           //background-color: lawngreen;
@@ -474,6 +475,7 @@ body {
           &:nth-child(1){
           background-color: khaki;
           //margin-left: 5%;
+          
         }
         }
 
@@ -573,7 +575,7 @@ body {
       padding: 4.5% 0;
       background-color: #{$logocolor};
       border: none;
-      border-radius: 3px;
+      border-radius: 2px;
       color: white;
       font-size: 2.5vw;
       text-align: center;
