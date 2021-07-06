@@ -1,4 +1,4 @@
-@import './util';
+@import "./util";
 
 .collectview {
   background: white;
@@ -58,7 +58,7 @@
     padding-right: 40px;
     margin-right: -40px;
     font-size: 16px;
-    font-family: 'IBM Plex Mono';
+    font-family: "IBM Plex Mono";
 
     &:focus {
       border: 1px rgba(0, 0, 0, 0.3) solid;

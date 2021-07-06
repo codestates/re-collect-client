@@ -27,35 +27,25 @@ import {
 
 
 function App() {
-  const [modalMode, setModalMode] = useState('');
+  const [modalMode, setModalMode] = useState("");
 
   return (
     <Router>
       {/* mode 상태값에 따른 모달창*/}
-      {modalMode === 'login' ? (
+      {modalMode === "login" && (
         <LoginModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'signup' ? (
+      {modalMode === "signup" && (
         <SignUpModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'findPwd' ? (
+      {modalMode === "findPwd" && (
         <FindPwdModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'successSignup' ? (
+      {modalMode === "successSignup" && (
         <SuccessSignUpModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'explore' ? (
+      {modalMode === "explore" && (
         <ExploreModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
       {modalMode === 'changePwd' && <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />}
       {modalMode === 'logout' && <LogoutModal modalMode={modalMode} setModalMode={setModalMode} />}
@@ -68,6 +58,7 @@ function App() {
           <Profile modalMode={modalMode} setModalMode={setModalMode}/>
         </Route>
         <Route path="/explore" component={Explore}></Route>
+        <Route path="/test" component={Carousel}></Route>
         <Route exact path="/" component={Landing}></Route>
         <Route component={Error}/>
       </Switch>
