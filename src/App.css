@@ -2634,25 +2634,33 @@ body {
 
   .landing__inner--fifth {
     width: 100vw;
-    margin-top: 170px;
   }
   .landing__inner--fifth .profile-wrapper {
     display: block;
-    margin-left: 35%;
+    margin-top: 3%;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile {
-    margin: 20px;
-    width: 26%;
+    margin-bottom: 3%;
+    margin-left: 18%;
+    width: 27vw;
+  }
+  .landing__inner--fifth .profile-wrapper .landing__searchProfile__profileImage {
+    font-size: 12vw;
+  }
+  .landing__inner--fifth .profile-wrapper .landing__searchProfile p {
+    font-size: initial;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile:nth-child(1) {
     float: left;
+    margin-right: 3%;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile:nth-child(3) {
     float: left;
     margin-top: 0;
+    margin-right: 3%;
   }
   .landing__inner--fifth .collection-desc {
-    margin-top: 3%;
+    margin-top: 0;
   }
   .landing__inner--fifth .collection-desc a {
     word-spacing: -5px;
