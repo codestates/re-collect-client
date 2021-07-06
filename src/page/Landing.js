@@ -195,18 +195,9 @@ function Landing() {
           <div className="landing__inner--fifth">
             <Pulse left cascade delay={1000}>
               <div className="profile-wrapper">
-                {/* <div className="profile"></div>
-                <div className="profile"></div>
-                <div className="profile"></div>
-                <div className="profile"></div> */}
-                {/* {userInfoLists.slice(0, 4).map((userInfo) => (
-                  <ExploreProfileList key={userInfo.id} id="profile"/>
-                ))} */}
-                {/* <ExploreProfileList />
-                <ExploreProfileList/>
-                <ExploreProfileList/>
-                <ExploreProfileList/> */}
-                <ExploreProfile id="profile"/>
+                {userInfoLists.slice(0, 4).map((userInfo) => (
+                  <ExploreProfileList key={userInfo.id} className="landing" props="cascade"/>
+                ))}
               </div>
             </Pulse>
             <div className="collection-desc">
@@ -220,6 +211,7 @@ function Landing() {
               </Fade>
             </div>
           </div>
+          
           <Fade left duration={2500}>
             <div className="sectionslice slicered-left">
               <div className="triangle"></div>

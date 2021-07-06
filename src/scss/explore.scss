@@ -329,7 +329,10 @@
   }
 }
 
-.searchProfile {
+
+///explore__searchProfile///
+///landing__searchProfile-->landing.scss에 작성함.
+.explore__searchProfile {
   width: 255px;
   height: 340px;
   margin: 0 28px;
@@ -337,7 +340,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  .profileImage {
+  &__profileImage {
     margin-top: 25px;
     font-size: 85px;
   }
@@ -368,6 +371,10 @@
     }
   }
 }
+
+
+
+
 //// interesting bookmark Laptop
 .interestingBookmarksCategory {
   margin-top: 105px;

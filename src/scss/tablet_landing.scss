@@ -1,0 +1,103 @@
+@import "./util.scss";
+
+// @include tablet 
+
+@media (max-width: #{$tablet}) and (min-width: 601px){
+  
+  //sectionslice//
+  .landing {
+    //background-color: rgb(145, 226, 39);
+    .sectionslice {
+      margin-top: 13vh;
+      .triangle {
+        border-top: 2.1vh solid transparent;
+        border-right: 3.4vh solid #{$logocolor};
+        border-bottom: 2.1vh solid transparent;
+      }
+    }
+
+    .slicegreen {
+      .triangle {
+        border-right: 3.4vh solid #{$green};
+      }
+    }
+
+    .slicered-left {
+      border: solid 1px #{$red};
+      border-left: none;
+      .triangle {
+        border-right: 3.4vh solid #{$red};
+      }
+    }
+
+    .slicered {
+      margin-top: 8%;
+      .triangle-right {
+        width: 0px;
+        height: 0px;
+        border-top: 2.1vh solid transparent;
+        border-left: 3.4vh solid #{$red};
+        border-bottom: 2.1vh solid transparent;
+      }
+    }
+
+    .sliceblue {
+      .triangle-right {
+        border-top: 2.1vh solid transparent;
+        border-left: 3.4vh solid #{$logocolor};
+        border-bottom: 2.1vh solid transparent;
+      }
+    }
+  }
+
+  .landing {
+    width: 100vw;
+    &__inner--first {
+      .first-wrap {
+        margin-top: 5%;
+        .introtext {
+          button {
+            padding: 4.5% 0;
+          }
+        }
+      }
+    }
+  }
+
+  .landing {
+    &__inner--fifth {
+      //background-color: khaki;
+      width:100vw;
+      margin-top:170px;
+      .profile-wrapper{
+        display: block;
+        //transform: scale(1.1);
+        //width:fit-content;
+        //background-color: lightblue;
+        margin-left:35%;
+        .landing__searchProfile{
+          margin: 20px;
+          //background-color: lavender;
+          width:26%;
+          &:nth-child(1){
+            float: left;
+            color:red;
+            
+          }
+          &:nth-child(3){
+            float:left;
+            color:green;
+            margin-top:0;
+          }
+        }
+
+      }
+
+      .collection-desc{
+        margin-top:3%;
+        a{word-spacing: -5px;}
+      }
+    }
+  }
+
+}

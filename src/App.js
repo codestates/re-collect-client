@@ -58,7 +58,7 @@ function App() {
           <Profile modalMode={modalMode} setModalMode={setModalMode}/>
         </Route>
         <Route path="/explore" component={Explore}></Route>
-        <Route path="/test" component={Carousel}></Route>
+        {/* <Route path="/test" component={Carousel}></Route> */}
         <Route exact path="/" component={Landing}></Route>
         <Route component={Error}/>
       </Switch>
