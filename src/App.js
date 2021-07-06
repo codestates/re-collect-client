@@ -1,16 +1,18 @@
-import './App.css';
-import React, { useState } from 'react';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Landing from './page/Landing';
-import ScrollToTop from './components/ScrollToTop';
-import Collect from './page/Collect';
-import Explore from './page/Explore';
-import LoginModal from './components/LoginModal';
-import SignUpModal from './components/SignUpModal';
-import FindPwdModal from './components/FindPwdModal';
-import SuccessSignUpModal from './components/SuccessSignUpModal';
-import ExploreModal from './components/ExploreModal';
+import "./App.css";
+import React, { useState } from "react";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Landing from "./page/Landing";
+import ScrollToTop from "./components/ScrollToTop";
+import Collect from "./page/Collect";
+import Explore from "./page/Explore";
+import Profile from "./page/Profile";
+import LoginModal from "./components/LoginModal";
+import SignUpModal from "./components/SignUpModal";
+import FindPwdModal from "./components/FindPwdModal";
+import SuccessSignUpModal from "./components/SuccessSignUpModal";
+import ExploreModal from "./components/ExploreModal";
+import Carousel from "./components/TestCarousel";
 import {
   Link,
   Switch,
@@ -18,39 +20,28 @@ import {
   BrowserRouter as Router,
   Redirect,
   withRouter,
-} from 'react-router-dom';
-import Profile from './page/Profile';
+} from "react-router-dom";
 
 function App() {
-  const [modalMode, setModalMode] = useState('');
+  const [modalMode, setModalMode] = useState("");
 
   return (
     <Router>
       {/* mode 상태값에 따른 모달창*/}
-      {modalMode === 'login' ? (
+      {modalMode === "login" && (
         <LoginModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'signup' ? (
+      {modalMode === "signup" && (
         <SignUpModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'findPwd' ? (
+      {modalMode === "findPwd" && (
         <FindPwdModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'successSignup' ? (
+      {modalMode === "successSignup" && (
         <SuccessSignUpModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
-      {modalMode === 'explore' ? (
+      {modalMode === "explore" && (
         <ExploreModal modalMode={modalMode} setModalMode={setModalMode} />
-      ) : (
-        <></>
       )}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
@@ -58,6 +49,7 @@ function App() {
         <Route path="/collect" component={Collect}></Route>
         <Route path="/profile" component={Profile}></Route>
         <Route path="/explore" component={Explore}></Route>
+        <Route path="/test" component={Carousel}></Route>
         <Route exact path="/" component={Landing}></Route>
       </Switch>
       <ScrollToTop />
