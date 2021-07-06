@@ -2646,11 +2646,9 @@ body {
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile:nth-child(1) {
     float: left;
-    color: red;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile:nth-child(3) {
     float: left;
-    color: green;
     margin-top: 0;
   }
   .landing__inner--fifth .collection-desc {

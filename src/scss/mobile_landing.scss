@@ -51,7 +51,6 @@
     
     &__inner--first {
       align-items: center;
-      //border: solid 1px black;
       margin-top: 25%;
       .first-wrap {
         display: flex;
@@ -72,7 +71,6 @@
           width: 100%;
           margin-left: 0;
           margin-top: 5%;
-          //border: solid;
         }
 
         .mobile-introtext {
@@ -228,7 +226,6 @@
         flex-direction: column;
         width: 83vw;
         .alarm-img {
-          //background-color: rgb(170, 170, 47);
           width: 75vw;
           margin-left: 5vw;
         }
@@ -240,7 +237,6 @@
               font-size: 4.5vw;
             }
             p {
-              //background-color: green;
               white-space: initial;
               font-size: 3.6vw;
             }
@@ -256,20 +252,11 @@
   //inner-fifth//
   .landing {
     &__inner--fifth {
-      //background-color: rgb(216, 79, 79);
       width:100vw;
       .profile-wrapper{
-        //transform: scale(1.1);
-        //width:fit-content;
         display:block;
-        //border:solid;
-        //width:initial;
-        //margin-left:0;
         margin-top:10%;
-        
-        //background-color: rgb(161, 167, 124);
         .landing__searchProfile{
-          //margin:30px;
           margin-bottom:5%;
           margin-left:7.5%;
           width:40%;
@@ -281,13 +268,11 @@
           }
           &:nth-child(1){
             float: left;
-            //color:red;
             margin-right:5%;
             
           }
           &:nth-child(3){
             float:left;
-            //color:green;
             margin-top:0;
             margin-right:5%;
           }
@@ -310,8 +295,6 @@
   //inner-sixth//
   .landing {
     &__inner--sixth {
-      //background-color: yellowgreen;
-
       .try-wrapper {
         font-size: 5vw;
       }
