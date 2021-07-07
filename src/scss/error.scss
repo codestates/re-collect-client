@@ -1,26 +1,16 @@
 @import './util';
 
 .error {
-  height: 100vh;
-  &__box {
-    position: absolute;
-    top: calc(50% - 120px);
-    left: calc(50% - 268.805px);
-    text-align: center;
-    height: 163px;
-  }
-
-  &__text {
-    font-size: 28px;
-    margin: {
-      top: 0;
-      bottom: 60px;
-    }
-  }
-
+  height: 80vh;
+  width: 100vw;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  color:rgb(93, 94, 95);
   &__toHomeBtn {
-    font-size: 24px;
-    text-decoration: none;
     color: #{$blue};
   }
 }

@@ -50,7 +50,7 @@ function ExploreProfile(props) {
       <div className="searchProfileWrapper">
         <div className="searchProfileLists">
           {userInfoLists.map((el) => (
-            <ExploreProfileList />
+            <ExploreProfileList className="explore"/>
           ))}
         </div>
       </div>

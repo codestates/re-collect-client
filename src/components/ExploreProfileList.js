@@ -4,14 +4,15 @@ import { faUserCircle, faLaptop } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { userInfoLists } from "./Explore_temp";
 
-function ExploreProfileList(props) {
+function ExploreProfileList({className, ...props}) {
+  //console.log('props:' ,props);
   return (
-    // react-reveal 'Pulse cascade'적용을 위한 props 전달 //
-    <div className="searchProfile" {...props}>
-      <div className="profileImage">
+    // landing page react-reveal 'Pulse cascade'적용을 위한 props 전달 {...props}//
+    <div className={`${className}__searchProfile`} {...props}>
+      <div className={`${className}__searchProfile__profileImage`}>
         <FontAwesomeIcon icon={faUserCircle} />
       </div>
-      <p> 정리벽 개발자 </p>
+      <p> {props.username} </p>
       <div className="socialInfo">
         <div>
           <div> 28 </div>

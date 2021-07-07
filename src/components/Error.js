@@ -5,9 +5,7 @@ function Error() {
     <div className="error">
       <div className="error__box">
         <p className="error__text">
-          Sorry, this page can’t be found.
-          <br />
-          We’ll be back up shortly.
+          404 - Sorry, this page can’t be found.
         </p>
         <Link to="/" className="error__toHomeBtn">
           Back to home
