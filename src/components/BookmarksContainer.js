@@ -53,12 +53,12 @@ function BookmarksContainer({ data }) {
   };
 
   const handleDragEnd = (e) => {
-    console.log('드래그 겹쳐진 녀석', dragItem.current);
-    console.log('떨어진 녀석', dragItemNode.current.item);
-    console.log(
-      '떨어진 녀석 원래 있던곳 상태?',
-      dragItemNode.current.item.grp.bookmarks
-    );
+    // console.log('드래그 겹쳐진 녀석', dragItem.current);
+    // console.log('떨어진 녀석', dragItemNode.current.item);
+    // console.log(
+    //   '떨어진 녀석 원래 있던곳 상태?',
+    //   dragItemNode.current.item.grp.bookmarks
+    // );
 
     setDragging(false);
 

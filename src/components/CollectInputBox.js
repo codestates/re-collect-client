@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Creatable, { makeCreatableSelect } from 'react-select/creatable';
-import { addBookmark, bookmarkReducerX } from '../modules/addBookmark';
+import { addBookmark } from '../modules/addBookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -51,10 +51,10 @@ function CollectInputBox(props) {
   };
 
   const [bookmarkInput, setbookmarkInput] = useState({
-    color: null,
-    category: null,
-    text: null,
-    url: null,
+    color: undefined,
+    category: undefined,
+    text: undefined,
+    url: undefined,
     importance: false,
   });
 
@@ -179,7 +179,7 @@ function CollectInputBox(props) {
             className={`${props.className}__important`}
             type="checkbox"
             name="importance"
-            onClick={handleInputChange}
+            onChange={handleInputChange}
             checked={bookmarkInput.importance}
           />
           <label htmlFor="importance">중요</label>
