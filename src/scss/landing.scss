@@ -458,7 +458,7 @@ body {
         display: flex;
         //flex-direction: column;
         justify-content: center;
-        
+
         background-color: rgba(233, 229, 229, 0.425);
 
         #profile {
@@ -466,18 +466,17 @@ body {
           //width: 20%;
           //background-color: lawngreen;
           text-align: center;
+          margin: 0 30px;
           //box-sizing: border-box;
           //display: block;
           margin-left: 1%;
           //padding-top: calc(0px / 3 * 4);
-          box-shadow: #{$boxshadow}; 
-          &:nth-child(1){
-          background-color: khaki;
-          //margin-left: 5%;
+          box-shadow: #{$boxshadow};
+          &:nth-child(1) {
+            background-color: khaki;
+            //margin-left: 5%;
+          }
         }
-        }
-
-
       }
 
       .collection-desc {
@@ -590,50 +589,50 @@ body {
 body {
   @include tablet {
     //background-color: rgb(206, 219, 189);
-        //sectionslice//
-        .landing {
-          .sectionslice {
-            margin-top: 13vh;
-            .triangle {
-              border-top: 2.1vh solid transparent;
-              border-right: 3.4vh solid #{$logocolor};
-              border-bottom: 2.1vh solid transparent;
-            }
-          }
-    
-          .slicegreen {
-            .triangle {
-              border-right: 3.4vh solid #{$green};
-            }
-          }
-    
-          .slicered-left {
-            border: solid 1px #{$red};
-            border-left: none;
-            .triangle {
-              border-right: 3.4vh solid #{$red};
-            }
-          }
-    
-          .slicered {
-            margin-top: 8%;
-            .triangle-right {
-              width: 0px;
-              height: 0px;
-              border-top: 2.1vh solid transparent;
-              border-left: 3.4vh solid #{$red};
-              border-bottom: 2.1vh solid transparent;
-            }
-          }
-    
-          .sliceblue {
-            .triangle-right {
-              border-top: 2.1vh solid transparent;
-              border-left: 3.4vh solid #{$logocolor};
-              border-bottom: 2.1vh solid transparent;
-            }
-          }
+    //sectionslice//
+    .landing {
+      .sectionslice {
+        margin-top: 13vh;
+        .triangle {
+          border-top: 2.1vh solid transparent;
+          border-right: 3.4vh solid #{$logocolor};
+          border-bottom: 2.1vh solid transparent;
         }
+      }
+
+      .slicegreen {
+        .triangle {
+          border-right: 3.4vh solid #{$green};
+        }
+      }
+
+      .slicered-left {
+        border: solid 1px #{$red};
+        border-left: none;
+        .triangle {
+          border-right: 3.4vh solid #{$red};
+        }
+      }
+
+      .slicered {
+        margin-top: 8%;
+        .triangle-right {
+          width: 0px;
+          height: 0px;
+          border-top: 2.1vh solid transparent;
+          border-left: 3.4vh solid #{$red};
+          border-bottom: 2.1vh solid transparent;
+        }
+      }
+
+      .sliceblue {
+        .triangle-right {
+          border-top: 2.1vh solid transparent;
+          border-left: 3.4vh solid #{$logocolor};
+          border-bottom: 2.1vh solid transparent;
+        }
+      }
+    }
 
     .landing {
       width: 100vw;
@@ -649,8 +648,8 @@ body {
       }
     }
 
-    .landing{
-      &__inner--fifth{
+    .landing {
+      &__inner--fifth {
         .profile-wrapper {
           width: 90%;
           //height: 19rem;
@@ -658,19 +657,16 @@ body {
           display: flex;
           //justify-content: center;
           //background-color: rgba(233, 229, 229, 0.425);
-  
+
           #profile {
             //border: solid 3px #000; //테두리
             //width: 20vw;
-            //box-shadow: #{$boxshadow}; 
+            //box-shadow: #{$boxshadow};
 
-            &:nth-child(1){
-            background-color: rgb(71, 66, 20);
-            
+            &:nth-child(1) {
+              background-color: rgb(71, 66, 20);
+            }
           }
-          }
-  
-  
         }
       }
     }
@@ -935,18 +931,18 @@ body {
         .profile-wrapper {
           margin-top: 10%;
         }
-        .collection-desc{
+        .collection-desc {
           background-color: #fff;
           width: 80vw;
-          
-          p{
+
+          p {
             font-size: 4.3vw;
           }
-          a{
+          a {
             display: block;
             height: 40px;
             margin: 0 auto;
-            width:130px;
+            width: 130px;
             font-size: 30px;
             border: solid;
             word-spacing: -3px;
