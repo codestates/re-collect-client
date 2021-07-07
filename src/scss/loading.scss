@@ -32,7 +32,7 @@
     margin: 0 auto;
     color: #{$blue};
 
-    animation: typing 3s steps(9, start) infinite,
+    animation: typing 2s steps(9, start) infinite,
       blink-caret 0.5s step-end infinite;
 
     display: inline-block;
