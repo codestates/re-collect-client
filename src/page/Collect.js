@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import CategoryBox from '../components/CategoryBox';
-import Sidebar from '../components/Sidebar';
-import SearchBar from '../components/SearchBar';
-import UnreadAlarm from '../components/UnreadAlarm';
-import BottomPopup from '../components/BottomPopup';
-import Recollect from '../components/Recollect';
-import ToCollectBtn from '../components/ToCollectBtn';
-import CollectBookmark from '../components/CollectBookmark';
+import React, { useState, useEffect, useRef } from "react";
+import CategoryBox from "../components/CategoryBox";
+import Sidebar from "../components/Sidebar";
+import SearchBar from "../components/SearchBar";
+import UnreadAlarm from "../components/UnreadAlarm";
+import BottomPopup from "../components/BottomPopup";
+import Recollect from "../components/Recollect";
+import ToCollectBtn from "../components/ToCollectBtn";
+import CollectBookmark from "../components/CollectBookmark";
 
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
@@ -21,6 +21,7 @@ export default function Collect() {
         <>
           <ToCollectBtn viewHandler={recollectViewHandler} />
           <Recollect />
+          {/* Todo: unreadBookmarks를 걸러낸 후 프롭스로 전달 */}
         </>
       ) : (
         <>

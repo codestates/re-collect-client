@@ -6,38 +6,12 @@
   justify-content: center;
   align-content: center;
 
-  //// Laptop2 (mini-version) /////
-  @include laptop2 {
-    //// Profile Carousal Laptop2
-    .searchBar,
-    .exploreSearchRecommendation {
-      width: 560px;
-    }
-    .recommendTag {
-      font-size: 12px;
-    }
-    .exploreProfileCarousal {
-      .searchProfileWrapper {
-        width: 886.5px;
-        overflow: hidden;
-      }
-      .searchProfileLists {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        width: 886.5px;
-        transition: transform 0.2s;
-      }
-    }
-  }
-
   //// Tablet ////
   @include tablet {
     color: black;
     .exploreHeader {
       font-size: 30px;
       margin-top: 94px;
-      // nav-bar가 커져서 64px => 94px로 변경
     }
     //// searchbar Tablet
     .searchBar {
@@ -90,17 +64,17 @@
     }
     //// Carousal Tablet
     .exploreProfileCarousal {
-      .searchProfileWrapper {
-        width: 592px;
-        overflow: hidden;
-      }
-      .searchProfileLists {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        width: 592px;
-        transition: transform 0.2s;
-      }
+      // .searchProfileWrapper {
+      //   width: 592px;
+      //   overflow: hidden;
+      // }
+      // .searchProfileLists {
+      //   margin: 0;
+      //   padding: 0;
+      //   display: flex;
+      //   width: 592px;
+      //   transition: transform 0.2s;
+      // }
     }
 
     //// interestingBookmark Tablet
@@ -181,17 +155,17 @@
     }
     //// explore carousal mobile
     .exploreProfileCarousal {
-      .searchProfileWrapper {
-        width: 295px;
-        overflow: hidden;
-      }
-      .searchProfileLists {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        width: 295px;
-        transition: transform 0.2s;
-      }
+      // .searchProfileWrapper {
+      //   width: 295px;
+      //   overflow: hidden;
+      // }
+      // .searchProfileLists {
+      //   margin: 0;
+      //   padding: 0;
+      //   display: flex;
+      //   width: 295px;
+      //   transition: transform 0.2s;
+      // }
     }
 
     //// interestingBookmark mobile
@@ -241,7 +215,7 @@
 .exploreHeader {
   color: #{$logocolor};
   font-size: 2.8vw;
-  margin-top: 8%;
+  margin-top: 94px;
   // nav-bar가 커져서 64px => 94px로 변경
 }
 //// search bar Laptop
@@ -250,16 +224,29 @@
   // width: 38vw;
   height: 40px;
   margin-top: 50px;
+
   input {
-    width: 90%;
+    width: 88%;
     height: 100%;
     outline: none;
+    border: 1px solid black;
+    border-right: none;
+    font-size: 16px;
+    padding-left: 10px;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
   }
-
   button {
+    font-size: 16px;
+    color: gray;
+    border: 1px solid black;
+    border-left: none;
+    background-color: white;
     width: 10%;
     height: 100%;
     &:hover {
+      color: black;
       cursor: pointer;
     }
   }
@@ -295,48 +282,34 @@
 }
 //// profile carousal Laptop
 .exploreProfileCarousal {
-  margin-top: 80px;
+  margin-top: 40px;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
-  flex: 1;
-  .searchProfileWrapper {
-    position: static;
-    width: 1182px;
-    overflow: hidden;
-  }
-  .searchProfileLists {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 1182px;
-    transition: transform 0.2s;
+  flex-direction: column;
+}
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
+// Carousel
 
-  .prevBtn,
-  .nextBtn {
-    font-size: 30px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
+#carousel {
+  background-color: khaki;
+  text-align: center;
+  box-shadow: #{$boxshadow};
 }
 
 .searchProfile {
-  width: 255px;
-  height: 340px;
-  margin: 0 28px;
-  border: 1px solid black;
+  width: 200px;
+  min-height: 320px;
+  height: 45vh;
+  //margin: 0 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
   .profileImage {
     margin-top: 25px;
     font-size: 85px;
@@ -361,7 +334,7 @@
     }
   }
   .companyInfo {
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 12px;
     div {
       margin: 5px;
@@ -370,7 +343,7 @@
 }
 //// interesting bookmark Laptop
 .interestingBookmarksCategory {
-  margin-top: 105px;
+  margin: 105px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -568,26 +568,6 @@
   justify-content: center;
   align-content: center;
 }
-@media (max-width: 1100px) {
-  .exploreContainer .searchBar,
-.exploreContainer .exploreSearchRecommendation {
-    width: 560px;
-  }
-  .exploreContainer .recommendTag {
-    font-size: 12px;
-  }
-  .exploreContainer .exploreProfileCarousal .searchProfileWrapper {
-    width: 886.5px;
-    overflow: hidden;
-  }
-  .exploreContainer .exploreProfileCarousal .searchProfileLists {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 886.5px;
-    transition: transform 0.2s;
-  }
-}
 @media (max-width: 834px) {
   .exploreContainer {
     color: black;
@@ -641,17 +621,6 @@
   .exploreContainer .exploreSearchRecommendation .recommendTag:hover {
     cursor: pointer;
     color: black;
-  }
-  .exploreContainer .exploreProfileCarousal .searchProfileWrapper {
-    width: 592px;
-    overflow: hidden;
-  }
-  .exploreContainer .exploreProfileCarousal .searchProfileLists {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 592px;
-    transition: transform 0.2s;
   }
   .exploreContainer .interestingBookmarksCategory {
     margin-top: 105px;
@@ -722,17 +691,6 @@
     cursor: pointer;
     color: black;
   }
-  .exploreContainer .exploreProfileCarousal .searchProfileWrapper {
-    width: 295px;
-    overflow: hidden;
-  }
-  .exploreContainer .exploreProfileCarousal .searchProfileLists {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 295px;
-    transition: transform 0.2s;
-  }
   .exploreContainer .interestingBookmarksCategory {
     margin-top: 105px;
     display: flex;
@@ -763,7 +721,7 @@
 .exploreHeader {
   color: #214bc8;
   font-size: 2.8vw;
-  margin-top: 8%;
+  margin-top: 94px;
 }
 
 .searchBar {
@@ -772,15 +730,28 @@
   margin-top: 50px;
 }
 .searchBar input {
-  width: 90%;
+  width: 88%;
   height: 100%;
   outline: none;
+  border: 1px solid black;
+  border-right: none;
+  font-size: 16px;
+  padding-left: 10px;
+}
+.searchBar input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
 .searchBar button {
+  font-size: 16px;
+  color: gray;
+  border: 1px solid black;
+  border-left: none;
+  background-color: white;
   width: 10%;
   height: 100%;
 }
 .searchBar button:hover {
+  color: black;
   cursor: pointer;
 }
 
@@ -813,46 +784,31 @@
 }
 
 .exploreProfileCarousal {
-  margin-top: 80px;
+  margin-top: 40px;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
-  flex: 1;
+  flex-direction: column;
 }
-.exploreProfileCarousal .searchProfileWrapper {
-  position: static;
-  width: 1182px;
-  overflow: hidden;
-}
-.exploreProfileCarousal .searchProfileLists {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  width: 1182px;
-  transition: transform 0.2s;
-}
-.exploreProfileCarousal .searchProfileLists:hover {
-  cursor: pointer;
-}
-.exploreProfileCarousal .prevBtn,
-.exploreProfileCarousal .nextBtn {
-  font-size: 30px;
-}
-.exploreProfileCarousal .prevBtn:hover,
-.exploreProfileCarousal .nextBtn:hover {
-  cursor: pointer;
+
+#carousel {
+  background-color: khaki;
+  text-align: center;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .searchProfile {
-  width: 255px;
-  height: 340px;
-  margin: 0 28px;
-  border: 1px solid black;
+  width: 200px;
+  min-height: 320px;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.searchProfile:hover {
+  cursor: pointer;
 }
 .searchProfile .profileImage {
   margin-top: 25px;
@@ -878,7 +834,7 @@
   margin: 0 3px;
 }
 .searchProfile .companyInfo {
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 12px;
 }
 .searchProfile .companyInfo div {
@@ -886,7 +842,7 @@
 }
 
 .interestingBookmarksCategory {
-  margin-top: 105px;
+  margin: 105px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1297,6 +1253,7 @@ body {
 }
 .landing .landing__inner--fifth .profile-wrapper #profile {
   text-align: center;
+  margin: 0 30px;
   margin-left: 1%;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
@@ -2330,81 +2287,35 @@ body .landing__inner--second .desc-wrap--3 p {
   }
 }
 @charset "UTF-8";
-/* Slider */
-/* Icons */
 /* Arrows */
 .slick-prev,
 .slick-next {
+  font-size: 30px;
   position: absolute;
   display: block;
   height: 20px;
   width: 20px;
   line-height: 0px;
-  font-size: 0px;
   cursor: pointer;
-  background: transparent;
-  color: transparent;
+  background: white;
+  color: gray;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
   padding: 0;
   border: none;
   outline: none;
 }
-.slick-prev:hover, .slick-prev:focus,
-.slick-next:hover,
-.slick-next:focus {
+.slick-prev:hover,
+.slick-next:hover {
+  color: black;
   outline: none;
-  background: transparent;
-  color: transparent;
-}
-.slick-prev:hover:before, .slick-prev:focus:before,
-.slick-next:hover:before,
-.slick-next:focus:before {
-  opacity: 1;
-}
-.slick-prev.slick-disabled:before,
-.slick-next.slick-disabled:before {
-  opacity: 0.25;
-}
-.slick-prev:before,
-.slick-next:before {
-  font-family: "slick";
-  font-size: 20px;
-  line-height: 1;
-  color: white;
-  opacity: 0.75;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .slick-prev {
-  left: -25px;
-}
-[dir=rtl] .slick-prev {
-  left: auto;
-  right: -25px;
-}
-.slick-prev:before {
-  content: "←";
-}
-[dir=rtl] .slick-prev:before {
-  content: "→";
+  left: -30px;
 }
 
 .slick-next {
-  right: -25px;
-}
-[dir=rtl] .slick-next {
-  left: -25px;
-  right: auto;
-}
-.slick-next:before {
-  content: "→";
-}
-[dir=rtl] .slick-next:before {
-  content: "←";
+  right: -30px;
 }
 
 /* Dots */
@@ -2413,16 +2324,18 @@ body .landing__inner--second .desc-wrap--3 p {
 }
 
 .slick-dots {
+  font-size: 25px;
   position: absolute;
-  bottom: -25px;
+  bottom: -40px;
   list-style: none;
   display: block;
   text-align: center;
   padding: 0;
-  margin: 0;
+  margin: 0px;
   width: 100%;
 }
 .slick-dots li {
+  font-size: 50px;
   position: relative;
   display: inline-block;
   height: 20px;
@@ -2451,6 +2364,7 @@ body .landing__inner--second .desc-wrap--3 p {
   opacity: 1;
 }
 .slick-dots li button:before {
+  font-size: 25px;
   position: absolute;
   top: 0;
   left: 0;
@@ -2458,7 +2372,7 @@ body .landing__inner--second .desc-wrap--3 p {
   width: 20px;
   height: 20px;
   font-family: "slick";
-  font-size: 6px;
+  font-size: 25px;
   line-height: 20px;
   text-align: center;
   color: black;
@@ -2472,44 +2386,32 @@ body .landing__inner--second .desc-wrap--3 p {
 }
 /* Slider */
 .slick-slider {
-  position: fiex;
-  top: 45%;
-  left: 25%;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  position: relative;
   box-sizing: border-box;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
+@media (max-width: 600px) {
+  .slick-slider {
+    width: 60%;
+  }
+}
 
 .slick-list {
-  position: relative;
+  position: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   display: block;
   margin: 0;
   padding: 0;
-}
-.slick-list:focus {
-  outline: none;
-}
-.slick-list.dragging {
-  cursor: pointer;
-  cursor: hand;
-}
-
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 
 .slick-track {
@@ -2520,48 +2422,15 @@ body .landing__inner--second .desc-wrap--3 p {
   margin-left: auto;
   margin-right: auto;
 }
-.slick-track:before, .slick-track:after {
-  content: "";
-  display: table;
-}
-.slick-track:after {
-  clear: both;
-}
-.slick-loading .slick-track {
-  visibility: hidden;
-}
 
 .slick-slide {
   float: left;
   height: 100%;
   min-height: 1px;
-  display: none;
-}
-[dir=rtl] .slick-slide {
-  float: right;
-}
-.slick-slide img {
-  display: block;
-}
-.slick-slide.slick-loading img {
-  display: none;
-}
-.slick-slide.dragging img {
-  pointer-events: none;
 }
 .slick-initialized .slick-slide {
-  display: block;
-}
-.slick-loading .slick-slide {
-  visibility: hidden;
-}
-.slick-vertical .slick-slide {
-  display: block;
-  height: auto;
-  border: 1px solid transparent;
-}
-
-.slick-arrow.slick-hidden {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=../maps/App.css.map */
