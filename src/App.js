@@ -16,7 +16,6 @@ import ChangePwdModal from './components/ChangePwdModal';
 import LogoutModal from './components/LogoutModal';
 import DelAccountModal from './components/DelAccountModal';
 import ExploreModal from './components/ExploreModal';
-import ExploreModal from './components/ExploreModal';
 import Carousel from './components/TestCarousel';
 import Loading from './components/Loading';
 import {

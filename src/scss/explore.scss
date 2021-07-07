@@ -1,4 +1,4 @@
-@import "./util";
+@import './util';
 
 .exploreContainer {
   display: flex;
@@ -299,8 +299,6 @@
   box-shadow: #{$boxshadow};
 }
 
-<<<<<<< HEAD
-
 ///explore__searchProfile///
 ///landing__searchProfile-->landing.scss에 작성함.
 .explore__searchProfile {
@@ -312,73 +310,70 @@
   flex-direction: column;
   align-items: center;
   &__profileImage {
-=======
-.searchProfile {
-  width: 200px;
-  min-height: 320px;
-  height: 45vh;
-  //margin: 0 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &:hover {
-    cursor: pointer;
-  }
-  .profileImage {
->>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
-    margin-top: 25px;
-    font-size: 85px;
-  }
-  p {
-    margin-top: 0px;
-    margin-bottom: 0;
-    font-size: 15px;
-  }
-  .socialInfo {
-    margin-top: 20px;
-    font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    div {
+    .searchProfile {
+      width: 200px;
+      min-height: 320px;
+      height: 45vh;
+      //margin: 0 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+      }
+      .profileImage {
+        margin-top: 25px;
+        font-size: 85px;
+      }
+      p {
+        margin-top: 0px;
+        margin-bottom: 0;
+        font-size: 15px;
+      }
+      .socialInfo {
+        margin-top: 20px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0 3px;
+        }
+      }
+      .companyInfo {
+        margin-top: 30px;
+        font-size: 12px;
+        div {
+          margin: 5px;
+        }
+      }
+    }
+
+    //// interesting bookmark Laptop
+    .interestingBookmarksCategory {
+      margin: 105px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin: 0 3px;
+      flex: 1;
+      p {
+        // font-size: 30px;
+        font-size: 2.4vw;
+        margin: 0;
+      }
+      ul {
+        margin-top: 30px;
+        padding: 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 530px;
+      }
     }
-  }
-  .companyInfo {
-    margin-top: 30px;
-    font-size: 12px;
-    div {
-      margin: 5px;
-    }
-  }
-}
-
-
-
-
-//// interesting bookmark Laptop
-.interestingBookmarksCategory {
-  margin: 105px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  p {
-    // font-size: 30px;
-    font-size: 2.4vw;
-    margin: 0;
-  }
-  ul {
-    margin-top: 30px;
-    padding: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 530px;
   }
 }

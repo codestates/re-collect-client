@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../modules/login';
+import { loginInitialize, loginThunk } from '../modules/login';
 import { IsValidateEmail, IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function LoginModal(props) {
+  const { error } = useSelector((state) => state.loginReducer.user);
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
   });
-
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    setErrorMessage(error);
+  }, [error]);
 
   const loginValidCheck = () => {
     const email = userInfo.email;
@@ -25,22 +29,21 @@ function LoginModal(props) {
       setErrorMessage('비밀번호를 확인해주세요');
       return;
     } else {
-      // handleLogin();
-      setErrorMessage('');
-      props.setModalMode('');
+      handleLogin();
     }
   };
 
   const handleLoginInputChange = (e) => {
     const { value, name } = e.target;
     setUserInfo({
+      ...userInfo,
       [name]: value,
     });
   };
 
-  // const handleLogin = () => {
-  //   dispatch(login(userInfo));
-  // };
+  const handleLogin = () => {
+    dispatch(loginThunk(userInfo));
+  };
 
   return (
     <div className="modalWrapper">
@@ -48,6 +51,7 @@ function LoginModal(props) {
         <div
           className="closeBtn"
           onClick={() => {
+            dispatch(loginInitialize());
             props.setModalMode('');
           }}
         >
