@@ -1,4 +1,11 @@
-export const initialState ={
+export const initialState = {
+  user: "",
+  tempBookmark: {
+    loading: false,
+    data: null,
+    error: null,
+  },
+  users: [1, 2, 3],
   profile : {
     username: 'init유저네임',
     password: '패스워드',
@@ -7,4 +14,4 @@ export const initialState ={
     gitRepo: 'github.com/re-collect',
     created_at: '2021.07.07',
   }
-}
+};

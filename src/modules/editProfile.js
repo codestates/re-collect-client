@@ -71,7 +71,7 @@ export const delAccount = () => {
 
 
 
-const profileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PROFILE_INFO:
       return; Object.assign({}, state, {
@@ -94,4 +94,4 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export default profileReducer;
+//export default profileReducer;
