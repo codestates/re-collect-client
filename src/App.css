@@ -33,6 +33,155 @@
     border-bottom: 10px solid transparent;
   }
 }
+.categorybox {
+  min-width: 240px;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+}
+.categorybox__header {
+  height: 24px;
+  padding: 0 15px;
+  border-bottom: 1px solid;
+  font-size: 11px;
+  text-align: right;
+  line-height: 24px;
+}
+.categorybox__header-editbtn {
+  background-color: transparent;
+  color: rgba(128, 128, 128, 0.6);
+  border-style: none;
+  font-size: 11px;
+  cursor: pointer;
+}
+.categorybox__header-editbtn:hover {
+  color: #214bc8;
+}
+.categorybox__header-pencil {
+  display: none;
+}
+.categorybox__header-text {
+  padding-left: 5px;
+}
+.categorybox__view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 35px 5px 0 15px;
+  background-color: white;
+}
+.categorybox__view::-webkit-scrollbar {
+  width: 10px;
+}
+.categorybox__view::-webkit-scrollbar-thumb {
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+  border-right: 3px solid transparent;
+  border-top: 35px solid transparent;
+}
+.categorybox__view::-webkit-scrollbar-track {
+  background-color: white;
+}
+.categorybox__bookmark {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 11px;
+  padding-left: 5px;
+  width: auto;
+  height: 24px;
+  font-size: 11px;
+  text-align: left;
+  line-height: 24px;
+}
+.categorybox__bookmark.current {
+  opacity: 0.3;
+}
+.categorybox__bookmark:hover {
+  transform: scale(1.01, 1.01);
+}
+.categorybox__bookmark-textcontainer {
+  flex: 1;
+  cursor: grab;
+}
+.categorybox__bookmark-text {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  flex: 1;
+}
+.categorybox__bookmark-ellipsis {
+  display: none;
+}
+.categorybox__bookmark-editbtn {
+  background-color: transparent;
+  border-style: hidden;
+  line-height: 20px;
+  color: transparent;
+  cursor: pointer;
+}
+.categorybox__bookmark-editbtn:hover {
+  color: gray;
+}
+.categorybox__bookmark-triangle {
+  cursor: grab;
+  width: 0px;
+  height: 0px;
+  border-top: 11px solid transparent;
+  border-left: 17.5px solid transparent;
+  border-right: 17.5px solid;
+  border-bottom: 11px solid transparent;
+  z-index: 0;
+  margin-left: -10px;
+}
+.categorybox__bookmark-triangle:active {
+  cursor: grabbing;
+}
+.categorybox__footer {
+  height: 35px;
+}
+
+@media (max-width: 834px) {
+  .categorybox {
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .categorybox {
+    max-width: 300px;
+  }
+  .categorybox__header {
+    text-align: center;
+  }
+  .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
+    display: none;
+  }
+  .categorybox__bookmark-ellipsis {
+    display: initial;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.2);
+    width: 23px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .categorybox__bookmark-ellipsis:hover {
+    color: #214bc8;
+  }
+  .categorybox__header-pencil {
+    display: initial;
+    float: right;
+    cursor: pointer;
+  }
+  .categorybox__header-pencil:hover {
+    color: #214bc8;
+  }
+}
 .bottomPopup__plusBtn,
 .bottomPopup__wrapper {
   display: none;
@@ -92,144 +241,6 @@
     height: 100px;
     text-align: center;
     line-height: 50px;
-  }
-}
-.categorybox {
-  min-width: 240px;
-  width: 100%;
-  aspect-ratio: 3/4;
-  border: 1px solid;
-  display: flex;
-  flex-direction: column;
-}
-.categorybox__header {
-  height: 24px;
-  padding: 0 15px;
-  border-bottom: 1px solid;
-  font-size: 11px;
-  text-align: right;
-  line-height: 24px;
-}
-.categorybox__header-editbtn {
-  background-color: transparent;
-  color: rgba(128, 128, 128, 0.6);
-  border-style: none;
-  font-size: 11px;
-  cursor: pointer;
-}
-.categorybox__header-editbtn:hover {
-  color: #214bc8;
-}
-.categorybox__header-pencil {
-  display: none;
-}
-.categorybox__header-text {
-  padding-left: 5px;
-}
-.categorybox__view {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 35px 5px 0 15px;
-  background-color: white;
-}
-.categorybox__view::-webkit-scrollbar {
-  width: 10px;
-}
-.categorybox__view::-webkit-scrollbar-thumb {
-  height: 10%;
-  background-color: rgba(0, 0, 0, 0.3);
-  background-clip: padding-box;
-  border-right: 3px solid transparent;
-  border-top: 35px solid transparent;
-}
-.categorybox__view::-webkit-scrollbar-track {
-  background-color: white;
-}
-.categorybox__bookmark {
-  display: flex;
-  justify-content: flex-end;
-  border: 1px solid #214bc8;
-  margin-bottom: 11px;
-  padding-left: 5px;
-  width: auto;
-  height: 24px;
-  font-size: 11px;
-  text-align: left;
-  line-height: 24px;
-}
-.categorybox__bookmark-text {
-  cursor: pointer;
-  flex: 1;
-}
-.categorybox__bookmark-ellipsis {
-  display: none;
-}
-.categorybox__bookmark-editbtn {
-  background-color: transparent;
-  border-style: hidden;
-  line-height: 20px;
-  color: transparent;
-  cursor: pointer;
-}
-.categorybox__bookmark-editbtn:hover {
-  color: gray;
-}
-.categorybox__bookmark-triangle {
-  cursor: grab;
-  width: 0px;
-  height: 0px;
-  border-top: 11px solid transparent;
-  border-left: 17.5px solid transparent;
-  border-right: 17.5px solid #214bc8;
-  border-bottom: 11px solid transparent;
-  z-index: 0;
-  margin-left: -10px;
-}
-.categorybox__bookmark-triangle:active {
-  cursor: grabbing;
-}
-.categorybox__footer {
-  height: 35px;
-}
-
-@media (max-width: 834px) {
-  .categorybox {
-    border: 1px solid;
-    display: flex;
-    flex-direction: column;
-  }
-}
-@media (max-width: 600px) {
-  .categorybox {
-    max-width: 300px;
-  }
-  .categorybox__header {
-    text-align: center;
-  }
-  .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
-    display: none;
-  }
-  .categorybox__bookmark-ellipsis {
-    display: initial;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.2);
-    width: 23px;
-    font-size: 15px;
-    cursor: pointer;
-  }
-  .categorybox__bookmark-ellipsis:hover {
-    color: #214bc8;
-  }
-  .categorybox__header-pencil {
-    display: initial;
-    float: right;
-    cursor: pointer;
-  }
-  .categorybox__header-pencil:hover {
-    color: #214bc8;
   }
 }
 .sidebar__collectInputBox {
@@ -1676,7 +1687,7 @@ body .landing__inner--second .desc-wrap--3 p {
   line-height: 30px;
   margin: 0 auto;
   color: #214bc8;
-  animation: typing 3s steps(9, start) infinite, blink-caret 0.5s step-end infinite;
+  animation: typing 2s steps(9, start) infinite, blink-caret 0.5s step-end infinite;
   display: inline-block;
   overflow: clip;
   white-space: nowrap;

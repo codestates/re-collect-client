@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import getExploreReducer from "./getExplore";
+import { bookmarkReducerX } from "./addBookmark";
+import { getExploreReducer } from "./getExplore";
 
-const rootReducer = combineReducers({ getExploreReducer });
+const rootReducer = combineReducers({ bookmarkReducerX, getExploreReducer });
 
 export default rootReducer;

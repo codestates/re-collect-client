@@ -13,7 +13,7 @@ export const getExploreInfo = (data) => {
 };
 
 // Reducer
-const getExploreReducer = (state = initialState, action) => {
+export const getExploreReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_INFO":
       return Object.assign({}, state, {
@@ -24,4 +24,4 @@ const getExploreReducer = (state = initialState, action) => {
   }
 };
 
-export default getExploreReducer;
+// export default getExploreReducer;
