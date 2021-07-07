@@ -198,8 +198,7 @@
   .categorybox__header {
     text-align: center;
   }
-  .categorybox__header-editbtn,
-  .categorybox__bookmark-editbtn {
+  .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
     display: none;
   }
   .categorybox__bookmark-ellipsis {
@@ -230,8 +229,7 @@
   flex-direction: column;
   align-items: center;
 }
-.sidebar__input,
-.sidebar__input--url,
+.sidebar__input, .sidebar__input--url,
 .bottomPopup__input,
 .bottomPopup__input--url {
   border-radius: 0;
@@ -242,10 +240,7 @@
   font-family: "IBM Plex Mono";
   background: transparent;
 }
-.sidebar__input:hover,
-.sidebar__input:focus,
-.sidebar__input--url:hover,
-.sidebar__input--url:focus,
+.sidebar__input:hover, .sidebar__input:focus, .sidebar__input--url:hover, .sidebar__input--url:focus,
 .bottomPopup__input:hover,
 .bottomPopup__input:focus,
 .bottomPopup__input--url:hover,
@@ -254,8 +249,7 @@
   outline: 0;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
-.sidebar__input::placeholder,
-.sidebar__input--url::placeholder,
+.sidebar__input::placeholder, .sidebar__input--url::placeholder,
 .bottomPopup__input::placeholder,
 .bottomPopup__input--url::placeholder {
   color: rgba(0, 0, 0, 0.5);
@@ -287,9 +281,7 @@
   width: 90px;
   display: flex;
 }
-.sidebar__color-circle--blue,
-.sidebar__color-circle--green,
-.sidebar__color-circle--red,
+.sidebar__color-circle--blue, .sidebar__color-circle--green, .sidebar__color-circle--red,
 .bottomPopup__color-circle--blue,
 .bottomPopup__color-circle--green,
 .bottomPopup__color-circle--red {
@@ -304,9 +296,7 @@
   line-height: 20px;
   text-overflow: unset;
 }
-.sidebar__color-circle--blue:hover,
-.sidebar__color-circle--green:hover,
-.sidebar__color-circle--red:hover,
+.sidebar__color-circle--blue:hover, .sidebar__color-circle--green:hover, .sidebar__color-circle--red:hover,
 .bottomPopup__color-circle--blue:hover,
 .bottomPopup__color-circle--green:hover,
 .bottomPopup__color-circle--red:hover {
@@ -405,7 +395,7 @@
   grid-column-end: 6;
   height: 40px;
   line-height: 40px;
-  background-color: #ebff9d;
+  background-color: #EBFF9D;
   text-align: center;
 }
 .collectview__search {
@@ -538,7 +528,7 @@
 }
 @media (max-width: 1100px) {
   .exploreContainer .searchBar,
-  .exploreContainer .exploreSearchRecommendation {
+.exploreContainer .exploreSearchRecommendation {
     width: 560px;
   }
   .exploreContainer .recommendTag {
@@ -891,14 +881,12 @@
   justify-content: center;
   width: 50vw;
 }
-.footer .about,
-.footer a {
+.footer .about, .footer a {
   margin-left: 5%;
   text-decoration: none;
   color: #525151;
 }
-.footer .about:hover,
-.footer a:hover {
+.footer .about:hover, .footer a:hover {
   color: #214bc8;
 }
 
@@ -1205,7 +1193,7 @@ body {
   text-align: center;
   font-size: 2.3vw;
   white-space: nowrap;
-  background-color: #ebff9d;
+  background-color: #EBFF9D;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .landing__inner--fourth .alarm-desc-wrapper {
@@ -1499,15 +1487,15 @@ body {
     align-items: center;
   }
   body .landing__inner--second .desc-wrap--1 img,
-  body .landing__inner--second .desc-wrap--2 img,
-  body .landing__inner--second .desc-wrap--3 img {
+body .landing__inner--second .desc-wrap--2 img,
+body .landing__inner--second .desc-wrap--3 img {
     width: 53vw;
     margin-top: 0;
     order: 2;
   }
   body .landing__inner--second .desc-wrap--1 p,
-  body .landing__inner--second .desc-wrap--2 p,
-  body .landing__inner--second .desc-wrap--3 p {
+body .landing__inner--second .desc-wrap--2 p,
+body .landing__inner--second .desc-wrap--3 p {
     margin-top: 15%;
     order: 1;
     text-align: center;
@@ -1863,7 +1851,7 @@ body {
   color: black;
   font-size: 9px;
 }
-/* @charset "UTF-8"; */
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -1890,7 +1878,7 @@ body {
   transform: scale(1.02);
   /*  default */
   -webkit-transform: scale(1.02);
-  /*  크롬 */
+  /*  크롬  */
   -moz-transform: scale(1.02);
   /* FireFox */
   -o-transform: scale(1.02);
@@ -1933,7 +1921,6 @@ body {
     padding: 8px 10px;
   }
   body .nav-container__logo {
-    transform: scale(0.97);
     display: flex;
     text-indent: -9999px;
     margin-left: 10px;
@@ -1958,10 +1945,8 @@ body {
     border-top: solid 1px rgba(119, 119, 119, 0.425);
     margin-right: 2vw;
     margin-top: 1%;
-    line-height: 33px;
-    padding: 1.5% 2% 0 2%;
   }
-  body .nav-container .on a {
+  body .nav-container .toggle.on a {
     display: flex;
   }
   body .nav-container .toggle.on div:hover {
