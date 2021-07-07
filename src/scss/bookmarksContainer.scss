@@ -81,6 +81,10 @@
     &.current {
       opacity: 0.3;
     }
+
+    &:hover {
+      transform: scale(1.01, 1.01);
+    }
   }
 
   &__bookmark-textcontainer {

@@ -15,7 +15,12 @@ export default function CollectBookmark(props) {
       }}
     >
       <div className="categorybox__bookmark-textcontainer">
-        <a href={props.url} className="categorybox__bookmark-text">
+        <a
+          href={props.url}
+          target="_blank"
+          className="categorybox__bookmark-text"
+          title="해당 북마크 링크로 이동하기"
+        >
           {props.children}
         </a>
       </div>

@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import AsyncCreatableSelect from 'react-select/async-creatable';
+import Creatable, { makeCreatableSelect } from 'react-select/creatable';
+import { addBookmark, bookmarkReducerX } from '../modules/addBookmark';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
 
 const customStyles = {
   container: (provided, state) => ({
@@ -33,86 +41,158 @@ const customStyles = {
   },
 };
 
-function CollectInputBox({ className }) {
-  const [colorPick, setColorPick] = useState([false, false, false]);
+function CollectInputBox(props) {
+  const state = useSelector((state) => state.bookmarkReducerX);
+  const { tempBookmark, user } = state;
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    setColorPick([false, false, false]);
-  }, []);
+  const handleColorPick = (e) => {
+    setbookmarkInput({ ...bookmarkInput, color: e.target.id });
+  };
 
-  const colorPickHandler = (e) => {
-    const idx = Number(e.target.id);
-    if (colorPick[idx]) {
-      setColorPick([false, false, false]);
-      return;
+  const [bookmarkInput, setbookmarkInput] = useState({
+    color: null,
+    category: null,
+    text: null,
+    url: null,
+    importance: false,
+  });
+
+  const handleCategoryChange = (newValue, actionMeta) => {
+    setbookmarkInput({ ...bookmarkInput, category: newValue });
+  };
+
+  const handleInputChange = (e) => {
+    const { value, name } = e.target;
+    if (name === 'importance') {
+      setbookmarkInput((oldValue) => {
+        const newImportance = !oldValue.importance;
+        return {
+          ...bookmarkInput,
+          importance: newImportance,
+        };
+      });
+    } else {
+      setbookmarkInput({
+        ...bookmarkInput,
+        [name]: value,
+      });
     }
-    const newColorPick = [false, false, false];
-    newColorPick[idx] = true;
-    setColorPick(newColorPick);
+  };
+
+  const handleAddBookmark = () => {
+    if (user !== '') {
+      dispatch(addBookmark(bookmarkInput));
+      if (tempBookmark.error) {
+        alert(tempBookmark.error);
+        console.error(tempBookmark.error);
+        return;
+      }
+
+      setbookmarkInput({
+        color: null,
+        category: null,
+        text: null,
+        url: null,
+        importance: false,
+      });
+    }
   };
 
   return (
-    <div className={`${className}__collectInputBox`}>
-      <AsyncCreatableSelect
-        className={`${className}__select`}
+    <div className={`${props.className}__collectInputBox`}>
+      <Creatable
+        className={`${props.className}__select`}
         isClearable
         styles={customStyles}
         placeholder="Category"
+        options={options}
+        onChange={handleCategoryChange}
+        value={bookmarkInput.category}
       />
-      <input className={`${className}__input`} type="text" placeholder="Text" />
       <input
-        className={`${className}__input--url`}
+        className={`${props.className}__input`}
+        name="text"
+        type="text"
+        value={bookmarkInput.text}
+        onChange={handleInputChange}
+        placeholder="Text"
+      />
+      <input
+        className={`${props.className}__input--url`}
+        name="url"
         type="url"
+        value={bookmarkInput.url}
+        onChange={handleInputChange}
         placeholder="Url"
       />
-      <div className={`${className}__customizingSection`}>
-        <div className={`${className}__colorPick`}>
+      <div className={`${props.className}__customizingSection`}>
+        <div className={`${props.className}__colorPick`}>
           <button
-            id="0"
-            className={`${className}__color-circle--blue${
-              colorPick[0] ? ' active' : ''
+            id="blue"
+            className={`${props.className}__color-circle--blue${
+              bookmarkInput.color === 'blue' ? ' active' : ''
             }`}
             onClick={(e) => {
-              colorPickHandler(e);
+              handleColorPick(e);
             }}
           >
-            {colorPick[0] ? <FontAwesomeIcon icon={faCheck} /> : ''}
+            {bookmarkInput.color === 'blue' ? (
+              <FontAwesomeIcon icon={faCheck} />
+            ) : (
+              ''
+            )}
           </button>
           <button
-            id="1"
-            className={`${className}__color-circle--green${
-              colorPick[1] ? ' active' : ''
+            id="green"
+            className={`${props.className}__color-circle--green${
+              bookmarkInput.color === 'green' ? ' active' : ''
             }`}
             onClick={(e) => {
-              colorPickHandler(e);
+              handleColorPick(e);
             }}
           >
-            {colorPick[1] ? <FontAwesomeIcon icon={faCheck} /> : ''}
+            {bookmarkInput.color === 'green' ? (
+              <FontAwesomeIcon icon={faCheck} />
+            ) : (
+              ''
+            )}
           </button>
           <button
-            id="2"
-            className={`${className}__color-circle--red${
-              colorPick[2] ? ' active' : ''
+            id="red"
+            className={`${props.className}__color-circle--red${
+              bookmarkInput.color === 'red' ? ' active' : ''
             }`}
             onClick={(e) => {
-              colorPickHandler(e);
+              handleColorPick(e);
             }}
           >
-            {colorPick[2] ? <FontAwesomeIcon icon={faCheck} /> : ''}
+            {bookmarkInput.color === 'red' ? (
+              <FontAwesomeIcon icon={faCheck} />
+            ) : (
+              ''
+            )}
           </button>
         </div>
-        <div className={`${className}__importantPick`}>
+        <div className={`${props.className}__importantPick`}>
           <input
-            className={`${className}__important`}
+            className={`${props.className}__important`}
             type="checkbox"
-            name="important"
+            name="importance"
+            onClick={handleInputChange}
+            checked={bookmarkInput.importance}
           />
-          <label for="important">중요</label>
+          <label htmlFor="importance">중요</label>
         </div>
       </div>
-      <div className={`${className}__btnSection`}>
-        <button className={`${className}__btn left`}>추가</button>
-        <button className={`${className}__btn right`}>삭제</button>
+      <div className={`${props.className}__btnSection`}>
+        <button
+          className={`${props.className}__btn left`}
+          onClick={handleAddBookmark}
+        >
+          지우기
+        </button>
+        <button className={`${props.className}__btn right`}>삭제</button>
       </div>
     </div>
   );

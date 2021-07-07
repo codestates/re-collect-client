@@ -101,6 +101,9 @@
 .categorybox__bookmark.current {
   opacity: 0.3;
 }
+.categorybox__bookmark:hover {
+  transform: scale(1.01, 1.01);
+}
 .categorybox__bookmark-textcontainer {
   flex: 1;
   cursor: grab;
