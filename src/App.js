@@ -1,5 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
+<<<<<<< HEAD
+import Error from './components/Error';
+=======
+>>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Landing from './page/Landing';
@@ -11,15 +15,26 @@ import LoginModal from './components/LoginModal';
 import SignUpModal from './components/SignUpModal';
 import FindPwdModal from './components/FindPwdModal';
 import SuccessSignUpModal from './components/SuccessSignUpModal';
+<<<<<<< HEAD
+import ChangePwdModal from './components/ChangePwdModal';
+import LogoutModal from './components/LogoutModal';
+import DelAccountModal from './components/DelAccountModal';
+import ExploreModal from './components/ExploreModal';
+=======
 import ExploreModal from './components/ExploreModal';
 import Carousel from './components/TestCarousel';
 import Loading from './components/Loading';
+>>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
 import {
   Switch,
   Route,
   BrowserRouter as Router,
   withRouter,
 } from 'react-router-dom';
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
 
 function App() {
   const [modalMode, setModalMode] = useState('');
@@ -42,16 +57,22 @@ function App() {
       {modalMode === 'explore' && (
         <ExploreModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
+      {modalMode === 'changePwd' && <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />}
+      {modalMode === 'logout' && <LogoutModal modalMode={modalMode} setModalMode={setModalMode} />}
+      {modalMode === 'delAccount' && <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
         <Route path="/error" component={Error}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
-        <Route path="/profile" component={Profile}></Route>
+        <Route path="/profile">
+          <Profile modalMode={modalMode} setModalMode={setModalMode}/>
+        </Route>
         <Route path="/explore" component={Explore}></Route>
-        <Route path="/test" component={Carousel}></Route>
+        {/* <Route path="/test" component={Carousel}></Route> */}
         <Route exact path="/" component={Landing}></Route>
+        <Route component={Error}/>
       </Switch>
       <ScrollToTop />
       <Footer />

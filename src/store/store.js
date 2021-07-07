@@ -9,4 +9,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
+<<<<<<< HEAD
 export default store;
+=======
+export default store;
+>>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a

@@ -21,7 +21,6 @@ body {
     .triangle {
       width: 2vw;
       border-top: 3.2vh solid transparent;
-      //border-left: 4vh solid none;
       border-right: 5vh solid #{$logocolor};
       border-bottom: 3.2vh solid transparent;
     }
@@ -67,7 +66,7 @@ body {
     float: right;
     border: solid 1px #{$logocolor};
     border-right: transparent;
-    display: flex;
+    //display: flex;
     justify-content: flex-start;
 
     .triangle-right {
@@ -132,7 +131,7 @@ body {
           padding: 3.7% 0;
           background-color: #{$logocolor};
           border: none;
-          border-radius: 3px;
+          border-radius: 2px;
           color: white;
           font-size: 1.8vw;
           text-align: center;
@@ -366,6 +365,7 @@ body {
 //inner--fourth//
 .landing {
   &__inner--fourth {
+    //background-color: red;
     .alarm-wrapper {
       //border: solid 1px tomato;
       margin-top: 10%;
@@ -437,27 +437,57 @@ body {
       }
     }
   }
+}
 
-  //inner--fifth//
-  .landing {
-    &__inner--fifth {
-      //border: solid 1px green;
-      margin-top: 23%;
-      align-items: center;
+//inner--fifth//
+.landing {
+  &__inner--fifth {
+    //border: solid 1px green;
+    margin-top: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile-wrapper {
+      width: 88vw;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin-left: 10px;
+      flex-direction: row;
+      justify-content: space-between;
+      //border: solid 2px rgb(206, 32, 32);
 
-      .profile-wrapper {
-        width: 90vw;
-        //height: 19rem;
-        //margin-top: 0;
-        padding-left: 10%;
-        padding-right: 10%;
+      .landing__searchProfile {
         display: flex;
-        //flex-direction: column;
+        flex-direction: column;
         justify-content: center;
+<<<<<<< HEAD
+        border: solid 1px #000;
+        text-align: center;
+        width: 21vw;
+        aspect-ratio: 3/4;
+        box-shadow: #{$boxshadow};
+        &__profileImage {
+          margin-top: -8%;
+          font-size: 7vw;
+        }
+        p {
+          margin-top: 3%;
+          font-size: 2vw;
+        }
+
+        .socialInfo {
+          font-size: 1vw;
+          display: flex;
+          justify-content: space-around;
+        }
+
+        .companyInfo {
+          margin-top: 10%;
+          font-size: 1vw;
+          div {
+            margin: 3px;
+          }
+        }
+=======
 
         background-color: rgba(233, 229, 229, 0.425);
 
@@ -477,27 +507,35 @@ body {
             //margin-left: 5%;
           }
         }
+>>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
       }
+    }
+    .collection-desc {
+      margin-top: 5%; //줄임
+      text-align: center;
+      font-size: 2.8vw;
+      font-weight: 600;
+      word-spacing: -7px;
 
-      .collection-desc {
-        margin-top: 5%; //줄임
-        text-align: center;
-        font-size: 2.8vw;
-        font-weight: 600;
-        word-spacing: -7px;
+      a {
+        font-size: 1.7vw;
+        font-weight: 400;
+        color: #{$logocolor};
+        text-shadow: #{$btnboxshadow};
 
-        a {
-          font-size: 1.7vw;
-          font-weight: 400;
-          color: #{$logocolor};
-          text-shadow: #{$btnboxshadow};
-
-          &:hover {
-            text-shadow: 6px 2px 2px rgba(172, 166, 166, 0.445);
-            cursor: pointer;
-          }
+        &:hover {
+          text-shadow: 6px 2px 2px rgba(172, 166, 166, 0.445);
+          cursor: pointer;
         }
       }
+
+      // @include mobile {
+      //   font-size: 4.7vw;
+
+      //   a {
+      //     font-size: 3.5vw;
+      //   }
+      // }
     }
   }
 }
@@ -572,7 +610,7 @@ body {
       padding: 4.5% 0;
       background-color: #{$logocolor};
       border: none;
-      border-radius: 3px;
+      border-radius: 2px;
       color: white;
       font-size: 2.5vw;
       text-align: center;
@@ -584,6 +622,9 @@ body {
       }
     }
   }
+<<<<<<< HEAD
+}
+=======
 }
 
 body {
@@ -994,3 +1035,4 @@ body {
     }
   }
 }
+>>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
