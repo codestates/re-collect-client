@@ -79,18 +79,7 @@ export default function SimpleSlider(props) {
         </div>
       </div>
       <div className="exploreProfileCarousal">
-        {/* 더많은 데이터 필요 (10개정도?)
-        필요한 데이터 
-        {
-          id: 1,
-          username: "김지우",
-          recollects: 30,
-          followers: 200,
-          follwing: 300,
-          company: "Team Collector",
-          github: "github.com/re-collect",
-        },   */}
-        {/* <Slider {...settings}>
+        <Slider {...settings}>
           {state !== null &&
             state.users.users.map((userInfo) => {
               return (
@@ -101,9 +90,9 @@ export default function SimpleSlider(props) {
                 />
               );
             })}
-        </Slider> */}
+        </Slider>
       </div>
-      <div className="exploreProfileCarousal">
+      {/* <div className="exploreProfileCarousal">
         <Slider {...settings}>
           {userInfoLists.map((userInfo) => {
             return (
@@ -115,7 +104,7 @@ export default function SimpleSlider(props) {
             );
           })}
         </Slider>
-      </div>
+      </div> */}
 
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
