@@ -1944,7 +1944,7 @@ body .landing__inner--second .desc-wrap--3 p {
   color: black;
   font-size: 9px;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
