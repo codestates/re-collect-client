@@ -1,0 +1,135 @@
+@import "./util.scss";
+
+// @include tablet 
+@media (max-width: #{$tablet}) and (min-width: 601px){
+  
+  //sectionslice//
+  .landing {
+    .sectionslice {
+      margin-top: 13vh;
+      .triangle {
+        border-top: 2.1vh solid transparent;
+        border-right: 3.4vh solid #{$logocolor};
+        border-bottom: 2.1vh solid transparent;
+      }
+    }
+
+    .slicegreen {
+      .triangle {
+        border-right: 3.4vh solid #{$green};
+      }
+    }
+
+    .slicered-left {
+      border: solid 1px #{$red};
+      border-left: none;
+      .triangle {
+        border-right: 3.4vh solid #{$red};
+      }
+    }
+
+    .slicered {
+      margin-top: 8%;
+      .triangle-right {
+        width: 0px;
+        height: 0px;
+        border-top: 2.1vh solid transparent;
+        border-left: 3.4vh solid #{$red};
+        border-bottom: 2.1vh solid transparent;
+      }
+    }
+
+    .sliceblue {
+      .triangle-right {
+        border-top: 2.1vh solid transparent;
+        border-left: 3.4vh solid #{$logocolor};
+        border-bottom: 2.1vh solid transparent;
+      }
+    }
+  }
+
+  .landing {
+    width: 100vw;
+    &__inner--first {
+      .first-wrap {
+        margin-top: 5%;
+        .introtext {
+          button {
+            padding: 4.5% 0;
+          }
+        }
+      }
+    }
+  }
+
+  // .landing {
+  //   &__inner--fifth {
+  //     width:100vw;
+  //     margin-top:170px;
+  //     .profile-wrapper{
+  //       display: block;
+  //       margin-left:35%;
+  //       .landing__searchProfile{
+  //         margin: 20px;
+  //         width:26%;
+  //         &:nth-child(1){
+  //           float: left;
+  //         }
+  //         &:nth-child(3){
+  //           float:left;
+  //           margin-top:0;
+  //         }
+  //       }
+
+  //     }
+
+  //     .collection-desc{
+  //       margin-top:3%;
+  //       a{word-spacing: -5px;}
+  //     }
+  //   }
+  // }
+
+  .landing {
+    &__inner--fifth {
+      width:100vw;
+      .profile-wrapper{
+        display:block;
+        margin-top:3%;
+        .landing__searchProfile{
+          margin-bottom:3%;
+          margin-left:18%;
+          width:27vw;
+          &__profileImage{
+            font-size: 12vw;
+          }
+          p{
+            font-size: initial;
+          }
+          &:nth-child(1){
+            float: left;
+            margin-right:3%;
+            
+          }
+          &:nth-child(3){
+            float:left;
+            margin-top:0;
+            margin-right:3%;
+          }
+
+        }
+
+      }
+
+      .collection-desc{
+        margin-top:0;
+        
+        a{
+          word-spacing: -5px;
+          
+        }
+      }
+    }
+  }
+
+}
