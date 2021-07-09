@@ -3,14 +3,13 @@ import { Link, withRouter } from "react-router-dom";
 import { Flip, Fade, Zoom, Bounce } from "react-reveal";
 import Pulse from "react-reveal/Pulse";
 import Jello from "react-reveal/Jello";
-import ExploreProfile from "../components/ExploreProfile";
 import ExploreProfileList from "../components/ExploreProfileList";
 import { userInfoLists } from "../components/Explore_temp";
 
 function Landing() {
   ///새로고침시 최상단이동//
   useEffect(() => {
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     };
   }, []);

@@ -14,28 +14,28 @@ const options = [
 const customStyles = {
   container: (provided, state) => ({
     ...provided,
-    width: '80%',
+    width: "80%",
     height: 36,
-    border: '1px rgba(0, 0, 0, 0.5) solid',
+    border: "1px rgba(0, 0, 0, 0.5) solid",
     fontSize: 16,
     marginBottom: 15,
-    display: 'flex',
-    background: 'white',
+    display: "flex",
+    background: "white",
   }),
 
   control: () => ({
-    display: 'flex',
+    display: "flex",
     flex: 1,
     width: 40,
   }),
 
   placeholder: (provided) => ({
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: "rgba(0, 0, 0, 0.5)",
   }),
 
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
+    const transition = "opacity 300ms";
 
     return { ...provided, opacity, transition };
   },

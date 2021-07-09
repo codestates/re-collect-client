@@ -1,198 +1,5 @@
 @import "./util";
 
-// // .wrapper {
-// .modalContainer {
-//   display: fixed;
-//   top: 50%;
-//   left: 30%;
-//   width: 230px;
-//   margin-top: 40px;
-// }
-// .buttonContainer {
-//   display: flex;
-//   justify-content: space-between;
-//   i:hover {
-//     cursor: pointer;
-//   }
-// }
-// // 공통태그
-
-// //// Join Modal ////
-// .joinModalWrapper {
-//   display: none;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-//   background-color: white;
-//   width: 100%;
-//   height: 310px;
-//   color: #{$blue};
-//   font-size: 14px;
-
-//   p {
-//     margin-top: 35px;
-//     margin-bottom: 20px;
-//     text-align: center;
-//   }
-//   button {
-//     margin-bottom: 10px;
-//   }
-// }
-// //// SignUp Modal ////
-// .signUpModalWrapper {
-//   display: none;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-//   background-color: white;
-//   width: 100%;
-//   height: 310px;
-//   color: #{$blue};
-//   font-size: 14px;
-
-//   .inputContainer {
-//     margin-top: 35px;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     input {
-//       margin-bottom: 10px;
-//       width: 180px;
-//       height: 30px;
-//       border: 1px solid #{$blue};
-//       outline: none;
-//     }
-//   }
-//   .signUperrorMessage {
-//     display: flex;
-//     margin-top: 10px;
-//     color: black;
-//     font-size: 9px;
-//   }
-// }
-// //// Success SignUp Modal ////
-// .successSignUpModalWrapper {
-//   display: none;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-//   background-color: white;
-//   width: 100%;
-//   height: 270px;
-//   color: #{$blue};
-//   font-size: 14px;
-//   .logo {
-//     margin-bottom: 60px;
-//   }
-//   p {
-//     text-align: center;
-//     margin-bottom: 45px;
-//     // font-size
-//   }
-// }
-// //// Login Modal ////
-// .loginModalWrapper {
-//   display: flex;
-//   width: 230px;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-//   background-color: white;
-//   width: 100%;
-//   height: 270px;
-//   color: #{$blue};
-//   font-size: 14px;
-//   .inputContainer {
-//     margin-top: 25px;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     input {
-//       margin-bottom: 10px;
-//       width: 180px;
-//       height: 30px;
-//       border: 1px solid #{$blue};
-//       outline: none;
-//     }
-//   }
-//   .loginErrorMessage {
-//     display: flex;
-//     margin-top: 10px;
-//     color: black;
-//     font-size: 9px;
-//     margin-top: 0px;
-//   }
-//   button {
-//     margin-top: 15px;
-//   }
-// }
-// //// findPwd Modal ////
-// .findPwdModalWrapper {
-//   display: none;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-//   background-color: white;
-//   width: 100%;
-//   height: 270px;
-//   color: #{$blue};
-//   font-size: 14px;
-//   p {
-//     text-align: center;
-//     margin-top: 25px;
-//     margin-bottom: 12px;
-//   }
-//   input {
-//     width: 180px;
-//     height: 30px;
-//     border: 1px solid #{$blue};
-//     outline: none;
-//   }
-//   button {
-//     margin-top: 15px;
-//   }
-//   .findPwdErrorMessage {
-//     display: flex;
-//     margin-top: 10px;
-//     color: black;
-//     font-size: 9px;
-//   }
-// }
-// //// DeleteAccount Modal ////
-// .deleteAccountModalWrapper {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   border: 1px solid black;
-//   background-color: white;
-//   width: 100%;
-//   height: 215px;
-//   color: #{$blue};
-//   font-size: 14px;
-//   p {
-//     text-align: center;
-//     margin-top: 25px;
-//     margin-bottom: 12px;
-//   }
-//   input {
-//     width: 180px;
-//     height: 30px;
-//     border: 1px solid #{$blue};
-//     outline: none;
-//   }
-//   button {
-//     margin-top: 15px;
-//   }
-//   .deleteErrorMessage {
-//     display: flex;
-//     margin-top: 10px;
-//     color: black;
-//     font-size: 9px;
-//   }
-// }
-// // }
-
-
 .modalWrapper {
   //// 공통 태그 ////
   @include tablet {
@@ -291,6 +98,34 @@
       margin-top: 15px;
     }
   }
+  .setNewPwdmodal {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    flex-direction: column;
+    align-items: center;
+    .inputContainer {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      input {
+        margin-bottom: 10px;
+        width: 180px;
+        height: 30px;
+        border: 1px solid #{$blue};
+        outline: none;
+      }
+    }
+    .errorMessage {
+      display: flex;
+      margin-top: 10px;
+      color: black;
+      font-size: 9px;
+      margin-top: 15px;
+      padding: 0px 10px;
+    }
+  }
 
   //// signUp모달 ////
   .signUpmodal {
@@ -356,7 +191,6 @@
     height: 270px;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #{$blue};
     background-color: white;
     width: 100%;
     height: 270px;

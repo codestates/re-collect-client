@@ -804,6 +804,51 @@
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
+.explore__searchProfile {
+  width: 200px;
+  min-height: 320px;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.explore__searchProfile:hover {
+  cursor: pointer;
+}
+.explore__searchProfile .explore__searchProfile__profileImage {
+  margin-top: 25px;
+  font-size: 85px;
+}
+.explore__searchProfile p {
+  margin-top: 0px;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+.explore__searchProfile .socialInfo {
+  margin-top: 20px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.explore__searchProfile .socialInfo div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+}
+.explore__searchProfile .companyInfo {
+  margin-top: 30px;
+  font-size: 12px;
+}
+.explore__searchProfile .companyInfo div {
+  margin: 5px;
+}
+.explore__searchProfile .companyInfo .icon {
+  padding-right: 3px;
+}
+
 .interestingBookmarksCategory {
   margin: 105px 0;
   display: flex;
@@ -1744,6 +1789,34 @@ body {
   font-size: 9px;
   margin-top: 15px;
 }
+.modalWrapper .setNewPwdmodal {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .setNewPwdmodal .inputContainer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .setNewPwdmodal .inputContainer input {
+  margin-bottom: 10px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.modalWrapper .setNewPwdmodal .errorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+  margin-top: 15px;
+  padding: 0px 10px;
+}
 .modalWrapper .signUpmodal {
   display: flex;
   width: 100%;
@@ -1804,7 +1877,6 @@ body {
   height: 270px;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #214bc8;
   background-color: white;
   width: 100%;
   height: 270px;
@@ -2073,6 +2145,34 @@ body {
   color: #214bc8;
   cursor: pointer;
 }
+.profile-container__inner--left .profilebox__companyngitrepo {
+  display: flex;
+  flex-direction: column;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner {
+  margin-top: 1.5vh;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input {
+  font-family: IBM Plex Mono;
+  width: 50%;
+  margin-right: 0.5vw;
+  border: none;
+  border-bottom: dotted 1px #214bc8;
+  text-align: center;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input::placeholder {
+  text-align: center;
+  color: #214bc8;
+  font-size: 14px;
+  font-family: IBM Plex Mono;
+}
+.profile-container__inner--left .profilebox__companyngitrepo .edit-info {
+  color: grey;
+}
+.profile-container__inner--left .profilebox__companyngitrepo .edit-info:hover {
+  color: #214bc8;
+  cursor: pointer;
+}
 .profile-container__inner--left .profilebox__btns {
   margin-top: 25px;
   display: flex;
@@ -2257,6 +2357,15 @@ body {
   .top-btn {
     left: 84%;
   }
+}
+.SetNewPwd__container {
+  width: 100vw;
+  height: 82vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #214bc8;
+  background-color: #cec9c9;
 }
 .sidebar {
   transition: 0.5s ease;

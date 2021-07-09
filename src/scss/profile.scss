@@ -125,6 +125,40 @@
         }
       }
 
+      &__companyngitrepo{
+        display: flex;
+        flex-direction: column;
+
+        &__inner{
+          margin-top: 1.5vh;
+          input{
+            font-family: IBM Plex Mono;
+            width:50%;
+            margin-right: 0.5vw;
+            border:none;
+            border-bottom: dotted 1px #{$logocolor};
+            //outline:none;
+            text-align: center;
+            &::placeholder{
+              text-align: center;
+              color: #{$logocolor};
+              font-size:14px;
+              font-family: IBM Plex Mono;
+            }            
+          }
+
+        }
+
+        .edit-info{
+          color: grey;
+
+          &:hover{
+            color:#{$logocolor};
+            cursor: pointer;
+          }
+        }
+      }
+
       &__btns {
         margin-top: 25px;
         display: flex;
