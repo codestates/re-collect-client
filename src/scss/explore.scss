@@ -1,4 +1,4 @@
-@import "./util";
+@import './util';
 
 .exploreContainer {
   display: flex;
@@ -299,16 +299,40 @@
     div {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      margin: 0 3px;
-    }
-  }
-  .companyInfo {
-    margin-top: 30px;
-    font-size: 12px;
-    div {
-      margin: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+      .profileImage {
+        margin-top: 25px;
+        font-size: 85px;
+      }
+      p {
+        margin-top: 0px;
+        margin-bottom: 0;
+        font-size: 15px;
+      }
+      .socialInfo {
+        margin-top: 20px;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0 3px;
+        }
+      }
+      .companyInfo {
+        margin-top: 30px;
+        font-size: 12px;
+        div {
+          margin: 5px;
+        }
+      }
     }
     .icon {
       padding-right: 3px;

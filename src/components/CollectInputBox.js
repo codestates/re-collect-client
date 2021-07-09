@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Creatable, { makeCreatableSelect } from 'react-select/creatable';
-import { addBookmark } from '../modules/addBookmark';
+import { addBookmark, addGuestBookmark } from '../modules/addBookmark';
+import { editBookmark } from '../modules/editBookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { getBookmark } from '../modules/getBookmark';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -14,51 +16,65 @@ const options = [
 const customStyles = {
   container: (provided, state) => ({
     ...provided,
-    width: "80%",
+    width: '80%',
     height: 36,
-    border: "1px rgba(0, 0, 0, 0.5) solid",
+    border: '1px rgba(0, 0, 0, 0.5) solid',
     fontSize: 16,
     marginBottom: 15,
-    display: "flex",
-    background: "white",
+    display: 'flex',
+    background: 'white',
   }),
 
   control: () => ({
-    display: "flex",
+    display: 'flex',
     flex: 1,
     width: 40,
   }),
 
   placeholder: (provided) => ({
-    color: "rgba(0, 0, 0, 0.5)",
+    color: 'rgba(0, 0, 0, 0.5)',
   }),
 
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = "opacity 300ms";
+    const transition = 'opacity 300ms';
 
     return { ...provided, opacity, transition };
   },
 };
 
 function CollectInputBox(props) {
-  const state = useSelector((state) => state.bookmarkReducerX);
-  const { tempBookmark, user } = state;
+  const accessToken = localStorage.getItem('accessToken');
+  const { isEdit, data } = useSelector(
+    (state) => state.editBookmarkReducer.tempBookmark
+  );
+
   const dispatch = useDispatch();
 
-  const handleColorPick = (e) => {
-    setbookmarkInput({ ...bookmarkInput, color: e.target.id });
-  };
-
   const [bookmarkInput, setbookmarkInput] = useState({
-    color: undefined,
-    category: undefined,
-    text: undefined,
-    url: undefined,
+    id: '',
+    color: '',
+    category: '',
+    text: '',
+    url: '',
     importance: false,
   });
 
+  useEffect(() => {
+    if (data) {
+      setbookmarkInput({
+        id: data.id,
+        color: data.color,
+        category: data.category,
+        text: data.text,
+        url: data.url,
+        importance: data.importance,
+      });
+    }
+  }, [data]);
+
   const handleCategoryChange = (newValue, actionMeta) => {
+    console.log(newValue);
     setbookmarkInput({ ...bookmarkInput, category: newValue });
   };
 
@@ -80,22 +96,34 @@ function CollectInputBox(props) {
     }
   };
 
-  const handleAddBookmark = () => {
-    if (user !== '') {
-      dispatch(addBookmark(bookmarkInput));
-      if (tempBookmark.error) {
-        alert(tempBookmark.error);
-        console.error(tempBookmark.error);
-        return;
-      }
+  const handleInitialize = () => {
+    setbookmarkInput({
+      id: '',
+      color: '',
+      category: '',
+      text: '',
+      url: '',
+      importance: false,
+    });
+  };
 
-      setbookmarkInput({
-        color: null,
-        category: null,
-        text: null,
-        url: null,
-        importance: false,
-      });
+  const handleColorPick = (e) => {
+    setbookmarkInput({ ...bookmarkInput, color: e.target.id });
+  };
+
+  const handleAddBookmark = () => {
+    if (accessToken) {
+      dispatch(addBookmark(bookmarkInput));
+      dispatch(getBookmark());
+    } else {
+      dispatch(addGuestBookmark(bookmarkInput));
+    }
+    handleInitialize();
+  };
+
+  const handleEditBookmark = () => {
+    if (accessToken) {
+      dispatch(editBookmark(bookmarkInput));
     }
   };
 
@@ -188,11 +216,24 @@ function CollectInputBox(props) {
       <div className={`${props.className}__btnSection`}>
         <button
           className={`${props.className}__btn left`}
-          onClick={handleAddBookmark}
+          onClick={handleInitialize}
         >
-          지우기
+          {isEdit ? '삭제' : '지우기'}
         </button>
-        <button className={`${props.className}__btn right`}>삭제</button>
+        <button
+          className={`${props.className}__btn right`}
+          onClick={
+            isEdit
+              ? () => {
+                  handleEditBookmark();
+                }
+              : () => {
+                  handleAddBookmark();
+                }
+          }
+        >
+          {isEdit ? '수정' : '추가'}
+        </button>
       </div>
     </div>
   );

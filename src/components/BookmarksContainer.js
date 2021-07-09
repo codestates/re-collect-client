@@ -8,7 +8,7 @@ function BookmarksContainer({ data }) {
 
   useEffect(() => {
     setList(data);
-  }, [setList, data]);
+  }, [setList, list]);
 
   const dragItem = useRef();
   const dragItemNode = useRef();
@@ -53,13 +53,6 @@ function BookmarksContainer({ data }) {
   };
 
   const handleDragEnd = (e) => {
-    // console.log('드래그 겹쳐진 녀석', dragItem.current);
-    // console.log('떨어진 녀석', dragItemNode.current.item);
-    // console.log(
-    //   '떨어진 녀석 원래 있던곳 상태?',
-    //   dragItemNode.current.item.grp.bookmarks
-    // );
-
     setDragging(false);
 
     dragItem.current = null;
@@ -79,42 +72,49 @@ function BookmarksContainer({ data }) {
 
   return (
     <div className="collectview__bookmarks">
-      {list.map((grp, grpI) => (
-        <CategoryBox
-          key={grp.category}
-          title={grp.category}
-          dragEnterHandler={
-            dragging && !grp.bookmarks.length
-              ? (e) => {
-                  handleDragEnter(e, { grp, grpI, itemI: 0 });
-                }
-              : null
-          }
-        >
-          {grp.bookmarks.map((item, itemI) => (
-            <CollectBookmark
-              key={item.id}
-              className={`${
-                dragging ? getStyles({ grpI, itemI }) : 'categorybox__bookmark'
-              }`}
-              url={item.url}
-              color={item.color}
-              importance={item.importance}
-              draggable="true"
-              handleDragStart={(e) => handleDragStart(e, { grp, grpI, itemI })}
-              handleDragEnter={
-                dragging
+      {list.length === 0 ? (
+        '보여줄 북마크가 없습니다. 왼쪽 추가하기 버튼을 눌러 북마크를 추가하세요'
+      ) : (
+        <>
+          {' '}
+          {list.map((grp, grpI) => (
+            <CategoryBox
+              key={grp.category}
+              title={grp.category}
+              dragEnterHandler={
+                dragging && !grp.bookmarks.length
                   ? (e) => {
-                      handleDragEnter(e, { grp, grpI, itemI });
+                      handleDragEnter(e, { grp, grpI, itemI: 0 });
                     }
                   : null
               }
             >
-              {item.text}
-            </CollectBookmark>
+              {grp.bookmarks.map((item, itemI) => (
+                <CollectBookmark
+                  key={item.id}
+                  className={`${
+                    dragging
+                      ? getStyles({ grpI, itemI })
+                      : 'categorybox__bookmark'
+                  }`}
+                  data={item}
+                  draggable="true"
+                  handleDragStart={(e) =>
+                    handleDragStart(e, { grp, grpI, itemI })
+                  }
+                  handleDragEnter={
+                    dragging
+                      ? (e) => {
+                          handleDragEnter(e, { grp, grpI, itemI });
+                        }
+                      : null
+                  }
+                ></CollectBookmark>
+              ))}
+            </CategoryBox>
           ))}
-        </CategoryBox>
-      ))}
+        </>
+      )}
     </div>
   );
 }

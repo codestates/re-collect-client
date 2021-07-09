@@ -1,94 +1,52 @@
-import React, { useState, useEffect, useRef } from "react";
-import CategoryBox from "../components/CategoryBox";
-import Sidebar from "../components/Sidebar";
-import SearchBar from "../components/SearchBar";
-import UnreadAlarm from "../components/UnreadAlarm";
-import BottomPopup from "../components/BottomPopup";
-import Recollect from "../components/Recollect";
-import ToCollectBtn from "../components/ToCollectBtn";
-import BookmarksContainer from "../components/BookmarksContainer";
+import React, { useState, useEffect, useRef } from 'react';
+import CategoryBox from '../components/CategoryBox';
+import Sidebar from '../components/Sidebar';
+import SearchBar from '../components/SearchBar';
+import UnreadAlarm from '../components/UnreadAlarm';
+import BottomPopup from '../components/BottomPopup';
+import Recollect from '../components/Recollect';
+import ToCollectBtn from '../components/ToCollectBtn';
+import BookmarksContainer from '../components/BookmarksContainer';
 
-
-import { getBookmark } from "../modules/getBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { recollect } from "../modules/getRecollect";
-
-// 지우님  "카테고리 별로 묶고 그 안에서 또 저장된 순서대로 정렬" 한 결과가 아래 fakeData 형식이면 될 것 같습니다!
-
-const fakeData = [
-  {
-    category: "this is a test category 1 ",
-    bookmarks: [
-      {
-        id: 1,
-        text: "recollect 1",
-        url: "www.",
-        color: "#214bc8",
-        importance: 0,
-        visitCounts: 3,
-      },
-    ],
-  },
-  {
-    category: "this is a test category 2",
-    bookmarks: [
-      {
-        id: 2,
-        text: "recollect 2",
-        url: "www.",
-        color: "#214bc8",
-        importance: 1,
-        visitCounts: 3,
-      },
-    ],
-  },
-  {
-    category: "this is a test category 3",
-    bookmarks: [
-      {
-        id: 3,
-        text: "recollect 3",
-        url: "https://www.google.com",
-        color: "#214bc8",
-        importance: 1,
-        visitCounts: 3,
-      },
-      {
-        id: 4,
-        text: "recollect 4",
-        url: "www.",
-        color: "#214bc8",
-        importance: 0,
-        visitCounts: 3,
-      },
-      {
-        id: 5,
-        text: "recollect 5",
-        url: "www.",
-        color: "#214bc8",
-        importance: 1,
-        visitCounts: 3,
-      },
-    ],
-  },
-];
+import { getBookmark } from '../modules/getBookmark';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { recollect } from '../modules/getRecollect';
 
 export default function Collect() {
+  const accessToken = localStorage.getItem('accessToken');
+  const { guestBookmarks } = useSelector((state) => state.getBookmarkReducer);
+  const { bookmarks, category, reducedbookmarks } = useSelector(
+    (state) => state.getBookmarkReducer.userBookmarks
+  );
+
   const [recollectView, setRecollectView] = useState(false);
-  const [data, setData] = useState(fakeData);
+  const [data, setData] = useState({
+    bookmarks: guestBookmarks.bookmarks,
+    category: guestBookmarks.category,
+    reducedbookmarks: guestBookmarks.reducedbookmarks,
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(getBookmark());
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    setData({
+      ...data,
+      bookmarks: bookmarks,
+      category: category,
+      reducedbookmarks: reducedbookmarks,
+    });
+  }, [bookmarks]);
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
     dispatch(recollect());
   };
-
-  const state = useSelector((state) => state.getBookmarkReducer);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getBookmark());
-  }, []);
-
   return (
     <>
       {recollectView ? (
@@ -107,7 +65,7 @@ export default function Collect() {
                 <UnreadAlarm viewHandler={recollectViewHandler} />
                 <SearchBar />
               </div>
-              <BookmarksContainer data={data} />
+              <BookmarksContainer data={data.reducedbookmarks} />
             </div>
           </div>
           <BottomPopup />

@@ -1,14 +1,20 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 import { profileReducer } from './editProfile';
-import { getBookmarkReducer } from "./getBookmark";
-import { bookmarkReducerX } from "./addBookmark";
-import { getExploreReducer } from "./getExplore";
+import { addBookmarkReducer } from './addBookmark';
+import { getBookmarkReducer } from './getBookmark';
+import { loginReducer } from './login';
+import { signupReducer } from './signup';
+import { getExploreReducer } from './getExplore';
+import { editBookmarkReducer } from './editBookmark';
 
-const rootReducer = combineReducers({ 
-  bookmarkReducerX,
+const rootReducer = combineReducers({
+  addBookmarkReducer,
   getBookmarkReducer,
-  getExploreReducer, 
-  profileReducer 
+  getExploreReducer,
+  profileReducer,
+  loginReducer,
+  signupReducer,
+  editBookmarkReducer,
 });
 
 export default rootReducer;

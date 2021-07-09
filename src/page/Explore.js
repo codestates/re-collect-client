@@ -1,14 +1,14 @@
-import React, { Component, useEffect, useState } from "react";
-import Slider from "react-slick";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import ExploreProfileList from "../components/ExploreProfileList";
-import { userInfoLists } from "../components/Explore_temp";
-import BigBookmark from "../components/BigBookmark";
-import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { getExploreInfo } from "../modules/getExplore";
+import React, { Component, useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import ExploreProfileList from '../components/ExploreProfileList';
+import { userInfoLists } from '../components/Explore_temp';
+import BigBookmark from '../components/BigBookmark';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { getExploreInfo } from '../modules/getExplore';
 
 export default function SimpleSlider(props) {
   const settings = {
@@ -18,8 +18,8 @@ export default function SimpleSlider(props) {
     slidesToShow: 4, // 한번에 몇개의 슬라이드를 보여줄 지
     arrows: true, // 옆으로 이동하는 화살표 표시 여부
     slidesToScroll: 1, // 한번 스크롤시 몇장의 슬라이드를 넘길지
-    prevArrow: <FontAwesomeIcon icon={faArrowLeft} />,
-    nextArrow: <FontAwesomeIcon icon={faArrowRight} />,
+    prevArrow: <button>←</button>,
+    nextArrow: <button>→</button>,
 
     responsive: [
       // 반응형 웹 구현 옵션
@@ -49,17 +49,15 @@ export default function SimpleSlider(props) {
 
   // const [users, setUsers] = useState([]);
 
-
   useEffect(() => {
     axios
-      .get("https://api.recollect.today/explore")
+      .get('https://api.recollect.today/explore')
       .then((res) => dispatch(getExploreInfo(res.data)))
-      .catch((err) => console.log("Error to get Explore info"));
+      .catch((err) => console.log('Error to get Explore info'));
   }, []); // 빈배열을 넘겨 최초 한번만 실행
 
   return (
     <div className="exploreContainer">
-
       {/* {state !== null && console.log("state is : ", state.users.users)} */}
 
       {/* {state !== null && console.log("state is : ", state)} */}
@@ -87,15 +85,17 @@ export default function SimpleSlider(props) {
 
       <div className="exploreProfileCarousal">
         <Slider {...settings}>
-          {userInfoLists.map((userInfo) => {
-            return (
-              <ExploreProfileList
-                key={userInfo.id}
-                username={userInfo.username}
-                id="carousel"
-              />
-            );
-          })}
+          {state !== null &&
+            state.users.users.map((userInfo) => {
+              return (
+                <ExploreProfileList
+                  className="explore"
+                  key={userInfo.id}
+                  user={userInfo}
+                  id="carousel"
+                />
+              );
+            })}
         </Slider>
       </div>
 
@@ -111,6 +111,6 @@ export default function SimpleSlider(props) {
           <BigBookmark />
         </ul>
       </div>
-  </div> 
+    </div>
   );
 }

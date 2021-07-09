@@ -1,44 +1,44 @@
-import axios from "axios";
+import axios from 'axios';
 
 const initialState = {
   profile: {
-    username: "init유저네임",
-    password: "패스워드",
-    email: "initial@recollect.today",
-    company: "",
-    gitRepo: "",
-    created_at: "2021.07.07",
+    username: 'init유저네임',
+    password: '패스워드',
+    email: 'initial@recollect.today',
+    company: '',
+    gitRepo: '',
+    created_at: '2021.07.07',
     recollectcount: 0,
     //favorite: {},
     error: null,
   },
 };
 
-const GET_PROFILE = "GET_PROFILE";
-const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
-const GET_PROFILE_FAIL = "GET_PROFILE_FAIL";
+const GET_PROFILE = 'GET_PROFILE';
+const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
+const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
 
-const EDIT_USERNAME = "EDIT_USERNAME";
-const EDIT_USERNAME_SUCCESS = "EDIT_USERNAME_SUCCESS";
-const EDIT_USERNAME_FAIL = "EDIT_USERNAME_FAIL";
+const EDIT_USERNAME = 'EDIT_USERNAME';
+const EDIT_USERNAME_SUCCESS = 'EDIT_USERNAME_SUCCESS';
+const EDIT_USERNAME_FAIL = 'EDIT_USERNAME_FAIL';
 
-const EDIT_COMPANY = "EDIT_COMPANY";
-const EDIT_COMPANY_SUCCESS = "EDIT_COMPANY_SUCCESS";
-const EDIT_COMPANY_FAIL = "EDIT_COMPANY_FAIL";
+const EDIT_COMPANY = 'EDIT_COMPANY';
+const EDIT_COMPANY_SUCCESS = 'EDIT_COMPANY_SUCCESS';
+const EDIT_COMPANY_FAIL = 'EDIT_COMPANY_FAIL';
 
-const EDIT_GITREPO = "EDIT_GITREPO";
-const EDIT_GITREPO_SUCCESS = "EDIT_GITREPO_SUCCESS";
-const EDIT_GITREPO_FAIL = "EDIT_GITREPO_FAIL";
+const EDIT_GITREPO = 'EDIT_GITREPO';
+const EDIT_GITREPO_SUCCESS = 'EDIT_GITREPO_SUCCESS';
+const EDIT_GITREPO_FAIL = 'EDIT_GITREPO_FAIL';
 
-const EDIT_PWD = "EDIT_PWD";
-const GET_FAVORITE = "GET_FAVORITE";
-const DEL_ACCOUNT = "DEL_ACCOUNT";
+const EDIT_PWD = 'EDIT_PWD';
+const GET_FAVORITE = 'GET_FAVORITE';
+const DEL_ACCOUNT = 'DEL_ACCOUNT';
 
-const accessToken = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem('accessToken');
 
 export const getProfile = () => async (dispatch) => {
   await axios
-    .get("https://api.recollect.today/profile", {
+    .get('https://api.recollect.today/profile', {
       headers: { authorization: `Bearer ${accessToken}` },
       withCredentials: true,
     })
@@ -65,7 +65,7 @@ export const getProfile = () => async (dispatch) => {
 export const editUsername = (inputValue) => async (dispatch) => {
   await axios
     .patch(
-      "https://api.recollect.today/profile/username",
+      'https://api.recollect.today/profile/username',
       {
         username: inputValue.username, //input.value
       },
@@ -89,7 +89,7 @@ export const editUsername = (inputValue) => async (dispatch) => {
 export const editCompany = (inputValue) => async (dispatch) => {
   await axios
     .patch(
-      "https://api.recollect.today/profile/company",
+      'https://api.recollect.today/profile/company',
       {
         company: inputValue.company, //input.value
       },
@@ -110,11 +110,10 @@ export const editCompany = (inputValue) => async (dispatch) => {
     });
 };
 
-
 export const editGitRepo = (inputValue) => async (dispatch) => {
   await axios
     .patch(
-      "https://api.recollect.today/profile/gitrepo",
+      'https://api.recollect.today/profile/gitrepo',
       {
         gitRepo: inputValue.gitRepo, //input.value
       },
@@ -170,20 +169,20 @@ export const profileReducer = (state = initialState, action) => {
         profile: action.profile,
       };
     case EDIT_USERNAME_SUCCESS:
-      return{
+      return {
         ...state,
         profile: action.profile,
-      }
+      };
     case EDIT_COMPANY_SUCCESS:
-      return{
+      return {
         ...state,
         profile: action.profile,
-      }
+      };
     case EDIT_GITREPO_SUCCESS:
-      return{
+      return {
         ...state,
         profile: action.profile,
-      }
+      };
     case GET_FAVORITE:
       return;
     case EDIT_PWD:
