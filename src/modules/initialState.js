@@ -1,14 +1,25 @@
-export const initialState = {
+import { faLessThanEqual } from '@fortawesome/free-solid-svg-icons';
+
+const initialState = {
   user: {
-    username: '',
     isLogin: false,
     error: null,
   },
+
   tempBookmark: {
-    loading: false,
+    isEdit: false,
+    isLoading: false,
     data: null,
     error: null,
   },
+
+  guestBookmarks: {
+    id: 0,
+    category: [],
+    bookmarks: [],
+    reducedbookmarks: [],
+  },
+
   users: [1, 2, 3],
   profile: {
     username: 'init유저네임',
@@ -19,3 +30,4 @@ export const initialState = {
     created_at: '2021.07.07',
   },
 };
+export default initialState;

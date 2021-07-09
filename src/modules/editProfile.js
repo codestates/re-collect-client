@@ -1,12 +1,12 @@
-import { initialState } from "./initialState";
+import initialState from './initialState';
 
-const GET_PROFILE_INFO = "GET_PROFILE_INFO";
-const EDIT_USERNAME = "EDIT_USERNAME";
-const EDIT_PWD = "EDIT_PWD";
-const EDIT_COMPANY = "EDIT_COMPANY";
-const EDIT_GITREPO = "EDIT_GITREPO";
-const GET_FAVORITE = "GET_FAVORITE";
-const DEL_ACCOUNT = "DEL_ACCOUNT";
+const GET_PROFILE_INFO = 'GET_PROFILE_INFO';
+const EDIT_USERNAME = 'EDIT_USERNAME';
+const EDIT_PWD = 'EDIT_PWD';
+const EDIT_COMPANY = 'EDIT_COMPANY';
+const EDIT_GITREPO = 'EDIT_GITREPO';
+const GET_FAVORITE = 'GET_FAVORITE';
+const DEL_ACCOUNT = 'DEL_ACCOUNT';
 
 export const getProfileInfo = (profileInfo) => {
   return {
@@ -69,14 +69,13 @@ export const delAccount = () => {
   };
 };
 
-
-
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PROFILE_INFO:
-      return; Object.assign({}, state, {
-        profileInfo: [...state.profileInfo, action.payload]
-      })
+      return;
+      Object.assign({}, state, {
+        profileInfo: [...state.profileInfo, action.payload],
+      });
     case EDIT_USERNAME:
       return;
     case EDIT_PWD:

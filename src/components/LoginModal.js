@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginInitialize, loginThunk } from '../modules/login';
 import { IsValidateEmail, IsValidiatePassword } from '../util/validation';
@@ -6,9 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function LoginModal(props) {
-  const { error } = useSelector((state) => state.loginReducer.user);
+  const history = useHistory();
+  const { isLogin, error } = useSelector((state) => state.loginReducer.user);
   const dispatch = useDispatch();
-  const [userInfo, setUserInfo] = useState({
+  const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
   });
@@ -18,9 +20,19 @@ function LoginModal(props) {
     setErrorMessage(error);
   }, [error]);
 
+  useEffect(() => {
+    if (isLogin) {
+      props.setModalMode('');
+      history.push('/loading');
+      setTimeout(() => {
+        history.push('/collect');
+      }, 2000);
+    }
+  }, [isLogin]);
+
   const loginValidCheck = () => {
-    const email = userInfo.email;
-    const pwd = userInfo.password;
+    const email = loginInfo.email;
+    const pwd = loginInfo.password;
 
     if (!IsValidateEmail(email)) {
       setErrorMessage('이메일을 확인해주세요');
@@ -35,14 +47,14 @@ function LoginModal(props) {
 
   const handleLoginInputChange = (e) => {
     const { value, name } = e.target;
-    setUserInfo({
-      ...userInfo,
+    setLoginInfo({
+      ...loginInfo,
       [name]: value,
     });
   };
 
   const handleLogin = () => {
-    dispatch(loginThunk(userInfo));
+    dispatch(loginThunk(loginInfo));
   };
 
   return (
@@ -65,7 +77,7 @@ function LoginModal(props) {
             type="email"
             name="email"
             placeholder=" 이메일"
-            value={userInfo.email}
+            value={loginInfo.email}
             onChange={(e) => {
               handleLoginInputChange(e);
             }}
@@ -75,7 +87,7 @@ function LoginModal(props) {
             type="password"
             name="password"
             placeholder=" 비밀번호"
-            value={userInfo.password}
+            value={loginInfo.password}
             onChange={(e) => {
               handleLoginInputChange(e);
             }}

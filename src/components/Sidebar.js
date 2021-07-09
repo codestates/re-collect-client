@@ -1,11 +1,27 @@
 import CollectInputBox from './CollectInputBox';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
+  const isEdit = useSelector(
+    (state) => state.editBookmarkReducer.tempBookmark.isEdit
+  );
+
   const [xposition, setXposition] = useState(-300);
   const [width, setWidth] = useState(300);
+
+  useEffect(() => {
+    setXposition(0);
+  }, []);
+
+  useEffect(() => {
+    if (isEdit) {
+      setWidth(300);
+      setXposition(0);
+    }
+  }, [isEdit]);
 
   const sidebarToggleHandler = () => {
     if (xposition < 0) {
@@ -16,10 +32,6 @@ export default function Sidebar() {
       setWidth(0);
     }
   };
-
-  useEffect(() => {
-    setXposition(0);
-  }, []);
 
   return (
     <>

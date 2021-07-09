@@ -16,7 +16,6 @@ import ChangePwdModal from './components/ChangePwdModal';
 import LogoutModal from './components/LogoutModal';
 import DelAccountModal from './components/DelAccountModal';
 import ExploreModal from './components/ExploreModal';
-import Carousel from './components/TestCarousel';
 import Loading from './components/Loading';
 import {
   Switch,
@@ -58,6 +57,7 @@ function App() {
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
+        <Route path="/loading" component={Loading}></Route>
         <Route path="/error" component={Error}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
@@ -65,7 +65,6 @@ function App() {
           <Profile modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/explore" component={Explore}></Route>
-        {/* <Route path="/test" component={Carousel}></Route> */}
         <Route exact path="/" component={Landing}></Route>
         <Route component={Error} />
       </Switch>

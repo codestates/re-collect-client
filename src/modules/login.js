@@ -1,4 +1,4 @@
-import { initialState } from './initialState';
+import initialState from './initialState';
 import axios from 'axios';
 
 const LOGIN = 'LOGIN';
@@ -47,6 +47,7 @@ export const loginReducer = (state = initialState, action) => {
         user: {
           ...state.user,
           isLogin: true,
+          error: null,
         },
       };
 
