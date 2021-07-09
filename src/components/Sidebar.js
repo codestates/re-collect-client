@@ -45,7 +45,7 @@ export default function Sidebar() {
             <FontAwesomeIcon icon={faCaretRight} />
           )}
         </button>
-        <CollectInputBox place="sidebar" />
+        <CollectInputBox className="sidebar" />
       </div>
     </>
   );

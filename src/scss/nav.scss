@@ -1,4 +1,4 @@
-@import "./util.scss";
+@import './util.scss';
 
 .nav-container {
   position: fixed;
@@ -17,7 +17,7 @@
     height: 100%;
     text-indent: -9999px;
     margin-left: 6vw;
-    background-image: url("./logo.png");
+    background-image: url('./logo.png');
     background-repeat: no-repeat;
     background-size: 95px auto;
     background-position: center;

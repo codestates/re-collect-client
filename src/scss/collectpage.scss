@@ -1,11 +1,11 @@
-@import './util';
+@import "./util";
 
 .collectview {
   background: white;
   display: flex;
-  height: calc(100vh);
+  height: 120vh;
   width: 100vw;
-  padding: 0%;
+  padding-top: 80px;
 
   &__right {
     flex: 1 1;
@@ -39,6 +39,7 @@
     line-height: 40px;
     background-color: #{$alarmcolor};
     text-align: center;
+    cursor: pointer;
   }
 
   &__search {
@@ -57,7 +58,7 @@
     padding-right: 40px;
     margin-right: -40px;
     font-size: 16px;
-    font-family: 'IBM Plex Mono';
+    font-family: "IBM Plex Mono";
 
     &:focus {
       border: 1px rgba(0, 0, 0, 0.3) solid;
@@ -88,8 +89,10 @@
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
     gap: 30px;
+    // box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.1);
+    // padding: 20px 20px;
 
-    height: calc(100vh - 253px);
+    height: calc(720px);
     overflow: {
       y: scroll;
       x: hidden;
