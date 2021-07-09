@@ -25,7 +25,7 @@ import {
   Route,
   BrowserRouter as Router,
   withRouter,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 function App() {
   const [modalMode, setModalMode] = useState("");
@@ -63,6 +63,9 @@ function App() {
       {modalMode === "successSetNewPwd" && (
         <SuccessSetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
       )}
+      {modalMode === 'changePwd' && <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />}
+      {modalMode === 'logout' && <LogoutModal modalMode={modalMode} setModalMode={setModalMode} />}
+      {modalMode === 'delAccount' && <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
@@ -76,6 +79,7 @@ function App() {
           <Profile modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/explore" component={Explore}></Route>
+        {/* <Route path="/test" component={Carousel}></Route> */}
         <Route exact path="/" component={Landing}></Route>
         <Route component={Error} />
       </Switch>

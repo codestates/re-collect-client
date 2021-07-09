@@ -11,8 +11,12 @@ function ExploreProfileList({ className, ...props }) {
       <div className={`${className}__searchProfile__profileImage`}>
         <FontAwesomeIcon icon={faUserCircle} />
       </div>
+
+      <p> {props.user.username} </p>
+
       {/* 랜딩페이지 충돌  */}
       {/* <p> {props.user.username} </p> */}
+
       <div className="socialInfo">
         <div>
           <div> 28 </div>

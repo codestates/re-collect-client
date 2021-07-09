@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Creatable, { makeCreatableSelect } from "react-select/creatable";
-import { addBookmark } from "../modules/addBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from 'react';
+import Creatable, { makeCreatableSelect } from 'react-select/creatable';
+import { addBookmark } from '../modules/addBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
 ];
 
 const customStyles = {
@@ -64,7 +64,7 @@ function CollectInputBox(props) {
 
   const handleInputChange = (e) => {
     const { value, name } = e.target;
-    if (name === "importance") {
+    if (name === 'importance') {
       setbookmarkInput((oldValue) => {
         const newImportance = !oldValue.importance;
         return {
@@ -81,7 +81,7 @@ function CollectInputBox(props) {
   };
 
   const handleAddBookmark = () => {
-    if (user !== "") {
+    if (user !== '') {
       dispatch(addBookmark(bookmarkInput));
       if (tempBookmark.error) {
         alert(tempBookmark.error);
@@ -131,46 +131,46 @@ function CollectInputBox(props) {
           <button
             id="blue"
             className={`${props.className}__color-circle--blue${
-              bookmarkInput.color === "blue" ? " active" : ""
+              bookmarkInput.color === 'blue' ? ' active' : ''
             }`}
             onClick={(e) => {
               handleColorPick(e);
             }}
           >
-            {bookmarkInput.color === "blue" ? (
+            {bookmarkInput.color === 'blue' ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
-              ""
+              ''
             )}
           </button>
           <button
             id="green"
             className={`${props.className}__color-circle--green${
-              bookmarkInput.color === "green" ? " active" : ""
+              bookmarkInput.color === 'green' ? ' active' : ''
             }`}
             onClick={(e) => {
               handleColorPick(e);
             }}
           >
-            {bookmarkInput.color === "green" ? (
+            {bookmarkInput.color === 'green' ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
-              ""
+              ''
             )}
           </button>
           <button
             id="red"
             className={`${props.className}__color-circle--red${
-              bookmarkInput.color === "red" ? " active" : ""
+              bookmarkInput.color === 'red' ? ' active' : ''
             }`}
             onClick={(e) => {
               handleColorPick(e);
             }}
           >
-            {bookmarkInput.color === "red" ? (
+            {bookmarkInput.color === 'red' ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
-              ""
+              ''
             )}
           </button>
         </div>

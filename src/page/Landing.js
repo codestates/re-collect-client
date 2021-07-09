@@ -195,11 +195,7 @@ function Landing() {
             <Pulse left cascade delay={1000}>
               <div className="profile-wrapper">
                 {userInfoLists.slice(0, 4).map((userInfo) => (
-                  <ExploreProfileList
-                    key={userInfo.id}
-                    className="landing"
-                    props="cascade"
-                  />
+                  <ExploreProfileList key={userInfo.id} className="landing" user={userInfo} props="cascade"/>
                 ))}
               </div>
             </Pulse>
@@ -214,7 +210,7 @@ function Landing() {
               </Fade>
             </div>
           </div>
-
+          
           <Fade left duration={2500}>
             <div className="sectionslice slicered-left">
               <div className="triangle"></div>

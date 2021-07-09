@@ -12,7 +12,7 @@ const REDUCE_BOOKMARK = 'REDUCE_BOOKMARK';
 
 export const addBookmark = (bookmark) => async (dispatch, getState) => {
   const username = getState().user;
-  const accessToken = localStorage.getItem('Token');
+  const accessToken = localStorage.getItem('accessToken');
 
   dispatch({
     type: POST_BOOKMARK,

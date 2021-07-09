@@ -7,6 +7,9 @@ import BottomPopup from "../components/BottomPopup";
 import Recollect from "../components/Recollect";
 import ToCollectBtn from "../components/ToCollectBtn";
 import BookmarksContainer from "../components/BookmarksContainer";
+
+
+import { getBookmark } from "../modules/getBookmark";
 import { useSelector, useDispatch } from "react-redux";
 import { recollect } from "../modules/getRecollect";
 
@@ -73,12 +76,18 @@ const fakeData = [
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
   const [data, setData] = useState(fakeData);
-  const dispatch = useDispatch();
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
     dispatch(recollect());
   };
+
+  const state = useSelector((state) => state.getBookmarkReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBookmark());
+  }, []);
 
   return (
     <>

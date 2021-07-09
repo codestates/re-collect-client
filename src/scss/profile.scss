@@ -52,6 +52,9 @@
             font-family: IBM Plex Mono;
             color: #{$logocolor};
           }
+          &:disabled{
+            background-color: transparent;
+          }
         }
         .edit-info{
           color:grey;
@@ -77,6 +80,47 @@
           margin-left: 1.5vw;
           &:nth-child(1) {
             margin-left: 0;
+          }
+
+          &:nth-child(2), &:nth-child(3){
+            color: grey;
+          }
+        }
+      }
+
+      &__companyngitrepo{
+        display: flex;
+        flex-direction: column;
+
+        &__inner{
+          margin-top: 1.5vh;
+          input{
+            font-family: IBM Plex Mono;
+            width:50%;
+            margin-right: 0.5vw;
+            border:none;
+            border-bottom: dotted 1px #{$logocolor};
+            //outline:none;
+            text-align: center;
+            &::placeholder{
+              text-align: center;
+              color: #{$logocolor};
+              font-size:14px;
+              font-family: IBM Plex Mono;
+            }  
+            &:disabled{
+              background-color: transparent;
+            }          
+          }
+
+        }
+
+        .edit-info{
+          color: grey;
+
+          &:hover{
+            color:#{$logocolor};
+            cursor: pointer;
           }
         }
       }
@@ -119,6 +163,7 @@
         margin-top: 25px;
         display: flex;
         flex-direction: column;
+        align-items: center;
         button {
           border: none;
           background-color: transparent;
@@ -126,6 +171,7 @@
           font-weight: 600;
           margin-top: 20px;
           color: rgb(78, 78, 78);
+          width: fit-content;
 
           &:hover {
             cursor: pointer;

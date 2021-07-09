@@ -47,6 +47,9 @@ export default function SimpleSlider(props) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.getExploreReducer);
 
+  // const [users, setUsers] = useState([]);
+
+
   useEffect(() => {
     axios
       .get("https://api.recollect.today/explore")
@@ -56,7 +59,11 @@ export default function SimpleSlider(props) {
 
   return (
     <div className="exploreContainer">
+
+      {/* {state !== null && console.log("state is : ", state.users.users)} */}
+
       {/* {state !== null && console.log("state is : ", state)} */}
+
       {/* Search 검색바  */}
       <div className="searchContainer">
         <div className="exploreHeader"> Explore </div>
@@ -77,23 +84,23 @@ export default function SimpleSlider(props) {
           </div>
         </div>
       </div>
+
       <div className="exploreProfileCarousal">
         <Slider {...settings}>
-          {state !== null &&
-            state.users.users.map((userInfo) => {
-              return (
-                <ExploreProfileList
-                  className="explore"
-                  key={userInfo.id}
-                  user={userInfo}
-                  id="carousel"
-                />
-              );
-            })}
+          {userInfoLists.map((userInfo) => {
+            return (
+              <ExploreProfileList
+                key={userInfo.id}
+                username={userInfo.username}
+                id="carousel"
+              />
+            );
+          })}
         </Slider>
       </div>
 
       {/* bookmark 더미데이터 주소 확인필요  */}
+
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
         <ul>
@@ -104,6 +111,6 @@ export default function SimpleSlider(props) {
           <BigBookmark />
         </ul>
       </div>
-    </div>
+  </div> 
   );
 }
