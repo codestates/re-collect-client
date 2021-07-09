@@ -62,20 +62,6 @@
         }
       }
     }
-    //// Carousal Tablet
-    .exploreProfileCarousal {
-      // .searchProfileWrapper {
-      //   width: 592px;
-      //   overflow: hidden;
-      // }
-      // .searchProfileLists {
-      //   margin: 0;
-      //   padding: 0;
-      //   display: flex;
-      //   width: 592px;
-      //   transition: transform 0.2s;
-      // }
-    }
 
     //// interestingBookmark Tablet
     .interestingBookmarksCategory {
@@ -153,20 +139,6 @@
         }
       }
     }
-    //// explore carousal mobile
-    // .exploreProfileCarousal {
-    //   // .searchProfileWrapper {
-    //   //   width: 295px;
-    //   //   overflow: hidden;
-    //   // }
-    //   // .searchProfileLists {
-    //   //   margin: 0;
-    //   //   padding: 0;
-    //   //   display: flex;
-    //   //   width: 295px;
-    //   //   transition: transform 0.2s;
-    //   // }
-    // }
 
     //// interestingBookmark mobile
     .interestingBookmarksCategory {
@@ -185,20 +157,6 @@
         padding: 0;
         text-align: center;
         width: 292px;
-
-        // li {
-        //   display: flex;
-        //   align-items: center;
-        //   justify-content: center;
-        //   width: 293px;
-        //   height: 25px;
-        //   border: 1px solid black;
-        //   margin: 12px;
-        // }
-        // li:hover {
-        //   cursor: pointer;
-        //   color: #214bc8;
-        // }
       }
     }
   }
@@ -299,20 +257,6 @@
   box-shadow: #{$boxshadow};
 }
 
-<<<<<<< HEAD
-
-///explore__searchProfile///
-///landing__searchProfile-->landing.scss에 작성함.
-.explore__searchProfile {
-  width: 255px;
-  height: 340px;
-  margin: 0 28px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &__profileImage {
-=======
 .searchProfile {
   width: 200px;
   min-height: 320px;
@@ -325,7 +269,6 @@
     cursor: pointer;
   }
   .profileImage {
->>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
     margin-top: 25px;
     font-size: 85px;
   }
@@ -356,9 +299,6 @@
     }
   }
 }
-
-
-
 
 //// interesting bookmark Laptop
 .interestingBookmarksCategory {
