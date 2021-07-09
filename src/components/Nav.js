@@ -11,6 +11,7 @@ function Nav(props) {
     setVisible((isvisible) => !isvisible);
   };
 
+  const accessToken = localStorage.getItem("accessToken");
   //isLogin true 인 경우 Login 메뉴 Profile 로 전환 필요//
   //로그인 클릭시 로그인 팝업 노출, post/login, validation check//
 
@@ -49,13 +50,18 @@ function Nav(props) {
         >
           Explore
         </Link>
-        <div
-          onClick={() => {
-            props.setModalMode("login");
-          }}
-        >
-          Login
-        </div>
+          {accessToken ? (
+            <>
+            <Link to="/profile">Profile</Link>
+            <div onClick={() => {props.setModalMode("logout");}}>
+              Logout
+            </div>
+            </>
+          ) : (
+              <div onClick={() => {props.setModalMode("login");}}>
+                Login
+              </div>
+          )}
       </div>
     </div>
   );
