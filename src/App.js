@@ -11,12 +11,15 @@ import LoginModal from "./components/LoginModal";
 import SignUpModal from "./components/SignUpModal";
 import FindPwdModal from "./components/FindPwdModal";
 import SuccessSignUpModal from "./components/SuccessSignUpModal";
+import ExploreModal from "./components/ExploreModal";
+import Carousel from "./components/TestCarousel";
 import ChangePwdModal from "./components/ChangePwdModal";
 import LogoutModal from "./components/LogoutModal";
 import DelAccountModal from "./components/DelAccountModal";
-import ExploreModal from "./components/ExploreModal";
-import Carousel from "./components/TestCarousel";
+import SetNewPwdModal from "./components/SetNewPwdModal";
 import Loading from "./components/Loading";
+import SetNewPwd from "./page/SetNewPwd";
+import SuccessSetNewPwd from "./components/SuccessSetNewPwd";
 import {
   Switch,
   Route,
@@ -54,17 +57,35 @@ function App() {
       {modalMode === "delAccount" && (
         <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
+      {modalMode === "setNewPwd" && (
+        <SetNewPwdModal modalMode={modalMode} setModalMode={setModalMode} />
+      )}
+      {modalMode === "successSetNewPwd" && (
+        <SuccessSetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
+      )}
+      {modalMode === "changePwd" && (
+        <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />
+      )}
+      {modalMode === "logout" && (
+        <LogoutModal modalMode={modalMode} setModalMode={setModalMode} />
+      )}
+      {modalMode === "delAccount" && (
+        <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
+      )}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
       <Switch>
+        <Route path="/loading" component={Loading}></Route>
         <Route path="/error" component={Error}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
+        <Route path="/login/pwd/reset">
+          <SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
+        </Route>
         <Route path="/profile">
           <Profile modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/explore" component={Explore}></Route>
-        {/* <Route path="/test" component={Carousel}></Route> */}
         <Route exact path="/" component={Landing}></Route>
         <Route component={Error} />
       </Switch>

@@ -18,8 +18,8 @@ export default function SimpleSlider(props) {
     slidesToShow: 4, // 한번에 몇개의 슬라이드를 보여줄 지
     arrows: true, // 옆으로 이동하는 화살표 표시 여부
     slidesToScroll: 1, // 한번 스크롤시 몇장의 슬라이드를 넘길지
-    prevArrow: <FontAwesomeIcon icon={faArrowLeft} />,
-    nextArrow: <FontAwesomeIcon icon={faArrowRight} />,
+    prevArrow: <button>←</button>,
+    nextArrow: <button>→</button>,
 
     responsive: [
       // 반응형 웹 구현 옵션
@@ -46,6 +46,7 @@ export default function SimpleSlider(props) {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.getExploreReducer);
+
   // const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -58,6 +59,7 @@ export default function SimpleSlider(props) {
   return (
     <div className="exploreContainer">
       {/* {state !== null && console.log("state is : ", state.users.users)} */}
+      {/* {state !== null && console.log("state is : ", state)} */}
       {/* Search 검색바  */}
       <div className="searchContainer">
         <div className="exploreHeader"> Explore </div>
@@ -84,28 +86,17 @@ export default function SimpleSlider(props) {
             state.users.users.map((userInfo) => {
               return (
                 <ExploreProfileList
+                  className="explore"
                   key={userInfo.id}
-                  username={userInfo.username}
+                  user={userInfo}
                   id="carousel"
                 />
               );
             })}
         </Slider>
       </div>
-      {/* <div className="exploreProfileCarousal">
-        <Slider {...settings}>
-          {userInfoLists.map((userInfo) => {
-            return (
-              <ExploreProfileList
-                key={userInfo.id}
-                username={userInfo.username}
-                id="carousel"
-              />
-            );
-          })}
-        </Slider>
-      </div> */}
 
+      {/* bookmark 더미데이터 주소 확인필요  */}
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
         <ul>
