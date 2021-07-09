@@ -7,6 +7,8 @@ import BottomPopup from "../components/BottomPopup";
 import Recollect from "../components/Recollect";
 import ToCollectBtn from "../components/ToCollectBtn";
 import BookmarksContainer from "../components/BookmarksContainer";
+import { useSelector, useDispatch } from "react-redux";
+import { recollect } from "../modules/getRecollect";
 
 // 지우님  "카테고리 별로 묶고 그 안에서 또 저장된 순서대로 정렬" 한 결과가 아래 fakeData 형식이면 될 것 같습니다!
 
@@ -71,9 +73,11 @@ const fakeData = [
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
   const [data, setData] = useState(fakeData);
+  const dispatch = useDispatch();
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
+    dispatch(recollect());
   };
 
   return (

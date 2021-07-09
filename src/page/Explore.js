@@ -46,7 +46,6 @@ export default function SimpleSlider(props) {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.getExploreReducer);
-  // const [users, setUsers] = useState([]);
 
   useEffect(() => {
     axios
@@ -57,7 +56,7 @@ export default function SimpleSlider(props) {
 
   return (
     <div className="exploreContainer">
-      {/* {state !== null && console.log("state is : ", state.users.users)} */}
+      {/* {state !== null && console.log("state is : ", state)} */}
       {/* Search 검색바  */}
       <div className="searchContainer">
         <div className="exploreHeader"> Explore </div>
@@ -79,44 +78,22 @@ export default function SimpleSlider(props) {
         </div>
       </div>
       <div className="exploreProfileCarousal">
-        {/* 더많은 데이터 필요 (10개정도?)
-        필요한 데이터 
-        {
-          id: 1,
-          username: "김지우",
-          recollects: 30,
-          followers: 200,
-          follwing: 300,
-          company: "Team Collector",
-          github: "github.com/re-collect",
-        },   */}
-        {/* <Slider {...settings}>
+        <Slider {...settings}>
           {state !== null &&
             state.users.users.map((userInfo) => {
               return (
                 <ExploreProfileList
+                  className="explore"
                   key={userInfo.id}
-                  username={userInfo.username}
+                  user={userInfo}
                   id="carousel"
                 />
               );
             })}
-        </Slider> */}
-      </div>
-      <div className="exploreProfileCarousal">
-        <Slider {...settings}>
-          {userInfoLists.map((userInfo) => {
-            return (
-              <ExploreProfileList
-                key={userInfo.id}
-                username={userInfo.username}
-                id="carousel"
-              />
-            );
-          })}
         </Slider>
       </div>
 
+      {/* bookmark 더미데이터 주소 확인필요  */}
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
         <ul>

@@ -62,20 +62,6 @@
         }
       }
     }
-    //// Carousal Tablet
-    .exploreProfileCarousal {
-      // .searchProfileWrapper {
-      //   width: 592px;
-      //   overflow: hidden;
-      // }
-      // .searchProfileLists {
-      //   margin: 0;
-      //   padding: 0;
-      //   display: flex;
-      //   width: 592px;
-      //   transition: transform 0.2s;
-      // }
-    }
 
     //// interestingBookmark Tablet
     .interestingBookmarksCategory {
@@ -153,20 +139,6 @@
         }
       }
     }
-    //// explore carousal mobile
-    // .exploreProfileCarousal {
-    //   // .searchProfileWrapper {
-    //   //   width: 295px;
-    //   //   overflow: hidden;
-    //   // }
-    //   // .searchProfileLists {
-    //   //   margin: 0;
-    //   //   padding: 0;
-    //   //   display: flex;
-    //   //   width: 295px;
-    //   //   transition: transform 0.2s;
-    //   // }
-    // }
 
     //// interestingBookmark mobile
     .interestingBookmarksCategory {
@@ -299,33 +271,17 @@
   box-shadow: #{$boxshadow};
 }
 
-<<<<<<< HEAD
-
-///explore__searchProfile///
-///landing__searchProfile-->landing.scss에 작성함.
 .explore__searchProfile {
-  width: 255px;
-  height: 340px;
-  margin: 0 28px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &__profileImage {
-=======
-.searchProfile {
   width: 200px;
   min-height: 320px;
   height: 45vh;
-  //margin: 0 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   &:hover {
     cursor: pointer;
   }
-  .profileImage {
->>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
+  .explore__searchProfile__profileImage {
     margin-top: 25px;
     font-size: 85px;
   }
@@ -354,12 +310,11 @@
     div {
       margin: 5px;
     }
+    .icon {
+      padding-right: 3px;
+    }
   }
 }
-
-
-
-
 //// interesting bookmark Laptop
 .interestingBookmarksCategory {
   margin: 105px 0;

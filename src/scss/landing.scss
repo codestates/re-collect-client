@@ -459,35 +459,6 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-<<<<<<< HEAD
-        border: solid 1px #000;
-        text-align: center;
-        width: 21vw;
-        aspect-ratio: 3/4;
-        box-shadow: #{$boxshadow};
-        &__profileImage {
-          margin-top: -8%;
-          font-size: 7vw;
-        }
-        p {
-          margin-top: 3%;
-          font-size: 2vw;
-        }
-
-        .socialInfo {
-          font-size: 1vw;
-          display: flex;
-          justify-content: space-around;
-        }
-
-        .companyInfo {
-          margin-top: 10%;
-          font-size: 1vw;
-          div {
-            margin: 3px;
-          }
-        }
-=======
 
         background-color: rgba(233, 229, 229, 0.425);
 
@@ -507,7 +478,6 @@ body {
             //margin-left: 5%;
           }
         }
->>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
       }
     }
     .collection-desc {
@@ -622,9 +592,6 @@ body {
       }
     }
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 body {
@@ -1035,4 +1002,3 @@ body {
     }
   }
 }
->>>>>>> 1484212a253c2b41665280d4afa0b09519c6408a
