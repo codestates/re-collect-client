@@ -12,7 +12,6 @@ import SignUpModal from "./components/SignUpModal";
 import FindPwdModal from "./components/FindPwdModal";
 import SuccessSignUpModal from "./components/SuccessSignUpModal";
 import ExploreModal from "./components/ExploreModal";
-import Carousel from "./components/TestCarousel";
 import ChangePwdModal from "./components/ChangePwdModal";
 import LogoutModal from "./components/LogoutModal";
 import DelAccountModal from "./components/DelAccountModal";

@@ -9,6 +9,7 @@ import BigBookmark from "../components/BigBookmark";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { getExploreInfo } from "../modules/getExplore";
+import SlickArrow from "../components/SlickArrow";
 
 export default function SimpleSlider(props) {
   const settings = {
@@ -18,8 +19,8 @@ export default function SimpleSlider(props) {
     slidesToShow: 4, // 한번에 몇개의 슬라이드를 보여줄 지
     arrows: true, // 옆으로 이동하는 화살표 표시 여부
     slidesToScroll: 1, // 한번 스크롤시 몇장의 슬라이드를 넘길지
-    prevArrow: <button>←</button>,
-    nextArrow: <button>→</button>,
+    prevArrow: <SlickArrow direction={faArrowLeft} />,
+    nextArrow: <SlickArrow direction={faArrowRight} />,
 
     responsive: [
       // 반응형 웹 구현 옵션
@@ -46,13 +47,16 @@ export default function SimpleSlider(props) {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.getExploreReducer);
-
-  // const [users, setUsers] = useState([]);
+  const temp = [1, 2, 3, 4, 5, 6];
+  const [users, Setusers] = useState(null);
 
   useEffect(() => {
     axios
       .get("https://api.recollect.today/explore")
-      .then((res) => dispatch(getExploreInfo(res.data)))
+      .then((res) => {
+        Setusers(res.data.users);
+        dispatch(getExploreInfo(res.data));
+      })
       .catch((err) => console.log("Error to get Explore info"));
   }, []); // 빈배열을 넘겨 최초 한번만 실행
 
@@ -82,6 +86,17 @@ export default function SimpleSlider(props) {
       </div>
       <div className="exploreProfileCarousal">
         <Slider {...settings}>
+          {/* {users !== null &&
+            users.map((user) => {
+              return (
+                <ExploreProfileList
+                  className="explore"
+                  key={user.id}
+                  user={user}
+                  id="carousel"
+                />
+              );
+            })} */}
           {state !== null &&
             state.users.users.map((userInfo) => {
               return (
@@ -110,3 +125,8 @@ export default function SimpleSlider(props) {
     </div>
   );
 }
+
+// 0. react-slick 에러 화살표 = done
+// 1. 화면에 렌더링안되는부분 =
+// 2. css깨지는 부분 (css 다시 정리하기)
+// 3. 모달 가운데정렬
