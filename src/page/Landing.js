@@ -1,16 +1,15 @@
-import { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Flip, Fade, Zoom, Bounce } from "react-reveal";
-import Pulse from "react-reveal/Pulse";
-import Jello from "react-reveal/Jello";
-import ExploreProfile from "../components/ExploreProfile";
-import ExploreProfileList from "../components/ExploreProfileList";
-import { userInfoLists } from "../components/Explore_temp";
+import { useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Flip, Fade, Zoom, Bounce } from 'react-reveal';
+import Pulse from 'react-reveal/Pulse';
+import Jello from 'react-reveal/Jello';
+import ExploreProfileList from '../components/ExploreProfileList';
+import { userInfoLists } from '../components/Explore_temp';
 
 function Landing() {
   ///새로고침시 최상단이동//
   useEffect(() => {
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     };
   }, []);
@@ -196,7 +195,12 @@ function Landing() {
             <Pulse left cascade delay={1000}>
               <div className="profile-wrapper">
                 {userInfoLists.slice(0, 4).map((userInfo) => (
-                  <ExploreProfileList key={userInfo.id} className="landing" props="cascade"/>
+                  <ExploreProfileList
+                    key={userInfo.id}
+                    className="landing"
+                    user={userInfo}
+                    cascade="cascade"
+                  />
                 ))}
               </div>
             </Pulse>
@@ -211,7 +215,7 @@ function Landing() {
               </Fade>
             </div>
           </div>
-          
+
           <Fade left duration={2500}>
             <div className="sectionslice slicered-left">
               <div className="triangle"></div>

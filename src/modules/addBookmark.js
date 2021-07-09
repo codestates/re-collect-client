@@ -20,22 +20,22 @@ export const addBookmark = (bookmark) => async (dispatch, getState) => {
   const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, false, getState);
 
-  delete convertedBookmark.id;
-
   dispatch({
     type: POST_BOOKMARK,
   });
   try {
+    console.log('여기는 오니?');
     const postbookmark = await axios.post(
       'https://api.recollect.today/collect',
       {
         ...convertedBookmark,
       },
       {
-        headers: { authorization: accessToken },
+        headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
       }
     );
+    console.log('여기까지는 오니?');
     dispatch({ type: POST_BOOKMARK_SUCCESS });
   } catch (e) {
     dispatch({

@@ -5,6 +5,7 @@ import { editBookmark } from '../modules/editBookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { getBookmark } from '../modules/getBookmark';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -43,7 +44,7 @@ const customStyles = {
 };
 
 function CollectInputBox(props) {
-  const isLogin = useSelector((state) => state.addBookmarkReducer.user.isLogin);
+  const accessToken = localStorage.getItem('accessToken');
   const { isEdit, data } = useSelector(
     (state) => state.editBookmarkReducer.tempBookmark
   );
@@ -111,8 +112,9 @@ function CollectInputBox(props) {
   };
 
   const handleAddBookmark = () => {
-    if (isLogin) {
+    if (accessToken) {
       dispatch(addBookmark(bookmarkInput));
+      dispatch(getBookmark());
     } else {
       dispatch(addGuestBookmark(bookmarkInput));
     }
@@ -120,7 +122,7 @@ function CollectInputBox(props) {
   };
 
   const handleEditBookmark = () => {
-    if (isLogin) {
+    if (accessToken) {
       dispatch(editBookmark(bookmarkInput));
     }
   };

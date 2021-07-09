@@ -22,11 +22,20 @@ export const loginThunk = (userinfo) => async (dispatch) => {
       }
     );
 
-    const accessToken = result.headers.authorization;
-    localStorage.setItem('accessToken', accessToken);
-    dispatch({ type: LOGIN_SUCCESS });
+    const accessToken = result.data.accessToken;
+
+    if (accessToken) {
+      localStorage.setItem('accessToken', accessToken);
+      dispatch({ type: LOGIN_SUCCESS });
+    } else {
+      dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
+    }
   } catch (e) {
-    dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
+    if (e.response) {
+      dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
+      return;
+    }
+    dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
   }
 };
 
@@ -42,6 +51,7 @@ export const loginReducer = (state = initialState, action) => {
       };
 
     case LOGIN_SUCCESS:
+      console.log('여기까지 오는거니?');
       return {
         ...state,
         user: {

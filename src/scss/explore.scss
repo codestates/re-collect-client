@@ -62,20 +62,6 @@
         }
       }
     }
-    //// Carousal Tablet
-    .exploreProfileCarousal {
-      // .searchProfileWrapper {
-      //   width: 592px;
-      //   overflow: hidden;
-      // }
-      // .searchProfileLists {
-      //   margin: 0;
-      //   padding: 0;
-      //   display: flex;
-      //   width: 592px;
-      //   transition: transform 0.2s;
-      // }
-    }
 
     //// interestingBookmark Tablet
     .interestingBookmarksCategory {
@@ -153,20 +139,6 @@
         }
       }
     }
-    //// explore carousal mobile
-    // .exploreProfileCarousal {
-    //   // .searchProfileWrapper {
-    //   //   width: 295px;
-    //   //   overflow: hidden;
-    //   // }
-    //   // .searchProfileLists {
-    //   //   margin: 0;
-    //   //   padding: 0;
-    //   //   display: flex;
-    //   //   width: 295px;
-    //   //   transition: transform 0.2s;
-    //   // }
-    // }
 
     //// interestingBookmark mobile
     .interestingBookmarksCategory {
@@ -299,22 +271,32 @@
   box-shadow: #{$boxshadow};
 }
 
-///explore__searchProfile///
-///landing__searchProfile-->landing.scss에 작성함.
 .explore__searchProfile {
-  width: 255px;
-  height: 340px;
-  margin: 0 28px;
-  border: 1px solid black;
+  width: 200px;
+  min-height: 320px;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  &__profileImage {
-    .searchProfile {
-      width: 200px;
-      min-height: 320px;
-      height: 45vh;
-      //margin: 0 30px;
+  &:hover {
+    cursor: pointer;
+  }
+  .explore__searchProfile__profileImage {
+    margin-top: 25px;
+    font-size: 85px;
+  }
+  p {
+    margin-top: 0px;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+  .socialInfo {
+    margin-top: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -352,28 +334,30 @@
         }
       }
     }
-
-    //// interesting bookmark Laptop
-    .interestingBookmarksCategory {
-      margin: 105px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      p {
-        // font-size: 30px;
-        font-size: 2.4vw;
-        margin: 0;
-      }
-      ul {
-        margin-top: 30px;
-        padding: 0;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        width: 530px;
-      }
+    .icon {
+      padding-right: 3px;
     }
+  }
+}
+//// interesting bookmark Laptop
+.interestingBookmarksCategory {
+  margin: 105px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  p {
+    // font-size: 30px;
+    font-size: 2.4vw;
+    margin: 0;
+  }
+  ul {
+    margin-top: 30px;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 530px;
   }
 }
