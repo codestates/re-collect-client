@@ -2,6 +2,7 @@ import initialState from './initialState';
 import axios from 'axios';
 import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceBookmarkTest from '../lib/reduceBookmarkTest';
+import { getBookmark } from './getBookmark';
 
 const POST_BOOKMARK = 'POST_BOOKMARK';
 const POST_BOOKMARK_SUCCESS = 'POST_BOOKMARK_SUCCESS';
@@ -16,16 +17,14 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
   dispatch({ type: POST_GUEST_BOOKMARK, bookmark: convertedBookmark });
 };
 
-export const addBookmark = (bookmark) => async (dispatch, getState) => {
+export const addBookmark = (bookmark) => (dispatch, getState) => {
   const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, false, getState);
 
-  dispatch({
-    type: POST_BOOKMARK,
-  });
-  try {
-    console.log('여기는 오니?');
-    const postbookmark = await axios.post(
+  dispatch({ type: POST_BOOKMARK });
+
+  axios
+    .post(
       'https://api.recollect.today/collect',
       {
         ...convertedBookmark,
@@ -34,16 +33,28 @@ export const addBookmark = (bookmark) => async (dispatch, getState) => {
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
       }
-    );
-    console.log('여기까지는 오니?');
-    dispatch({ type: POST_BOOKMARK_SUCCESS });
-  } catch (e) {
-    dispatch({
-      type: POST_BOOKMARK_FAIL,
-      bookmark: convertedBookmark,
-      error: e.response.data.message,
+    )
+    .then(() => {
+      dispatch({ type: POST_BOOKMARK_SUCCESS });
+    })
+    .then(() => {
+      dispatch(getBookmark());
+    })
+    .catch((e) => {
+      if (e.response) {
+        dispatch({
+          type: POST_BOOKMARK_FAIL,
+          bookmark: convertedBookmark,
+          error: e.response.data.message,
+        });
+        return;
+      }
+      dispatch({
+        type: POST_BOOKMARK_FAIL,
+        bookmark: convertedBookmark,
+        error: 'unknown error',
+      });
     });
-  }
 };
 
 export const addBookmarkReducer = (state = initialState, action) => {

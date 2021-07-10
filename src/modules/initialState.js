@@ -82,6 +82,7 @@ const initialState = {
   users: [1, 2, 3],
 
   userBookmarks: {
+    isLoading: false,
     category: [],
     bookmarks: [],
     reducedbookmarks: [],
