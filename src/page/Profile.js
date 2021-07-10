@@ -10,10 +10,10 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getProfile,
   editUsername,
-  editPwd,
   editCompany,
   editGitRepo,
   getFavorite,
+  editPwd,
   delAccount,
 } from "../modules/editProfile";
 
@@ -32,47 +32,58 @@ function Profile(props) {
   const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
   const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
 
-  const [inputValue, setInputValue] = useState({
-    username: profile.username,
-    company: profile.company,
-    gitRepo: profile.gitRepo,
-  });
-
   const userInputRef = useRef("");
   const companyInputRef = useRef("");
   const gitRepoInputRef = useRef("");
   //console.log(inputRef.current, 'ref current???')
+
+  const [inputValue, setInputValue] = useState({
+    username: '',
+    company: '',
+    gitrepo: '',
+  });
+
   //-------------onchange event 랜더링 
-  // const handleInputValue = (e) => {
-  //   const { value, name } = e.target;
-  //   //console.log(value, 'inputvalue')
-  //   console.log(inputValue, "inputValue init");
-  //   setInputValue({
-  //     ...inputValue, //복사
-  //     [name]: value, //name키를 가진 값에 value 할당.
-  //   });
-  // };
+  const handleInputValue = (e) => {
+    const { value, name } = e.target;
+    //console.log(value, 'inputvalue')
+    e.preventDefault();
+    //console.log(inputValue, "inputValue init");
+      setInputValue({
+        ...inputValue, //복사
+        [name]: value, //name키를 가진 값에 value 할당.
+      })      
+
+
+  };
 
 /*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
   const usernameInputActive = (e) => {
-    // const usernameInput = document.getElementsByName("username");
-    // usernameInput[0].readOnly = !usernameInput[0].readOnly;
+    //const usernameInput = document.getElementsByName("username");
+    //usernameInput[0].readOnly = !usernameInput[0].readOnly;
 
     setUsernameInputReadMode(!usernameInputReadMode);
     // setInputReadMode({
     //   ...inputReadMode,
     //   !usernameMode,
     // })
-    userInputRef.current.readOnly = !userInputRef.current.readOnly;
-    userInputRef.current.disabled = !userInputRef.current.disabled;
+     userInputRef.current.readOnly = !userInputRef.current.readOnly;
+     userInputRef.current.disabled = !userInputRef.current.disabled;
 
     console.log(usernameInputReadMode, "= userreadmode");
     if (e.currentTarget.getAttribute("name") === "usernamecheck") {
       console.log(e.currentTarget.getAttribute("name"), 'username target');
-      //dispatch(editUsername(inputValue));
-      console.log(userInputRef.current.value, 'user ref value???????');
-      dispatch(editUsername(userInputRef.current.value));
-      userInputRef.current.value = ""; //초기화시점 체크 필요
+      
+      dispatch(editUsername(inputValue.username));
+      // console.log(userInputRef.current.value, 'user ref value???????');
+      //const userchange = userInputRef.current.value;
+      //dispatch(editUsername(userchange));
+      //userInputRef.current.value = ""; //초기화시점 체크 필요
+      // setInputValue({
+      //   username: '',
+      //   company: '',
+      //   gitRepo: '',
+      // })
     }
 
   };
@@ -80,8 +91,8 @@ function Profile(props) {
 
   /*회사 인풋 활성화 후 체크 버튼 눌렀을 때 회사 변경patch */
   const companyInputActive = (e) => {
-    // const companyInput = document.getElementsByName("company");
-    // companyInput[0].readOnly = !companyInput[0].readOnly;
+    //const companyInput = document.getElementsByName("company");
+    //companyInput[0].readOnly = !companyInput[0].readOnly;
 
     companyInputRef.current.readOnly = !companyInputRef.current.readOnly;
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
@@ -90,18 +101,18 @@ function Profile(props) {
 
     if (e.currentTarget.getAttribute("name") === "companycheck") {
       console.log(e.currentTarget.getAttribute("name"), 'company target');
-      //dispatch(editCompany(inputValue));
-      dispatch(editCompany(companyInputRef.current.value));
-      console.log(companyInputRef.current.value, 'company ref value');
-      companyInputRef.current.value = "";
+      dispatch(editCompany(inputValue.company));
+      //dispatch(editCompany(companyInputRef.current.value));
+      //console.log(companyInputRef.current.value, 'company ref value');
+      //companyInputRef.current.value = "";
     }
   };
 
 
   /*깃레포 인풋 활성화 후 체크 버튼 눌렀을 때 깃레포 변경patch */
   const gitRepoInputActive = (e) => {
-    // const gitRepoInput = document.getElementsByName("gitRepo");
-    // gitRepoInput[0].readOnly = !gitRepoInput[0].readOnly;
+    //const gitRepoInput = document.getElementsByName("gitRepo");
+    //gitRepoInput[0].readOnly = !gitRepoInput[0].readOnly;
 
     setGitRepoInputReadMode(!gitRepoInputReadMode);
 
@@ -110,10 +121,10 @@ function Profile(props) {
     
     if (e.currentTarget.getAttribute("name") === "gitrepocheck") {
       console.log(e.currentTarget.getAttribute("name"), 'gitrepo target');
-      //dispatch(editGitRepo(inputValue));
-      dispatch(editGitRepo(gitRepoInputRef.current.value));
-      console.log(gitRepoInputRef.current.value, 'gitRepo ref value');
-      gitRepoInputRef.current.value = "";
+      dispatch(editGitRepo(inputValue.gitrepo));
+      // dispatch(editGitRepo(gitRepoInputRef.current.value));
+      // console.log(gitRepoInputRef.current.value, 'gitRepo ref value');
+      // gitRepoInputRef.current.value = "";
     }
   };
 
@@ -122,7 +133,7 @@ function Profile(props) {
   useEffect(() => {
     dispatch(getProfile());
     console.log('useeffect get 요청 실행')
-  }, [profile]); //get 요청 실행 시점??
+  }, []); 
 
   return (
     <div className="profile-container">
@@ -139,7 +150,7 @@ function Profile(props) {
                 placeholder={profile.username}
                 readOnly
                 disabled
-                // onChange={handleInputValue}
+                onChange={handleInputValue}
                 ref={userInputRef}
               />
               <FontAwesomeIcon
@@ -150,7 +161,7 @@ function Profile(props) {
               />
             </div>
             <p>{profile.email}</p>
-            <p>Jonined Recollect on {profile.created_at}</p>
+            <p>Jonined Recollect on {profile.createdAt.slice(0,10)}</p>
           </div>
           <div className="profilebox__follow">
             <p>
@@ -176,9 +187,9 @@ function Profile(props) {
                 readOnly
                 disabled
                 placeholder={
-                  profile.company ? profile.company : "Working at..."
+                  profile.company ? `Working at ${profile.company}` : "Working at..."
                 }
-                // onChange={handleInputValue}
+                onChange={handleInputValue}
                 ref={companyInputRef}
               />
               <FontAwesomeIcon
@@ -192,11 +203,11 @@ function Profile(props) {
               <FontAwesomeIcon icon={faGithub} />
               <input
                 type="text"
-                name="gitRepo"
+                name="gitrepo"
                 readOnly
                 disabled
-                placeholder={profile.gitRepo ? profile.gitRepo : "-"}
-                // onChange={handleInputValue}
+                placeholder={profile.gitrepo ? profile.gitrepo : "-"}
+                onChange={handleInputValue}
                 ref={gitRepoInputRef}
               />
               <FontAwesomeIcon

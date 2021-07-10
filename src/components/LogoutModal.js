@@ -32,9 +32,7 @@ function LogoutModal(props) {
           </div>
 
           <div className="logo"> Recollect </div>
-          <p>
-            이메일을 입력하면 <br /> 임시비밀번호를 보내드려요.
-          </p>
+          <p>로그아웃 임시</p>
           <div className="inputContainer">
             <input
               className="findPwdEmail"
@@ -48,25 +46,55 @@ function LogoutModal(props) {
               findPwdValidCheck();
             }}
           >
-            비밀번호 재설정
+            로그아웃
           </button>
           <div className="buttonContainer">
             <div
+              className="closeBtn"
               onClick={() => {
-                props.setModalMode("signup");
+                props.setModalMode("");
               }}
             >
-              회원가입
+              <FontAwesomeIcon icon={faTimes} />
             </div>
-            <div
+
+            <div className="logo"> Recollect </div>
+            <p>
+              이메일을 입력하면 <br /> 임시비밀번호를 보내드려요.
+            </p>
+            <div className="inputContainer">
+              <input
+                className="findPwdEmail"
+                type="email"
+                placeholder=" 이메일"
+              />
+            </div>
+            <div className="findPwdErrorMessage"></div>
+            <button
               onClick={() => {
-                props.setModalMode("login");
+                findPwdValidCheck();
               }}
             >
-              로그인
+              비밀번호 재설정
+            </button>
+            <div className="buttonContainer">
+              <div
+                onClick={() => {
+                  props.setModalMode("signup");
+                }}
+              >
+                회원가입
+              </div>
+              <div
+                onClick={() => {
+                  props.setModalMode("login");
+                }}
+              >
+                로그인
+              </div>
             </div>
+            <div className="signUperrorMessage"> </div>
           </div>
-          <div className="signUperrorMessage"> </div>
         </div>
       </div>
     </div>

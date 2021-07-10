@@ -9,43 +9,16 @@ import ToCollectBtn from "../components/ToCollectBtn";
 import BookmarksContainer from "../components/BookmarksContainer";
 
 import { getBookmark } from "../modules/getBookmark";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { recollect } from "../modules/getRecollect";
 
 export default function Collect() {
-  const accessToken = localStorage.getItem("accessToken");
-  const { guestBookmarks } = useSelector((state) => state.getBookmarkReducer);
-  const { bookmarks, category, reducedbookmarks } = useSelector(
-    (state) => state.getBookmarkReducer.userBookmarks
-  );
-
   const [recollectView, setRecollectView] = useState(false);
-  const [data, setData] = useState({
-    bookmarks: guestBookmarks.bookmarks,
-    category: guestBookmarks.category,
-    reducedbookmarks: guestBookmarks.reducedbookmarks,
-  });
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(getBookmark());
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    setData({
-      ...data,
-      bookmarks: bookmarks,
-      category: category,
-      reducedbookmarks: reducedbookmarks,
-    });
-  }, [bookmarks]);
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
-    dispatch(recollect(data.bookmarks));
+    // dispatch(recollect(data.bookmarks));
   };
   return (
     <>
@@ -65,7 +38,7 @@ export default function Collect() {
                 <UnreadAlarm viewHandler={recollectViewHandler} />
                 <SearchBar />
               </div>
-              <BookmarksContainer data={data.reducedbookmarks} />
+              <BookmarksContainer />
             </div>
           </div>
           <BottomPopup />

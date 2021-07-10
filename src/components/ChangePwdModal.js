@@ -37,18 +37,28 @@ function ChangePwdModal(props) {
         </p> */}
           <div className="inputContainer">
             <input
-              className="findPwdEmail"
-              type="email"
+              className="changePwd"
+              type="password"
               placeholder=" 현재 비밀번호"
             />
+            <input
+              className="changePwd"
+              type="password"
+              placeholder=" 새 비밀번호"
+            />
+            <input
+              className="changePwd"
+              type="password"
+              placeholder=" 비밀번호 확인"
+            />
           </div>
-          <div className="findPwdErrorMessage"></div>
+          <div className="changePwdErrorMessage"></div>
           <button
             onClick={() => {
               findPwdValidCheck();
             }}
           >
-            비밀번호 재설정
+            비밀번호 변경
           </button>
           <div className="buttonContainer">
             {/* <div
@@ -68,6 +78,7 @@ function ChangePwdModal(props) {
           </div>
           <div className="signUperrorMessage"> </div>
         </div>
+        <div className="changePwderrorMessage"> </div>
       </div>
     </div>
   );

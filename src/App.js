@@ -28,7 +28,7 @@ import {
 
 function App() {
   const [modalMode, setModalMode] = useState("");
-
+  const accessToken = localStorage.getItem("accessToken");
   // 모달창 on인상태, 스크롤 불가 //
   useEffect(() => {
     const body = document.querySelector("body");
@@ -83,6 +83,7 @@ function App() {
       )}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
+
       <Switch>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/error" component={Error}></Route>

@@ -16,6 +16,14 @@
     align-items: center;
   }
 
+  &__text {
+    position: relative;
+    top: -70px;
+    width: 80%;
+    height: 0;
+    text-align: center;
+  }
+
   &__input,
   &__input--url {
     border-radius: 0;
@@ -117,6 +125,7 @@
   }
 
   &__btnSection {
+    height: 36px;
     width: 80%;
     display: inline-block;
     text-align: unset;
@@ -126,16 +135,49 @@
     width: 70px;
     height: 36px;
     border: 1px rgba(0, 0, 0, 0.5) solid;
-    background-color: transparent;
+    background-color: white;
     font-size: 16px;
     font-family: 'Noto Sans KR';
     cursor: pointer;
+    &:hover {
+      box-shadow: #{$btnboxshadow};
+    }
     &.left {
       float: left;
+      &:disabled {
+        cursor: default;
+        &:hover {
+          box-shadow: none;
+        }
+      }
     }
     &.right {
       float: right;
+      &:disabled {
+        cursor: default;
+        &:hover {
+          box-shadow: none;
+        }
+      }
     }
+  }
+
+  &__deleteBtnSection {
+    height: 0;
+    width: 80%;
+  }
+
+  &__deleteBtn {
+    position: relative;
+    top: 17px;
+    width: 100%;
+    height: 36px;
+    border: 1px #{$errorcolor} solid;
+    color: #{$errorcolor};
+    background-color: white;
+    font-size: 16px;
+    font-family: 'Noto Sans KR';
+    cursor: pointer;
     &:hover {
       box-shadow: #{$btnboxshadow};
     }
