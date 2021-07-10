@@ -19,34 +19,39 @@ function ChangePwdModal(props) {
     }
   };
   return (
-    <div className="modalWrapper">
-      <div className="findPwdpModal">
-        <div
-          className="closeBtn"
-          onClick={() => {
-            props.setModalMode("");
-          }}
-        >
-          <FontAwesomeIcon icon={faTimes} />
-        </div>
+    <div className="modal">
+      <div className="modalWrapper">
+        <div className="findPwdpModal">
+          <div
+            className="closeBtn"
+            onClick={() => {
+              props.setModalMode("");
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
 
-        <div className="logo"> Recollect </div>
-        {/* <p>
+          <div className="logo"> Recollect </div>
+          {/* <p>
           이메일을 입력하면 <br /> 임시비밀번호를 보내드려요.
         </p> */}
-        <div className="inputContainer">
-          <input className="findPwdEmail" type="email" placeholder=" 현재 비밀번호" />
-        </div>
-        <div className="findPwdErrorMessage"></div>
-        <button
-          onClick={() => {
-            findPwdValidCheck();
-          }}
-        >
-          비밀번호 재설정
-        </button>
-        <div className="buttonContainer">
-          {/* <div
+          <div className="inputContainer">
+            <input
+              className="findPwdEmail"
+              type="email"
+              placeholder=" 현재 비밀번호"
+            />
+          </div>
+          <div className="findPwdErrorMessage"></div>
+          <button
+            onClick={() => {
+              findPwdValidCheck();
+            }}
+          >
+            비밀번호 재설정
+          </button>
+          <div className="buttonContainer">
+            {/* <div
             onClick={() => {
               props.setModalMode("signup");
             }}
@@ -60,8 +65,9 @@ function ChangePwdModal(props) {
           >
             로그인
           </div> */}
+          </div>
+          <div className="signUperrorMessage"> </div>
         </div>
-        <div className="signUperrorMessage"> </div>
       </div>
     </div>
   );

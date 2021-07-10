@@ -43,42 +43,44 @@ function SetNewPwdModal(props) {
   };
 
   return (
-    <div className="modalWrapper">
-      <div className="setNewPwdmodal">
-        <div
-          className="closeBtn"
-          onClick={() => {
-            props.setModalMode("");
-          }}
-        >
-          <FontAwesomeIcon icon={faTimes} />
+    <div className="modal">
+      <div className="modalWrapper">
+        <div className="setNewPwdmodal">
+          <div
+            className="closeBtn"
+            onClick={() => {
+              props.setModalMode("");
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
+          <div className="logo"> Recollect </div>
+          <div className="inputContainer">
+            <input
+              className="tempPwd"
+              type="password"
+              placeholder="임시비밀번호 6자리"
+            />
+            <input
+              className="resetPwd"
+              type="password"
+              placeholder=" 새로운 비밀번호"
+            />
+            <input
+              className="resetPwdCheck"
+              type="password"
+              placeholder=" 비밀번호 확인"
+            />
+          </div>
+          <button
+            onClick={() => {
+              signUpValidCheck();
+            }}
+          >
+            새 비밀번호 설정하기
+          </button>
+          <div className="errorMessage"> </div>
         </div>
-        <div className="logo"> Recollect </div>
-        <div className="inputContainer">
-          <input
-            className="tempPwd"
-            type="password"
-            placeholder="임시비밀번호 6자리"
-          />
-          <input
-            className="resetPwd"
-            type="password"
-            placeholder=" 새로운 비밀번호"
-          />
-          <input
-            className="resetPwdCheck"
-            type="password"
-            placeholder=" 비밀번호 확인"
-          />
-        </div>
-        <button
-          onClick={() => {
-            signUpValidCheck();
-          }}
-        >
-          새 비밀번호 설정하기
-        </button>
-        <div className="errorMessage"> </div>
       </div>
     </div>
   );

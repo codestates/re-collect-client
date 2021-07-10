@@ -17,7 +17,7 @@ function ExploreProfileList({ className, ...props }, settings) {
         <FontAwesomeIcon icon={faUserCircle} />
       </div>
 
-      {/* <p> {props.user.username} </p> */}
+      {props.user.username ? `${props.user.username}` : "-"}
 
       <div className="socialInfo">
         <div>
@@ -36,11 +36,11 @@ function ExploreProfileList({ className, ...props }, settings) {
       <div className="companyInfo">
         <div>
           <FontAwesomeIcon className="icon" icon={faLaptop} />
-          {/* {props.user.company ? `Work at ${props.user.company}` : '-'} */}
+          {props.user.company ? `Work at ${props.user.company}` : "-"}
         </div>
         <div>
           <FontAwesomeIcon className="icon" icon={faGithub} />
-          {/* {props.user.gitRepo ? `${props.user.gitRepo}` : '-'} */}
+          {props.user.gitRepo ? `${props.user.gitRepo}` : "-"}
         </div>
       </div>
     </div>

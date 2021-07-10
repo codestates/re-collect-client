@@ -1,10 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import ExploreProfileList from "../components/ExploreProfileList";
-import { userInfoLists } from "../components/Explore_temp";
 import BigBookmark from "../components/BigBookmark";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -47,14 +46,13 @@ export default function SimpleSlider(props) {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.getExploreReducer);
-  const temp = [1, 2, 3, 4, 5, 6];
-  const [users, Setusers] = useState(null);
+  const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
+  // 더미데이터 요청 //
   useEffect(() => {
     axios
       .get("https://api.recollect.today/explore")
       .then((res) => {
-        Setusers(res.data.users);
         dispatch(getExploreInfo(res.data));
       })
       .catch((err) => console.log("Error to get Explore info"));
@@ -62,9 +60,6 @@ export default function SimpleSlider(props) {
 
   return (
     <div className="exploreContainer">
-      {/* {state !== null && console.log("state is : ", state.users.users)} */}
-      {/* {state !== null && console.log("state is : ", state)} */}
-      {/* Search 검색바  */}
       <div className="searchContainer">
         <div className="exploreHeader"> Explore </div>
         <div className="searchBar">
@@ -86,32 +81,31 @@ export default function SimpleSlider(props) {
       </div>
       <div className="exploreProfileCarousal">
         <Slider {...settings}>
-          {/* {users !== null &&
-            users.map((user) => {
-              return (
-                <ExploreProfileList
-                  className="explore"
-                  key={user.id}
-                  user={user}
-                  id="carousel"
-                />
-              );
-            })} */}
-          {state !== null &&
-            state.users.users.map((userInfo) => {
-              return (
-                <ExploreProfileList
-                  className="explore"
-                  key={userInfo.id}
-                  user={userInfo}
-                  id="carousel"
-                />
-              );
-            })}
+          {/* users데이터를 받아와서 렌덜할시 끊기는 오류가 있어서 fakeData사용 */}
+          {state === null
+            ? fakeData.map((el) => {
+                return (
+                  <ExploreProfileList
+                    className="explore"
+                    key={el.id}
+                    user={el}
+                    id="carousel"
+                  />
+                );
+              })
+            : state.users.users.map((userInfo) => {
+                return (
+                  <ExploreProfileList
+                    className="explore"
+                    key={userInfo.id}
+                    user={userInfo}
+                    id="carousel"
+                  />
+                );
+              })}
         </Slider>
       </div>
-
-      {/* bookmark 더미데이터 주소 확인필요  */}
+      {/* bookmark 더미데이터 initialState에 넣어두는게 맞을지? */}
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
         <ul>
@@ -127,6 +121,7 @@ export default function SimpleSlider(props) {
 }
 
 // 0. react-slick 에러 화살표 = done
-// 1. 화면에 렌더링안되는부분 =
-// 2. css깨지는 부분 (css 다시 정리하기)
-// 3. 모달 가운데정렬
+// 1. 화면에 렌더링안되는부분 = done
+// 2. css깨지는 부분 (css 다시 정리하기) = done
+// 3. 모달 가운데정렬 = done
+// 4. 모달on시 background 클릭 X =

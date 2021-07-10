@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Landing from "./page/Landing";
@@ -28,6 +28,16 @@ import {
 
 function App() {
   const [modalMode, setModalMode] = useState("");
+
+  // 모달창 on인상태, 스크롤 불가 //
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (modalMode !== "") {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "scroll";
+    }
+  });
 
   return (
     <Router>
@@ -84,7 +94,9 @@ function App() {
         <Route path="/profile">
           <Profile modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
-        <Route path="/explore" component={Explore}></Route>
+        <Route path="/explore" component={Explore}>
+          <Explore modalMode={modalMode} setModalMode={setModalMode} />
+        </Route>
         <Route exact path="/" component={Landing}></Route>
         <Route component={Error} />
       </Switch>
