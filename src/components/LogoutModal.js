@@ -32,7 +32,7 @@ function LogoutModal(props) {
 
         <div className="logo"> Recollect </div>
         <p>
-          이메일을 입력하면 <br /> 임시비밀번호를 보내드려요.
+          로그아웃 임시
         </p>
         <div className="inputContainer">
           <input className="findPwdEmail" type="email" placeholder=" 이메일" />
@@ -43,7 +43,7 @@ function LogoutModal(props) {
             findPwdValidCheck();
           }}
         >
-          비밀번호 재설정
+          로그아웃
         </button>
         <div className="buttonContainer">
           <div

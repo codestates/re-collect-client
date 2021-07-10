@@ -2092,6 +2092,44 @@ body {
   color: black;
   font-size: 9px;
 }
+.modalWrapper .changePwdpModal {
+  display: flex;
+  width: 100%;
+  height: 270px;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .changePwdpModal p {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+.modalWrapper .changePwdpModal .inputContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .changePwdpModal .inputContainer input {
+  margin-top: 8px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.modalWrapper .changePwdpModal .inputContainer input:first-child {
+  margin-bottom: 8px;
+}
+.modalWrapper .changePwdpModal button {
+  margin-top: 15px;
+}
+.modalWrapper .changePwdpModal .changePwdErrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
 .modalWrapper .successSignupModal {
   display: flex;
   height: 270px;
@@ -2140,7 +2178,7 @@ body {
   color: black;
   font-size: 9px;
 }
-@charset "UTF-8";
+
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2176,7 +2214,7 @@ body {
 .nav-container__inner-container {
   float: right;
   line-height: 80px;
-  width: 40vw;
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2201,7 +2239,10 @@ body {
 
 @media (max-width: 834px) {
   body .nav-container__inner-container {
-    width: 50vw;
+    width: 55vw;
+  }
+  body .nav-container__inner-container__login-container {
+    width: 35%;
   }
 }
 @media (max-width: 600px) {
@@ -2229,11 +2270,12 @@ body {
   }
   body .nav-container .toggle.on {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 92vw;
     border-top: solid 1px rgba(119, 119, 119, 0.425);
     margin-right: 2vw;
     margin-top: 1%;
+    font-size: 2.6vw;
   }
   body .nav-container .toggle.on a {
     display: flex;
@@ -2617,7 +2659,7 @@ body {
     display: none;
   }
 }
-@charset "UTF-8";
+
 /* Arrows */
 .slick-prev,
 .slick-next {
