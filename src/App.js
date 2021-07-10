@@ -29,7 +29,7 @@ import {
 
 function App() {
   const [modalMode, setModalMode] = useState('');
-
+  const accessToken = localStorage.getItem("accessToken");
   return (
     <Router>
       {/* mode 상태값에 따른 모달창*/}
@@ -74,6 +74,7 @@ function App() {
       )}
 
       <Nav modalMode={modalMode} setModalMode={setModalMode} />
+      
       <Switch>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/error" component={Error}></Route>

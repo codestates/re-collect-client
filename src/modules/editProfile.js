@@ -6,8 +6,8 @@ const initialState = {
     password: '패스워드',
     email: 'initial@recollect.today',
     company: '',
-    gitRepo: '',
-    created_at: '2021.07.07',
+    gitrepo: '',
+    createdAt: '2021.07.07',
     recollectcount: 0,
     //favorite: {},
     error: null,
@@ -47,12 +47,12 @@ export const getProfile = () => async (dispatch) => {
       dispatch({
         type: GET_PROFILE_SUCCESS,
         profile: {
-          username: res.user.username,
-          email: res.user.email,
-          company: res.user.company,
-          gitRepo: res.user.gitRepo,
-          created_at: res.user.created_at,
-          recollectcount: res.bookmark.length - 1,
+          username: res.data.user.username,
+          email: res.data.user.email,
+          company: res.data.user.company,
+          gitrepo: res.data.user.gitRepo, //대문자여야함
+          createdAt: res.data.user.createdAt,
+          recollectcount: res.data.bookmark.length,
           // favorite: visitCounts 가 제일 많은 res.bookmark객체 1개,
         },
       });
@@ -62,12 +62,19 @@ export const getProfile = () => async (dispatch) => {
     });
 };
 
-export const editUsername = (inputValue) => async (dispatch) => {
+export const editUsername = (username) => async (dispatch) => {
+  //console.log(userInputRef.current, '유저인풋이 뭐니?');
+  console.log(username, '유저인풋이 뭐니?');
+  //console.log(userchange, '유저인풋이 뭐니?');
+  if(!username){
+    console.log('빈문자열임..')
+    //여기서 뭔가 해줘야함. 유효성 검사라던지..
+  }else{
   await axios
     .patch(
       'https://api.recollect.today/profile/username',
       {
-        username: inputValue.username, //input.value
+        username: username, //input.value
       },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -80,18 +87,22 @@ export const editUsername = (inputValue) => async (dispatch) => {
         type: EDIT_USERNAME_SUCCESS,
       });
     })
+    .then(() => {
+      dispatch(getProfile())
+    })
     .catch((err) => {
       console.error(err.message);
       dispatch({ type: EDIT_USERNAME_FAIL, error: err.message });
     });
+  }
 };
 
-export const editCompany = (inputValue) => async (dispatch) => {
+export const editCompany = (company) => async (dispatch) => {
   await axios
     .patch(
       'https://api.recollect.today/profile/company',
       {
-        company: inputValue.company, //input.value
+        company: company, //input.value
       },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -104,18 +115,22 @@ export const editCompany = (inputValue) => async (dispatch) => {
         type: EDIT_COMPANY_SUCCESS,
       });
     })
+    .then(() => {
+      dispatch(getProfile())
+    })
     .catch((err) => {
       console.error(err.message);
       dispatch({ type: EDIT_COMPANY_FAIL, error: err.message });
     });
 };
 
-export const editGitRepo = (inputValue) => async (dispatch) => {
+export const editGitRepo = (gitrepo) => async (dispatch) => {
+  console.log(gitrepo, '깃레포 너는 뭐니?')
   await axios
     .patch(
       'https://api.recollect.today/profile/gitrepo',
       {
-        gitRepo: inputValue.gitRepo, //input.value
+        gitrepo: gitrepo, //input.value
       },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -127,6 +142,9 @@ export const editGitRepo = (inputValue) => async (dispatch) => {
       dispatch({
         type: EDIT_GITREPO_SUCCESS,
       });
+    })
+    .then(() => {
+      dispatch(getProfile())
     })
     .catch((err) => {
       console.error(err.message);
@@ -171,17 +189,17 @@ export const profileReducer = (state = initialState, action) => {
     case EDIT_USERNAME_SUCCESS:
       return {
         ...state,
-        profile: action.profile,
+        profile: {...state.profile},
       };
     case EDIT_COMPANY_SUCCESS:
       return {
         ...state,
-        profile: action.profile,
+        profile: {...state.profile},
       };
     case EDIT_GITREPO_SUCCESS:
       return {
         ...state,
-        profile: action.profile,
+        profile: {...state.profile},
       };
     case GET_FAVORITE:
       return;

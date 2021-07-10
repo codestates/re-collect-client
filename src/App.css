@@ -2045,6 +2045,44 @@ body {
   color: black;
   font-size: 9px;
 }
+.modalWrapper .changePwdpModal {
+  display: flex;
+  width: 100%;
+  height: 270px;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .changePwdpModal p {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+.modalWrapper .changePwdpModal .inputContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .changePwdpModal .inputContainer input {
+  margin-top: 8px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.modalWrapper .changePwdpModal .inputContainer input:first-child {
+  margin-bottom: 8px;
+}
+.modalWrapper .changePwdpModal button {
+  margin-top: 15px;
+}
+.modalWrapper .changePwdpModal .changePwdErrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
 .modalWrapper .successSignupModal {
   display: flex;
   height: 270px;
