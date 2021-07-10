@@ -19,36 +19,49 @@ function ChangePwdModal(props) {
     }
   };
   return (
-    <div className="modalWrapper">
-      <div className="changePwdpModal">
-        <div
-          className="closeBtn"
-          onClick={() => {
-            props.setModalMode("");
-          }}
-        >
-          <FontAwesomeIcon icon={faTimes} />
-        </div>
+    <div className="modal">
+      <div className="modalWrapper">
+        <div className="findPwdpModal">
+          <div
+            className="closeBtn"
+            onClick={() => {
+              props.setModalMode("");
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
 
-        <div className="logo"> Recollect </div>
-        {/* <p>
+          <div className="logo"> Recollect </div>
+          {/* <p>
           이메일을 입력하면 <br /> 임시비밀번호를 보내드려요.
         </p> */}
-        <div className="inputContainer">
-          <input className="changePwd" type="password" placeholder=" 현재 비밀번호" />
-          <input className="changePwd" type="password" placeholder=" 새 비밀번호" />
-          <input className="changePwd" type="password" placeholder=" 비밀번호 확인" />
-        </div>
-        <div className="changePwdErrorMessage"></div>
-        <button
-          onClick={() => {
-            findPwdValidCheck();
-          }}
-        >
-          비밀번호 변경
-        </button>
-        <div className="buttonContainer">
-          {/* <div
+          <div className="inputContainer">
+            <input
+              className="changePwd"
+              type="password"
+              placeholder=" 현재 비밀번호"
+            />
+            <input
+              className="changePwd"
+              type="password"
+              placeholder=" 새 비밀번호"
+            />
+            <input
+              className="changePwd"
+              type="password"
+              placeholder=" 비밀번호 확인"
+            />
+          </div>
+          <div className="changePwdErrorMessage"></div>
+          <button
+            onClick={() => {
+              findPwdValidCheck();
+            }}
+          >
+            비밀번호 변경
+          </button>
+          <div className="buttonContainer">
+            {/* <div
             onClick={() => {
               props.setModalMode("signup");
             }}
@@ -62,6 +75,8 @@ function ChangePwdModal(props) {
           >
             로그인
           </div> */}
+          </div>
+          <div className="signUperrorMessage"> </div>
         </div>
         <div className="changePwderrorMessage"> </div>
       </div>

@@ -159,7 +159,8 @@
   .categorybox__header {
     text-align: center;
   }
-  .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
+  .categorybox__header-editbtn,
+  .categorybox__bookmark-editbtn {
     display: none;
   }
   .categorybox__bookmark-ellipsis {
@@ -308,7 +309,8 @@
   .categorybox__header {
     text-align: center;
   }
-  .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
+  .categorybox__header-editbtn,
+  .categorybox__bookmark-editbtn {
     display: none;
   }
   .categorybox__bookmark-ellipsis {
@@ -412,7 +414,8 @@
   height: 0;
   text-align: center;
 }
-.sidebar__input, .sidebar__input--url,
+.sidebar__input,
+.sidebar__input--url,
 .bottomPopup__input,
 .bottomPopup__input--url {
   border-radius: 0;
@@ -423,7 +426,10 @@
   font-family: "IBM Plex Mono";
   background: white;
 }
-.sidebar__input:hover, .sidebar__input:focus, .sidebar__input--url:hover, .sidebar__input--url:focus,
+.sidebar__input:hover,
+.sidebar__input:focus,
+.sidebar__input--url:hover,
+.sidebar__input--url:focus,
 .bottomPopup__input:hover,
 .bottomPopup__input:focus,
 .bottomPopup__input--url:hover,
@@ -432,7 +438,8 @@
   outline: 0;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
-.sidebar__input::placeholder, .sidebar__input--url::placeholder,
+.sidebar__input::placeholder,
+.sidebar__input--url::placeholder,
 .bottomPopup__input::placeholder,
 .bottomPopup__input--url::placeholder {
   color: rgba(0, 0, 0, 0.5);
@@ -464,7 +471,9 @@
   width: 90px;
   display: flex;
 }
-.sidebar__color-circle--blue, .sidebar__color-circle--green, .sidebar__color-circle--red,
+.sidebar__color-circle--blue,
+.sidebar__color-circle--green,
+.sidebar__color-circle--red,
 .bottomPopup__color-circle--blue,
 .bottomPopup__color-circle--green,
 .bottomPopup__color-circle--red {
@@ -479,7 +488,9 @@
   line-height: 20px;
   text-overflow: unset;
 }
-.sidebar__color-circle--blue:hover, .sidebar__color-circle--green:hover, .sidebar__color-circle--red:hover,
+.sidebar__color-circle--blue:hover,
+.sidebar__color-circle--green:hover,
+.sidebar__color-circle--red:hover,
 .bottomPopup__color-circle--blue:hover,
 .bottomPopup__color-circle--green:hover,
 .bottomPopup__color-circle--red:hover {
@@ -576,8 +587,8 @@
   top: 17px;
   width: 100%;
   height: 36px;
-  border: 1px #FF0000 solid;
-  color: #FF0000;
+  border: 1px #ff0000 solid;
+  color: #ff0000;
   background-color: white;
   font-size: 16px;
   font-family: "Noto Sans KR";
@@ -623,7 +634,7 @@
   grid-column-end: 6;
   height: 40px;
   line-height: 40px;
-  background-color: #EBFF9D;
+  background-color: #ebff9d;
   text-align: center;
   cursor: pointer;
 }
@@ -967,6 +978,7 @@
   color: gray;
 }
 .exploreSearchRecommendation .recommendTags {
+  font-size: 14px;
   flex: 1;
 }
 .exploreSearchRecommendation .recommendTag {
@@ -1030,42 +1042,18 @@
 .explore__searchProfile .socialInfo div {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.explore__searchProfile .socialInfo div:hover {
-  cursor: pointer;
-}
-.explore__searchProfile .socialInfo div .profileImage {
-  margin-top: 25px;
-  font-size: 85px;
-}
-.explore__searchProfile .socialInfo div p {
-  margin-top: 0px;
-  margin-bottom: 0;
-  font-size: 15px;
-}
-.explore__searchProfile .socialInfo div .socialInfo {
-  margin-top: 20px;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.explore__searchProfile .socialInfo div .socialInfo div {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 3px;
 }
-.explore__searchProfile .socialInfo div .companyInfo {
+.explore__searchProfile .companyInfo {
   margin-top: 30px;
   font-size: 12px;
 }
-.explore__searchProfile .socialInfo div .companyInfo div {
+.explore__searchProfile .companyInfo div {
   margin: 5px;
 }
-.explore__searchProfile .socialInfo .icon {
+.explore__searchProfile .companyInfo .icon {
   padding-right: 3px;
 }
 
@@ -1107,12 +1095,14 @@
   justify-content: center;
   width: 50vw;
 }
-.footer .about, .footer a {
+.footer .about,
+.footer a {
   margin-left: 5%;
   text-decoration: none;
   color: #525151;
 }
-.footer .about:hover, .footer a:hover {
+.footer .about:hover,
+.footer a:hover {
   color: #214bc8;
 }
 
@@ -1418,7 +1408,7 @@ body {
   text-align: center;
   font-size: 2.3vw;
   white-space: nowrap;
-  background-color: #EBFF9D;
+  background-color: #ebff9d;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .landing__inner--fourth .alarm-desc-wrapper {
@@ -1502,7 +1492,11 @@ body {
   margin-top: 10%;
   font-size: 1vw;
 }
-.landing__inner--fifth .profile-wrapper .landing__searchProfile .companyInfo div {
+.landing__inner--fifth
+  .profile-wrapper
+  .landing__searchProfile
+  .companyInfo
+  div {
   margin: 3px;
 }
 .landing__inner--fifth .collection-desc {
@@ -1621,7 +1615,8 @@ body {
   line-height: 30px;
   margin: 0 auto;
   color: #214bc8;
-  animation: typing 2s steps(9, start) infinite, blink-caret 0.5s step-end infinite;
+  animation: typing 2s steps(9, start) infinite,
+    blink-caret 0.5s step-end infinite;
   display: inline-block;
   overflow: clip;
   white-space: nowrap;
@@ -1638,7 +1633,8 @@ body {
 }
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to {
+  from,
+  to {
     border-color: transparent;
   }
   50% {
@@ -1732,15 +1728,15 @@ body {
     align-items: center;
   }
   .landing__inner--second .desc-wrap--1 img,
-.landing__inner--second .desc-wrap--2 img,
-.landing__inner--second .desc-wrap--3 img {
+  .landing__inner--second .desc-wrap--2 img,
+  .landing__inner--second .desc-wrap--3 img {
     width: 53vw;
     margin-top: 0;
     order: 2;
   }
   .landing__inner--second .desc-wrap--1 p,
-.landing__inner--second .desc-wrap--2 p,
-.landing__inner--second .desc-wrap--3 p {
+  .landing__inner--second .desc-wrap--2 p,
+  .landing__inner--second .desc-wrap--3 p {
     margin-top: 15%;
     order: 1;
     text-align: center;
@@ -1857,7 +1853,9 @@ body {
     margin-left: 7.5%;
     width: 40%;
   }
-  .landing__inner--fifth .profile-wrapper .landing__searchProfile__profileImage {
+  .landing__inner--fifth
+    .profile-wrapper
+    .landing__searchProfile__profileImage {
     font-size: 12vw;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile p {
@@ -1912,10 +1910,30 @@ body {
     margin-left: 1.1%;
   }
 }
+html,
+body,
+.app {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  overflow: hidden;
+}
+
 .modalWrapper {
   position: fixed;
-  top: 25%;
-  left: 40%;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
   background-color: white;
   z-index: 1;
   width: 230px;
@@ -1923,14 +1941,16 @@ body {
 }
 @media (max-width: 834px) {
   .modalWrapper {
-    top: 25%;
-    left: 35%;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0);
   }
 }
 @media (max-width: 600px) {
   .modalWrapper {
-    top: 25%;
-    left: 27%;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0);
   }
 }
 .modalWrapper .logo {
@@ -2178,7 +2198,6 @@ body {
   color: black;
   font-size: 9px;
 }
-
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2373,7 +2392,8 @@ body {
 .profile-container__inner--left .profilebox__follow p:nth-child(1) {
   margin-left: 0;
 }
-.profile-container__inner--left .profilebox__follow p:nth-child(2), .profile-container__inner--left .profilebox__follow p:nth-child(3) {
+.profile-container__inner--left .profilebox__follow p:nth-child(2),
+.profile-container__inner--left .profilebox__follow p:nth-child(3) {
   color: grey;
 }
 .profile-container__inner--left .profilebox__companyngitrepo {
@@ -2391,13 +2411,17 @@ body {
   border-bottom: dotted 1px #214bc8;
   text-align: center;
 }
-.profile-container__inner--left .profilebox__companyngitrepo__inner input::placeholder {
+.profile-container__inner--left
+  .profilebox__companyngitrepo__inner
+  input::placeholder {
   text-align: center;
   color: #214bc8;
   font-size: 14px;
   font-family: IBM Plex Mono;
 }
-.profile-container__inner--left .profilebox__companyngitrepo__inner input:disabled {
+.profile-container__inner--left
+  .profilebox__companyngitrepo__inner
+  input:disabled {
   background-color: transparent;
 }
 .profile-container__inner--left .profilebox__companyngitrepo .edit-info {
@@ -2422,7 +2446,9 @@ body {
   border-bottom: dotted 1px #214bc8;
   text-align: center;
 }
-.profile-container__inner--left .profilebox__companyngitrepo__inner input::placeholder {
+.profile-container__inner--left
+  .profilebox__companyngitrepo__inner
+  input::placeholder {
   text-align: center;
   color: #214bc8;
   font-size: 14px;
@@ -2659,7 +2685,6 @@ body {
     display: none;
   }
 }
-
 /* Arrows */
 .slick-prev,
 .slick-next {
@@ -2730,10 +2755,12 @@ body {
   padding: 5px;
   cursor: pointer;
 }
-.slick-dots li button:hover, .slick-dots li button:focus {
+.slick-dots li button:hover,
+.slick-dots li button:focus {
   outline: none;
 }
-.slick-dots li button:hover:before, .slick-dots li button:focus:before {
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before {
   opacity: 1;
 }
 .slick-dots li button:before {
@@ -2863,7 +2890,9 @@ body {
     margin-left: 18%;
     width: 27vw;
   }
-  .landing__inner--fifth .profile-wrapper .landing__searchProfile__profileImage {
+  .landing__inner--fifth
+    .profile-wrapper
+    .landing__searchProfile__profileImage {
     font-size: 12vw;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile p {

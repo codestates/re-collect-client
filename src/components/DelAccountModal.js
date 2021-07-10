@@ -19,34 +19,41 @@ function DelAccountModal(props) {
     }
   };
   return (
-    <div className="modalWrapper">
-      <div className="findPwdpModal">
-        <div
-          className="closeBtn"
-          onClick={() => {
-            props.setModalMode("");
-          }}
-        >
-          <FontAwesomeIcon icon={faTimes} />
-        </div>
+    <div className="modal">
+      <div className="modalWrapper">
+        <div className="findPwdpModal">
+          <div
+            className="closeBtn"
+            onClick={() => {
+              props.setModalMode("");
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
 
-        <div className="logo"> Recollect </div>
-        <p>
-          아래 문구를 입력하고<br />계정을 삭제합니다. 
-        </p>
-        <div className="inputContainer">
-          <input className="findPwdEmail" type="email" placeholder=" 또만나요 리콜렉트" />
-        </div>
-        <div className="findPwdErrorMessage"></div>
-        <button
-          onClick={() => {
-            findPwdValidCheck();
-          }}
-        >
-          계정 삭제
-        </button>
-        <div className="buttonContainer">
-          {/* <div
+          <div className="logo"> Recollect </div>
+          <p>
+            아래 문구를 입력하고
+            <br />
+            계정을 삭제합니다.
+          </p>
+          <div className="inputContainer">
+            <input
+              className="findPwdEmail"
+              type="email"
+              placeholder=" 또만나요 리콜렉트"
+            />
+          </div>
+          <div className="findPwdErrorMessage"></div>
+          <button
+            onClick={() => {
+              findPwdValidCheck();
+            }}
+          >
+            계정 삭제
+          </button>
+          <div className="buttonContainer">
+            {/* <div
             onClick={() => {
               props.setModalMode("signup");
             }}
@@ -60,8 +67,9 @@ function DelAccountModal(props) {
           >
             로그인
           </div> */}
+          </div>
+          <div className="signUperrorMessage"> </div>
         </div>
-        <div className="signUperrorMessage"> </div>
       </div>
     </div>
   );

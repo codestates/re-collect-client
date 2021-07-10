@@ -1,25 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react';
-import CategoryBox from '../components/CategoryBox';
-import Sidebar from '../components/Sidebar';
-import SearchBar from '../components/SearchBar';
-import UnreadAlarm from '../components/UnreadAlarm';
-import BottomPopup from '../components/BottomPopup';
-import Recollect from '../components/Recollect';
-import ToCollectBtn from '../components/ToCollectBtn';
-import BookmarksContainer from '../components/BookmarksContainer';
+import React, { useState, useEffect, useRef } from "react";
+import CategoryBox from "../components/CategoryBox";
+import Sidebar from "../components/Sidebar";
+import SearchBar from "../components/SearchBar";
+import UnreadAlarm from "../components/UnreadAlarm";
+import BottomPopup from "../components/BottomPopup";
+import Recollect from "../components/Recollect";
+import ToCollectBtn from "../components/ToCollectBtn";
+import BookmarksContainer from "../components/BookmarksContainer";
 
-import { getBookmark } from '../modules/getBookmark';
-import { useSelector, useDispatch } from 'react-redux';
-import { recollect } from '../modules/getRecollect';
+import { getBookmark } from "../modules/getBookmark";
+import { useSelector, useDispatch } from "react-redux";
+import { recollect } from "../modules/getRecollect";
 
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
-
   const dispatch = useDispatch();
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
-    dispatch(recollect());
+    // dispatch(recollect(data.bookmarks));
   };
   return (
     <>
