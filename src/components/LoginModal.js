@@ -8,6 +8,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function LoginModal(props) {
   const history = useHistory();
+  const accessToken = localStorage.getItem('accessToken');
   const { isLogin, error } = useSelector((state) => state.loginReducer.user);
   const dispatch = useDispatch();
   const [loginInfo, setLoginInfo] = useState({
@@ -21,14 +22,14 @@ function LoginModal(props) {
   }, [error]);
 
   useEffect(() => {
-    if (isLogin) {
+    if (accessToken) {
       props.setModalMode('');
       history.push('/loading');
       setTimeout(() => {
         history.push('/collect');
       }, 2000);
     }
-  }, [isLogin]);
+  }, [accessToken]);
 
   const loginValidCheck = () => {
     const email = loginInfo.email;

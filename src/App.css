@@ -404,6 +404,14 @@
   flex-direction: column;
   align-items: center;
 }
+.sidebar__text,
+.bottomPopup__text {
+  position: relative;
+  top: -70px;
+  width: 80%;
+  height: 0;
+  text-align: center;
+}
 .sidebar__input, .sidebar__input--url,
 .bottomPopup__input,
 .bottomPopup__input--url {
@@ -514,6 +522,7 @@
 }
 .sidebar__btnSection,
 .bottomPopup__btnSection {
+  height: 36px;
   width: 80%;
   display: inline-block;
   text-align: unset;
@@ -523,21 +532,59 @@
   width: 70px;
   height: 36px;
   border: 1px rgba(0, 0, 0, 0.5) solid;
-  background-color: transparent;
+  background-color: white;
   font-size: 16px;
   font-family: "Noto Sans KR";
   cursor: pointer;
+}
+.sidebar__btn:hover,
+.bottomPopup__btn:hover {
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.1);
 }
 .sidebar__btn.left,
 .bottomPopup__btn.left {
   float: left;
 }
+.sidebar__btn.left:disabled,
+.bottomPopup__btn.left:disabled {
+  cursor: default;
+}
+.sidebar__btn.left:disabled:hover,
+.bottomPopup__btn.left:disabled:hover {
+  box-shadow: none;
+}
 .sidebar__btn.right,
 .bottomPopup__btn.right {
   float: right;
 }
-.sidebar__btn:hover,
-.bottomPopup__btn:hover {
+.sidebar__btn.right:disabled,
+.bottomPopup__btn.right:disabled {
+  cursor: default;
+}
+.sidebar__btn.right:disabled:hover,
+.bottomPopup__btn.right:disabled:hover {
+  box-shadow: none;
+}
+.sidebar__deleteBtnSection,
+.bottomPopup__deleteBtnSection {
+  height: 0;
+  width: 80%;
+}
+.sidebar__deleteBtn,
+.bottomPopup__deleteBtn {
+  position: relative;
+  top: 17px;
+  width: 100%;
+  height: 36px;
+  border: 1px #FF0000 solid;
+  color: #FF0000;
+  background-color: white;
+  font-size: 16px;
+  font-family: "Noto Sans KR";
+  cursor: pointer;
+}
+.sidebar__deleteBtn:hover,
+.bottomPopup__deleteBtn:hover {
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -2131,7 +2178,7 @@ body {
   color: black;
   font-size: 9px;
 }
-@charset "UTF-8";
+
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2612,7 +2659,7 @@ body {
     display: none;
   }
 }
-@charset "UTF-8";
+
 /* Arrows */
 .slick-prev,
 .slick-next {
