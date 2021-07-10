@@ -6,16 +6,17 @@ const GET_BOOKMARK = 'GET_BOOKMARK';
 const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
 const GET_BOOKMARK_FAIL = 'GET_BOOKMARK_FAIL';
 
-export const getBookmark = () => async (dispatch) => {
+export const getBookmark = () => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
 
-  await axios
+  dispatch({ type: GET_BOOKMARK });
+
+  axios
     .get('https://api.recollect.today/collect', {
       headers: { authorization: `Bearer ${accessToken}` },
       withCredentials: true,
     })
     .then((res) => {
-      console.log(res);
       dispatch({
         type: GET_BOOKMARK_SUCCESS,
         category: res.data.category,
@@ -30,7 +31,10 @@ export const getBookmark = () => async (dispatch) => {
 export const getBookmarkReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_BOOKMARK:
-      return reducebookmark(state, action);
+      return {
+        ...state,
+        userBookmarks: { ...state.userBookmarks, isLoading: true },
+      };
     case GET_BOOKMARK_SUCCESS:
       return reducebookmark(state, action);
     case GET_BOOKMARK_FAIL:
@@ -38,6 +42,7 @@ export const getBookmarkReducer = (state = initialState, action) => {
         ...state,
         userBookmarks: {
           ...state.userBookmarks,
+          isLoading: false,
           error: action.error,
         },
       };

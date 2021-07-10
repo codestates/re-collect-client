@@ -15,6 +15,7 @@ export const reducebookmark = (state, action) => {
     ...state,
     userBookmarks: {
       ...state.userBookmarks,
+      isLoading: false,
       category: action.category,
       bookmarks: action.bookmarks,
       reducedbookmarks: arr,

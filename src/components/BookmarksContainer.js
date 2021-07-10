@@ -1,14 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CategoryBox from './CategoryBox';
 import CollectBookmark from './CollectBookmark';
+import { getBookmark } from '../modules/getBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { editBookmark } from '../modules/editBookmark';
 
-function BookmarksContainer({ data }) {
-  const [list, setList] = useState(data);
+function BookmarksContainer() {
+  const accessToken = localStorage.getItem('accessToken');
+  const { guestBookmarks } = useSelector((state) => state.getBookmarkReducer);
+  const { isLoading, bookmarks, category, reducedbookmarks } = useSelector(
+    (state) => state.getBookmarkReducer.userBookmarks
+  );
+  const dispatch = useDispatch();
+
+  const [list, setList] = useState([]);
   const [dragging, setDragging] = useState(false);
 
   useEffect(() => {
-    setList(data);
-  }, [setList, list]);
+    if (accessToken) {
+      dispatch(getBookmark());
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(getBookmark());
+    } else {
+      setList(guestBookmarks.reducedbookmarks);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (accessToken) {
+      setList(reducedbookmarks);
+    } else {
+      setList(guestBookmarks.reducedbookmarks);
+    }
+  }, [reducedbookmarks]);
 
   const dragItem = useRef();
   const dragItemNode = useRef();
@@ -53,6 +81,29 @@ function BookmarksContainer({ data }) {
   };
 
   const handleDragEnd = (e) => {
+    console.group('드래그앤드롭 확인');
+    console.log('가게 될 곳', dragItem.current);
+    console.log('원래 있는 곳', dragItemNode.current);
+    console.groupEnd();
+
+    const originalCategory = dragItemNode.current.item.grp.category;
+    const changingCategory = dragItem.current.grp.category;
+
+    if (originalCategory !== changingCategory) {
+      const groupIdx = dragItemNode.current.item.grpI;
+      const itemIdx = dragItemNode.current.item.itemI;
+
+      const findingBookmark = { ...list[groupIdx].bookmarks[itemIdx] };
+      findingBookmark.category = {
+        value: changingCategory,
+        label: changingCategory,
+      };
+
+      console.log('좀 확인해보자', findingBookmark);
+
+      dispatch(editBookmark(findingBookmark));
+    }
+
     setDragging(false);
 
     dragItem.current = null;

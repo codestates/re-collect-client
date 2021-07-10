@@ -36,7 +36,11 @@ export default function CollectBookmark(props) {
         </a>
       </div>
       <div className="categorybox__bookmark-ellipsis">
-        <FontAwesomeIcon className="ellipsis" icon={faEllipsisH} />
+        <FontAwesomeIcon
+          onClick={handleEditBtn}
+          className="ellipsis"
+          icon={faEllipsisH}
+        />
       </div>
       <button className="categorybox__bookmark-editbtn" onClick={handleEditBtn}>
         edit
