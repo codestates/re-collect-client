@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef} from "react";
-//import { Link, withRouter } from "react-router-dom";
+import React, { useState, useEffect, useRef, useCallback} from "react";
+import { Link} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faCheck, faLaptop } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
-import BigBookmark from "../components/BigBookmark";
+import FavoriteBookmark from "../components/FavoriteBookmark";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -13,8 +13,6 @@ import {
   editCompany,
   editGitRepo,
   getFavorite,
-  editPwd,
-  delAccount,
 } from "../modules/editProfile";
 
 function Profile(props) {
@@ -22,6 +20,8 @@ function Profile(props) {
   const state = useSelector((state) => state.profileReducer);
   const { profile } = state;
   const dispatch = useDispatch();
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   // const [inputReadMode, setInputReadMode] = useState({
   //   usernameMode: true,
@@ -32,58 +32,25 @@ function Profile(props) {
   const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
   const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
 
+
   const userInputRef = useRef("");
   const companyInputRef = useRef("");
   const gitRepoInputRef = useRef("");
-  //console.log(inputRef.current, 'ref current???')
 
-  const [inputValue, setInputValue] = useState({
-    username: '',
-    company: '',
-    gitrepo: '',
-  });
-
-  //-------------onchange event 랜더링 
-  const handleInputValue = (e) => {
-    const { value, name } = e.target;
-    //console.log(value, 'inputvalue')
-    e.preventDefault();
-    //console.log(inputValue, "inputValue init");
-      setInputValue({
-        ...inputValue, //복사
-        [name]: value, //name키를 가진 값에 value 할당.
-      })      
-
-
-  };
 
 /*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
   const usernameInputActive = (e) => {
-    //const usernameInput = document.getElementsByName("username");
-    //usernameInput[0].readOnly = !usernameInput[0].readOnly;
 
     setUsernameInputReadMode(!usernameInputReadMode);
-    // setInputReadMode({
-    //   ...inputReadMode,
-    //   !usernameMode,
-    // })
-     userInputRef.current.readOnly = !userInputRef.current.readOnly;
-     userInputRef.current.disabled = !userInputRef.current.disabled;
+    userInputRef.current.readOnly = !userInputRef.current.readOnly;
+    userInputRef.current.disabled = !userInputRef.current.disabled;
 
-    console.log(usernameInputReadMode, "= userreadmode");
     if (e.currentTarget.getAttribute("name") === "usernamecheck") {
       console.log(e.currentTarget.getAttribute("name"), 'username target');
-      
-      dispatch(editUsername(inputValue.username));
-      // console.log(userInputRef.current.value, 'user ref value???????');
-      //const userchange = userInputRef.current.value;
-      //dispatch(editUsername(userchange));
-      //userInputRef.current.value = ""; //초기화시점 체크 필요
-      // setInputValue({
-      //   username: '',
-      //   company: '',
-      //   gitRepo: '',
-      // })
+      // if(inputValue.username === ''){
+      //   return ; //공백인 경우 에러메세지 유효성 검사
+      // }
+      dispatch(editUsername(userInputRef.current.value));
     }
 
   };
@@ -91,40 +58,34 @@ function Profile(props) {
 
   /*회사 인풋 활성화 후 체크 버튼 눌렀을 때 회사 변경patch */
   const companyInputActive = (e) => {
-    //const companyInput = document.getElementsByName("company");
-    //companyInput[0].readOnly = !companyInput[0].readOnly;
 
+    setCompanyInputReadMode(!companyInputReadMode);
     companyInputRef.current.readOnly = !companyInputRef.current.readOnly;
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
 
-    setCompanyInputReadMode(!companyInputReadMode);
-
     if (e.currentTarget.getAttribute("name") === "companycheck") {
-      console.log(e.currentTarget.getAttribute("name"), 'company target');
-      dispatch(editCompany(inputValue.company));
-      //dispatch(editCompany(companyInputRef.current.value));
-      //console.log(companyInputRef.current.value, 'company ref value');
-      //companyInputRef.current.value = "";
+      // if(inputValue.company === ''){
+      //   return ; //긴 공백인 경우 에러메세지
+      // }
+      dispatch(editCompany(companyInputRef.current.value));
     }
   };
 
 
   /*깃레포 인풋 활성화 후 체크 버튼 눌렀을 때 깃레포 변경patch */
   const gitRepoInputActive = (e) => {
-    //const gitRepoInput = document.getElementsByName("gitRepo");
-    //gitRepoInput[0].readOnly = !gitRepoInput[0].readOnly;
 
     setGitRepoInputReadMode(!gitRepoInputReadMode);
-
     gitRepoInputRef.current.readOnly = !gitRepoInputRef.current.readOnly;
     gitRepoInputRef.current.disabled = !gitRepoInputRef.current.disabled;
     
     if (e.currentTarget.getAttribute("name") === "gitrepocheck") {
-      console.log(e.currentTarget.getAttribute("name"), 'gitrepo target');
-      dispatch(editGitRepo(inputValue.gitrepo));
-      // dispatch(editGitRepo(gitRepoInputRef.current.value));
-      // console.log(gitRepoInputRef.current.value, 'gitRepo ref value');
-      // gitRepoInputRef.current.value = "";
+      //pattern = /\s/g;
+      // if(inputValue.gitrepo === '공백'){
+      //   setErrorMessage('공백은 입력하실 수 없습니다.')
+      //   return ; //긴 공백인 경우 에러메세지
+      // }
+      dispatch(editGitRepo(gitRepoInputRef.current.value));
     }
   };
 
@@ -133,7 +94,9 @@ function Profile(props) {
   useEffect(() => {
     dispatch(getProfile());
     console.log('useeffect get 요청 실행')
-  }, []); 
+  }, [dispatch]); 
+
+  
 
   return (
     <div className="profile-container">
@@ -150,7 +113,6 @@ function Profile(props) {
                 placeholder={profile.username}
                 readOnly
                 disabled
-                onChange={handleInputValue}
                 ref={userInputRef}
               />
               <FontAwesomeIcon
@@ -159,6 +121,7 @@ function Profile(props) {
                 name={usernameInputReadMode ? "usernamepen" : "usernamecheck"}
                 onClick={usernameInputActive}
               />
+              <div className="errorMessage">{errorMessage}</div>
             </div>
             <p>{profile.email}</p>
             <p>Jonined Recollect on {profile.createdAt.slice(0,10)}</p>
@@ -189,7 +152,6 @@ function Profile(props) {
                 placeholder={
                   profile.company ? `Working at ${profile.company}` : "Working at..."
                 }
-                onChange={handleInputValue}
                 ref={companyInputRef}
               />
               <FontAwesomeIcon
@@ -198,6 +160,7 @@ function Profile(props) {
                 name = {companyInputReadMode ? "companypen" : "companycheck"}
                 onClick={companyInputActive}
               />
+              <div className="errorMessage">{errorMessage}</div>
             </div>
             <div className="profilebox__companyngitrepo__inner">
               <FontAwesomeIcon icon={faGithub} />
@@ -207,7 +170,6 @@ function Profile(props) {
                 readOnly
                 disabled
                 placeholder={profile.gitrepo ? profile.gitrepo : "-"}
-                onChange={handleInputValue}
                 ref={gitRepoInputRef}
               />
               <FontAwesomeIcon
@@ -216,6 +178,7 @@ function Profile(props) {
                 name = {gitRepoInputReadMode ? "gitrepopen" : "gitrepocheck"}
                 onClick={gitRepoInputActive}
               />
+              <div className="errorMessage">{errorMessage}</div>
             </div>
           </div>
           <div className="profilebox__btns">
@@ -242,7 +205,7 @@ function Profile(props) {
       <div className="profile-container__inner profile-container__inner--right">
         <div className="popular-recollect">
           <h1>My Favorite Recollect</h1>
-          <BigBookmark id="popular-bigbookmark" />
+          <FavoriteBookmark favorite={profile.favorite}/>
         </div>
       </div>
     </div>

@@ -1,27 +1,61 @@
-import React, { useEffect } from "react";
-import {
-  IsValidateEmail,
-  IsValidiateUsername,
-  IsValidiatePassword,
-} from "../util/validation";
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  delAccount,
+} from "../modules/editProfile";
 
 function DelAccountModal(props) {
-  const findPwdValidCheck = () => {
-    const email = document.querySelector(".findPwdEmail").value;
-    const error = document.querySelector(".findPwdErrorMessage");
-    if (!IsValidateEmail(email)) {
-      error.textContent = "이메일을 확인해주세요";
+  const history = useHistory();
+  const state = useSelector((state) => state.profileReducer);
+  const { profile } = state;
+  const dispatch = useDispatch();
+
+  // const [pwdInfo, setPwdInfo] = useState({
+  //   password:"",
+  //   newpassword: "",
+  //   newpasswordcheck: "",
+  // });
+  const InputRef = useRef("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setErrorMessage(profile.error);
+  }, [profile.error]);
+
+  const delAccountValidCheck = () => {
+    const delAccountmessage = InputRef.current.value;
+    console.log(delAccountmessage, '= 또만나요 리콜렉트');
+    if (delAccountmessage !== "또만나요 리콜렉트") {
+      setErrorMessage("문구를 다시 입력해주세요.");
       return;
-    } else {
-      error.textContent = "";
     }
+
+    handleDelAccount();
   };
+
+  const handleDelAccount = () => {
+    dispatch(delAccount())
+    .then(() => {
+      InputRef.current.value = '';
+      setTimeout(() => {
+        props.setModalMode("");
+        }, 2000);  
+    })
+    .then(() => {
+      setTimeout(() => {
+        history.push("/");
+        }, 2000); 
+    })
+  }
+
+
   return (
     <div className="modal">
       <div className="modalWrapper">
-        <div className="findPwdpModal">
+        <div className="delAccountModal">
           <div
             className="closeBtn"
             onClick={() => {
@@ -30,45 +64,24 @@ function DelAccountModal(props) {
           >
             <FontAwesomeIcon icon={faTimes} />
           </div>
-
           <div className="logo"> Recollect </div>
-          <p>
-            아래 문구를 입력하고
-            <br />
-            계정을 삭제합니다.
-          </p>
+          <p>아래 문구를 입력하고<br />계정을 삭제합니다.</p>
           <div className="inputContainer">
             <input
-              className="findPwdEmail"
-              type="email"
+              className="delMessage"
+              type="text"
               placeholder=" 또만나요 리콜렉트"
+              ref={InputRef}
             />
           </div>
-          <div className="findPwdErrorMessage"></div>
           <button
             onClick={() => {
-              findPwdValidCheck();
+                delAccountValidCheck();
             }}
           >
             계정 삭제
           </button>
-          <div className="buttonContainer">
-            {/* <div
-            onClick={() => {
-              props.setModalMode("signup");
-            }}
-          >
-            회원가입
-          </div>
-          <div
-            onClick={() => {
-              props.setModalMode("login");
-            }}
-          >
-            로그인
-          </div> */}
-          </div>
-          <div className="signUperrorMessage"> </div>
+          <div className="delAccountErrorMessage">{errorMessage}</div>
         </div>
       </div>
     </div>

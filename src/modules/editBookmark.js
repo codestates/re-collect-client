@@ -70,15 +70,17 @@ export const editBookmark = (bookmark) => (dispatch, getState) => {
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  if (accessToken) {
-    axios
+  
+ if (accessToken) {
+    console.log(accessToken, '엑세스 토큰 없니?');
+   axios
       .delete(
         'https://api.recollect.today/collect',
-        { bookmarkId: bookmark.id },
         {
           headers: { authorization: `Bearer ${accessToken}` },
           withCredentials: true,
-        }
+        },
+        { bookmarkId: bookmark.id }
       )
       .then(() => {
         dispatch({ type: DELETE_BOOKMARK_SUCCESS });
@@ -87,10 +89,12 @@ export const deleteBookmark = (bookmark) => (dispatch) => {
         dispatch(getBookmark());
       })
       .catch((e) => {
+        console.log(accessToken, '왜 사라지니?')
         dispatch({
           type: DELETE_BOOKMARK_FAIL,
           error: e.response.data.message,
         });
+        console.log(accessToken, '여기서 사라지니?')
       });
   }
 };

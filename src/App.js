@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Error from "./components/Error";
 import Landing from "./page/Landing";
 import ScrollToTop from "./components/ScrollToTop";
 import Collect from "./page/Collect";
@@ -23,11 +24,13 @@ import SuccessSetNewPwd from "./components/SuccessSetNewPwd";
 import {
   Switch,
   Route,
+  Redirect,
   BrowserRouter as Router,
   withRouter,
 } from "react-router-dom";
 
 function App() {
+  const accessToken = localStorage.getItem("accessToken");
   const [modalMode, setModalMode] = useState("");
 
   // 모달창 on, 스크롤 불가 //
@@ -87,20 +90,23 @@ function App() {
 
       <Switch>
         <Route path="/loading" component={Loading}></Route>
-        <Route path="/error" component={Error}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
         <Route path="/login/pwd/reset">
           <SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/profile">
-          <Profile modalMode={modalMode} setModalMode={setModalMode} />
+          {accessToken ? (
+            <Profile modalMode={modalMode} setModalMode={setModalMode} />
+          ) : (
+            <Redirect to="*" />
+          )}
         </Route>
         <Route path="/explore" component={Explore}>
           <Explore modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route exact path="/" component={Landing}></Route>
-        <Route component={Error} />
+        <Route path="*" component={Error}></Route>
       </Switch>
       <ScrollToTop />
       <Footer />
