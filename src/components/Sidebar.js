@@ -6,7 +6,7 @@ import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
   const isEdit = useSelector(
-    (state) => state.editBookmarkReducer.tempBookmark.isEdit
+    (state) => state.bookmarkReducer.tempBookmark.isEdit
   );
 
   const [xposition, setXposition] = useState(-300);

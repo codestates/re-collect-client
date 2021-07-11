@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
-import BigBookmark from "./BigBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { recollect } from "../modules/getRecollect";
-import initialState from "../modules/initialState";
+import React, { useEffect } from 'react';
+import BigBookmark from './BigBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { recollect } from '../modules/getRecollect';
+import initialState from '../modules/initialState';
 
 function Recollect(props) {
   // dispatch(recollect(bookmarks)); 요청
   // 1. 로그인 o => visitcounts = 0
   // 2. 로그인 x => initialState guestBookmarks 3개
   const { bookmarks } = useSelector(
-    (state) => state.getBookmarkReducer.userBookmarks
+    (state) => state.bookmarkReducer.userBookmarks
   );
   const dispatch = useDispatch();
-  const accessToken = localStorage.getItem("accessToken");
-  const guestBookmarks = initialState.guestBookmarks.bookmarks;
+  const accessToken = localStorage.getItem('accessToken');
+  const { guestBookmarks } = useSelector((state) => state.bookmarkReducer);
 
   // 읽지않은 북마크 //
   const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
@@ -41,7 +41,7 @@ function Recollect(props) {
                 />
               );
             })
-          : guestBookmarks.map((bookmark) => {
+          : guestBookmarks.bookmarks.map((bookmark) => {
               return (
                 <BigBookmark
                   key={bookmark.id}

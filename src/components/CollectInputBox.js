@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Creatable, { makeCreatableSelect } from 'react-select/creatable';
-import { addBookmark, addGuestBookmark } from '../modules/addBookmark';
-import { editBookmark, editEnd, deleteBookmark } from '../modules/editBookmark';
+import Creatable from 'react-select/creatable';
+import {
+  addBookmark,
+  addGuestBookmark,
+  editBookmark,
+  editGuestBookmark,
+  editEnd,
+  deleteBookmark,
+} from '../modules/bookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -38,11 +44,15 @@ const customStyles = {
 
 function CollectInputBox(props) {
   const accessToken = localStorage.getItem('accessToken');
+
   const { category } = useSelector(
-    (state) => state.getBookmarkReducer.userBookmarks
+    (state) => state.bookmarkReducer.userBookmarks
+  );
+  const guestCategory = useSelector(
+    (state) => state.bookmarkReducer.guestBookmarks.category
   );
   const { isEdit, data } = useSelector(
-    (state) => state.editBookmarkReducer.tempBookmark
+    (state) => state.bookmarkReducer.tempBookmark
   );
 
   const dispatch = useDispatch();
@@ -76,10 +86,12 @@ function CollectInputBox(props) {
   }, [data]);
 
   useEffect(() => {
-    if (category) {
+    if (accessToken) {
       setCategoryArr(category.map((el) => ({ value: el, label: el })));
+    } else {
+      setCategoryArr(guestCategory.map((el) => ({ value: el, label: el })));
     }
-  }, [category]);
+  }, [category, guestCategory]);
 
   const handleCategoryChange = (newValue, actionMeta) => {
     console.log(newValue);
@@ -131,7 +143,9 @@ function CollectInputBox(props) {
   const handleEditBookmark = () => {
     if (accessToken) {
       dispatch(editBookmark(bookmarkInput));
+      return;
     }
+    dispatch(editGuestBookmark(bookmarkInput));
   };
 
   const handleEditEnd = () => {

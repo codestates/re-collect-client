@@ -1,10 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import BigBookmark from "../components/BigBookmark";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import BigBookmark from '../components/BigBookmark';
 
 export function SearchBookmark({ searchInput }) {
   const { bookmarks } = useSelector(
-    (state) => state.getBookmarkReducer.userBookmarks
+    (state) => state.bookmarkReducer.userBookmarks
   );
 
   const searchingBookmark = bookmarks.filter((el) =>

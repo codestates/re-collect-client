@@ -1,27 +1,31 @@
-import React, { useState, useEffect, useRef, useCallback} from "react";
-import { Link} from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faCheck, faLaptop } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
-import FavoriteBookmark from "../components/FavoriteBookmark";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faCheck, faLaptop } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
+import FavoriteBookmark from '../components/FavoriteBookmark';
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import {
   getProfile,
   editUsername,
   editCompany,
   editGitRepo,
   getFavorite,
-} from "../modules/editProfile";
+} from '../modules/editProfile';
 
 function Profile(props) {
-
   const state = useSelector((state) => state.profileReducer);
   const { profile } = state;
   const dispatch = useDispatch();
 
-  const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    dispatch(getProfile());
+    console.log('useeffect get 요청 실행');
+  }, [dispatch]);
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   // const [inputReadMode, setInputReadMode] = useState({
   //   usernameMode: true,
@@ -32,38 +36,32 @@ function Profile(props) {
   const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
   const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
 
+  const userInputRef = useRef('');
+  const companyInputRef = useRef('');
+  const gitRepoInputRef = useRef('');
 
-  const userInputRef = useRef("");
-  const companyInputRef = useRef("");
-  const gitRepoInputRef = useRef("");
-
-
-/*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
+  /*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
   const usernameInputActive = (e) => {
-
     setUsernameInputReadMode(!usernameInputReadMode);
     userInputRef.current.readOnly = !userInputRef.current.readOnly;
     userInputRef.current.disabled = !userInputRef.current.disabled;
 
-    if (e.currentTarget.getAttribute("name") === "usernamecheck") {
-      console.log(e.currentTarget.getAttribute("name"), 'username target');
+    if (e.currentTarget.getAttribute('name') === 'usernamecheck') {
+      console.log(e.currentTarget.getAttribute('name'), 'username target');
       // if(inputValue.username === ''){
       //   return ; //공백인 경우 에러메세지 유효성 검사
       // }
       dispatch(editUsername(userInputRef.current.value));
     }
-
   };
-
 
   /*회사 인풋 활성화 후 체크 버튼 눌렀을 때 회사 변경patch */
   const companyInputActive = (e) => {
-
     setCompanyInputReadMode(!companyInputReadMode);
     companyInputRef.current.readOnly = !companyInputRef.current.readOnly;
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
 
-    if (e.currentTarget.getAttribute("name") === "companycheck") {
+    if (e.currentTarget.getAttribute('name') === 'companycheck') {
       // if(inputValue.company === ''){
       //   return ; //긴 공백인 경우 에러메세지
       // }
@@ -71,15 +69,13 @@ function Profile(props) {
     }
   };
 
-
   /*깃레포 인풋 활성화 후 체크 버튼 눌렀을 때 깃레포 변경patch */
   const gitRepoInputActive = (e) => {
-
     setGitRepoInputReadMode(!gitRepoInputReadMode);
     gitRepoInputRef.current.readOnly = !gitRepoInputRef.current.readOnly;
     gitRepoInputRef.current.disabled = !gitRepoInputRef.current.disabled;
-    
-    if (e.currentTarget.getAttribute("name") === "gitrepocheck") {
+
+    if (e.currentTarget.getAttribute('name') === 'gitrepocheck') {
       //pattern = /\s/g;
       // if(inputValue.gitrepo === '공백'){
       //   setErrorMessage('공백은 입력하실 수 없습니다.')
@@ -89,14 +85,12 @@ function Profile(props) {
     }
   };
 
-  console.log("render");
+  console.log('render');
 
-  useEffect(() => {
-    dispatch(getProfile());
-    console.log('useeffect get 요청 실행')
-  }, [dispatch]); 
-
-  
+  // useEffect(() => {
+  //   dispatch(getProfile());
+  //   console.log('useeffect get 요청 실행')
+  // }, [dispatch]);
 
   return (
     <div className="profile-container">
@@ -118,13 +112,13 @@ function Profile(props) {
               <FontAwesomeIcon
                 icon={usernameInputReadMode ? faPen : faCheck}
                 className="edit-info"
-                name={usernameInputReadMode ? "usernamepen" : "usernamecheck"}
+                name={usernameInputReadMode ? 'usernamepen' : 'usernamecheck'}
                 onClick={usernameInputActive}
               />
               <div className="errorMessage">{errorMessage}</div>
             </div>
             <p>{profile.email}</p>
-            <p>Jonined Recollect on {profile.createdAt.slice(0,10)}</p>
+            <p>Jonined Recollect on {profile.createdAt.slice(0, 10)}</p>
           </div>
           <div className="profilebox__follow">
             <p>
@@ -150,14 +144,16 @@ function Profile(props) {
                 readOnly
                 disabled
                 placeholder={
-                  profile.company ? `Working at ${profile.company}` : "Working at..."
+                  profile.company
+                    ? `Working at ${profile.company}`
+                    : 'Working at...'
                 }
                 ref={companyInputRef}
               />
               <FontAwesomeIcon
                 icon={companyInputReadMode ? faPen : faCheck}
                 className="edit-info"
-                name = {companyInputReadMode ? "companypen" : "companycheck"}
+                name={companyInputReadMode ? 'companypen' : 'companycheck'}
                 onClick={companyInputActive}
               />
               <div className="errorMessage">{errorMessage}</div>
@@ -169,13 +165,13 @@ function Profile(props) {
                 name="gitrepo"
                 readOnly
                 disabled
-                placeholder={profile.gitrepo ? profile.gitrepo : "-"}
+                placeholder={profile.gitrepo ? profile.gitrepo : '-'}
                 ref={gitRepoInputRef}
               />
               <FontAwesomeIcon
                 icon={gitRepoInputReadMode ? faPen : faCheck}
                 className="edit-info"
-                name = {gitRepoInputReadMode ? "gitrepopen" : "gitrepocheck"}
+                name={gitRepoInputReadMode ? 'gitrepopen' : 'gitrepocheck'}
                 onClick={gitRepoInputActive}
               />
               <div className="errorMessage">{errorMessage}</div>
@@ -184,14 +180,14 @@ function Profile(props) {
           <div className="profilebox__btns">
             <button
               onClick={() => {
-                props.setModalMode("changePwd");
+                props.setModalMode('changePwd');
               }}
             >
               비밀번호 변경
             </button>
             <button
               onClick={() => {
-                props.setModalMode("delAccount");
+                props.setModalMode('delAccount');
               }}
             >
               계정 삭제
@@ -205,7 +201,7 @@ function Profile(props) {
       <div className="profile-container__inner profile-container__inner--right">
         <div className="popular-recollect">
           <h1>My Favorite Recollect</h1>
-          <FavoriteBookmark favorite={profile.favorite}/>
+          <FavoriteBookmark favorite={profile.favorite} />
         </div>
       </div>
     </div>
