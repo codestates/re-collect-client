@@ -8,8 +8,6 @@
   display: flex;
   flex-direction: column;
 
-  // 카테고리 박스의 구성요소는 헤더, 뷰, 북마크
-
   &__header {
     height: 24px;
     padding: 0 15px;
@@ -59,7 +57,6 @@
       background-clip: padding-box;
       border-right: 3px solid transparent;
       border-top: 35px solid transparent;
-      // border-bottom: 96% solid transparent;
     }
 
     &::-webkit-scrollbar-track {
@@ -83,13 +80,15 @@
     }
 
     &:hover {
-      transform: scale(1.01, 1.01);
+      text-overflow: ellipsis;
+      transform: scale(1.02, 1.02);
     }
   }
 
   &__bookmark-textcontainer {
     flex: 1;
     cursor: grab;
+    text-overflow: unset;
   }
 
   &__bookmark-text {

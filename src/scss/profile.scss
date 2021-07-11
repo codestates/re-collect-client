@@ -6,6 +6,9 @@
   justify-content: center;
   align-items: center;
   color: #{$logocolor};
+  .errorMessage{
+    font-size: 1vw;
+  }
   &__inner {
     width: 28vw;
     height: 90vh;
@@ -133,6 +136,7 @@
           margin-top: 1.5vh;
           input{
             font-family: IBM Plex Mono;
+            text-overflow: ellipsis;
             width:50%;
             margin-right: 0.5vw;
             border:none;
@@ -144,7 +148,10 @@
               color: #{$logocolor};
               font-size:14px;
               font-family: IBM Plex Mono;
-            }            
+            }   
+            &:disabled{
+              background-color: transparent;
+            }         
           }
 
         }

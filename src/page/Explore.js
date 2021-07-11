@@ -1,14 +1,14 @@
-import React, { Component, useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import ExploreProfileList from '../components/ExploreProfileList';
-import { userInfoLists } from '../components/Explore_temp';
-import BigBookmark from '../components/BigBookmark';
-import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
-import { getExploreInfo } from '../modules/getExplore';
+import React, { useEffect } from "react";
+import Slider from "react-slick";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import ExploreProfileList from "../components/ExploreProfileList";
+import BigBookmark from "../components/BigBookmark";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { getExploreInfo } from "../modules/getExplore";
+import SlickArrow from "../components/SlickArrow";
 
 export default function SimpleSlider(props) {
   const settings = {
@@ -18,8 +18,8 @@ export default function SimpleSlider(props) {
     slidesToShow: 4, // 한번에 몇개의 슬라이드를 보여줄 지
     arrows: true, // 옆으로 이동하는 화살표 표시 여부
     slidesToScroll: 1, // 한번 스크롤시 몇장의 슬라이드를 넘길지
-    prevArrow: <button>←</button>,
-    nextArrow: <button>→</button>,
+    prevArrow: <SlickArrow direction={faArrowLeft} />,
+    nextArrow: <SlickArrow direction={faArrowRight} />,
 
     responsive: [
       // 반응형 웹 구현 옵션
@@ -46,23 +46,20 @@ export default function SimpleSlider(props) {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.getExploreReducer);
+  const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
-  // const [users, setUsers] = useState([]);
-
+  // 더미데이터 요청 //
   useEffect(() => {
     axios
-      .get('https://api.recollect.today/explore')
-      .then((res) => dispatch(getExploreInfo(res.data)))
-      .catch((err) => console.log('Error to get Explore info'));
+      .get("https://api.recollect.today/explore")
+      .then((res) => {
+        dispatch(getExploreInfo(res.data));
+      })
+      .catch((err) => console.log("Error to get Explore info"));
   }, []); // 빈배열을 넘겨 최초 한번만 실행
 
   return (
     <div className="exploreContainer">
-      {/* {state !== null && console.log("state is : ", state.users.users)} */}
-
-      {/* {state !== null && console.log("state is : ", state)} */}
-
-      {/* Search 검색바  */}
       <div className="searchContainer">
         <div className="exploreHeader"> Explore </div>
         <div className="searchBar">
@@ -82,25 +79,33 @@ export default function SimpleSlider(props) {
           </div>
         </div>
       </div>
-
       <div className="exploreProfileCarousal">
         <Slider {...settings}>
-          {state !== null &&
-            state.users.users.map((userInfo) => {
-              return (
-                <ExploreProfileList
-                  className="explore"
-                  key={userInfo.id}
-                  user={userInfo}
-                  id="carousel"
-                />
-              );
-            })}
+          {/* users데이터를 받아와서 렌덜할시 끊기는 오류가 있어서 fakeData사용 */}
+          {state === null
+            ? fakeData.map((el) => {
+                return (
+                  <ExploreProfileList
+                    className="explore"
+                    key={el.id}
+                    user={el}
+                    id="carousel"
+                  />
+                );
+              })
+            : state.users.users.map((userInfo) => {
+                return (
+                  <ExploreProfileList
+                    className="explore"
+                    key={userInfo.id}
+                    user={userInfo}
+                    id="carousel"
+                  />
+                );
+              })}
         </Slider>
       </div>
-
-      {/* bookmark 더미데이터 주소 확인필요  */}
-
+      {/* bookmark 더미데이터 initialState에 넣어두는게 맞을지? */}
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
         <ul>
@@ -114,3 +119,9 @@ export default function SimpleSlider(props) {
     </div>
   );
 }
+
+// 0. react-slick 에러 화살표 = done
+// 1. 화면에 렌더링안되는부분 = done
+// 2. css깨지는 부분 (css 다시 정리하기) = done
+// 3. 모달 가운데정렬 = done
+// 4. 모달on시 background 클릭 X =

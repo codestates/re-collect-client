@@ -1,4 +1,4 @@
-export const reducebookmark = (state, action) => {
+export default function reducebookmark(state, action) {
   const arr = action.category.map((ctgry) => {
     return { category: ctgry, bookmarks: [] };
   });
@@ -15,9 +15,10 @@ export const reducebookmark = (state, action) => {
     ...state,
     userBookmarks: {
       ...state.userBookmarks,
+      isLoading: false,
       category: action.category,
       bookmarks: action.bookmarks,
       reducedbookmarks: arr,
     },
   };
-};
+}

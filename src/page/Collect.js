@@ -7,65 +7,43 @@ import BottomPopup from '../components/BottomPopup';
 import Recollect from '../components/Recollect';
 import ToCollectBtn from '../components/ToCollectBtn';
 import BookmarksContainer from '../components/BookmarksContainer';
+import { SearchBookmark } from '../components/SearchBookmark';
 
-import { getBookmark } from '../modules/getBookmark';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { recollect } from '../modules/getRecollect';
 
 export default function Collect() {
-  const accessToken = localStorage.getItem('accessToken');
-  const { guestBookmarks } = useSelector((state) => state.getBookmarkReducer);
-  const { bookmarks, category, reducedbookmarks } = useSelector(
-    (state) => state.getBookmarkReducer.userBookmarks
-  );
-
   const [recollectView, setRecollectView] = useState(false);
-  const [data, setData] = useState({
-    bookmarks: guestBookmarks.bookmarks,
-    category: guestBookmarks.category,
-    reducedbookmarks: guestBookmarks.reducedbookmarks,
-  });
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(getBookmark());
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    setData({
-      ...data,
-      bookmarks: bookmarks,
-      category: category,
-      reducedbookmarks: reducedbookmarks,
-    });
-  }, [bookmarks]);
+  const [searchInput, setSearchInput] = useState('');
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
-    dispatch(recollect());
   };
   return (
     <>
+      {console.log('검색어입력 : ', searchInput.length)}
+      {/* 검색어 입력수가 0이 아닌경우, 검색어와 일치하는 북마크 랜딩  */}
       {recollectView ? (
         <>
           <ToCollectBtn viewHandler={recollectViewHandler} />
           <Recollect />
-          {/* Todo: unreadBookmarks를 걸러낸 후 프롭스로 전달 */}
         </>
       ) : (
         <>
           <div className="collectview">
+            {/* {console.log("아또 왜그래 ", unreadBookmarks)} */}
             <Sidebar />
             <div className="collectview__right">
               <div className="collectview__title">collect</div>
               <div className="collectview__nav">
                 <UnreadAlarm viewHandler={recollectViewHandler} />
-                <SearchBar />
+                <SearchBar setSearchInput={setSearchInput} />
               </div>
-              <BookmarksContainer data={data.reducedbookmarks} />
+              {searchInput.length !== 0 ? (
+                <SearchBookmark searchInput={searchInput} />
+              ) : (
+                <BookmarksContainer />
+              )}
             </div>
           </div>
           <BottomPopup />

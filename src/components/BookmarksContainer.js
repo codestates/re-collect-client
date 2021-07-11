@@ -1,14 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CategoryBox from './CategoryBox';
 import CollectBookmark from './CollectBookmark';
+import {
+  getBookmark,
+  getGuestBookmark,
+  editBookmark,
+  editGuestBookmark,
+} from '../modules/bookmark';
+import { useSelector, useDispatch } from 'react-redux';
 
-function BookmarksContainer({ data }) {
-  const [list, setList] = useState(data);
+function BookmarksContainer() {
+  const accessToken = localStorage.getItem('accessToken');
+  const guestBookmarks = useSelector(
+    (state) => state.bookmarkReducer.guestBookmarks
+  );
+  const { isLoading, bookmarks, category, reducedbookmarks } = useSelector(
+    (state) => state.bookmarkReducer.userBookmarks
+  );
+  const dispatch = useDispatch();
+
+  const [list, setList] = useState([]);
   const [dragging, setDragging] = useState(false);
 
   useEffect(() => {
-    setList(data);
-  }, [setList, list]);
+    if (accessToken) {
+      dispatch(getBookmark());
+    } else {
+      dispatch(getGuestBookmark());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (accessToken) {
+      setList(reducedbookmarks);
+    } else {
+      setList(guestBookmarks.reducedbookmarks);
+    }
+  }, [reducedbookmarks, guestBookmarks]);
 
   const dragItem = useRef();
   const dragItemNode = useRef();
@@ -53,6 +81,23 @@ function BookmarksContainer({ data }) {
   };
 
   const handleDragEnd = (e) => {
+    const originalCategory = dragItemNode.current.item.grp.category;
+    const changingCategory = dragItem.current.grp.category;
+    if (originalCategory !== changingCategory) {
+      const groupIdx = dragItemNode.current.item.grpI;
+      const itemIdx = dragItemNode.current.item.itemI;
+      const findingBookmark = { ...list[groupIdx].bookmarks[itemIdx] };
+      findingBookmark.category = {
+        value: changingCategory,
+        label: changingCategory,
+      };
+      if (accessToken) {
+        dispatch(editBookmark(findingBookmark));
+      } else {
+        dispatch(editGuestBookmark(findingBookmark));
+      }
+    }
+
     setDragging(false);
 
     dragItem.current = null;
@@ -71,11 +116,15 @@ function BookmarksContainer({ data }) {
   };
 
   return (
-    <div className="collectview__bookmarks">
+    <>
       {list.length === 0 ? (
-        '보여줄 북마크가 없습니다. 왼쪽 추가하기 버튼을 눌러 북마크를 추가하세요'
+        <span className="collectview__thereIsNothingText">
+          저장된 북마크가 없습니다.
+          <br />
+          왼쪽 추가하기 버튼을 눌러 북마크를 추가하세요
+        </span>
       ) : (
-        <>
+        <div className="collectview__bookmarks">
           {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
@@ -113,9 +162,9 @@ function BookmarksContainer({ data }) {
               ))}
             </CategoryBox>
           ))}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

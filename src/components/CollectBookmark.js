@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { editStart } from '../modules/editBookmark';
+import { editStart } from '../modules/bookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
@@ -36,7 +36,11 @@ export default function CollectBookmark(props) {
         </a>
       </div>
       <div className="categorybox__bookmark-ellipsis">
-        <FontAwesomeIcon className="ellipsis" icon={faEllipsisH} />
+        <FontAwesomeIcon
+          onClick={handleEditBtn}
+          className="ellipsis"
+          icon={faEllipsisH}
+        />
       </div>
       <button className="categorybox__bookmark-editbtn" onClick={handleEditBtn}>
         edit

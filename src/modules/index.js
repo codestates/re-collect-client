@@ -1,20 +1,20 @@
 import { combineReducers } from 'redux';
 import { profileReducer } from './editProfile';
-import { addBookmarkReducer } from './addBookmark';
-import { getBookmarkReducer } from './getBookmark';
 import { loginReducer } from './login';
 import { signupReducer } from './signup';
 import { getExploreReducer } from './getExplore';
-import { editBookmarkReducer } from './editBookmark';
+import { bookmarkReducer } from './bookmark';
+import { notificationReducer } from './notification';
+import { recollectReducer } from './getRecollect';
 
 const rootReducer = combineReducers({
-  addBookmarkReducer,
-  getBookmarkReducer,
+  notificationReducer,
+  bookmarkReducer,
   getExploreReducer,
   profileReducer,
   loginReducer,
   signupReducer,
-  editBookmarkReducer,
+  recollectReducer,
 });
 
 export default rootReducer;

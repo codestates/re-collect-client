@@ -1,20 +1,36 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { editEnd } from '../modules/bookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CollectInputBox from './CollectInputBox';
 
 function BottomPopup() {
+  const isEdit = useSelector(
+    (state) => state.bookmarkReducer.tempBookmark.isEdit
+  );
+  const dispatch = useDispatch();
+
   const [yposition, setYposition] = useState(-120);
 
   useEffect(() => {
     setYposition(0);
   }, []);
 
+  useEffect(() => {
+    if (isEdit) {
+      setYposition(-120);
+    } else {
+      setYposition(0);
+    }
+  }, [isEdit]);
+
   const bottomPopupToggleHandler = () => {
     if (yposition === 0) {
       setYposition(-120);
     } else {
       setYposition(0);
+      dispatch(editEnd());
     }
   };
 
@@ -45,7 +61,6 @@ function BottomPopup() {
               onClick={bottomPopupToggleHandler}
             ></div>
             <div className="bottomPopup__contentsBackground">
-              <div className="bottomPopup__text">북마크 추가하기</div>
               <CollectInputBox className="bottomPopup" />
             </div>
           </>

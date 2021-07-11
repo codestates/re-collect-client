@@ -1,10 +1,12 @@
 import initialState from './initialState';
 import axios from 'axios';
 
-const LOGIN = 'LOGIN';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAIL = 'LOGIN_FAIL';
 const LOGIN_INITIALIZE = 'LOGIN_INITIALIZE';
+
+const LOGOUT_SUCCESS = '';
+const LOGOUT_FAIL = '';
 
 export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
 
@@ -39,6 +41,28 @@ export const loginThunk = (userinfo) => async (dispatch) => {
   }
 };
 
+export const logoutThunk = () => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
+
+  axios
+    .get('https://api.recollect.today/logout', {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+        withCredentials: true,
+      },
+    })
+    .then(() => {
+      dispatch({ type: LOGOUT_SUCCESS });
+      localStorage.removeItem('accessToken');
+      // document.cookie;
+    })
+    .catch((e) => {
+      if (e.response) {
+        dispatch({ type: LOGOUT_FAIL, error: e.response.data.message });
+      }
+    });
+};
+
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_INITIALIZE:
@@ -51,7 +75,6 @@ export const loginReducer = (state = initialState, action) => {
       };
 
     case LOGIN_SUCCESS:
-      console.log('여기까지 오는거니?');
       return {
         ...state,
         user: {
