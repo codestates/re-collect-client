@@ -5,6 +5,7 @@ import { signupReducer } from './signup';
 import { getExploreReducer } from './getExplore';
 import { bookmarkReducer } from './bookmark';
 import { notificationReducer } from './notification';
+import { recollectReducer } from './getRecollect';
 
 const rootReducer = combineReducers({
   notificationReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   profileReducer,
   loginReducer,
   signupReducer,
+  recollectReducer,
 });
 
 export default rootReducer;

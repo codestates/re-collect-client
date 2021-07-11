@@ -79,8 +79,7 @@ const initialState = {
     ],
   },
 
-  users: [1, 2, 3],
-
+  unreadBookmarks: null,
   userBookmarks: {
     isLoading: false,
     category: [],

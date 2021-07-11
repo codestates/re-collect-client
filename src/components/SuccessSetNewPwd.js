@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
-import {
-  IsValidateEmail,
-  IsValidiateUsername,
-  IsValidiatePassword,
-} from "../util/validation";
+import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 

@@ -13,16 +13,18 @@ import FindPwdModal from './components/FindPwdModal';
 import SuccessSignUpModal from './components/SuccessSignUpModal';
 import ExploreModal from './components/ExploreModal';
 import ChangePwdModal from './components/ChangePwdModal';
-import LogoutModal from './components/LogoutModal';
 import DelAccountModal from './components/DelAccountModal';
 import SetNewPwdModal from './components/SetNewPwdModal';
 import Loading from './components/Loading';
 import SetNewPwd from './page/SetNewPwd';
 import SuccessSetNewPwd from './components/SuccessSetNewPwd';
 import NofiticationCenter from './components/NotificationCenter';
+import Error from './components/Error';
+import SentEmailModal from './components/SentEmailModal';
 import {
   Switch,
   Route,
+  Redirect,
   BrowserRouter as Router,
   withRouter,
 } from 'react-router-dom';
@@ -51,6 +53,9 @@ function App() {
       )}
       {modalMode === 'findPwd' && (
         <FindPwdModal modalMode={modalMode} setModalMode={setModalMode} />
+      )}
+      {modalMode === 'sentEmail' && (
+        <SentEmailModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
       {modalMode === 'successSignup' && (
         <SuccessSignUpModal modalMode={modalMode} setModalMode={setModalMode} />
@@ -81,20 +86,23 @@ function App() {
       <NofiticationCenter />
       <Switch>
         <Route path="/loading" component={Loading}></Route>
-        <Route path="/error" component={Error}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
         <Route path="/login/pwd/reset">
           <SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/profile">
-          <Profile modalMode={modalMode} setModalMode={setModalMode} />
+          {accessToken ? (
+            <Profile modalMode={modalMode} setModalMode={setModalMode} />
+          ) : (
+            <Redirect to="*" />
+          )}
         </Route>
         <Route path="/explore" component={Explore}>
           <Explore modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route exact path="/" component={Landing}></Route>
-        <Route component={Error} />
+        <Route path="*" component={Error}></Route>
       </Switch>
       <ScrollToTop />
       <Footer />

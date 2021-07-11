@@ -2,14 +2,14 @@ import axios from 'axios';
 
 const initialState = {
   profile: {
-    username: 'init유저네임',
-    password: '패스워드',
-    email: 'initial@recollect.today',
+    username: '',
+    //password: '',
+    email: '',
     company: '',
     gitrepo: '',
-    createdAt: '2021.07.07',
+    createdAt: '',
     recollectcount: 0,
-    //favorite: {},
+    favorite: {},
     error: null,
   },
 };
@@ -31,19 +31,29 @@ const EDIT_GITREPO_SUCCESS = 'EDIT_GITREPO_SUCCESS';
 const EDIT_GITREPO_FAIL = 'EDIT_GITREPO_FAIL';
 
 const EDIT_PWD = 'EDIT_PWD';
+const EDIT_PWD_SUCCESS = 'EDIT_PWD_SUCCESS';
+const EDIT_PWD_FAIL = 'EDIT_PWD_FAIL';
+
 const GET_FAVORITE = 'GET_FAVORITE';
+
 const DEL_ACCOUNT = 'DEL_ACCOUNT';
+const DEL_ACCOUNT_SUCCESS = 'DEL_ACCOUNT_SUCCESS';
+const DEL_ACCOUNT_FAIL = 'DEL_ACCOUNT_FAIL';
 
-const accessToken = localStorage.getItem('accessToken');
-
-export const getProfile = () => async (dispatch) => {
-  await axios
+export const getProfile = () => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
+  axios
     .get('https://api.recollect.today/profile', {
       headers: { authorization: `Bearer ${accessToken}` },
       withCredentials: true,
     })
     .then((res) => {
       console.log(res);
+
+      const favorite = res.data.bookmark.reduce((prev, curr) => {
+        return prev.visitCounts > curr.visitCounts ? prev : curr;
+      });
+
       dispatch({
         type: GET_PROFILE_SUCCESS,
         profile: {
@@ -53,7 +63,7 @@ export const getProfile = () => async (dispatch) => {
           gitrepo: res.data.user.gitRepo, //대문자여야함
           createdAt: res.data.user.createdAt,
           recollectcount: res.data.bookmark.length,
-          // favorite: visitCounts 가 제일 많은 res.bookmark객체 1개,
+          favorite: favorite,
         },
       });
     })
@@ -62,15 +72,13 @@ export const getProfile = () => async (dispatch) => {
     });
 };
 
-export const editUsername = (username) => async (dispatch) => {
+export const editUsername = (username) => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
   //console.log(userInputRef.current, '유저인풋이 뭐니?');
   console.log(username, '유저인풋이 뭐니?');
   //console.log(userchange, '유저인풋이 뭐니?');
-  if(!username){
-    console.log('빈문자열임..')
-    //여기서 뭔가 해줘야함. 유효성 검사라던지..
-  }else{
-  await axios
+
+  axios
     .patch(
       'https://api.recollect.today/profile/username',
       {
@@ -88,17 +96,17 @@ export const editUsername = (username) => async (dispatch) => {
       });
     })
     .then(() => {
-      dispatch(getProfile())
+      dispatch(getProfile());
     })
     .catch((err) => {
       console.error(err.message);
       dispatch({ type: EDIT_USERNAME_FAIL, error: err.message });
     });
-  }
 };
 
-export const editCompany = (company) => async (dispatch) => {
-  await axios
+export const editCompany = (company) => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
+  axios
     .patch(
       'https://api.recollect.today/profile/company',
       {
@@ -116,7 +124,7 @@ export const editCompany = (company) => async (dispatch) => {
       });
     })
     .then(() => {
-      dispatch(getProfile())
+      dispatch(getProfile());
     })
     .catch((err) => {
       console.error(err.message);
@@ -124,9 +132,10 @@ export const editCompany = (company) => async (dispatch) => {
     });
 };
 
-export const editGitRepo = (gitrepo) => async (dispatch) => {
-  console.log(gitrepo, '깃레포 너는 뭐니?')
-  await axios
+export const editGitRepo = (gitrepo) => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
+  console.log(gitrepo, '깃레포 너는 뭐니?');
+  axios
     .patch(
       'https://api.recollect.today/profile/gitrepo',
       {
@@ -144,7 +153,7 @@ export const editGitRepo = (gitrepo) => async (dispatch) => {
       });
     })
     .then(() => {
-      dispatch(getProfile())
+      dispatch(getProfile());
     })
     .catch((err) => {
       console.error(err.message);
@@ -161,23 +170,52 @@ export const editGitRepo = (gitrepo) => async (dispatch) => {
 //   };
 // };
 
-// export const editPwd = () => {
-//   return {
-//     type: EDIT_PWD,
-//     payload: {
-//       id: 1,
-//     },
-//   };
-// };
+export const editPwd = (pwdInfo) => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
+  axios
+    .patch(
+      'https://api.recollect.today/profile/pwd',
+      {
+        pwd: pwdInfo.newpassword, //일단 새비번 문자열만 보냄.
+      },
+      {
+        headers: { authorization: `Bearer ${accessToken}` },
+        withCredentials: true,
+      }
+    )
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: EDIT_PWD_SUCCESS,
+      });
+    })
+    .then(() => {
+      dispatch(getProfile());
+    })
+    .catch((err) => {
+      console.error(err.message);
+      dispatch({ type: EDIT_PWD_FAIL, error: err.message });
+    });
+};
 
-// export const delAccount = () => {
-//   return {
-//     type: DEL_ACCOUNT,
-//     payload: {
-//       id: 1,
-//     },
-//   };
-// };
+export const delAccount = () => (dispatch) => {
+  const accessToken = localStorage.getItem('accessToken');
+  axios
+    .del('https://api.recollect.today/profile', {
+      headers: { authorization: `Bearer ${accessToken}` },
+      withCredentials: true,
+    })
+    .then((res) => {
+      console.log(res.data.message);
+      dispatch({
+        type: DEL_ACCOUNT_SUCCESS,
+      });
+    })
+    .catch((err) => {
+      console.error(err.message);
+      dispatch({ type: DEL_ACCOUNT_FAIL, error: err.message });
+    });
+};
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -189,24 +227,30 @@ export const profileReducer = (state = initialState, action) => {
     case EDIT_USERNAME_SUCCESS:
       return {
         ...state,
-        profile: {...state.profile},
+        profile: { ...state.profile },
       };
     case EDIT_COMPANY_SUCCESS:
       return {
         ...state,
-        profile: {...state.profile},
+        profile: { ...state.profile },
       };
     case EDIT_GITREPO_SUCCESS:
       return {
         ...state,
-        profile: {...state.profile},
+        profile: { ...state.profile },
       };
     case GET_FAVORITE:
       return;
-    case EDIT_PWD:
-      return;
-    case DEL_ACCOUNT:
-      return;
+    case EDIT_PWD_SUCCESS:
+      return {
+        ...state,
+        profile: { ...state.profile },
+      };
+    case DEL_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        profile: { ...state.profile },
+      };
     default:
       return state;
   }

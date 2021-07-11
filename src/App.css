@@ -1,5 +1,4 @@
 .bigBookmark {
-  border: 1px solid #214bc8;
   height: 45px;
   line-height: 45px;
   width: 100%;
@@ -1951,10 +1950,23 @@ body,
   color: black;
   font-size: 9px;
 }
+.modalWrapper .sentEmailModal {
+  display: flex;
+  width: 100%;
+  height: 220px;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .sentEmailModal p {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
 .modalWrapper .changePwdpModal {
   display: flex;
   width: 100%;
-  height: 270px;
+  height: 300px;
   flex-direction: column;
   align-items: center;
 }
@@ -1984,6 +1996,40 @@ body,
   margin-top: 15px;
 }
 .modalWrapper .changePwdpModal .changePwdErrorMessage {
+  display: flex;
+  margin-top: 10px;
+  color: black;
+  font-size: 9px;
+}
+.modalWrapper .delAccountModal {
+  display: flex;
+  height: 280px;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .delAccountModal p {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+.modalWrapper .delAccountModal .inputContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalWrapper .delAccountModal .inputContainer input {
+  margin-top: 0px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.modalWrapper .delAccountModal button {
+  margin-top: 15px;
+}
+.modalWrapper .delAccountModal .delAccountErrorMessage {
   display: flex;
   margin-top: 10px;
   color: black;
@@ -2195,6 +2241,9 @@ body,
   align-items: center;
   color: #214bc8;
 }
+.profile-container .errorMessage {
+  font-size: 1vw;
+}
 .profile-container__inner {
   width: 28vw;
   height: 90vh;
@@ -2306,6 +2355,7 @@ body,
 }
 .profile-container__inner--left .profilebox__companyngitrepo__inner input {
   font-family: IBM Plex Mono;
+  text-overflow: ellipsis;
   width: 50%;
   margin-right: 0.5vw;
   border: none;
@@ -2317,6 +2367,9 @@ body,
   color: #214bc8;
   font-size: 14px;
   font-family: IBM Plex Mono;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:disabled {
+  background-color: transparent;
 }
 .profile-container__inner--left .profilebox__companyngitrepo .edit-info {
   color: grey;
@@ -2436,7 +2489,8 @@ body,
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  height: calc(100vh);
+  min-height: 100vh;
+  height: fit-content;
   padding-top: 80px;
 }
 .recollect__toCollectBtn {
@@ -2508,6 +2562,24 @@ body,
 @media (max-width: 600px) {
   .top-btn {
     left: 84%;
+  }
+}
+.searching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh);
+  padding-top: 30px;
+}
+.searching__bookmarks {
+  width: 36vw;
+  min-width: 500px;
+}
+
+@media (max-width: 600px) {
+  .searching__bookmarks {
+    width: 71vw;
+    min-width: 200px;
   }
 }
 .SetNewPwd__container {

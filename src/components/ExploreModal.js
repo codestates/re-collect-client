@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  IsValidateEmail,
-  IsValidiateUsername,
-  IsValidiatePassword,
-} from "../util/validation";
+import React from "react";
+import { IsValidateEmail } from "../util/validation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 

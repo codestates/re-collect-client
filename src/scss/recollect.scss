@@ -5,7 +5,8 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  height: calc(100vh);
+  min-height: 100vh;
+  height: fit-content;
   padding-top: 80px;
   // width: 100%;
   &__toCollectBtn {
