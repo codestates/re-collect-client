@@ -1,20 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import BigBookmark from "./BigBookmark";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { recollect } from "../modules/getRecollect";
+import initialState from "../modules/initialState";
 
-function Recollect() {
-  const unreadBookmarks = useSelector((state) => state.recollectReducer);
+function Recollect(props) {
+  // dispatch(recollect(bookmarks)); 요청
+  // 1. 로그인 o => visitcounts = 0
+  // 2. 로그인 x => initialState guestBookmarks 3개
+  const { bookmarks } = useSelector(
+    (state) => state.getBookmarkReducer.userBookmarks
+  );
+  const dispatch = useDispatch();
+  const accessToken = localStorage.getItem("accessToken");
+  const guestBookmarks = initialState.guestBookmarks.bookmarks;
+
+  // 읽지않은 북마크 //
+  const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(recollect(bookmarks));
+    } else {
+      console.log(guestBookmarks);
+    }
+  }, [dispatch]);
 
   return (
     <div className="recollect">
-      {/* {console.log("unreadbookmarks 여기있네 : ", unreadBookmarks)} */}
       <div className="recollect__title">Recollect</div>
       <div className="recollect__bookmarks">
-        <BigBookmark />
-        <BigBookmark />
-        <BigBookmark />
-        <BigBookmark />
-        <BigBookmark />
+        {unreadBookmarks !== null
+          ? unreadBookmarks.map((unread) => {
+              return (
+                <BigBookmark
+                  key={unread.id}
+                  text={unread.text}
+                  color={unread.color}
+                  importance={unread.importance}
+                />
+              );
+            })
+          : guestBookmarks.map((bookmark) => {
+              return (
+                <BigBookmark
+                  key={bookmark.id}
+                  text={bookmark.text}
+                  color={bookmark.color}
+                />
+              );
+            })}
       </div>
     </div>
   );

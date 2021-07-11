@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import LoginModal from "./LoginModal";
 
 function Nav(props) {
   const [isvisible, setVisible] = useState(false);
@@ -24,7 +23,13 @@ function Nav(props) {
 
   return (
     <div className="nav-container">
-      <Link to="/" className="nav-container__logo">
+      <Link
+        to="/"
+        onClick={() => {
+          props.setModalMode("");
+        }}
+        className="nav-container__logo"
+      >
         logo
       </Link>
       <FontAwesomeIcon
@@ -40,8 +45,22 @@ function Nav(props) {
             : "nav-container__inner-container toggle on"
         }
       >
-        <Link to="/">Home</Link>
-        <Link to="/collect">Recollect</Link>
+        <Link
+          to="/"
+          onClick={() => {
+            props.setModalMode("");
+          }}
+        >
+          Home
+        </Link>
+        <Link
+          to="/collect"
+          onClick={() => {
+            props.setModalMode("");
+          }}
+        >
+          Recollect
+        </Link>
         <Link
           onClick={() => {
             props.setModalMode("explore");
@@ -50,18 +69,26 @@ function Nav(props) {
         >
           Explore
         </Link>
-          {accessToken ? (
-            <>
+        {accessToken ? (
+          <>
             <Link to="/profile">Profile</Link>
-            <div onClick={() => {props.setModalMode("logout");}}>
+            <div
+              onClick={() => {
+                props.setModalMode("logout");
+              }}
+            >
               Logout
             </div>
-            </>
-          ) : (
-              <div onClick={() => {props.setModalMode("login");}}>
-                Login
-              </div>
-          )}
+          </>
+        ) : (
+          <div
+            onClick={() => {
+              props.setModalMode("login");
+            }}
+          >
+            Login
+          </div>
+        )}
       </div>
     </div>
   );

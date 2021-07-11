@@ -1,4 +1,4 @@
-export default function UnreadAlarm({ viewHandler }) {
+export default function UnreadAlarm({ viewHandler, unit }) {
   return (
     <div
       className="collectview__alarm"
@@ -6,7 +6,7 @@ export default function UnreadAlarm({ viewHandler }) {
         viewHandler();
       }}
     >
-      7 Unread Bookmarks, Start To Recollect
+      Unread Bookmarks, Start To Recollect
     </div>
   );
 }

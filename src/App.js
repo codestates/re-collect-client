@@ -15,6 +15,7 @@ import ExploreModal from "./components/ExploreModal";
 import ChangePwdModal from "./components/ChangePwdModal";
 import LogoutModal from "./components/LogoutModal";
 import DelAccountModal from "./components/DelAccountModal";
+import SentEmailModal from "./components/SentEmailModal";
 import SetNewPwdModal from "./components/SetNewPwdModal";
 import Loading from "./components/Loading";
 import SetNewPwd from "./page/SetNewPwd";
@@ -28,8 +29,8 @@ import {
 
 function App() {
   const [modalMode, setModalMode] = useState("");
-  const accessToken = localStorage.getItem("accessToken");
-  // 모달창 on인상태, 스크롤 불가 //
+
+  // 모달창 on, 스크롤 불가 //
   useEffect(() => {
     const body = document.querySelector("body");
     if (modalMode !== "") {
@@ -51,6 +52,9 @@ function App() {
       {modalMode === "findPwd" && (
         <FindPwdModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
+      {modalMode === "sentEmail" && (
+        <SentEmailModal modalMode={modalMode} setModalMode={setModalMode} />
+      )}
       {modalMode === "successSignup" && (
         <SuccessSignUpModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
@@ -71,9 +75,6 @@ function App() {
       )}
       {modalMode === "successSetNewPwd" && (
         <SuccessSetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
-      )}
-      {modalMode === "changePwd" && (
-        <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
       {modalMode === "logout" && (
         <LogoutModal modalMode={modalMode} setModalMode={setModalMode} />
