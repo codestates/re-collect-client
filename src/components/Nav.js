@@ -12,8 +12,6 @@ function Nav(props) {
   };
 
   const accessToken = localStorage.getItem("accessToken");
-  //isLogin true 인 경우 Login 메뉴 Profile 로 전환 필요//
-  //로그인 클릭시 로그인 팝업 노출, post/login, validation check//
 
   useEffect(() => {
     handleToggleBtn();
