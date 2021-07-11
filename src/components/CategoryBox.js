@@ -1,4 +1,3 @@
-import CollectBookmark from './CollectBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 

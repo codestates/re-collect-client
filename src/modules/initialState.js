@@ -16,7 +16,7 @@ const initialState = {
     category: ['카테고리를 추가하세요'],
     bookmarks: [
       {
-        category: '카테고리를 추가하세요 ',
+        category: '카테고리를 추가하세요',
         id: 0,
         text: '새로운 북마크를 추가하세요 1',
         url: 'https://www.google.com/',
@@ -25,7 +25,7 @@ const initialState = {
         visitCounts: 1,
       },
       {
-        category: '카테고리를 추가하세요 ',
+        category: '카테고리를 추가하세요',
         id: 1,
         text: '새로운 북마크를 추가하세요 2',
         url: 'https://www.google.com/',
@@ -34,7 +34,7 @@ const initialState = {
         visitCounts: 0,
       },
       {
-        category: '카테고리를 추가하세요 ',
+        category: '카테고리를 추가하세요',
         id: 2,
         text: '새로운 북마크를 추가하세요 3',
         url: 'https://www.google.com/',
@@ -48,7 +48,7 @@ const initialState = {
         category: '카테고리를 추가하세요',
         bookmarks: [
           {
-            category: '카테고리를 추가하세요 ',
+            category: '카테고리를 추가하세요',
             id: 0,
             text: '새로운 북마크를 추가하세요 1',
             url: 'https://www.google.com/',
@@ -57,7 +57,7 @@ const initialState = {
             visitCounts: 1,
           },
           {
-            category: '카테고리를 추가하세요 ',
+            category: '카테고리를 추가하세요',
             id: 1,
             text: '새로운 북마크를 추가하세요 2',
             url: 'https://www.google.com/',
@@ -66,7 +66,7 @@ const initialState = {
             visitCounts: 0,
           },
           {
-            category: '카테고리를 추가하세요 ',
+            category: '카테고리를 추가하세요',
             id: 2,
             text: '새로운 북마크를 추가하세요 3',
             url: 'https://www.google.com/',

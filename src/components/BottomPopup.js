@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editEnd } from '../modules/editBookmark';
+import { editEnd } from '../modules/bookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CollectInputBox from './CollectInputBox';
 
 function BottomPopup() {
   const isEdit = useSelector(
-    (state) => state.editBookmarkReducer.tempBookmark.isEdit
+    (state) => state.bookmarkReducer.tempBookmark.isEdit
   );
   const dispatch = useDispatch();
 

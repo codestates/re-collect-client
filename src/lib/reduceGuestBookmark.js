@@ -1,4 +1,4 @@
-export default function reduceBookmarkTest(bookmark, category) {
+export default function reduceGuestBookmark(bookmark, category) {
   const reducedBookmark = category.map((ctgr) => ({
     category: ctgr,
     bookmarks: [],
