@@ -209,14 +209,11 @@ export const deleteBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
   if (accessToken) {
     axios
-      .delete(
-        'https://api.recollect.today/collect',
-        { bookmarkId: bookmark.id },
-        {
-          headers: { authorization: `Bearer ${accessToken}` },
-          withCredentials: true,
-        }
-      )
+      .delete('https://api.recollect.today/bookmarks', {
+        params: { id: bookmark.id },
+        headers: { authorization: `Bearer ${accessToken}` },
+        withCredentials: true,
+      })
       .then(() => {
         dispatch({ type: DELETE_BOOKMARK_SUCCESS });
       })
