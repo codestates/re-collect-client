@@ -90,7 +90,7 @@ export const addBookmark = (bookmark) => (dispatch) => {
 
   axios
     .post(
-      'https://api.recollect.today/collect',
+      'https://api.recollect.today/bookmark',
       {
         ...convertedBookmark,
       },
