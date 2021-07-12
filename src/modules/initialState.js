@@ -1,9 +1,4 @@
 const initialState = {
-  user: {
-    isLogin: false,
-    error: null,
-  },
-
   tempBookmark: {
     isEdit: false,
     isLoading: false,
