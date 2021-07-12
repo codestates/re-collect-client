@@ -74,7 +74,7 @@ export const loginThunk = (userinfo) => async (dispatch) => {
   }
 };
 
-export const logoutThunk = () => (dispatch) => {
+export const logoutThunk = () => () => {
   const accessToken = localStorage.getItem('accessToken');
 
   axios
@@ -85,14 +85,10 @@ export const logoutThunk = () => (dispatch) => {
       },
     })
     .then(() => {
-      dispatch({ type: LOGOUT_SUCCESS });
       localStorage.removeItem('accessToken');
-      // document.cookie;
     })
-    .catch((e) => {
-      if (e.response) {
-        dispatch({ type: LOGOUT_FAIL, error: e.response.data.message });
-      }
+    .catch(() => {
+      localStorage.removeItem('accessToken');
     });
 };
 

@@ -31,7 +31,6 @@ export default function Collect() {
       ) : (
         <>
           <div className="collectview">
-            {/* {console.log("아또 왜그래 ", unreadBookmarks)} */}
             <Sidebar />
             <div className="collectview__right">
               <div className="collectview__title">collect</div>

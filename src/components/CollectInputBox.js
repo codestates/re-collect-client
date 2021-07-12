@@ -11,6 +11,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { notify } from '../modules/notification';
 
 const customStyles = {
   container: (provided, state) => ({
@@ -31,6 +32,7 @@ const customStyles = {
   }),
 
   placeholder: (provided) => ({
+    ...provided,
     color: 'rgba(0, 0, 0, 0.5)',
   }),
 
@@ -45,9 +47,10 @@ const customStyles = {
 function CollectInputBox(props) {
   const accessToken = localStorage.getItem('accessToken');
 
-  const { category } = useSelector(
+  const { reducedBookmarks, category } = useSelector(
     (state) => state.bookmarkReducer.userBookmarks
   );
+
   const guestCategory = useSelector(
     (state) => state.bookmarkReducer.guestBookmarks.category
   );
@@ -62,23 +65,25 @@ function CollectInputBox(props) {
   );
 
   const [bookmarkInput, setbookmarkInput] = useState({
-    id: '',
-    color: '',
     category: '',
+    categoryId: null,
+    bookmarkId: null,
     text: '',
     url: '',
     importance: false,
+    color: '',
   });
 
   useEffect(() => {
     if (data) {
       setbookmarkInput({
-        id: data.id,
-        color: data.color,
         category: data.category,
+        categoryId: data.categoryId,
+        bookmarkId: data.bookmarkId,
         text: data.text,
         url: data.url,
         importance: data.importance,
+        color: data.color,
       });
     } else {
       handleInitialize();
@@ -102,10 +107,9 @@ function CollectInputBox(props) {
     const { value, name } = e.target;
     if (name === 'importance') {
       setbookmarkInput((oldValue) => {
-        const newImportance = !oldValue.importance;
         return {
           ...bookmarkInput,
-          importance: newImportance,
+          importance: !oldValue.importance,
         };
       });
     } else {
@@ -118,12 +122,13 @@ function CollectInputBox(props) {
 
   const handleInitialize = () => {
     setbookmarkInput({
-      id: '',
-      color: '',
       category: '',
+      categoryId: null,
+      bookmarkId: null,
       text: '',
       url: '',
       importance: false,
+      color: '',
     });
   };
 
@@ -131,7 +136,30 @@ function CollectInputBox(props) {
     setbookmarkInput({ ...bookmarkInput, color: e.target.id });
   };
 
+  const handleCheckBefore = (mode) => {
+    const { text, url, category } = bookmarkInput;
+
+    if (!text || !url || !category) {
+      if (!category) dispatch(notify('카테고리를 지정해주세요!'));
+      if (!text) dispatch(notify('텍스트를 입력해주세요!'));
+      if (!url) dispatch(notify('url을 입력해주세요!'));
+      return;
+    }
+
+    switch (mode) {
+      case 'edit':
+        handleEditBookmark();
+        break;
+      case 'add':
+        handleAddBookmark();
+        break;
+      default:
+        return;
+    }
+  };
+
   const handleAddBookmark = () => {
+    console.log('진입여부');
     if (accessToken) {
       dispatch(addBookmark(bookmarkInput));
     } else {
@@ -270,14 +298,11 @@ function CollectInputBox(props) {
           onClick={
             isEdit
               ? () => {
-                  handleEditBookmark();
+                  handleCheckBefore('edit');
                 }
               : () => {
-                  handleAddBookmark();
+                  handleCheckBefore('add');
                 }
-          }
-          disabled={
-            bookmarkInput.text === '' || bookmarkInput.url === '' ? true : false
           }
         >
           {isEdit ? '수정' : '추가'}

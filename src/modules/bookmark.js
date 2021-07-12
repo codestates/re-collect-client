@@ -49,51 +49,52 @@ export const getBookmark = () => (dispatch) => {
 };
 
 export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
-  const convertedBookmark = bookmarkConverter(bookmark, true);
+  const convertedBookmark = bookmarkConverter(bookmark, true, false);
 
-  //id부여
+  console.group('컨버티드 북마크 확인');
+  console.log(convertedBookmark);
+  console.groupEnd();
 
-  convertedBookmark.id = getState().bookmarkReducer.guestBookmarks.id;
-  if (convertedBookmark.id === 3) {
-    dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
-  }
+  // convertedBookmark.bookmarkId =
+  //   getState().bookmarkReducer.guestBookmarks.bookmarkId;
+  // if (convertedBookmark.bookmarkId === 3) {
+  //   dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
+  // }
 
-  const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
+  // const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
 
-  const copiedCategory = category.slice(0);
-  const copiedBookmarks = bookmarks.slice(0);
+  // const copiedCategory = category.slice(0);
+  // const copiedBookmarks = bookmarks.map((el) => ({ ...el }));
 
-  if (copiedCategory.indexOf(convertedBookmark.category) === -1) {
-    copiedCategory.push(convertedBookmark.category);
-  }
+  // if (copiedCategory.indexOf(convertedBookmark.categoryTitle) === -1) {
+  //   copiedCategory.push(convertedBookmark.categoryTitle);
+  // }
 
-  copiedBookmarks.push(convertedBookmark);
+  // copiedBookmarks.push(convertedBookmark);
 
-  const newReducedBookmarks = reduceGuestBookmark(
-    copiedBookmarks,
-    copiedCategory
-  );
+  // const newReducedBookmarks = reduceGuestBookmark(
+  //   copiedBookmarks,
+  //   copiedCategory
+  // );
 
-  dispatch({
-    type: POST_GUEST_BOOKMARK,
-    category: copiedCategory,
-    bookmarks: copiedBookmarks,
-    reducedbookmarks: newReducedBookmarks,
-  });
+  // dispatch({
+  //   type: POST_GUEST_BOOKMARK,
+  //   category: copiedCategory,
+  //   bookmarks: copiedBookmarks,
+  //   reducedbookmarks: newReducedBookmarks,
+  // });
 };
 
 export const addBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  const convertedBookmark = bookmarkConverter(bookmark, false);
+  const convertedBookmark = bookmarkConverter(bookmark, false, false);
 
   dispatch({ type: POST_BOOKMARK });
 
   axios
     .post(
       'https://api.recollect.today/bookmark',
-      {
-        ...convertedBookmark,
-      },
+      {},
       {
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
@@ -125,8 +126,8 @@ export const addBookmark = (bookmark) => (dispatch) => {
 
 export const editStart = (bookmark) => {
   const copiedBookmarks = {
-    ...bookmark,
-    category: { value: bookmark.category, label: bookmark.category },
+    ...bookmark.item,
+    category: bookmark.category,
   };
 
   return {
@@ -138,33 +139,41 @@ export const editStart = (bookmark) => {
 export const editEnd = () => ({ type: EDIT_END });
 
 export const editGuestBookmark = (editingBookmark) => (dispatch, getState) => {
-  const convertedBookmark = bookmarkConverter(editingBookmark, true);
+  console.group('에디팅 북마크 확인');
+  console.log(editingBookmark);
+  console.groupEnd();
 
-  const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
+  const convertedBookmark = bookmarkConverter(editingBookmark, true, true);
 
-  const copiedBookmarks = bookmarks.slice(0);
-  const copiedCategory = category.slice(0);
+  console.group('컨버티드 북마크 확인');
+  console.log(convertedBookmark);
+  console.groupEnd();
 
-  copiedBookmarks.splice(convertedBookmark.id, 1, convertedBookmark);
+  // const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
 
-  if (copiedCategory.indexOf(convertedBookmark.category) === -1) {
-    copiedCategory.push(editingBookmark.category);
-  }
+  // const copiedBookmarks = bookmarks.slice(0);
+  // const copiedCategory = category.slice(0);
 
-  const reducedbookmarks = reduceGuestBookmark(copiedBookmarks, copiedCategory);
+  // copiedBookmarks.splice(convertedBookmark.id, 1, convertedBookmark);
 
-  dispatch({
-    type: EDIT_GUEST_BOOKMARK,
-    bookmarks: copiedBookmarks,
-    category: copiedCategory,
-    reducedbookmarks,
-  });
-  dispatch(notify('북마크를 수정했습니다'));
+  // if (copiedCategory.indexOf(convertedBookmark.category) === -1) {
+  //   copiedCategory.push(editingBookmark.category);
+  // }
+
+  // const reducedbookmarks = reduceGuestBookmark(copiedBookmarks, copiedCategory);
+
+  // dispatch({
+  //   type: EDIT_GUEST_BOOKMARK,
+  //   bookmarks: copiedBookmarks,
+  //   category: copiedCategory,
+  //   reducedbookmarks,
+  // });
+  // dispatch(notify('북마크를 수정했습니다'));
 };
 
 export const editBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  const convertedBookmark = bookmarkConverter(bookmark, false);
+  const convertedBookmark = bookmarkConverter(bookmark, false, true);
 
   convertedBookmark.bookmarkId = convertedBookmark.id;
   delete convertedBookmark.id;
@@ -203,6 +212,12 @@ export const editBookmark = (bookmark) => (dispatch) => {
   } else {
     dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'accessToken Error' });
   }
+};
+
+export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
+  const copiedBookmarks =
+    getState.bookmarkReducer.guestBookmarks.bookmarks.slice(0);
+  copiedBookmarks.splice(bookmark.id, 1);
 };
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
