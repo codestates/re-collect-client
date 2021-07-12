@@ -201,7 +201,7 @@ export const editPwd = (pwdInfo) => (dispatch) => {
 export const delAccount = () => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
   axios
-    .del('https://api.recollect.today/profile', {
+    .delete('https://api.recollect.today/profile', {
       headers: { authorization: `Bearer ${accessToken}` },
       withCredentials: true,
     })

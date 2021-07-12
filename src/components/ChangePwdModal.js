@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { IsValidiatePassword} from "../util/validation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import {
-  getProfile,
-  editPwd,
-} from "../modules/editProfile";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { IsValidiatePassword } from '../util/validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { getProfile, editPwd } from '../modules/editProfile';
 
 function ChangePwdModal(props) {
-
   const state = useSelector((state) => state.profileReducer);
   const { profile } = state;
   const dispatch = useDispatch();
 
   const [pwdInfo, setPwdInfo] = useState({
-    password:"",
-    newpassword: "",
-    newpasswordcheck: "",
+    password: '',
+    newpassword: '',
+    newpasswordcheck: '',
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     setErrorMessage(profile.error);
@@ -32,24 +28,24 @@ function ChangePwdModal(props) {
     const newpasswordcheck = pwdInfo.newpasswordcheck;
 
     if (!IsValidiatePassword(password)) {
-      setErrorMessage("비밀번호를 확인해주세요") ;
+      setErrorMessage('비밀번호를 확인해주세요');
       return;
     }
-    if(!IsValidiatePassword(newpassword)){
-      setErrorMessage("비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.");
+    if (!IsValidiatePassword(newpassword)) {
+      setErrorMessage(
+        '비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.'
+      );
       return;
-    } 
-    if(!(newpassword === newpasswordcheck)){
-      setErrorMessage("비밀번호가 서로 다릅니다.");
+    }
+    if (!(newpassword === newpasswordcheck)) {
+      setErrorMessage('비밀번호가 서로 다릅니다.');
       return;
     }
 
     handleChangePwd();
   };
 
-
   const handleChangePwdInputChange = (e) => {
-
     const { value, name } = e.target;
     setPwdInfo({
       ...pwdInfo,
@@ -58,20 +54,19 @@ function ChangePwdModal(props) {
   };
 
   const handleChangePwd = () => {
-    dispatch(editPwd(pwdInfo)).then( () => {
-      setPwdInfo({
-        ...pwdInfo,
-        password: "",
-        newpassword: "",
-        newpasswordcheck: "",
-      });
-      setErrorMessage("비밀번호를 변경하였습니다.");     
-        setTimeout(() => {
-        props.setModalMode("");
-        }, 2000);       
-    })
+    dispatch(editPwd(pwdInfo));
+    setPwdInfo({
+      ...pwdInfo,
+      password: '',
+      newpassword: '',
+      newpasswordcheck: '',
+    });
 
+    setErrorMessage('비밀번호를 변경하였습니다.');
 
+    setTimeout(() => {
+      props.setModalMode('');
+    }, 2000);
   };
 
   return (
@@ -81,7 +76,7 @@ function ChangePwdModal(props) {
           <div
             className="closeBtn"
             onClick={() => {
-              props.setModalMode("");
+              props.setModalMode('');
             }}
           >
             <FontAwesomeIcon icon={faTimes} />
@@ -120,7 +115,11 @@ function ChangePwdModal(props) {
               }}
             />
           </div>
-          <button onClick={() => {changePwdValidCheck();}}>
+          <button
+            onClick={() => {
+              changePwdValidCheck();
+            }}
+          >
             비밀번호 변경
           </button>
           <div className="changePwdErrorMessage">{errorMessage}</div>
