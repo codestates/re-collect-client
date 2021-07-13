@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginInitialize, loginThunk } from '../modules/login';
+import { loginInitialize, loginThunk } from '../modules/sign';
 import { IsValidateEmail, IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 function LoginModal(props) {
   const history = useHistory();
   const accessToken = localStorage.getItem('accessToken');
-  const { isLogin, error } = useSelector((state) => state.loginReducer.user);
+  const { isLogin, error } = useSelector((state) => state.signReducer.user);
   const dispatch = useDispatch();
   const [loginInfo, setLoginInfo] = useState({
     email: '',
@@ -17,9 +17,9 @@ function LoginModal(props) {
   });
   const [errorMessage, setErrorMessage] = useState('');
 
-    // useEffect(() => {
-    //   setErrorMessage(error);
-    // }, [error]);
+  // useEffect(() => {
+  //   setErrorMessage(error);
+  // }, [error]);
 
   useEffect(() => {
     if (accessToken) {

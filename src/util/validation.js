@@ -1,7 +1,8 @@
 module.exports = {
   IsValidiateUsername: (username) => {
-    if (username.search(/\s/) !== -1) {
-      return false;
+    const blank_pattern = /^\s+|\s+$/g;
+    if (username.replace(blank_pattern, '' ) === "") {
+      return false; //한글적용안됨
     }
     return /^[a-zA-Z0-9_]{4,16}$/.test(username);
   },
@@ -20,5 +21,18 @@ module.exports = {
       return false;
     }
     return /^[\w][(\w\-)]*@[\w][(\w\-)]*\.[A-Za-z]{2,3}/.test(email);
+  },
+
+  IsValidateCompany: (company) => {
+    const tab_space = /\s/g;
+    if(company.match(tab_space)){
+      return false;
+    }
+  },
+
+  IsValidateGitRepo: (gitRepo) => {
+    if (gitRepo.search(/[^\w\s]/g) !== -1) {
+      return false;
+    }
   },
 };

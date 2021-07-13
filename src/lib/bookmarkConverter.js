@@ -1,31 +1,27 @@
-export default function bookmarkConverter(bookmark, isGuest) {
-  let category;
-  if (!bookmark.category.value) {
-    category = bookmark.category === '' ? '카테고리 미지정' : bookmark.category;
-  } else {
-    category =
-      bookmark.category.value === ''
-        ? '카테고리 미지정'
-        : bookmark.category.value;
-  }
-
+export default function bookmarkConverter(bookmark, isEdit) {
+  const category = bookmark.category;
   const color = bookmark.color === '' ? '#214bc8' : bookmark.color;
   const importance = bookmark.importance ? 1 : 0;
 
-  if (isGuest) {
+  if (isEdit) {
+    const { url, text, categoryId, bookmarkId } = bookmark;
     return {
-      ...bookmark,
-      category,
       color,
       importance,
-      visitCounts: 0,
+      url,
+      text,
+      bookmarkId,
+      categoryId,
+      category,
+    };
+  } else {
+    const { url, text } = bookmark;
+    return {
+      color,
+      importance,
+      url,
+      text,
+      category,
     };
   }
-
-  return {
-    ...bookmark,
-    category,
-    color,
-    importance,
-  };
 }

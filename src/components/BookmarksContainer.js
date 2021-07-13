@@ -11,11 +11,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function BookmarksContainer() {
   const accessToken = localStorage.getItem('accessToken');
+
   const guestBookmarks = useSelector(
     (state) => state.bookmarkReducer.guestBookmarks
   );
-  const { isLoading, bookmarks, category, reducedbookmarks } = useSelector(
-    (state) => state.bookmarkReducer.userBookmarks
+  const reducedbookmarks = useSelector(
+    (state) => state.bookmarkReducer.userBookmarks.reducedbookmarks
   );
   const dispatch = useDispatch();
 
@@ -128,8 +129,8 @@ function BookmarksContainer() {
           {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
-              key={grp.category}
-              title={grp.category}
+              key={grp.id}
+              title={grp.title}
               dragEnterHandler={
                 dragging && !grp.bookmarks.length
                   ? (e) => {
@@ -140,13 +141,16 @@ function BookmarksContainer() {
             >
               {grp.bookmarks.map((item, itemI) => (
                 <CollectBookmark
-                  key={item.id}
+                  key={item.bookmarkId}
                   className={`${
                     dragging
                       ? getStyles({ grpI, itemI })
                       : 'categorybox__bookmark'
                   }`}
-                  data={item}
+                  data={{
+                    item,
+                    category: { value: grp.title, label: grp.title },
+                  }}
                   draggable="true"
                   handleDragStart={(e) =>
                     handleDragStart(e, { grp, grpI, itemI })

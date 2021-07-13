@@ -1,9 +1,9 @@
 import axios from 'axios';
+import { notify } from './notification';
 
 const initialState = {
   profile: {
     username: '',
-    //password: '',
     email: '',
     company: '',
     gitrepo: '',
@@ -69,14 +69,13 @@ export const getProfile = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: GET_PROFILE_FAIL, error: err.message });
+      //dispatch(notify('로드실패.'));
     });
 };
 
 export const editUsername = (username) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  //console.log(userInputRef.current, '유저인풋이 뭐니?');
   console.log(username, '유저인풋이 뭐니?');
-  //console.log(userchange, '유저인풋이 뭐니?');
 
   axios
     .patch(
@@ -97,10 +96,19 @@ export const editUsername = (username) => (dispatch) => {
     })
     .then(() => {
       dispatch(getProfile());
+      dispatch(notify('유저네임을 변경했습니다.'));
     })
     .catch((err) => {
-      console.error(err.message);
+
+      // console.log(err.message);
+      // console.log(err, 'err');
+      // console.log(err.response, 'err.response');
+      if(err.response.message === 'already exist'){
+        dispatch(notify('이미 사용중인 유저네임입니다.'));
+        return;
+      }
       dispatch({ type: EDIT_USERNAME_FAIL, error: err.message });
+      dispatch(notify('유저네임 변경 실패'))
     });
 };
 
@@ -110,7 +118,7 @@ export const editCompany = (company) => (dispatch) => {
     .patch(
       'https://api.recollect.today/profile/company',
       {
-        company: company, //input.value
+        company: company, 
       },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -125,10 +133,12 @@ export const editCompany = (company) => (dispatch) => {
     })
     .then(() => {
       dispatch(getProfile());
+      dispatch(notify('직장정보를 변경했습니다.'));
     })
     .catch((err) => {
       console.error(err.message);
       dispatch({ type: EDIT_COMPANY_FAIL, error: err.message });
+      dispatch(notify('직장정보 변경 실패'));
     });
 };
 
@@ -154,21 +164,15 @@ export const editGitRepo = (gitrepo) => (dispatch) => {
     })
     .then(() => {
       dispatch(getProfile());
+      dispatch(notify('깃허브 주소를 변경했습니다.'));
     })
     .catch((err) => {
       console.error(err.message);
       dispatch({ type: EDIT_GITREPO_FAIL, error: err.message });
+      dispatch(notify('깃허브 주소 변경 실패'));
     });
 };
 
-// export const getFavorite = () => {
-//   return {
-//     type: GET_FAVORITE,
-//     payload: {
-//       id: 1,
-//     },
-//   };
-// };
 
 export const editPwd = (pwdInfo) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
@@ -176,7 +180,8 @@ export const editPwd = (pwdInfo) => (dispatch) => {
     .patch(
       'https://api.recollect.today/profile/pwd',
       {
-        pwd: pwdInfo.newpassword, //일단 새비번 문자열만 보냄.
+        pwd: pwdInfo.password,
+        newPwd: pwdInfo.newpassword //일단 새비번 문자열만 보냄.
       },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -191,6 +196,8 @@ export const editPwd = (pwdInfo) => (dispatch) => {
     })
     .then(() => {
       dispatch(getProfile());
+      dispatch(notify('비밀번호를 변경했습니다.'));
+
     })
     .catch((err) => {
       console.error(err.message);
@@ -210,6 +217,7 @@ export const delAccount = () => (dispatch) => {
       dispatch({
         type: DEL_ACCOUNT_SUCCESS,
       });
+      dispatch(notify("계정을 삭제했습니다."));
     })
     .catch((err) => {
       console.error(err.message);
@@ -224,36 +232,62 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         profile: action.profile,
       };
+    case GET_PROFILE_FAIL:
+      return {
+        ...state,
+        profile: {...state.profile, error: action.error},
+      };
     case EDIT_USERNAME_SUCCESS:
       return {
         ...state,
         profile: { ...state.profile },
+      };
+    case EDIT_USERNAME_FAIL:
+      return {
+        ...state,
+        profile: { ...state.profile, error: action.error },
       };
     case EDIT_COMPANY_SUCCESS:
       return {
         ...state,
         profile: { ...state.profile },
       };
+    case EDIT_COMPANY_FAIL:
+      return {
+        ...state,
+        profile: {...state.profile, error: action.error},
+      };
     case EDIT_GITREPO_SUCCESS:
       return {
         ...state,
         profile: { ...state.profile },
       };
-    case GET_FAVORITE:
-      return;
+    case EDIT_GITREPO_FAIL:
+      return {
+        ...state,
+        profile: {...state.profile, error: action.error},
+      };
     case EDIT_PWD_SUCCESS:
       return {
         ...state,
         profile: { ...state.profile },
       };
+    case EDIT_PWD_FAIL:
+      return {
+        ...state,
+        profile: {...state.profile, error: action.error},
+      };
     case DEL_ACCOUNT_SUCCESS:
       return {
         ...state,
         profile: { ...state.profile },
+    };
+    case DEL_ACCOUNT_FAIL:
+      return {
+        ...state,
+        profile: {...state.profile, error: action.error},
       };
     default:
       return state;
   }
 };
-
-//export default profileReducer;
