@@ -19,7 +19,7 @@ function SuccessSetNewPwd(props) {
         <p>
           새로운 비밀번호가 <br /> 설정되었습니다.
         </p>
-        <Link to={`./`}>
+        <Link to={`/`}>
           <button
             onClick={() => {
               props.setModalMode("login");
@@ -28,13 +28,6 @@ function SuccessSetNewPwd(props) {
             로그인하고 시작하기
           </button>
         </Link>
-        {/* <button
-          onClick={() => {
-            // props.setModalMode("login");
-          }}
-        >
-          메인화면으로
-        </button> */}
       </div>
     </div>
   );
