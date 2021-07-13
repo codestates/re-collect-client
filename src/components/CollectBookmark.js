@@ -20,19 +20,19 @@ export default function CollectBookmark(props) {
       onDragStart={props.handleDragStart}
       onDragEnter={props.handleDragEnter}
       style={{
-        border: `1px solid ${data.color}`,
-        background: `${data.importance === 1 ? data.color : 'white'}`,
-        color: `${data.importance === 1 ? 'white' : 'black'}`,
+        border: `1px solid ${data.item.color}`,
+        background: `${data.item.importance === 1 ? data.item.color : 'white'}`,
+        color: `${data.item.importance === 1 ? 'white' : 'black'}`,
       }}
     >
       <div className="categorybox__bookmark-textcontainer">
         <a
-          href={data.url}
+          href={data.item.url}
           target="_blank"
           className="categorybox__bookmark-text"
           title="해당 북마크 링크로 이동하기"
         >
-          {data.text}
+          {data.item.text}
         </a>
       </div>
       <div className="categorybox__bookmark-ellipsis">
@@ -48,7 +48,9 @@ export default function CollectBookmark(props) {
       <div
         className="categorybox__bookmark-triangle"
         style={{
-          borderRightColor: `${data.importance === 1 ? 'white' : data.color}`,
+          borderRightColor: `${
+            data.item.importance === 1 ? 'white' : data.item.color
+          }`,
         }}
       ></div>
     </article>

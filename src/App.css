@@ -2083,7 +2083,7 @@ body,
   color: black;
   font-size: 9px;
 }
-@charset "UTF-8";
+
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2657,7 +2657,7 @@ input:-webkit-autofill {
     display: none;
   }
 }
-@charset "UTF-8";
+
 /* Arrows */
 .slick-prev,
 .slick-next {

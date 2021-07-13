@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { logoutThunk } from '../modules/sign';
+import { Link, withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Nav(props) {
   const [isvisible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
   const handleToggleBtn = () => {
     setVisible((isvisible) => !isvisible);
   };
 
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
     handleToggleBtn();
@@ -24,7 +27,7 @@ function Nav(props) {
       <Link
         to="/"
         onClick={() => {
-          props.setModalMode("");
+          props.setModalMode('');
         }}
         className="nav-container__logo"
       >
@@ -39,14 +42,14 @@ function Nav(props) {
       <div
         className={
           isvisible
-            ? "nav-container__inner-container toggle"
-            : "nav-container__inner-container toggle on"
+            ? 'nav-container__inner-container toggle'
+            : 'nav-container__inner-container toggle on'
         }
       >
         <Link
           to="/"
           onClick={() => {
-            props.setModalMode("");
+            props.setModalMode('');
           }}
         >
           Home
@@ -54,14 +57,14 @@ function Nav(props) {
         <Link
           to="/collect"
           onClick={() => {
-            props.setModalMode("");
+            props.setModalMode('');
           }}
         >
           Recollect
         </Link>
         <Link
           onClick={() => {
-            props.setModalMode("explore");
+            props.setModalMode('explore');
           }}
           to="/explore"
         >
@@ -72,7 +75,7 @@ function Nav(props) {
             <Link to="/profile">Profile</Link>
             <div
               onClick={() => {
-                props.setModalMode("logout");
+                dispatch(logoutThunk());
               }}
             >
               Logout
@@ -81,7 +84,7 @@ function Nav(props) {
         ) : (
           <div
             onClick={() => {
-              props.setModalMode("login");
+              props.setModalMode('login');
             }}
           >
             Login

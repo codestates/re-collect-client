@@ -24,8 +24,8 @@
     "react-build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "aws s3 sync ./build s3://recollect.today --profile=jiwoo",
-    "invalidate": "aws cloudfront create-invalidation --profile=jiwoo --distribution-id E1A795HA3LSK6T --paths /*",
+    "build": "aws s3 sync ./build s3://recollect.today --profile=gorani",
+    "invalidate": "aws cloudfront create-invalidation --profile=gorani --distribution-id E1A795HA3LSK6T --paths /*",
     "all": "npm-run-all -s build deploy invalidate"
   },
   "eslintConfig": {

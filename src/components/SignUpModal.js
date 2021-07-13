@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { signupInitialize, signupThunk, sigupThunk } from "../modules/signup";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { signupInitialize, signupThunk } from '../modules/sign';
 import {
   IsValidateEmail,
   IsValidiateUsername,
   IsValidiatePassword,
-} from "../util/validation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+} from '../util/validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function SignUpModal(props) {
-  const { isSuccess, error } = useSelector((state) => state.signupReducer);
+  const { isSuccess, error } = useSelector((state) => state.signReducer);
   const dispatch = useDispatch();
   const [signUpInfo, setSignUpInfo] = useState({
-    email: "",
-    pwd: "",
-    pwdCheck: "",
-    username: "",
+    email: '',
+    pwd: '',
+    pwdCheck: '',
+    username: '',
   });
 
-  const [errMessage, setErrMessage] = useState("");
+  const [errMessage, setErrMessage] = useState('');
 
   useEffect(() => {
     setErrMessage(error);
@@ -27,7 +27,7 @@ function SignUpModal(props) {
 
   useEffect(() => {
     if (isSuccess === false) return;
-    props.setModalMode("successSignup");
+    props.setModalMode('successSignup');
     dispatch(signupInitialize());
   }, [isSuccess]);
 
@@ -38,21 +38,21 @@ function SignUpModal(props) {
     const username = signUpInfo.username;
 
     if (!IsValidateEmail(email)) {
-      setErrMessage("이메일을 확인해주세요");
+      setErrMessage('이메일을 확인해주세요');
       return;
     }
     if (!IsValidiatePassword(pwd)) {
       setErrMessage(
-        "비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다."
+        '비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.'
       );
       return;
     }
     if (!(pwd === pwdCheck)) {
-      setErrMessage("비밀번호가 서로 다릅니다.");
+      setErrMessage('비밀번호가 서로 다릅니다.');
       return;
     }
     if (!IsValidiateUsername(username)) {
-      setErrMessage("유저네임은 4글자이상 16글자 이하로 만들수 있습니다.");
+      setErrMessage('유저네임은 4글자이상 16글자 이하로 만들수 있습니다.');
       return;
     }
 
@@ -60,7 +60,7 @@ function SignUpModal(props) {
   };
 
   const handleSignUpInputChange = (e) => {
-    setErrMessage("");
+    setErrMessage('');
 
     const { name, value } = e.target;
     setSignUpInfo({
@@ -73,10 +73,10 @@ function SignUpModal(props) {
     dispatch(signupThunk(signUpInfo));
     setSignUpInfo({
       ...signUpInfo,
-      email: "",
-      pwd: "",
-      pwdCheck: "",
-      username: "",
+      email: '',
+      pwd: '',
+      pwdCheck: '',
+      username: '',
     });
   };
 
@@ -87,7 +87,7 @@ function SignUpModal(props) {
           <div
             className="closeBtn"
             onClick={() => {
-              props.setModalMode("");
+              props.setModalMode('');
               dispatch(signupInitialize());
             }}
           >
