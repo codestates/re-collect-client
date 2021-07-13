@@ -7,6 +7,7 @@ import {
   editGuestBookmark,
   editEnd,
   deleteBookmark,
+  deleteGuestBookmark,
 } from '../modules/bookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -94,7 +95,9 @@ function CollectInputBox(props) {
     if (accessToken) {
       setCategoryArr(category.map((el) => ({ value: el, label: el })));
     } else {
-      setCategoryArr(guestCategory.map((el) => ({ value: el, label: el })));
+      setCategoryArr(
+        Object.values(guestCategory).map((el) => ({ value: el, label: el }))
+      );
     }
   }, [category, guestCategory]);
 
@@ -182,7 +185,11 @@ function CollectInputBox(props) {
   };
 
   const handleDeleteBookmark = () => {
-    dispatch(deleteBookmark(bookmarkInput));
+    if (accessToken) {
+      dispatch(deleteBookmark(bookmarkInput));
+      return;
+    }
+    dispatch(deleteGuestBookmark(bookmarkInput));
   };
 
   return (

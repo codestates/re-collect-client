@@ -1,12 +1,13 @@
 export default function reduceGuestBookmark(bookmark, category) {
-  const reducedBookmark = category.map((ctgr) => ({
-    category: ctgr,
+  const reducedBookmark = Object.entries(category).map((grp) => ({
+    id: Number(grp[0]),
+    title: grp[1],
     bookmarks: [],
   }));
 
   reducedBookmark.map((grp) => {
     bookmark.map((bmk) => {
-      if (bmk.category === grp.category) {
+      if (bmk.categoryId === grp.id) {
         grp.bookmarks.push(bmk);
       }
     });

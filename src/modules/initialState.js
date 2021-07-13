@@ -8,10 +8,10 @@ const initialState = {
 
   guestBookmarks: {
     bookmarkId: 3,
-    categoryId: 1,
-    category: ['카테고리를 추가하세요'],
+    category: { 0: '카테고리를 추가하세요' },
     bookmarks: [
       {
+        category: '카테고리를 추가하세요',
         categoryId: 0,
         bookmarkId: 0,
         text: '새로운 북마크를 추가하세요 1',
@@ -22,6 +22,7 @@ const initialState = {
         position: 1,
       },
       {
+        category: '카테고리를 추가하세요',
         categoryId: 0,
         bookmarkId: 1,
         text: '새로운 북마크를 추가하세요 2',
@@ -32,6 +33,7 @@ const initialState = {
         position: 2,
       },
       {
+        category: '카테고리를 추가하세요',
         categoryId: 0,
         bookmarkId: 2,
         text: '새로운 북마크를 추가하세요 3',
@@ -48,6 +50,7 @@ const initialState = {
         title: '카테고리를 추가하세요',
         bookmarks: [
           {
+            category: '카테고리를 추가하세요',
             categoryId: 0,
             bookmarkId: 0,
             text: '새로운 북마크를 추가하세요 1',
@@ -55,9 +58,9 @@ const initialState = {
             importance: 1,
             color: '#214bc8',
             visitCounts: 1,
-            position: 1,
           },
           {
+            category: '카테고리를 추가하세요',
             categoryId: 0,
             bookmarkId: 1,
             text: '새로운 북마크를 추가하세요 2',
@@ -65,9 +68,9 @@ const initialState = {
             importance: 1,
             color: '#214bc8',
             visitCounts: 1,
-            position: 2,
           },
           {
+            category: '카테고리를 추가하세요',
             categoryId: 0,
             bookmarkId: 2,
             text: '새로운 북마크를 추가하세요 3',
@@ -75,7 +78,6 @@ const initialState = {
             importance: 1,
             color: '#214bc8',
             visitCounts: 1,
-            position: 3,
           },
         ],
       },

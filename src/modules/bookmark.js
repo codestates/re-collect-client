@@ -3,7 +3,7 @@ import axios from 'axios';
 import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import reducebookmark from '../lib/reducebookmark';
-import { notify } from './notification';
+import { notificationReducer, notify } from './notification';
 
 const GET_BOOKMARK = 'GET_BOOKMARK';
 const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
@@ -23,6 +23,7 @@ const EDIT_GUEST_BOOKMARK = 'EDIT_GUEST_BOOKMARK';
 
 const DELETE_BOOKMARK_SUCCESS = 'DELETE_BOOKMARK_SUCCESS';
 const DELETE_BOOKMARK_FAIL = 'DELETE_BOOKMARK_FAIL';
+const DELETE_GUEST_BOOKMARK = 'DELETE_GUEST_BOOKMARK';
 
 export const getGuestBookmark = () => ({ type: GET_GUEST_BOOKMARK });
 
@@ -49,52 +50,63 @@ export const getBookmark = () => (dispatch) => {
 };
 
 export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
-  const convertedBookmark = bookmarkConverter(bookmark, true, false);
+  const addingBookmark = bookmarkConverter(bookmark, false);
 
-  console.group('컨버티드 북마크 확인');
-  console.log(convertedBookmark);
-  console.groupEnd();
+  //현재 등록되어 있는 북마크 아이디, 북마크배열, 카테고리 오브젝트 파악
+  const currentBookmarkId =
+    getState().bookmarkReducer.guestBookmarks.bookmarkId;
+  const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
+  const currentCategory = { ...category };
+  const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
-  // convertedBookmark.bookmarkId =
-  //   getState().bookmarkReducer.guestBookmarks.bookmarkId;
-  // if (convertedBookmark.bookmarkId === 3) {
-  //   dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
-  // }
+  // 게스트가 3번 이하로 추가할 때 알림
+  if (currentBookmarkId <= 5) {
+    dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
+  }
 
-  // const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
+  //추가하는 북마크의 북마크아이디 등록
+  addingBookmark.bookmarkId = currentBookmarkId;
 
-  // const copiedCategory = category.slice(0);
-  // const copiedBookmarks = bookmarks.map((el) => ({ ...el }));
+  //추가하는 북마크의 카테고리 아이디 등록
+  if (addingBookmark.category.__isNew__) {
+    let newCategoryId = Math.max(...Object.keys(currentCategory)) + 1;
+    currentCategory[newCategoryId] = addingBookmark.category.value;
+    addingBookmark.categoryId = newCategoryId;
+  } else {
+    let findingCategoryId = Object.entries(currentCategory).filter(
+      (el) => el[1] === addingBookmark.category.value
+    )[0][0];
+    addingBookmark.categoryId = Number(findingCategoryId);
+  }
 
-  // if (copiedCategory.indexOf(convertedBookmark.categoryTitle) === -1) {
-  //   copiedCategory.push(convertedBookmark.categoryTitle);
-  // }
+  addingBookmark.category = addingBookmark.category.value;
 
-  // copiedBookmarks.push(convertedBookmark);
+  currentBookmarks.push(addingBookmark);
 
-  // const newReducedBookmarks = reduceGuestBookmark(
-  //   copiedBookmarks,
-  //   copiedCategory
-  // );
+  const newReducedBookmarks = reduceGuestBookmark(
+    currentBookmarks,
+    currentCategory
+  );
 
-  // dispatch({
-  //   type: POST_GUEST_BOOKMARK,
-  //   category: copiedCategory,
-  //   bookmarks: copiedBookmarks,
-  //   reducedbookmarks: newReducedBookmarks,
-  // });
+  dispatch({
+    type: POST_GUEST_BOOKMARK,
+    category: currentCategory,
+    bookmarks: currentBookmarks,
+    reducedbookmarks: newReducedBookmarks,
+  });
 };
 
 export const addBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  const convertedBookmark = bookmarkConverter(bookmark, false, false);
+  const convertedBookmark = bookmarkConverter(bookmark, false);
+  convertedBookmark.category = convertedBookmark.category.value;
 
   dispatch({ type: POST_BOOKMARK });
 
   axios
     .post(
       'https://api.recollect.today/bookmark',
-      {},
+      { ...convertedBookmark },
       {
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
@@ -125,9 +137,10 @@ export const addBookmark = (bookmark) => (dispatch) => {
 };
 
 export const editStart = (bookmark) => {
+  const { item, category } = bookmark;
   const copiedBookmarks = {
-    ...bookmark.item,
-    category: bookmark.category,
+    ...item,
+    category,
   };
 
   return {
@@ -138,52 +151,56 @@ export const editStart = (bookmark) => {
 
 export const editEnd = () => ({ type: EDIT_END });
 
-export const editGuestBookmark = (editingBookmark) => (dispatch, getState) => {
-  console.group('에디팅 북마크 확인');
-  console.log(editingBookmark);
-  console.groupEnd();
+export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
+  const editingBookmark = bookmarkConverter(bookmark, true);
 
-  const convertedBookmark = bookmarkConverter(editingBookmark, true, true);
+  const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
 
-  console.group('컨버티드 북마크 확인');
-  console.log(convertedBookmark);
-  console.groupEnd();
+  const currentCategory = { ...category };
+  const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
-  // const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
+  if (editingBookmark.category.__isNew__) {
+    let newCategoryId = Math.max(...Object.keys(currentCategory)) + 1;
+    currentCategory[newCategoryId] = editingBookmark.category.value;
+    editingBookmark.categoryId = newCategoryId;
+  }
+  editingBookmark.category = editingBookmark.category.value;
+  currentBookmarks.splice(editingBookmark.bookmarkId, 1, editingBookmark);
 
-  // const copiedBookmarks = bookmarks.slice(0);
-  // const copiedCategory = category.slice(0);
+  const reducedbookmarks = reduceGuestBookmark(
+    currentBookmarks,
+    currentCategory
+  );
 
-  // copiedBookmarks.splice(convertedBookmark.id, 1, convertedBookmark);
-
-  // if (copiedCategory.indexOf(convertedBookmark.category) === -1) {
-  //   copiedCategory.push(editingBookmark.category);
-  // }
-
-  // const reducedbookmarks = reduceGuestBookmark(copiedBookmarks, copiedCategory);
-
-  // dispatch({
-  //   type: EDIT_GUEST_BOOKMARK,
-  //   bookmarks: copiedBookmarks,
-  //   category: copiedCategory,
-  //   reducedbookmarks,
-  // });
-  // dispatch(notify('북마크를 수정했습니다'));
+  dispatch({
+    type: EDIT_GUEST_BOOKMARK,
+    bookmarks: currentBookmarks,
+    category: currentCategory,
+    reducedbookmarks,
+  });
+  dispatch(notify('북마크를 수정했습니다'));
 };
 
 export const editBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  const convertedBookmark = bookmarkConverter(bookmark, false, true);
+  const convertedBookmark = bookmarkConverter(bookmark, true);
+  const id = convertedBookmark.bookmarkId;
 
-  convertedBookmark.bookmarkId = convertedBookmark.id;
-  delete convertedBookmark.id;
+  delete convertedBookmark.bookmarkId;
+
+  if (convertedBookmark.category.__isNew__) {
+    delete convertedBookmark.categoryId;
+  }
+  convertedBookmark.categoryTitle = convertedBookmark.category.value;
+  delete convertedBookmark.category;
 
   if (accessToken) {
     axios
       .put(
-        'https://api.recollect.today/collect',
+        'https://api.recollect.today/bookmarks',
         { ...convertedBookmark },
         {
+          params: { id },
           headers: { authorization: `Bearer ${accessToken}` },
           withCredentials: true,
         }
@@ -215,9 +232,37 @@ export const editBookmark = (bookmark) => (dispatch) => {
 };
 
 export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
-  const copiedBookmarks =
-    getState.bookmarkReducer.guestBookmarks.bookmarks.slice(0);
-  copiedBookmarks.splice(bookmark.id, 1);
+  const { category, bookmarks } = getState().bookmarkReducer.guestBookmarks;
+
+  const currentBookmarks = bookmarks.map((el) => ({ ...el }));
+  const currentCategory = { ...category };
+  let findIdx;
+  currentBookmarks.filter((el, idx) => {
+    if (el.bookmarkId === bookmark.bookmarkId) {
+      findIdx = idx;
+    }
+  });
+  currentBookmarks.splice(findIdx, 1);
+  const newReducedbookmarks = reduceGuestBookmark(
+    currentBookmarks,
+    currentCategory
+  );
+
+  newReducedbookmarks.filter((el, idx) => {
+    if (el.bookmarks.length === 0) {
+      delete currentCategory[Number(el.id)];
+      return false;
+    }
+  });
+
+  dispatch({
+    type: DELETE_GUEST_BOOKMARK,
+    category: currentCategory,
+    bookmarks: currentBookmarks,
+    reducedbookmarks: newReducedbookmarks,
+  });
+
+  dispatch(notify('북마크를 삭제했습니다'));
 };
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
@@ -302,7 +347,7 @@ export const bookmarkReducer = (state = initialState, action) => {
         ...state,
         guestBookmarks: {
           ...state.guestBookmarks,
-          id: (state.guestBookmarks.id += 1),
+          bookmarkId: (state.guestBookmarks.bookmarkId += 1),
           category: action.category,
           bookmarks: action.bookmarks,
           reducedbookmarks: action.reducedbookmarks,
@@ -341,6 +386,7 @@ export const bookmarkReducer = (state = initialState, action) => {
       };
 
     case EDIT_GUEST_BOOKMARK:
+    case DELETE_GUEST_BOOKMARK:
       return {
         ...state,
         tempBookmark: {
