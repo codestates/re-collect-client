@@ -40,8 +40,9 @@ export const getBookmark = () => (dispatch) => {
     .then((res) => {
       dispatch({
         type: GET_BOOKMARK_SUCCESS,
-        category: res.data.category,
-        bookmarks: res.data.bookmark,
+        // category: res.data.category,
+        // bookmarks: res.data.bookmark,
+        userBookmarks: res.data
       });
     })
     .catch((err) => {
@@ -62,6 +63,7 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
   // 게스트가 3번 이하로 추가할 때 알림
   if (currentBookmarkId <= 5) {
     dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
+    //로그인 유도 팝업 띄우기
   }
 
   //추가하는 북마크의 북마크아이디 등록
@@ -299,7 +301,10 @@ export const bookmarkReducer = (state = initialState, action) => {
         userBookmarks: { ...state.userBookmarks, isLoading: true },
       };
     case GET_BOOKMARK_SUCCESS:
-      return reducebookmark(state, action);
+      return {
+        ...state,
+        userBookmarks: { ...state.userBookmarks, isLoading: false },
+      };
     case GET_BOOKMARK_FAIL:
       return {
         ...state,

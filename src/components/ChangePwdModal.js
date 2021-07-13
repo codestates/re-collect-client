@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { IsValidiatePassword } from '../util/validation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { getProfile, editPwd } from '../modules/editProfile';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { IsValidiatePassword} from "../util/validation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { editPwd } from "../modules/editProfile";
+import { notify } from '../modules/notification';
 
 function ChangePwdModal(props) {
   const state = useSelector((state) => state.profileReducer);
@@ -55,14 +56,16 @@ function ChangePwdModal(props) {
 
   const handleChangePwd = () => {
     dispatch(editPwd(pwdInfo));
-    setPwdInfo({
-      ...pwdInfo,
-      password: '',
-      newpassword: '',
-      newpasswordcheck: '',
-    });
-
-    setErrorMessage('비밀번호를 변경하였습니다.');
+      setPwdInfo({
+        ...pwdInfo,
+        password: "",
+        newpassword: "",
+        newpasswordcheck: "",
+      });
+      setErrorMessage("");
+      setTimeout(() => {
+        props.setModalMode("");     
+        }, 2000);   
 
     setTimeout(() => {
       props.setModalMode('');

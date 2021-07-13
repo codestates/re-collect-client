@@ -3,9 +3,7 @@ import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import {
-  delAccount,
-} from "../modules/editProfile";
+import { delAccount } from "../modules/editProfile";
 
 function DelAccountModal(props) {
   const history = useHistory();
@@ -27,8 +25,8 @@ function DelAccountModal(props) {
 
   const delAccountValidCheck = () => {
     const delAccountmessage = InputRef.current.value;
-    console.log(delAccountmessage, '= 또만나요 리콜렉트');
-    if (delAccountmessage !== "또만나요 리콜렉트") {
+    console.log(delAccountmessage, "= 또 만나요 리콜렉트");
+    if (delAccountmessage !== "또 만나요 리콜렉트") {
       setErrorMessage("문구를 다시 입력해주세요.");
       return;
     }
@@ -37,20 +35,18 @@ function DelAccountModal(props) {
   };
 
   const handleDelAccount = () => {
-    dispatch(delAccount())
-    .then(() => {
-      InputRef.current.value = '';
-      setTimeout(() => {
-        props.setModalMode("");
-        }, 2000);  
-    })
-    .then(() => {
-      setTimeout(() => {
-        history.push("/");
-        }, 2000); 
-    })
-  }
+    dispatch(delAccount());
 
+    InputRef.current.value = "";
+
+    setTimeout(() => {
+      props.setModalMode("");
+    }, 2000);
+
+    setTimeout(() => {
+      history.push("/");
+    }, 2000);
+  };
 
   return (
     <div className="modal">
@@ -65,18 +61,22 @@ function DelAccountModal(props) {
             <FontAwesomeIcon icon={faTimes} />
           </div>
           <div className="logo"> Recollect </div>
-          <p>아래 문구를 입력하고<br />계정을 삭제합니다.</p>
+          <p>
+            아래 문구를 입력하고
+            <br />
+            계정을 삭제합니다.
+          </p>
           <div className="inputContainer">
             <input
               className="delMessage"
               type="text"
-              placeholder=" 또만나요 리콜렉트"
+              placeholder=" 또 만나요 리콜렉트"
               ref={InputRef}
             />
           </div>
           <button
             onClick={() => {
-                delAccountValidCheck();
+              delAccountValidCheck();
             }}
           >
             계정 삭제

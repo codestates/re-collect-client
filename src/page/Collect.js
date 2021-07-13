@@ -1,27 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
-import CategoryBox from '../components/CategoryBox';
-import Sidebar from '../components/Sidebar';
-import SearchBar from '../components/SearchBar';
-import UnreadAlarm from '../components/UnreadAlarm';
-import BottomPopup from '../components/BottomPopup';
-import Recollect from '../components/Recollect';
-import ToCollectBtn from '../components/ToCollectBtn';
-import BookmarksContainer from '../components/BookmarksContainer';
-import { SearchBookmark } from '../components/SearchBookmark';
+import React, { useState, useEffect, useRef } from "react";
+import CategoryBox from "../components/CategoryBox";
+import Sidebar from "../components/Sidebar";
+import SearchBar from "../components/SearchBar";
+import UnreadAlarm from "../components/UnreadAlarm";
+import BottomPopup from "../components/BottomPopup";
+import Recollect from "../components/Recollect";
+import ToCollectBtn from "../components/ToCollectBtn";
+import BookmarksContainer from "../components/BookmarksContainer";
+import { SearchBookmark } from "../components/SearchBookmark";
 
-import { useSelector, useDispatch } from 'react-redux';
-import { recollect } from '../modules/getRecollect';
+import { useSelector, useDispatch } from "react-redux";
+import { recollect } from "../modules/getRecollect";
 
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
   };
   return (
     <>
-      {console.log('검색어입력 : ', searchInput.length)}
       {/* 검색어 입력수가 0이 아닌경우, 검색어와 일치하는 북마크 랜딩  */}
       {recollectView ? (
         <>
