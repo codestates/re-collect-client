@@ -12,7 +12,7 @@ export default function SearchBar({ setSearchInput }) {
       <input
         className="collectview__searchBar"
         type="text"
-        placeholder="Search"
+        placeholder="북마크 찾기"
         onChange={handleSearchInputChange}
       />
       <button className="collectview__searchBtn">

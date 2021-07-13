@@ -2505,13 +2505,30 @@ body,
 }
 .recollect__title {
   padding-top: 64px;
-  padding-bottom: 94px;
+  padding-bottom: 64px;
   font-size: 36px;
   color: #214bc8;
 }
 .recollect__bookmarks {
   width: 36vw;
   min-width: 530px;
+  margin-bottom: 40px;
+}
+.recollect__bookmarks .skeleton {
+  font-size: 20px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.recollect__bookmarks .skeleton .logoPng {
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+}
+.recollect__bookmarks .skeleton p {
+  text-align: center;
 }
 
 @media (max-width: 834px) {
@@ -2568,18 +2585,33 @@ body,
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100vh);
+  height: 100vh;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 .searching__bookmarks {
   width: 36vw;
   min-width: 500px;
+  margin-bottom: 30px;
+}
+.searching__bookmarks .skeleton {
+  font-size: 20px;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searching__bookmarks .skeleton p {
+  text-align: center;
 }
 
 @media (max-width: 600px) {
   .searching__bookmarks {
     width: 71vw;
     min-width: 200px;
+  }
+  .searching__bookmarks .skeleton {
+    font-size: 14px;
   }
 }
 .SetNewPwd__container {

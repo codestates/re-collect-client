@@ -11,7 +11,7 @@ function SetNewPwdModal(props) {
     const tempPwd = document.querySelector(".tempPwd").value;
     const error = document.querySelector(".errorMessage");
     if (!tempPwd) {
-      error.textContent = "임시비밀번호를 입력해주세요";
+      error.textContent = "인증번호를 입력해주세요";
     } else if (!IsValidiatePassword(password1)) {
       error.textContent =
         "비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.";
@@ -21,29 +21,17 @@ function SetNewPwdModal(props) {
       return;
     } else {
       error.textContent = "";
-      requestNewPwd(tempPwd, password1, password2);
+      requestNewPwd(tempPwd, password1);
     }
   };
 
-  //// 확인 필요 ////
-  // 1. 발급된 임시비밀번호로 로그인이 안된다
-  // 2. 새 비밀번호 요청시 501 에러
-  const requestNewPwd = (tempPwd, password1, password2) => {
+  const requestNewPwd = (pwd, tempPwd) => {
     const email = window.location.search.slice(1);
-    // console.log(email);
     axios
-      .post(
-        `https://api.recollect.today/login/pwd/&email=ksyoon0718@gmail.com`,
-        {
-          password1,
-          password2,
-          tempPwd,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      )
+      .post(`https://api.recollect.today/auth/pwd&${email}`, {
+        pwd,
+        tempPwd,
+      })
       .then((res) => props.setModalMode("successSetNewPwd"))
       .catch((err) => console.log(err));
   };

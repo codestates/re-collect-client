@@ -40,7 +40,7 @@ function ExploreProfileList({ className, ...props }, settings) {
         </div>
         <div>
           <FontAwesomeIcon className="icon" icon={faGithub} />
-          {props.user.gitRepo ? `${props.user.gitRepo}` : "-"}
+          {props.user.gitRepo ? `${props.user.gitRepo.slice(8)}` : "-"}
         </div>
       </div>
     </div>
