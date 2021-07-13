@@ -249,7 +249,7 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
   );
 
   newReducedbookmarks.filter((el, idx) => {
-    if (el.bookmarks.length === 0) {
+    if (el.bookmarks.length === 1) {
       delete currentCategory[Number(el.id)];
       return false;
     }
