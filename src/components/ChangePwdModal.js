@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { IsValidiatePassword} from "../util/validation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import {
-  getProfile,
-  editPwd,
-} from "../modules/editProfile";
+import { editPwd } from "../modules/editProfile";
+import { notify } from '../modules/notification';
 
 function ChangePwdModal(props) {
 
@@ -58,19 +56,17 @@ function ChangePwdModal(props) {
   };
 
   const handleChangePwd = () => {
-    dispatch(editPwd(pwdInfo)).then( () => {
+    dispatch(editPwd(pwdInfo));
       setPwdInfo({
         ...pwdInfo,
         password: "",
         newpassword: "",
         newpasswordcheck: "",
       });
-      setErrorMessage("비밀번호를 변경하였습니다.");     
-        setTimeout(() => {
-        props.setModalMode("");
-        }, 2000);       
-    })
-
+      setErrorMessage("");
+      setTimeout(() => {
+        props.setModalMode("");     
+        }, 2000);   
 
   };
 

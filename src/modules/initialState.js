@@ -82,9 +82,9 @@ const initialState = {
   unreadBookmarks: null,
   userBookmarks: {
     isLoading: false,
+    reducebookmarks: [],
     category: [],
     bookmarks: [],
-    reducedbookmarks: [],
     error: null,
   },
 };
