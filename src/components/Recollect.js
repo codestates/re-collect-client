@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import BigBookmark from './BigBookmark';
-import { useSelector, useDispatch } from 'react-redux';
-import { recollect } from '../modules/getRecollect';
-import initialState from '../modules/initialState';
+import React, { useEffect } from "react";
+import BigBookmark from "./BigBookmark";
+import { useSelector, useDispatch } from "react-redux";
+import { recollect } from "../modules/getRecollect";
+import initialState from "../modules/initialState";
 
 function Recollect(props) {
   // dispatch(recollect(bookmarks)); 요청
@@ -12,7 +12,7 @@ function Recollect(props) {
     (state) => state.bookmarkReducer.userBookmarks
   );
   const dispatch = useDispatch();
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem("accessToken");
   const { guestBookmarks } = useSelector((state) => state.bookmarkReducer);
 
   // 읽지않은 북마크 //
@@ -30,26 +30,26 @@ function Recollect(props) {
     <div className="recollect">
       <div className="recollect__title">Recollect</div>
       <div className="recollect__bookmarks">
-        {unreadBookmarks !== null
-          ? unreadBookmarks.map((unread) => {
-              return (
-                <BigBookmark
-                  key={unread.id}
-                  text={unread.text}
-                  color={unread.color}
-                  importance={unread.importance}
-                />
-              );
-            })
-          : guestBookmarks.bookmarks.map((bookmark) => {
-              return (
-                <BigBookmark
-                  key={bookmark.id}
-                  text={bookmark.text}
-                  color={bookmark.color}
-                />
-              );
-            })}
+        {unreadBookmarks !== null ? (
+          unreadBookmarks.map((unread) => {
+            return (
+              <BigBookmark
+                key={unread.id}
+                text={unread.text}
+                color={unread.color}
+                importance={unread.importance}
+              />
+            );
+          })
+        ) : (
+          <div className="skeleton">
+            <img src="logo_cut.png" className="logoPng" />
+            <p>
+              읽지않은 북마크가 없습니다. <br /> 모든 북마크를 읽으셨네요!{" "}
+              <br /> 리콜렉트 북마크가 없습니다 <br /> 뭐라할까
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

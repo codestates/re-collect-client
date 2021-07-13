@@ -6,7 +6,7 @@ export const userInfoLists = [
     followers: 178,
     follwing: 140,
     company: "Team Collector",
-    gitRepo: "github.com/re-collect",
+    gitRepo: "https://github.com/re-collect",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const userInfoLists = [
     followers: 200,
     follwing: 300,
     company: "Team Collector",
-    gitRepo: "github.com/re-collect",
+    gitRepo: "https://github.com/re-collect",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const userInfoLists = [
     followers: 460,
     follwing: 300,
     company: "Team Collector",
-    gitRepo: "github.com/re-collect",
+    gitRepo: "https://github.com/re-collect",
   },
   {
     id: 4,
@@ -33,7 +33,6 @@ export const userInfoLists = [
     followers: 300,
     follwing: 33,
     company: "Team Collector",
-    gitRepo: "github.com/re-collect",
+    gitRepo: "https://github.com/re-collect",
   },
-
 ];

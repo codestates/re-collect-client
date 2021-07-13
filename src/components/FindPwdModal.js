@@ -19,7 +19,7 @@ function FindPwdModal(props) {
 
   const sendMailRequest = (email) => {
     axios
-      .post("https://api.recollect.today/login/pwd/forgot", {
+      .post("https://api.recollect.today/auth/temp", {
         email: email,
       })
       .then((res) => {
@@ -43,7 +43,7 @@ function FindPwdModal(props) {
 
           <div className="logo"> Recollect </div>
           <p>
-            이메일을 입력하면 <br /> 임시비밀번호를 보내드려요.
+            이메일을 입력하면 <br /> 인증번호를 보내드려요.
           </p>
           <div className="inputContainer">
             <input

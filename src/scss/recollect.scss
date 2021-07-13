@@ -1,4 +1,4 @@
-@import './util';
+@import "./util";
 
 .recollect {
   flex: 1;
@@ -8,7 +8,6 @@
   min-height: 100vh;
   height: fit-content;
   padding-top: 80px;
-  // width: 100%;
   &__toCollectBtn {
     position: fixed;
     top: 94px;
@@ -22,7 +21,7 @@
   &__title {
     padding: {
       top: 64px;
-      bottom: 94px;
+      bottom: 64px;
     }
     font-size: #{$headerfont};
     color: #{$blue};
@@ -31,6 +30,23 @@
   &__bookmarks {
     width: 36vw;
     min-width: 530px;
+    margin-bottom: 40px;
+    .skeleton {
+      font-size: 20px;
+      height: 30vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .logoPng {
+        font-size: 20px;
+        width: 50px;
+        height: 50px;
+      }
+      p {
+        text-align: center;
+      }
+    }
   }
 }
 

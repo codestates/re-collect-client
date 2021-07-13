@@ -6,7 +6,7 @@ export default function UnreadAlarm({ viewHandler, unit }) {
         viewHandler();
       }}
     >
-      Unread Bookmarks, Start To Recollect
+      한번도 읽지않은 북마크, 클릭하여 확인하세요!
     </div>
   );
 }

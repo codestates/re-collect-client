@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import BigBookmark from '../components/BigBookmark';
+import React from "react";
+import { useSelector } from "react-redux";
+import BigBookmark from "../components/BigBookmark";
 
 export function SearchBookmark({ searchInput }) {
   const { bookmarks } = useSelector(
@@ -14,15 +14,20 @@ export function SearchBookmark({ searchInput }) {
   return (
     <div className="searching">
       <div className="searching__bookmarks">
-        {searchingBookmark.map((bookmark) => (
-          <BigBookmark
-            // style={{ width: `150px` }}
-            id={bookmark.id}
-            text={bookmark.text}
-            color={bookmark.color}
-            importance={bookmark.importance}
-          />
-        ))}
+        {searchingBookmark.length !== 0 ? (
+          searchingBookmark.map((bookmark) => (
+            <BigBookmark
+              id={bookmark.id}
+              text={bookmark.text}
+              color={bookmark.color}
+              importance={bookmark.importance}
+            />
+          ))
+        ) : (
+          <div className="skeleton">
+            <p>검색어와 일치하는 북마크가 없습니다.</p>
+          </div>
+        )}
       </div>
     </div>
   );

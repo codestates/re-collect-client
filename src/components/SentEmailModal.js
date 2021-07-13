@@ -18,7 +18,7 @@ function SentEmailModal(props) {
 
           <div className="logo"> Recollect </div>
           <p>
-            임시비밀번호가 전송되었습니다 <br /> 이메일을 확인해주세요
+            인증번호가 전송되었습니다 <br /> 이메일을 확인해주세요
           </p>
           <div className="findPwdErrorMessage"></div>
           <button
