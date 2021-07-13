@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faCheck, faLaptop } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import FavoriteBookmark from '../components/FavoriteBookmark';
+import {
+  IsValidiateUsername,
+  IsValidateCompany,
+  IsValidateGitRepo,
+} from "../util/validation";
 
-import { useSelector, useDispatch } from 'react-redux';
 import {
   getProfile,
   editUsername,
@@ -15,23 +20,15 @@ import {
   getFavorite,
 } from '../modules/editProfile';
 
+import { notify } from '../modules/notification';
+
 function Profile(props) {
   const state = useSelector((state) => state.profileReducer);
   const { profile } = state;
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProfile());
-    console.log('useeffect get 요청 실행');
-  }, [dispatch]);
+  const [errorMessage, setErrMessage] = useState("");
 
-  const [errorMessage, setErrorMessage] = useState('');
-
-  // const [inputReadMode, setInputReadMode] = useState({
-  //   usernameMode: true,
-  //   companyMode: true,
-  //   gitRepoMode: true,
-  // });
   const [usernameInputReadMode, setUsernameInputReadMode] = useState(true);
   const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
   const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
@@ -40,17 +37,50 @@ function Profile(props) {
   const companyInputRef = useRef('');
   const gitRepoInputRef = useRef('');
 
+  // useEffect(() => {
+  //   setErrMessage(error);
+  // }, [error]);
+
+  useEffect(() => {
+    dispatch(getProfile());
+    // setErrMessage(""); //에러메세지 초기화시점 체크
+    console.log('useeffect get 요청 실행');
+  }, [dispatch]);
+  console.log('render');
+  
+  const cancelClick = () => {
+    document.addEventListener('click', function(e){
+      if(e.target !== userInputRef.current) {
+        //console.log(e.target);
+        console.log(userInputRef.current, 'what?');//두번찍히는이유?
+      }
+      
+      
+    })
+  }
+
+  useEffect(() => {
+    cancelClick();
+  },[])//빈배열 넣어주어야 두번안찍힘
+  // const [inputReadMode, setInputReadMode] = useState({
+  //   usernameMode: true,
+  //   companyMode: true,
+  //   gitRepoMode: true,
+  // });
+
   /*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
   const usernameInputActive = (e) => {
     setUsernameInputReadMode(!usernameInputReadMode);
     userInputRef.current.readOnly = !userInputRef.current.readOnly;
     userInputRef.current.disabled = !userInputRef.current.disabled;
-
+    
     if (e.currentTarget.getAttribute('name') === 'usernamecheck') {
       console.log(e.currentTarget.getAttribute('name'), 'username target');
-      // if(inputValue.username === ''){
-      //   return ; //공백인 경우 에러메세지 유효성 검사
-      // }
+      if (!IsValidiateUsername(userInputRef.current.value)) {
+        //setErrMessage("유저네임은 4글자이상 16글자 이하로 만들수 있습니다.");
+        dispatch(notify("유저네임은 4글자이상 16글자 이하로 만들 수 있습니다."));
+        return;
+      }
       dispatch(editUsername(userInputRef.current.value));
     }
   };
@@ -62,9 +92,11 @@ function Profile(props) {
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
 
     if (e.currentTarget.getAttribute('name') === 'companycheck') {
-      // if(inputValue.company === ''){
-      //   return ; //긴 공백인 경우 에러메세지
-      // }
+      if (!IsValidateCompany(companyInputRef.current.value)) {
+        //setErrMessage("공백은 입력하실 수 없습니다.");
+        dispatch(notify("공백은 입력하실 수 없습니다."));
+        return; 
+      }
       dispatch(editCompany(companyInputRef.current.value));
     }
   };
@@ -76,21 +108,15 @@ function Profile(props) {
     gitRepoInputRef.current.disabled = !gitRepoInputRef.current.disabled;
 
     if (e.currentTarget.getAttribute('name') === 'gitrepocheck') {
-      //pattern = /\s/g;
-      // if(inputValue.gitrepo === '공백'){
-      //   setErrorMessage('공백은 입력하실 수 없습니다.')
-      //   return ; //긴 공백인 경우 에러메세지
-      // }
+      if (!IsValidateGitRepo(gitRepoInputRef.current.value)) {
+        //setErrMessage("공백은 입력하실 수 없습니다.");
+        dispatch(notify("공백은 입력하실 수 없습니다."));
+        return; 
+      }
       dispatch(editGitRepo(gitRepoInputRef.current.value));
     }
   };
 
-  console.log('render');
-
-  // useEffect(() => {
-  //   dispatch(getProfile());
-  //   console.log('useeffect get 요청 실행')
-  // }, [dispatch]);
 
   return (
     <div className="profile-container">
@@ -115,7 +141,7 @@ function Profile(props) {
                 name={usernameInputReadMode ? 'usernamepen' : 'usernamecheck'}
                 onClick={usernameInputActive}
               />
-              <div className="errorMessage">{errorMessage}</div>
+              {/* <div className="errorMessage">{errorMessage}</div> */}
             </div>
             <p>{profile.email}</p>
             <p>Jonined Recollect on {profile.createdAt.slice(0, 10)}</p>
@@ -156,7 +182,7 @@ function Profile(props) {
                 name={companyInputReadMode ? 'companypen' : 'companycheck'}
                 onClick={companyInputActive}
               />
-              <div className="errorMessage">{errorMessage}</div>
+              {/* <div className="errorMessage">{errorMessage}</div> */}
             </div>
             <div className="profilebox__companyngitrepo__inner">
               <FontAwesomeIcon icon={faGithub} />
@@ -174,7 +200,7 @@ function Profile(props) {
                 name={gitRepoInputReadMode ? 'gitrepopen' : 'gitrepocheck'}
                 onClick={gitRepoInputActive}
               />
-              <div className="errorMessage">{errorMessage}</div>
+              {/* <div className="errorMessage">{errorMessage}</div> */}
             </div>
           </div>
           <div className="profilebox__btns">

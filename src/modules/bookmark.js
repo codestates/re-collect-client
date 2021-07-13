@@ -39,8 +39,9 @@ export const getBookmark = () => (dispatch) => {
     .then((res) => {
       dispatch({
         type: GET_BOOKMARK_SUCCESS,
-        category: res.data.category,
-        bookmarks: res.data.bookmark,
+        // category: res.data.category,
+        // bookmarks: res.data.bookmark,
+        userBookmarks: res.data
       });
     })
     .catch((err) => {
@@ -56,6 +57,7 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
   convertedBookmark.id = getState().bookmarkReducer.guestBookmarks.id;
   if (convertedBookmark.id === 3) {
     dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
+    //로그인 유도 팝업 띄우기
   }
 
   const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
@@ -242,7 +244,10 @@ export const bookmarkReducer = (state = initialState, action) => {
         userBookmarks: { ...state.userBookmarks, isLoading: true },
       };
     case GET_BOOKMARK_SUCCESS:
-      return reducebookmark(state, action);
+      return {
+        ...state,
+        userBookmarks: { ...state.userBookmarks, isLoading: false },
+      };
     case GET_BOOKMARK_FAIL:
       return {
         ...state,

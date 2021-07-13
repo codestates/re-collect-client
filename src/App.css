@@ -2083,7 +2083,7 @@ body,
   color: black;
   font-size: 9px;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2234,6 +2234,10 @@ body,
   opacity: 0;
   transform: opacity 0.3s;
 }
+input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .profile-container {
   width: 100vw;
   display: flex;
@@ -2621,7 +2625,7 @@ body,
     display: none;
   }
 }
-
+@charset "UTF-8";
 /* Arrows */
 .slick-prev,
 .slick-next {
