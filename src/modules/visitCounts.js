@@ -1,21 +1,28 @@
 import axios from "axios";
 import { getBookmark } from "../modules/bookmark";
 import { getAccessToken } from "../modules/getAccessToken";
+import { recollect } from "../modules/getRecollect";
 
 // actions
 export const addVisitCount = (id) => async (dispatch) => {
   const accessToken = localStorage.getItem(`accessToken`);
-  console.log(` bookmarkID : ${id}, add visitCount `);
 
   if (accessToken) {
     axios
-      .patch(`https://api.recollect.today/bookmarks/:${id}`, {
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
+      .patch(
+        `https://api.recollect.today/bookmarks/${id}`,
+        {},
+        {
+          headers: { authorization: `Bearer ${accessToken}` },
+          withCredentials: true,
+        }
+      )
+      .then(() => {
+        console.log("여기맞아?");
+        dispatch(getBookmark());
       })
-      .then(() => dispatch(getBookmark()))
       .catch((err) => {
-        if (err.status === 401) {
+        if (err.response.status === 401) {
           dispatch(getAccessToken());
         } else {
           console.log(err);

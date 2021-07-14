@@ -28,8 +28,7 @@ export default function CollectBookmark(props) {
     >
       <div
         onClick={() => {
-          dispatch(addVisitCount(props.data.item.bookmarkId));
-          console.log('addVisit')
+          dispatch(addVisitCount(props.data.item.id));
         }}
         className="categorybox__bookmark-textcontainer"
       >

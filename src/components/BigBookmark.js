@@ -1,7 +1,7 @@
 import { addVisitCount } from "../modules/visitCounts";
 import { useDispatch } from "react-redux";
 
-export default function BigBookmark({ key, text, color, importance }) {
+export default function BigBookmark({ id, text, color, importance, url }) {
   const dispatch = useDispatch();
   return (
     <article
@@ -12,9 +12,8 @@ export default function BigBookmark({ key, text, color, importance }) {
         color: `${importance === 1 ? `white` : `black`}`,
       }}
       onClick={() => {
-        // 확인필요! //
-        console.log("Bookmark ID : ", key);
-        dispatch(addVisitCount(key));
+        dispatch(addVisitCount(id));
+        window.open(url);
       }}
     >
       {text ? text : `이것은 북마크 입니다.`}

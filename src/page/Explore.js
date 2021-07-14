@@ -103,11 +103,11 @@ export default function SimpleSlider(props) {
       <div className="interestingBookmarksCategory">
         <p> Interesting Bookmarks</p>
         <ul>
-          <BigBookmark />
-          <BigBookmark />
-          <BigBookmark />
-          <BigBookmark />
-          <BigBookmark />
+          <BigBookmark text={"저장된 북마크"} url={`https://www.google.com/`} />
+          <BigBookmark url={`https://www.google.com/`} />
+          <BigBookmark url={`https://www.google.com/`} />
+          <BigBookmark url={`https://www.google.com/`} />
+          <BigBookmark url={`https://www.google.com/`} />
         </ul>
       </div>
     </div>
