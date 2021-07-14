@@ -1,17 +1,25 @@
-// api 문서 작성하기
-
 import axios from "axios";
-
-// /bookmarks/visitCount/:id
-// headers : authorization
-// 200, 401, 500
+import { getBookmark } from "../modules/bookmark";
+import { getAccessToken } from "../modules/getAccessToken";
 
 // actions
-export const visitBookmark = (id) => {
+export const addVisitCount = (id) => async (dispatch) => {
   const accessToken = localStorage.getItem(`accessToken`);
+  console.log(` bookmarkID : ${id}, add visitCount `);
 
-  axios
-    .get(`https://api.recollect.today/bookmarks/:${id}/visitCount`)
-    .then()
-    .catch();
+  if (accessToken) {
+    axios
+      .patch(`https://api.recollect.today/bookmarks/:${id}`, {
+        headers: { authorization: `Bearer ${accessToken}` },
+        withCredentials: true,
+      })
+      .then(() => dispatch(getBookmark()))
+      .catch((err) => {
+        if (err.status === 401) {
+          dispatch(getAccessToken());
+        } else {
+          console.log(err);
+        }
+      });
+  }
 };

@@ -1,4 +1,5 @@
 .bigBookmark {
+  border: 1px solid #214bc8;
   height: 45px;
   line-height: 45px;
   width: 100%;
@@ -855,15 +856,15 @@
 }
 
 #carousel {
-  background-color: khaki;
   text-align: center;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border: solid 1px #000;
+  width: 250px;
+  max-width: 250px;
+  height: 350px;
 }
 
 .explore__searchProfile {
-  width: 200px;
-  min-height: 320px;
-  height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -897,9 +898,17 @@
 .explore__searchProfile .companyInfo {
   margin-top: 30px;
   font-size: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .explore__searchProfile .companyInfo div {
   margin: 5px;
+}
+.explore__searchProfile .companyInfo div:hover {
+  color: #214bc8;
 }
 .explore__searchProfile .companyInfo .icon {
   padding-right: 3px;
@@ -2083,7 +2092,7 @@ body,
   color: black;
   font-size: 9px;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2527,11 +2536,12 @@ input:-webkit-autofill {
   align-items: center;
 }
 .recollect__bookmarks .skeleton .logoPng {
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
 }
 .recollect__bookmarks .skeleton p {
+  color: #bdbaba;
   text-align: center;
 }
 
@@ -2606,6 +2616,7 @@ input:-webkit-autofill {
   align-items: center;
 }
 .searching__bookmarks .skeleton p {
+  color: #bdbaba;
   text-align: center;
 }
 
@@ -2657,7 +2668,7 @@ input:-webkit-autofill {
     display: none;
   }
 }
-
+@charset "UTF-8";
 /* Arrows */
 .slick-prev,
 .slick-next {
