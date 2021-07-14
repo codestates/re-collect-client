@@ -198,13 +198,8 @@ export const editBookmark = (bookmark) => (dispatch) => {
   const convertedBookmark = bookmarkConverter(bookmark, true);
   const id = convertedBookmark.id;
 
-  delete convertedBookmark.id;
-
-  if (convertedBookmark.category.__isNew__) {
-    delete convertedBookmark.categoryId;
-  }
-  convertedBookmark.categoryTitle = convertedBookmark.category.value;
-  delete convertedBookmark.category;
+  delete convertedBookmark.categoryId;
+  convertedBookmark.category = convertedBookmark.category.value;
 
   if (accessToken) {
     axios

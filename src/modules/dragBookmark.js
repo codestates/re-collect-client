@@ -6,16 +6,16 @@ export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
     const accessToken = localStorage.getItem('accessToken');
-    console.log(dragId, dropId);
+    console.log(dragId, dropId, categoryId);
 
     axios
       .patch(
-        `https://api.recollect.today/bookmarks/${dragId}/${dropId}/positions`,
-        { categoryId },
+        `https://api.recollect.today/bookmarks/${dragId}/${dropId}/position`,
+        { categoryId: categoryId },
         {
           params: {
-            dragId,
-            dropId,
+            dragId: dragId,
+            dropId: dropId,
           },
           headers: {
             authorizaiton: `Bearer ${accessToken}`,
@@ -37,7 +37,7 @@ export const dragBookmark =
           );
         }
       })
-      .catch(() => {
+      .catch((e) => {
         dispatch(notify('오류가 발생하였습니다 새로고침해 주세요!'));
       });
   };
@@ -48,9 +48,10 @@ export const dragBookmarkToLast =
     const accessToken = localStorage.getItem('accessToken');
     axios
       .patch(
-        `https://api.recollect.today/bookmarks/${dragId}/positions`,
-        { categoryId },
+        `https://api.recollect.today/bookmarks/${dragId}/position`,
+        { categoryId: categoryId },
         {
+          params: { id: dragId },
           headers: {
             authorizaiton: `Bearer ${accessToken}`,
           },

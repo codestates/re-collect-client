@@ -132,8 +132,15 @@ function SignUpModal(props) {
     const { name, value } = e.target;
     const { email, username } = isSignupSuccess;
 
-    if (email && name === 'email') {
-      dispatch(validationInitialize('email'));
+    if (name === 'email') {
+      if (email) {
+        dispatch(validationInitialize('email'));
+      }
+      setSignUpInfo({
+        ...signUpInfo,
+        email: value,
+      });
+      return;
     }
 
     if (username && name === 'username') {
@@ -173,7 +180,7 @@ function SignUpModal(props) {
           if (!IsValidiateUsername(state.username)) {
             setMessage({
               ...message,
-              username: '유저네임은 4글자이상 16글자 이하로 만들수 있습니다.',
+              username: '4~16자 영문 대 소문자, 숫자를 사용하세요.',
             });
           } else {
             setMessage({
@@ -183,6 +190,7 @@ function SignUpModal(props) {
           }
           break;
         default:
+          console.log('here');
           break;
       }
       return state;

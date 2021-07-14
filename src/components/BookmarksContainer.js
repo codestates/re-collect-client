@@ -140,7 +140,10 @@ function BookmarksContainer() {
     };
 
     if (accessToken) {
-      if (changing.grp.bookmarks.length === changing.itemI + 1) {
+      if (
+        changing.grp.bookmarks.length === changing.itemI + 1 ||
+        changing.grp.bookmarks.length === 0
+      ) {
         dispatch(dragBookmarkToLast(params));
       } else {
         params.dropId = changing.grp.bookmarks[changing.itemI + 1].id;
