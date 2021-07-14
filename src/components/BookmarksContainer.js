@@ -132,7 +132,6 @@ function BookmarksContainer() {
         </span>
       ) : (
         <div className="collectview__bookmarks">
-          {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}

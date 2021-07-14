@@ -145,6 +145,7 @@ export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
 
 export const loginThunk = (userinfo) => async (dispatch) => {
   try {
+    console.log('여기까지');
     const result = await axios.post(
       'https://api.recollect.today/login',
       {

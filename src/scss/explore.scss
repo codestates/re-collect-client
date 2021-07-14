@@ -249,14 +249,16 @@
 
 // Carousel
 #carousel {
-  background-color: khaki;
   text-align: center;
   box-shadow: #{$boxshadow};
+  border: solid 1px #000;
+  width: 250px;
+  max-width: 250px;
+  height: 350px;
 }
 .explore__searchProfile {
-  width: 200px;
-  min-height: 320px;
-  height: 45vh;
+  // min-height: 320px;
+  // height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -289,8 +291,16 @@
   .companyInfo {
     margin-top: 30px;
     font-size: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     div {
       margin: 5px;
+      &:hover {
+        color: #{$blue};
+      }
     }
     .icon {
       padding-right: 3px;

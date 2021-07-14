@@ -9,9 +9,6 @@ import ToCollectBtn from "../components/ToCollectBtn";
 import BookmarksContainer from "../components/BookmarksContainer";
 import { SearchBookmark } from "../components/SearchBookmark";
 
-import { useSelector, useDispatch } from "react-redux";
-import { recollect } from "../modules/getRecollect";
-
 export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
   const [searchInput, setSearchInput] = useState("");

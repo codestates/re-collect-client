@@ -1,7 +1,7 @@
-import { logoutThunk } from "../modules/login";
+import { logoutThunk } from "../modules/sign";
+import axios from "axios";
 
-// action
-export const getAcessToken = () => (dispatch) => {
+export const getAccessToken = () => (dispatch) => {
   const accessToken = localStorage.getItem("accessToken");
 
   axios
@@ -15,6 +15,6 @@ export const getAcessToken = () => (dispatch) => {
       localStorage.setItem(`accessToken`, newAccessToken);
     })
     .catch(() => {
-      dispatch(logoutThunk);
+      dispatch(logoutThunk());
     });
 };
