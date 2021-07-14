@@ -68,7 +68,6 @@ function BookmarksContainer() {
 
   useEffect(() => {
     if (accessToken) {
-      console.log('reduced is : ', reducedbookmarks);
       setList(reducedbookmarks);
     } else {
       setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
