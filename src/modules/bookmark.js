@@ -42,7 +42,7 @@ export const getBookmark = () => (dispatch) => {
         type: GET_BOOKMARK_SUCCESS,
         // category: res.data.category,
         // bookmarks: res.data.bookmark,
-        userBookmarks: res.data
+        userBookmarks: res.data,
       });
     })
     .catch((err) => {
@@ -71,7 +71,12 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 
   //추가하는 북마크의 카테고리 아이디 등록
   if (addingBookmark.category.__isNew__) {
-    let newCategoryId = Math.max(...Object.keys(currentCategory)) + 1;
+    let newCategoryId;
+    if (Object.keys(currentBookmarks).length === 0) {
+      newCategoryId = 0;
+    } else {
+      newCategoryId = Math.max(...Object.keys(currentCategory)) + 1;
+    }
     currentCategory[newCategoryId] = addingBookmark.category.value;
     addingBookmark.categoryId = newCategoryId;
   } else {

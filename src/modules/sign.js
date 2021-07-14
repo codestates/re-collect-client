@@ -4,25 +4,32 @@ const SIGNUP_INITIALIZE = 'SIGNUP_INITIALIZE';
 const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 const SIGNUP_FAIL = 'SIGNUP_FAIL';
 
+const SIGNUP_EMAIL_VALIDATION_SUCCESS = 'SIGNUP_EMAIL_VALIDATION_SUCCESS';
+const SIGNUP_EMAIL_VALIDATION_FAIL = 'SIGNUP_EMAIL_VALIDATION_FAIL';
+const SIGNUP_USERNAME_VALIDATION_SUCCESS = 'SIGNUP_USERNAME_VALIDATION_SUCCESS';
+const SIGNUP_USERNAME_VALIDATION_FAIL = 'SIGNUP_USERNAME_VALIDATION_FAIL';
+
+const EMAIL_VALIDATION_INITIALIZE = 'EMAIL_VALIDATION_INITIALIZE';
+const USERNAME_VALIDATION_INITIALIZE = 'USERNAME_VALIDATION_INITIALIZE';
+
 const LOGIN_INITIALIZE = 'LOGIN_INITIALIZE';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAIL = 'LOGIN_FAIL';
-
-const LOGOUT_SUCCESS = '';
-const LOGOUT_FAIL = '';
 
 export const signupInitialize = () => ({
   type: SIGNUP_INITIALIZE,
 });
 
 export const signupThunk = (signUpInfo) => async (dispatch) => {
+  const { username, pwd } = signUpInfo;
+  const email = signUpInfo.email + '@' + signUpInfo.emailService;
   try {
     const result = await axios.post(
       'https://api.recollect.today/signup',
       {
-        username: signUpInfo.username,
-        pwd: signUpInfo.pwd,
-        email: signUpInfo.email,
+        username,
+        pwd,
+        email,
       },
       {
         headers: { 'Content-Type': 'application/json' },
@@ -32,13 +39,106 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
 
     dispatch({ type: SIGNUP_SUCCESS });
   } catch (e) {
+    let error;
+    switch (e.response.status) {
+      case 501:
+      case 500:
+        error = '서버 오류';
+        break;
+      case 409:
+        error = '사용중인 계정입니다.';
+        break;
+      case 422:
+        error = '잘못된 정보입력';
+        break;
+      default:
+        error = 'Unknown Error';
+    }
     dispatch({
       type: SIGNUP_FAIL,
-      email: signUpInfo.email,
-      username: signUpInfo.username,
-      error: e.response.data.message,
+      error,
     });
   }
+};
+
+export const validationInitialize = (name) => (dispatch) => {
+  switch (name) {
+    case 'email':
+      dispatch({ type: EMAIL_VALIDATION_INITIALIZE });
+      break;
+    case 'username':
+      dispatch({ type: USERNAME_VALIDATION_INITIALIZE });
+      break;
+    default:
+      return;
+  }
+};
+
+export const emailValidation = (email) => (dispatch) => {
+  axios
+    .post(
+      'https://api.recollect.today/auth/email',
+      { email },
+      { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+    )
+    .then(() => {
+      dispatch({ type: SIGNUP_EMAIL_VALIDATION_SUCCESS });
+    })
+    .catch((e) => {
+      let error;
+      switch (e.response.status) {
+        case 501:
+        case 500:
+          error = '서버 오류';
+          break;
+        case 409:
+          error = '사용중인 이메일 입니다.';
+          break;
+        case 422:
+          error = '잘못된 정보입력';
+          break;
+        default:
+          error = 'Unknown Error';
+      }
+
+      dispatch({
+        type: SIGNUP_EMAIL_VALIDATION_FAIL,
+        error,
+      });
+    });
+};
+
+export const usernameValidation = (username) => (dispatch) => {
+  axios
+    .post(
+      'https://api.recollect.today/auth/username',
+      { username },
+      { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+    )
+    .then(() => {
+      dispatch({ type: SIGNUP_USERNAME_VALIDATION_SUCCESS });
+    })
+    .catch((e) => {
+      let error;
+      switch (e.response.status) {
+        case 501:
+        case 500:
+          error = '서버 오류';
+          break;
+        case 409:
+          error = '사용중인 유저네임 입니다.';
+          break;
+        case 422:
+          error = '잘못된 정보입력';
+          break;
+        default:
+          error = 'Unknown Error';
+      }
+      dispatch({
+        type: SIGNUP_USERNAME_VALIDATION_FAIL,
+        error,
+      });
+    });
 };
 
 export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
@@ -56,21 +156,22 @@ export const loginThunk = (userinfo) => async (dispatch) => {
         withCredentials: true,
       }
     );
+    console.log(result);
 
-    const accessToken = result.data.accessToken;
+    // const accessToken = result.headers;
 
-    if (accessToken) {
-      localStorage.setItem('accessToken', accessToken);
-      dispatch({ type: LOGIN_SUCCESS });
-    } else {
-      dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
-    }
+    // if (accessToken) {
+    //   localStorage.setItem('accessToken', accessToken);
+    //   dispatch({ type: LOGIN_SUCCESS });
+    // } else {
+    //   dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
+    // }
   } catch (e) {
-    if (e.response) {
-      dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
-      return;
-    }
-    dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
+    // if (e.response) {
+    //   dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
+    //   return;
+    // }
+    // dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
   }
 };
 
@@ -98,12 +199,16 @@ const initialState = {
     error: null,
   },
 
-  isSuccess: false,
-  tempData: {
-    email: '',
-    username: '',
+  isSignupSuccess: {
+    email: false,
+    username: false,
+    overall: false,
   },
-  error: null,
+  signupError: {
+    email: null,
+    username: null,
+    overall: null,
+  },
 };
 
 export const signReducer = (state = initialState, action) => {
@@ -111,37 +216,112 @@ export const signReducer = (state = initialState, action) => {
     case SIGNUP_INITIALIZE:
       return {
         ...state,
-        isSuccess: false,
-        tempData: {
-          ...state.tempData,
-          email: '',
-          username: '',
+        isSignupSuccess: {
+          email: false,
+          username: false,
+          overall: false,
         },
-        error: null,
+        signupError: {
+          email: null,
+          username: null,
+          overall: null,
+        },
       };
 
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        isSuccess: true,
-        tempData: {
-          ...state.tempData,
-          email: '',
-          username: '',
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          overall: true,
         },
-        error: null,
+        signupError: {
+          email: null,
+          username: null,
+          overall: null,
+        },
       };
 
     case SIGNUP_FAIL:
       return {
         ...state,
-        isSuccess: false,
-        tempData: {
-          ...state.tempData,
-          email: action.email,
-          username: action.username,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          overall: false,
         },
-        error: action.error,
+        signupError: {
+          ...state.signupError,
+          overall: action.error,
+        },
+      };
+
+    case SIGNUP_EMAIL_VALIDATION_SUCCESS:
+      return {
+        ...state,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          email: true,
+        },
+        signupError: {
+          ...state.signupError,
+          email: null,
+        },
+      };
+
+    case SIGNUP_EMAIL_VALIDATION_FAIL:
+      return {
+        ...state,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          email: false,
+        },
+        signupError: {
+          ...state.signupError,
+          email: action.error,
+        },
+      };
+
+    case SIGNUP_USERNAME_VALIDATION_SUCCESS:
+      return {
+        ...state,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          username: true,
+        },
+        signupError: {
+          ...state.signupError,
+          username: null,
+        },
+      };
+    case SIGNUP_USERNAME_VALIDATION_FAIL:
+      return {
+        ...state,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          username: false,
+        },
+        signupError: {
+          ...state.signupError,
+          username: action.error,
+        },
+      };
+
+    case EMAIL_VALIDATION_INITIALIZE:
+      return {
+        ...state,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          email: false,
+        },
+      };
+
+    case USERNAME_VALIDATION_INITIALIZE:
+      return {
+        ...state,
+        isSignupSuccess: {
+          ...state.isSignupSuccess,
+          username: false,
+        },
       };
 
     case LOGIN_INITIALIZE:
