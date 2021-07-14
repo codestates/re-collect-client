@@ -48,7 +48,7 @@ const customStyles = {
 function CollectInputBox(props) {
   const accessToken = localStorage.getItem('accessToken');
 
-  const { reducedBookmarks, category } = useSelector(
+  const { reducedbookmarks, category } = useSelector(
     (state) => state.bookmarkReducer.userBookmarks
   );
 

@@ -50,8 +50,8 @@ function Nav(props) {
           to="/"
           onClick={() => {
             props.setModalMode('');
+            handleToggleBtn();
           }}
-          onClick={handleToggleBtn}
         >
           Home
         </Link>
@@ -59,16 +59,16 @@ function Nav(props) {
           to="/collect"
           onClick={() => {
             props.setModalMode('');
+            handleToggleBtn();
           }}
-          onClick={handleToggleBtn}
         >
           Recollect
         </Link>
         <Link
           onClick={() => {
             props.setModalMode('explore');
+            handleToggleBtn();
           }}
-          onClick={handleToggleBtn}
           to="/explore"
         >
           Explore

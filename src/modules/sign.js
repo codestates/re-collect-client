@@ -159,7 +159,7 @@ export const loginThunk = (userinfo) => async (dispatch) => {
     );
     console.log(result);
 
-    const accessToken = result.headers.authorization;
+    const accessToken = result.data.accessToken;
 
     if (accessToken) {
       localStorage.setItem('accessToken', accessToken);
