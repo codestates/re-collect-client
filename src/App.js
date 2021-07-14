@@ -92,12 +92,12 @@ function App() {
           <SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/profile">
-          <Profile modalMode={modalMode} setModalMode={setModalMode} />
-          {/* {accessToken ? (
+          {/* <Profile modalMode={modalMode} setModalMode={setModalMode} /> */}
+          {accessToken ? (
             <Profile modalMode={modalMode} setModalMode={setModalMode} />
           ) : (
             <Redirect to="*" />
-          )} */}
+          )}
         </Route>
         <Route path="/explore" component={Explore}>
           <Explore modalMode={modalMode} setModalMode={setModalMode} />

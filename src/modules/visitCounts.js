@@ -8,17 +8,20 @@ export const addVisitCount = (id) => async (dispatch) => {
   console.log(` bookmarkID : ${id}, add visitCount `);
 
   if (accessToken) {
+    console.log(accessToken)
     axios
-      .patch(`https://api.recollect.today/bookmarks/:${id}`, {
+      .patch(`https://api.recollect.today/bookmarks/${id}`, {},{
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
       })
       .then(() => dispatch(getBookmark()))
       .catch((err) => {
-        if (err.status === 401) {
+        
+        if (err.response.status === 401) {
           dispatch(getAccessToken());
+          return;
         } else {
-          console.log(err);
+          console.log('err');
         }
       });
   }
