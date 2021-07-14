@@ -1,4 +1,5 @@
 .bigBookmark {
+  border: 1px solid #214bc8;
   height: 45px;
   line-height: 45px;
   width: 100%;
@@ -97,6 +98,8 @@
   font-size: 11px;
   text-align: left;
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .categorybox__bookmark.current {
   opacity: 0.3;
@@ -875,15 +878,15 @@
 }
 
 #carousel {
-  background-color: khaki;
   text-align: center;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border: solid 1px #000;
+  width: 250px;
+  max-width: 250px;
+  height: 350px;
 }
 
 .explore__searchProfile {
-  width: 200px;
-  min-height: 320px;
-  height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -917,9 +920,17 @@
 .explore__searchProfile .companyInfo {
   margin-top: 30px;
   font-size: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .explore__searchProfile .companyInfo div {
   margin: 5px;
+}
+.explore__searchProfile .companyInfo div:hover {
+  color: #214bc8;
 }
 .explore__searchProfile .companyInfo .icon {
   padding-right: 3px;
@@ -1927,33 +1938,6 @@ body,
   margin-top: 15px;
   padding: 0px 10px;
 }
-.modalWrapper .signUpmodal {
-  display: flex;
-  width: 100%;
-  height: 310px;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .signUpmodal .inputContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .signUpmodal .inputContainer input {
-  margin-top: 10px;
-  width: 180px;
-  height: 30px;
-  border: 1px solid #214bc8;
-  outline: none;
-}
-.modalWrapper .signUpmodal .signUperrorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-  margin-top: 5px;
-}
 .modalWrapper .findPwdpModal {
   display: flex;
   width: 100%;
@@ -2115,7 +2099,148 @@ body,
   color: black;
   font-size: 9px;
 }
-@charset "UTF-8";
+
+.signUpmodal__modalWrapper {
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  background-color: white;
+  z-index: 1;
+  width: 420px;
+  border: 1px solid #214bc8;
+  display: flex;
+  height: 560px;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 834px) {
+  .signUpmodal__modalWrapper {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0);
+  }
+}
+@media (max-width: 600px) {
+  .signUpmodal__modalWrapper {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0);
+  }
+}
+.signUpmodal__modalWrapper .logo {
+  margin-top: 0px;
+  color: #214bc8;
+}
+.signUpmodal__modalWrapper .closeBtn {
+  color: black;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  text-align: end;
+}
+.signUpmodal__modalWrapper .closeBtn i {
+  font-size: 14px;
+}
+.signUpmodal__modalWrapper .closeBtn:hover {
+  cursor: pointer;
+  color: #214bc8;
+}
+.signUpmodal__inputContainer {
+  display: flex;
+  margin-top: 30px;
+  width: 360px;
+}
+.signUpmodal__inputs {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #214bc8;
+  outline: none;
+  font-size: 13px;
+  padding-left: 8px;
+}
+.signUpmodal__inputs::-webkit-input-placeholder {
+  line-height: 100px;
+  padding-left: 0px;
+}
+.signUpmodal__inputs.email {
+  width: 100px;
+  border-right: none;
+}
+.signUpmodal__inputs.username {
+  width: 280px;
+}
+.signUpmodal__inputs.pwd, .signUpmodal__inputs.pwdCheck {
+  padding-right: 80px;
+  margin-right: -45px;
+}
+.signUpmodal__atSign {
+  border-top: 1px solid #214bc8;
+  border-bottom: 1px solid #214bc8;
+  width: 20px;
+  height: 45px;
+  line-height: 42px;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 13px;
+}
+.signUpmodal__faLock {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  margin-top: 12px;
+}
+.signUpmodal__faCheck {
+  margin-left: -12px;
+  margin-top: 23px;
+  font-size: 7px;
+  color: white;
+}
+.signUpmodal__duplicatedCheckBtn {
+  margin-left: 10px;
+  width: 70px;
+  height: 45px;
+  background-color: #214bc8;
+  border: 1px solid #214bc8;
+  color: #c4c4c4;
+}
+.signUpmodal__duplicatedCheckBtn:hover {
+  cursor: pointer;
+  color: white;
+}
+.signUpmodal__messageContainer {
+  align-self: start;
+  position: relative;
+  height: 0;
+  top: 5px;
+  left: 7.5%;
+  color: red;
+  font-size: 12px;
+  font-family: "Noto Sans KR";
+}
+.signUpmodal__messageContainer.overall {
+  align-self: inherit;
+  left: 0;
+}
+.signUpmodal__messageContainer.valid {
+  color: green;
+}
+.signUpmodal__createBtn {
+  margin-top: 50px;
+  width: 360px;
+  height: 45px;
+  background-color: #214bc8;
+  border: 1px solid #214bc8;
+  color: #c4c4c4;
+}
+.signUpmodal__createBtn:hover {
+  cursor: pointer;
+  color: white;
+}
+
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2562,11 +2687,12 @@ input:-webkit-autofill {
   align-items: center;
 }
 .recollect__bookmarks .skeleton .logoPng {
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
 }
 .recollect__bookmarks .skeleton p {
+  color: #bdbaba;
   text-align: center;
 }
 
@@ -2641,6 +2767,7 @@ input:-webkit-autofill {
   align-items: center;
 }
 .searching__bookmarks .skeleton p {
+  color: #bdbaba;
   text-align: center;
 }
 
@@ -2692,7 +2819,7 @@ input:-webkit-autofill {
     display: none;
   }
 }
-@charset "UTF-8";
+
 /* Arrows */
 .slick-prev,
 .slick-next {

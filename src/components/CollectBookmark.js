@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { editStart } from '../modules/bookmark';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { editStart } from "../modules/bookmark";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { addVisitCount } from "../modules/visitCounts";
 
 export default function CollectBookmark(props) {
   const { data } = props;
@@ -21,11 +22,16 @@ export default function CollectBookmark(props) {
       onDragEnter={props.handleDragEnter}
       style={{
         border: `1px solid ${data.item.color}`,
-        background: `${data.item.importance === 1 ? data.item.color : 'white'}`,
-        color: `${data.item.importance === 1 ? 'white' : 'black'}`,
+        background: `${data.item.importance === 1 ? data.item.color : "white"}`,
+        color: `${data.item.importance === 1 ? "white" : "black"}`,
       }}
     >
-      <div className="categorybox__bookmark-textcontainer">
+      <div
+        onClick={() => {
+          dispatch(addVisitCount(props.data.item.bookmarkId));
+        }}
+        className="categorybox__bookmark-textcontainer"
+      >
         <a
           href={data.item.url}
           target="_blank"
@@ -49,7 +55,7 @@ export default function CollectBookmark(props) {
         className="categorybox__bookmark-triangle"
         style={{
           borderRightColor: `${
-            data.item.importance === 1 ? 'white' : data.item.color
+            data.item.importance === 1 ? "white" : data.item.color
           }`,
         }}
       ></div>

@@ -1,5 +1,4 @@
 import initialState from "./initialState";
-
 const RECOLLECT = "RECOLLECT";
 
 // actions
@@ -13,7 +12,7 @@ export const recollect = (bookmarks) => async (dispatch) => {
 // Reducer
 export const recollectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "RECOLLECT":
+    case RECOLLECT:
       return {
         ...state,
         unreadBookmarks: action.unreadBookmarks,

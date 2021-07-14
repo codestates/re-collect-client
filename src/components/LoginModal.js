@@ -17,9 +17,9 @@ function LoginModal(props) {
   });
   const [errorMessage, setErrorMessage] = useState('');
 
-  // useEffect(() => {
-  //   setErrorMessage(error);
-  // }, [error]);
+  useEffect(() => {
+    setErrorMessage(error);
+  }, [error]);
 
   useEffect(() => {
     if (accessToken) {
