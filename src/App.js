@@ -1,84 +1,84 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import Landing from './page/Landing';
-import ScrollToTop from './components/ScrollToTop';
-import Collect from './page/Collect';
-import Explore from './page/Explore';
-import Profile from './page/Profile';
-import LoginModal from './components/LoginModal';
-import SignUpModal from './components/SignUpModal';
-import FindPwdModal from './components/FindPwdModal';
-import SuccessSignUpModal from './components/SuccessSignUpModal';
-import ExploreModal from './components/ExploreModal';
-import ChangePwdModal from './components/ChangePwdModal';
-import DelAccountModal from './components/DelAccountModal';
-import SetNewPwdModal from './components/SetNewPwdModal';
-import Loading from './components/Loading';
-import SetNewPwd from './page/SetNewPwd';
-import SuccessSetNewPwd from './components/SuccessSetNewPwd';
-import NofiticationCenter from './components/NotificationCenter';
-import Error from './components/Error';
-import SentEmailModal from './components/SentEmailModal';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Landing from "./page/Landing";
+import ScrollToTop from "./components/ScrollToTop";
+import Collect from "./page/Collect";
+import Explore from "./page/Explore";
+import Profile from "./page/Profile";
+import LoginModal from "./components/LoginModal";
+import SignUpModal from "./components/SignUpModal";
+import FindPwdModal from "./components/FindPwdModal";
+import SuccessSignUpModal from "./components/SuccessSignUpModal";
+import ExploreModal from "./components/ExploreModal";
+import ChangePwdModal from "./components/ChangePwdModal";
+import DelAccountModal from "./components/DelAccountModal";
+import SetNewPwdModal from "./components/SetNewPwdModal";
+import Loading from "./components/Loading";
+import SetNewPwd from "./page/SetNewPwd";
+import SuccessSetNewPwd from "./components/SuccessSetNewPwd";
+import NofiticationCenter from "./components/NotificationCenter";
+import Error from "./components/Error";
+import SentEmailModal from "./components/SentEmailModal";
 import {
   Switch,
   Route,
   Redirect,
   BrowserRouter as Router,
   withRouter,
-} from 'react-router-dom';
+} from "react-router-dom";
 
 function App() {
-  const [modalMode, setModalMode] = useState('');
-  const accessToken = localStorage.getItem('accessToken');
+  const [modalMode, setModalMode] = useState("");
+  const accessToken = localStorage.getItem("accessToken");
   // 모달창 on인상태, 스크롤 불가 //
   useEffect(() => {
-    const body = document.querySelector('body');
-    if (modalMode !== '') {
-      body.style.overflow = 'hidden';
+    const body = document.querySelector("body");
+    if (modalMode !== "") {
+      body.style.overflow = "hidden";
     } else {
-      body.style.overflow = 'scroll';
+      body.style.overflow = "scroll";
     }
   });
 
   return (
     <Router>
       {/* mode 상태값에 따른 모달창*/}
-      {modalMode === 'login' && (
+      {modalMode === "login" && (
         <LoginModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'signup' && (
+      {modalMode === "signup" && (
         <SignUpModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'findPwd' && (
+      {modalMode === "findPwd" && (
         <FindPwdModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'sentEmail' && (
+      {modalMode === "sentEmail" && (
         <SentEmailModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'successSignup' && (
+      {modalMode === "successSignup" && (
         <SuccessSignUpModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'explore' && (
+      {modalMode === "explore" && (
         <ExploreModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'changePwd' && (
+      {modalMode === "changePwd" && (
         <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'delAccount' && (
+      {modalMode === "delAccount" && (
         <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'setNewPwd' && (
+      {modalMode === "setNewPwd" && (
         <SetNewPwdModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'successSetNewPwd' && (
+      {modalMode === "successSetNewPwd" && (
         <SuccessSetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'changePwd' && (
+      {modalMode === "changePwd" && (
         <ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
-      {modalMode === 'delAccount' && (
+      {modalMode === "delAccount" && (
         <DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
       )}
 
@@ -88,11 +88,11 @@ function App() {
         <Route path="/loading" component={Loading}></Route>
         <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
-        <Route path="/login/pwd/reset">
+        <Route path="/auth/pwd">
           <SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/profile">
-        <Profile modalMode={modalMode} setModalMode={setModalMode} />
+          <Profile modalMode={modalMode} setModalMode={setModalMode} />
           {/* {accessToken ? (
             <Profile modalMode={modalMode} setModalMode={setModalMode} />
           ) : (

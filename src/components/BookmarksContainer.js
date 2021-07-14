@@ -68,7 +68,7 @@ function BookmarksContainer() {
 
   useEffect(() => {
     if (accessToken) {
-      console.log('여기서확인', reducedbookmarks);
+      console.log('reduced is : ', reducedbookmarks);
       setList(reducedbookmarks);
     } else {
       setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
@@ -182,7 +182,6 @@ function BookmarksContainer() {
           ref={collectViewRef}
           onScroll={handleScroll}
         >
-          {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
