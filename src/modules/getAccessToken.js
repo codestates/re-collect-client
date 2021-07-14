@@ -15,6 +15,6 @@ export const getAccessToken = () => (dispatch) => {
       localStorage.setItem(`accessToken`, newAccessToken);
     })
     .catch(() => {
-      dispatch(logoutThunk());
+      // dispatch(logoutThunk());
     });
 };
