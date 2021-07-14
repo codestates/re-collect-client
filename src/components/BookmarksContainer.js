@@ -74,7 +74,7 @@ function BookmarksContainer() {
       setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
       setLoading(false); //로딩 false
     }
-  }, [items, reducedbookmarks]);
+  }, [items, reducedbookmarks, guestBookmarks]);
 
   // ///무한스크롤////
   //const collectViewRef = useRef('');
