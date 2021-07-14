@@ -144,15 +144,15 @@ function SignUpModal(props) {
         }
         break;
       case 'pwdCheck':
-        if (!(pwd === pwdCheck)) {
+        if (pwd === pwdCheck) {
           setMessage({
             ...message,
-            pwdCheck: '비밀번호가 일치하지 않습니다.',
+            pwdCheck: '',
           });
         } else {
           setMessage({
             ...message,
-            pwdCheck: '',
+            pwdCheck: '비밀번호가 일치하지 않습니다.',
           });
         }
         break;
@@ -208,6 +208,13 @@ function SignUpModal(props) {
       pwdCheck: '',
       username: '',
     });
+    setMessage({
+      email: '',
+      pwd: '',
+      pwdCheck: '',
+      username: '',
+      overall: '',
+    });
   };
 
   const handleValidiateEmail = () => {
@@ -224,7 +231,11 @@ function SignUpModal(props) {
 
   const handleValidiateUsername = () => {
     const { username } = signUpInfo;
-    if (username.length === 0) {
+    if (username.length === 0 || !IsValidiateUsername(username)) {
+      setMessage({
+        ...message,
+        username: '올바른 유저네임을 입력해주세요!',
+      });
       return;
     }
     dispatch(usernameValidation(username));
