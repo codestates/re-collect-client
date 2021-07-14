@@ -62,6 +62,7 @@
   display: none;
 }
 .categorybox__header-text {
+  font-weight: 600;
   padding-left: 5px;
 }
 .categorybox__view {
@@ -262,6 +263,7 @@
   padding-top: 64px;
   padding-bottom: 24px;
   font-size: 36px;
+  font-weight: 700;
   color: #214bc8;
 }
 .collectview__nav {
@@ -278,6 +280,7 @@
   text-align: center;
   cursor: pointer;
   color: #214bc8;
+  font-weight: 600;
 }
 .collectview__search {
   grid-column-start: 7;
@@ -332,7 +335,23 @@
   overflow-x: hidden;
 }
 .collectview__bookmarks::-webkit-scrollbar {
-  width: 0;
+  width: 10px;
+}
+.collectview__bookmarks::-webkit-scrollbar-thumb {
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+  border-right: 3px solid transparent;
+  border-top: 35px solid transparent;
+}
+.collectview__bookmarks::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+.collectview__bookmarks .loading {
+  color: #214bc8;
+  height: 350px;
+  text-align: center;
+  line-height: 350px;
 }
 
 @media (max-width: 1440px) {
@@ -781,6 +800,7 @@
 .exploreHeader {
   color: #214bc8;
   font-size: 2.8vw;
+  font-weight: 700;
   margin-top: 94px;
 }
 
@@ -934,7 +954,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 13px;
 }
 .footer__inner {
@@ -1060,13 +1080,14 @@ body {
 }
 .landing__inner--first .first-wrap .introtext p {
   font-size: 1.7vw;
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 2%;
   word-break: keep-all;
   word-spacing: -7px;
 }
 .landing__inner--first .first-wrap .introtext button {
   font-family: "IBM Plex Mono";
+  font-weight: 700;
   width: 70%;
   padding: 3.7% 0;
   background-color: #214bc8;
@@ -1112,6 +1133,7 @@ body {
 }
 .landing__inner--second .desc-wrap p {
   font-size: 1.7vw;
+  font-weight: 700;
   margin-top: 10%;
   word-break: keep-all;
   width: fit-content;
@@ -1155,6 +1177,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 3.2vw;
+  font-weight: 800;
   word-spacing: -8px;
   white-space: nowrap;
 }
@@ -1183,7 +1206,8 @@ body {
 .landing__inner--third .desc__inner .desc-text h2 {
   margin: 0;
   font-size: 2.8vw;
-  word-spacing: -8px;
+  font-weight: 800;
+  word-spacing: -10px;
   white-space: nowrap;
 }
 .landing__inner--third .desc__inner .desc-text p {
@@ -1212,7 +1236,8 @@ body {
   text-align: center;
   font-size: 1.5vw;
   margin-bottom: 3%;
-  word-spacing: -5px;
+  word-spacing: -7px;
+  font-weight: 700;
 }
 .landing__inner--third .desc-dragdrop img {
   display: block;
@@ -1226,7 +1251,7 @@ body {
   width: 78vw;
   margin-top: 4%;
   font-size: 2.8vw;
-  font-weight: 600;
+  font-weight: 800;
   word-spacing: -5px;
   margin-left: 1vw;
 }
@@ -1273,7 +1298,8 @@ body {
 }
 .landing__inner--fourth .alarm-desc-wrapper .alarm-desc__inner h2 {
   font-size: 2.7vw;
-  word-spacing: -6px;
+  word-spacing: -8px;
+  font-weight: 800;
 }
 .landing__inner--fourth .alarm-desc-wrapper .alarm-desc__inner p {
   font-size: 1.7vw;
@@ -1326,8 +1352,9 @@ body {
   font-size: 7vw;
 }
 .landing__inner--fifth .profile-wrapper .landing__searchProfile p {
-  margin-top: 3%;
+  margin-top: 5%;
   font-size: 2vw;
+  font-weight: 700;
 }
 .landing__inner--fifth .profile-wrapper .landing__searchProfile .socialInfo {
   font-size: 1vw;
@@ -1345,7 +1372,7 @@ body {
   margin-top: 5%;
   text-align: center;
   font-size: 2.8vw;
-  font-weight: 600;
+  font-weight: 800;
   word-spacing: -7px;
 }
 .landing__inner--fifth .collection-desc a {
@@ -1371,7 +1398,7 @@ body {
   margin-bottom: 5%;
   font-size: 3.6vw;
   word-spacing: -9px;
-  font-weight: 900;
+  font-weight: 800;
   white-space: nowrap;
 }
 .landing__inner--sixth .values-wrapper {
@@ -1382,7 +1409,7 @@ body {
   margin-bottom: 8%;
   word-spacing: -5px;
   word-break: keep-all;
-  font-weight: 500;
+  font-weight: 600;
 }
 .landing__inner--sixth .values-wrapper__up {
   display: flex;
@@ -1423,6 +1450,7 @@ body {
   border-radius: 2px;
   color: white;
   font-size: 2.5vw;
+  font-weight: 600;
   text-align: center;
 }
 .landing__inner--sixth .button-bottom:hover {
@@ -1764,17 +1792,19 @@ body,
   position: fixed;
   z-index: 1;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.144);
+  backdrop-filter: blur(2px);
 }
 
 .modalWrapper {
   position: fixed;
   left: 50%;
-  top: 20%;
+  top: 25%;
   transform: translate(-50%, 0);
   margin: 0 auto;
   background-color: white;
   z-index: 1;
-  width: 230px;
+  width: 280px;
   border: 1px solid #214bc8;
 }
 @media (max-width: 834px) {
@@ -1792,8 +1822,10 @@ body,
   }
 }
 .modalWrapper .logo {
-  margin-top: 0px;
+  margin-top: 5px;
   color: #214bc8;
+  font-weight: 700;
+  font-size: 1.7vw;
 }
 .modalWrapper button {
   margin-top: 15px;
@@ -1963,39 +1995,39 @@ body,
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.modalWrapper .changePwdpModal {
+.modalWrapper .changePwdModal {
   display: flex;
   width: 100%;
   height: 300px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdpModal p {
+.modalWrapper .changePwdModal p {
   font-size: 14px;
   text-align: center;
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.modalWrapper .changePwdpModal .inputContainer {
+.modalWrapper .changePwdModal .inputContainer {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdpModal .inputContainer input {
+.modalWrapper .changePwdModal .inputContainer input {
   margin-top: 8px;
   width: 180px;
   height: 30px;
   border: 1px solid #214bc8;
   outline: none;
 }
-.modalWrapper .changePwdpModal .inputContainer input:first-child {
+.modalWrapper .changePwdModal .inputContainer input:first-child {
   margin-bottom: 8px;
 }
-.modalWrapper .changePwdpModal button {
+.modalWrapper .changePwdModal button {
   margin-top: 15px;
 }
-.modalWrapper .changePwdpModal .changePwdErrorMessage {
+.modalWrapper .changePwdModal .changePwdErrorMessage {
   display: flex;
   margin-top: 10px;
   color: black;
@@ -2083,7 +2115,7 @@ body,
   color: black;
   font-size: 9px;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2119,6 +2151,7 @@ body,
 .nav-container__inner-container {
   float: right;
   line-height: 80px;
+  font-weight: 800;
   width: 50%;
   display: flex;
   justify-content: space-between;
@@ -2257,6 +2290,7 @@ input:-webkit-autofill {
   width: 40vw;
   height: 50%;
   font-size: 14px;
+  font-weight: 700;
 }
 .profile-container__inner--left .profilebox {
   margin-top: 7vh;
@@ -2511,6 +2545,7 @@ input:-webkit-autofill {
   padding-top: 64px;
   padding-bottom: 64px;
   font-size: 36px;
+  font-weight: 700;
   color: #214bc8;
 }
 .recollect__bookmarks {
@@ -2657,7 +2692,7 @@ input:-webkit-autofill {
     display: none;
   }
 }
-
+@charset "UTF-8";
 /* Arrows */
 .slick-prev,
 .slick-next {

@@ -1,7 +1,7 @@
 export const userInfoLists = [
   {
     id: 1,
-    username: "김지우",
+    username: "Jiwoo52",
     recollects: 52,
     followers: 178,
     follwing: 140,
@@ -10,7 +10,7 @@ export const userInfoLists = [
   },
   {
     id: 2,
-    username: "김시윤",
+    username: "Siyoon3",
     recollects: 30,
     followers: 200,
     follwing: 300,
@@ -19,7 +19,7 @@ export const userInfoLists = [
   },
   {
     id: 3,
-    username: "박유빈",
+    username: "0_Yubin",
     recollects: 16,
     followers: 460,
     follwing: 300,
@@ -28,7 +28,7 @@ export const userInfoLists = [
   },
   {
     id: 4,
-    username: "이석준",
+    username: "SeokJun",
     recollects: 30,
     followers: 300,
     follwing: 33,

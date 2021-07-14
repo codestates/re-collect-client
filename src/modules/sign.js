@@ -58,12 +58,13 @@ export const loginThunk = (userinfo) => async (dispatch) => {
     );
 
     const accessToken = result.data.accessToken;
-
+      
     if (accessToken) {
       localStorage.setItem('accessToken', accessToken);
       dispatch({ type: LOGIN_SUCCESS });
     } else {
       dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
+      
     }
   } catch (e) {
     if (e.response) {
