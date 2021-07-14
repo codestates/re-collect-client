@@ -41,7 +41,7 @@ body,
   z-index: 1;
   width: 280px; //공통 가로 길이
   border: 1px solid #{$logocolor};
-  
+
   .logo {
     margin-top: 5px;
     color: #{$logocolor};
@@ -212,7 +212,7 @@ body,
       margin-bottom: 12px;
     }
     .inputContainer {
-      margin-top: 15px;
+      margin-top: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -241,13 +241,13 @@ body,
   ////delete Account Modal ////
   .delAccountModal {
     display: flex;
-    height: 280px;
+    height: 290px;
     flex-direction: column;
     align-items: center;
     p {
       font-size: 14px;
       text-align: center;
-      margin-top: 25px;
+      margin-top: 35px;
       margin-bottom: 12px;
     }
     .inputContainer {
@@ -356,6 +356,8 @@ body,
     .logo {
       margin-top: 0px;
       color: #{$logocolor};
+      font-weight: 700;
+      font-size: 35px;
     }
 
     .closeBtn {

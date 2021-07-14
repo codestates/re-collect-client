@@ -1,6 +1,14 @@
 import React from "react";
 
 function Footer() {
+
+  // const ShareUrl = () => {
+  //   const url = window.document.location.href;
+  //   console.log(url,' what is url');
+  //   //구현중
+  // }
+  
+
   return (
     <div className="footer">
       <div className="footer__inner">

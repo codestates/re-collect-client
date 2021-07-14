@@ -15,14 +15,18 @@ export function SearchBookmark({ searchInput }) {
     <div className="searching">
       <div className="searching__bookmarks">
         {searchingBookmark.length !== 0 ? (
-          searchingBookmark.map((bookmark) => (
-            <BigBookmark
-              id={bookmark.id}
-              text={bookmark.text}
-              color={bookmark.color}
-              importance={bookmark.importance}
-            />
-          ))
+          searchingBookmark.map((bookmark) => {
+            console.log(bookmark);
+            return (
+              <BigBookmark
+                id={bookmark.id}
+                text={bookmark.text}
+                color={bookmark.color}
+                importance={bookmark.importance}
+                url={bookmark.url}
+              />
+            );
+          })
         ) : (
           <div className="skeleton">
             <p>검색어와 일치하는 북마크가 없습니다.</p>

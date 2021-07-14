@@ -34,8 +34,6 @@ function DelAccountModal(props) {
     setErrorMessage("");
     InputRef.current.value = "";
     
-    const accessToken = localStorage.getItem('accessToken');
-    if(!accessToken){
       setTimeout(() => {
       props.setModalMode("");
       }, 2000);
@@ -43,7 +41,7 @@ function DelAccountModal(props) {
       setTimeout(() => {
         history.push("/");
       }, 2000);
-    }
+    
 
   };
 

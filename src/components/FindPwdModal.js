@@ -19,13 +19,13 @@ function FindPwdModal(props) {
 
   const sendMailRequest = (email) => {
     axios
-      .post("https://api.recollect.today/auth/temp", {
+      .post("https://api.recollect.today/auth/tmp", {
         email: email,
       })
       .then((res) => {
         props.setModalMode("sentEmail");
       })
-      .catch((err) => console.log(err, "에러가 발생했습니다")); // error페이지?
+      .catch((err) => console.log(err, "에러가 발생했습니다"));
   };
 
   return (

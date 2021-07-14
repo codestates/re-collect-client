@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { notify } from './notification';
+import { getAccessToken } from "../modules/getAccessToken";
 
 const initialState = {
   profile: {
@@ -9,7 +10,16 @@ const initialState = {
     gitrepo: '',
     createdAt: '',
     recollectcount: 0,
-    favorite: {},
+    favorite:           {
+      category: '카테고리를 추가하세요',
+      categoryId: null,
+      bookmarkId: 0,
+      text: '새로운 북마크를 추가하세요',
+      url: '',
+      importance: 0,
+      color: '#214bc8',
+      visitCounts: 1,
+    },
     error: null,
   },
 };
@@ -48,11 +58,9 @@ export const getProfile = () => (dispatch) => {
       withCredentials: true,
     })
     .then((res) => {
-      console.log(res);
-
-      const favorite = res.data.bookmarks.reduce((prev, curr) => {
+      const favorite = res.data.bookmark.reduce((prev, curr) => {
         return prev.visitCounts > curr.visitCounts ? prev : curr;
-      });
+      },);
 
       dispatch({
         type: GET_PROFILE_SUCCESS,
@@ -69,7 +77,14 @@ export const getProfile = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: GET_PROFILE_FAIL, error: err.message });
-      //dispatch(notify('로드실패.'));
+      
+      // if (err.response.status === 401) {
+      //   dispatch(getAccessToken());
+      //   return;
+      // } else {
+      //   console.log('err');
+      // }
+      dispatch(notify('로드실패.'));
     });
 };
 

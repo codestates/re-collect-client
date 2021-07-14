@@ -12,6 +12,16 @@ input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+input:focus::-webkit-input-placeholder, 
+textarea:focus::-webkit-input-placeholder { /* WebKit browsers */ color:#fff; } 
+input:focus:-moz-placeholder, 
+textarea:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color:#fff; } 
+input:focus::-moz-placeholder, 
+textarea:focus::-moz-placeholder { /* Mozilla Firefox 19+ */ color:#fff; } 
+input:focus:-ms-input-placeholder, 
+textarea:focus:-ms-input-placeholder { /* Internet Explorer 10+ */ color:#fff; }
+
+
 .profile-container {
   width: 100vw;
   display: flex;
@@ -71,6 +81,19 @@ input:-webkit-autofill {
           &:disabled{
             background-color: transparent;
           }
+          &:focus{
+          &::-webkit-input-placeholder{
+            color: transparent}
+    
+          &::-moz-placeholder{
+            color: transparent}
+    
+          &:-ms-input-placeholder{
+            color: transparent}
+    
+          &::-ms-input-placeholder{
+            color: transparent}
+          }
         }
         .edit-info{
           color:grey;
@@ -126,7 +149,20 @@ input:-webkit-autofill {
             }  
             &:disabled{
               background-color: transparent;
-            }          
+            }
+            &:focus{
+              &::-webkit-input-placeholder{
+                color: transparent}
+        
+              &::-moz-placeholder{
+                color: transparent}
+        
+              &:-ms-input-placeholder{
+                color: transparent}
+        
+              &::-ms-input-placeholder{
+                color: transparent}
+              }        
           }
 
         }
@@ -164,7 +200,20 @@ input:-webkit-autofill {
             }   
             &:disabled{
               background-color: transparent;
-            }         
+            } 
+            &:focus{
+              &::-webkit-input-placeholder{
+                color: transparent}
+        
+              &::-moz-placeholder{
+                color: transparent}
+        
+              &:-ms-input-placeholder{
+                color: transparent}
+        
+              &::-ms-input-placeholder{
+                color: transparent}
+              }        
           }
 
         }

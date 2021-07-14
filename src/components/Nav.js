@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { logoutThunk } from '../modules/sign';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Nav(props) {
   const [isvisible, setVisible] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleToggleBtn = () => {
@@ -50,8 +51,8 @@ function Nav(props) {
           to="/"
           onClick={() => {
             props.setModalMode('');
+            handleToggleBtn();
           }}
-          onClick={handleToggleBtn}
         >
           Home
         </Link>
@@ -59,33 +60,33 @@ function Nav(props) {
           to="/collect"
           onClick={() => {
             props.setModalMode('');
+            handleToggleBtn();
           }}
-          onClick={handleToggleBtn}
         >
           Recollect
         </Link>
         <Link
           onClick={() => {
             props.setModalMode('explore');
+            handleToggleBtn();
           }}
-          onClick={handleToggleBtn}
           to="/explore"
         >
           Explore
         </Link>
         {accessToken ? (
           <>
-            <Link to="/profile"
-            onClick={handleToggleBtn}>
+            <Link to="/profile" onClick={handleToggleBtn}>
               Profile
             </Link>
-            <div
+            <Link
+              to="/"
               onClick={() => {
                 dispatch(logoutThunk());
               }}
             >
               Logout
-            </div>
+            </Link>
           </>
         ) : (
           <div
@@ -93,7 +94,6 @@ function Nav(props) {
               props.setModalMode('login');
               handleToggleBtn();
             }}
-            
           >
             Login
           </div>

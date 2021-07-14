@@ -68,13 +68,12 @@ function BookmarksContainer() {
 
   useEffect(() => {
     if (accessToken) {
-      console.log('여기서확인', reducedbookmarks);
       setList(reducedbookmarks);
     } else {
       setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
       setLoading(false); //로딩 false
     }
-  }, [items, reducedbookmarks]);
+  }, [items, reducedbookmarks, guestBookmarks]);
 
   // ///무한스크롤////
   //const collectViewRef = useRef('');
@@ -141,7 +140,10 @@ function BookmarksContainer() {
     };
 
     if (accessToken) {
-      if (changing.grp.bookmarks.length === changing.itemI + 1) {
+      if (
+        changing.grp.bookmarks.length === changing.itemI + 1 ||
+        changing.grp.bookmarks.length === 0
+      ) {
         dispatch(dragBookmarkToLast(params));
       } else {
         params.dropId = changing.grp.bookmarks[changing.itemI + 1].id;
@@ -182,7 +184,6 @@ function BookmarksContainer() {
           ref={collectViewRef}
           onScroll={handleScroll}
         >
-          {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
@@ -222,7 +223,7 @@ function BookmarksContainer() {
               ))}
             </CategoryBox>
           ))}
-          {loading && <div className="loading">Loading ...</div>}
+          {loading && <div className="loading"></div>}
         </div>
       )}
     </>
