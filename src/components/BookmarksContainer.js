@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import CategoryBox from './CategoryBox';
-import CollectBookmark from './CollectBookmark';
+import React, { useState, useEffect, useRef } from "react";
+import CategoryBox from "./CategoryBox";
+import CollectBookmark from "./CollectBookmark";
 import {
   getBookmark,
   getGuestBookmark,
   editBookmark,
   editGuestBookmark,
-} from '../modules/bookmark';
-import { useSelector, useDispatch } from 'react-redux';
+} from "../modules/bookmark";
+import { useSelector, useDispatch } from "react-redux";
 
 function BookmarksContainer() {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem("accessToken");
 
   const guestBookmarks = useSelector(
     (state) => state.bookmarkReducer.guestBookmarks
@@ -44,7 +44,7 @@ function BookmarksContainer() {
 
   const handleDragStart = (e, item) => {
     dragItemNode.current = { target: e.target, item: item };
-    dragItemNode.current.target.addEventListener('dragend', handleDragEnd);
+    dragItemNode.current.target.addEventListener("dragend", handleDragEnd);
     dragItem.current = item;
 
     setTimeout(() => {
@@ -102,7 +102,7 @@ function BookmarksContainer() {
     setDragging(false);
 
     dragItem.current = null;
-    dragItemNode.current.target.removeEventListener('dragend', handleDragEnd);
+    dragItemNode.current.target.removeEventListener("dragend", handleDragEnd);
     dragItemNode.current = null;
   };
 
@@ -111,9 +111,9 @@ function BookmarksContainer() {
       dragItem.current.grpI === item.grpI &&
       dragItem.current.itemI === item.itemI
     ) {
-      return 'categorybox__bookmark current';
+      return "categorybox__bookmark current";
     }
-    return 'categorybox__bookmark';
+    return "categorybox__bookmark";
   };
 
   return (
@@ -126,7 +126,6 @@ function BookmarksContainer() {
         </span>
       ) : (
         <div className="collectview__bookmarks">
-          {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
@@ -145,7 +144,7 @@ function BookmarksContainer() {
                   className={`${
                     dragging
                       ? getStyles({ grpI, itemI })
-                      : 'categorybox__bookmark'
+                      : "categorybox__bookmark"
                   }`}
                   data={{
                     item,

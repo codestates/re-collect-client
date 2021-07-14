@@ -5,7 +5,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import ExploreProfileList from "../components/ExploreProfileList";
 import BigBookmark from "../components/BigBookmark";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { getExploreInfo } from "../modules/getExplore";
 import SlickArrow from "../components/SlickArrow";
@@ -50,13 +49,8 @@ export default function SimpleSlider(props) {
 
   // 더미데이터 요청 //
   useEffect(() => {
-    axios
-      .get("https://api.recollect.today/explore")
-      .then((res) => {
-        dispatch(getExploreInfo(res.data));
-      })
-      .catch((err) => console.log("Error to get Explore info"));
-  }, []); // 빈배열을 넘겨 최초 한번만 실행
+    dispatch(getExploreInfo());
+  }, []);
 
   return (
     <div className="exploreContainer">
@@ -119,9 +113,3 @@ export default function SimpleSlider(props) {
     </div>
   );
 }
-
-// 0. react-slick 에러 화살표 = done
-// 1. 화면에 렌더링안되는부분 = done
-// 2. css깨지는 부분 (css 다시 정리하기) = done
-// 3. 모달 가운데정렬 = done
-// 4. 모달on시 background 클릭 X =
