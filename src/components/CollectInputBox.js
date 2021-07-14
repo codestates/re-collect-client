@@ -68,7 +68,7 @@ function CollectInputBox(props) {
   const [bookmarkInput, setbookmarkInput] = useState({
     category: '',
     categoryId: null,
-    bookmarkId: null,
+    id: null,
     text: '',
     url: '',
     importance: false,
@@ -80,7 +80,7 @@ function CollectInputBox(props) {
       setbookmarkInput({
         category: data.category,
         categoryId: data.categoryId,
-        bookmarkId: data.bookmarkId,
+        id: data.id,
         text: data.text,
         url: data.url,
         importance: data.importance,
@@ -127,7 +127,7 @@ function CollectInputBox(props) {
     setbookmarkInput({
       category: '',
       categoryId: null,
-      bookmarkId: null,
+      id: null,
       text: '',
       url: '',
       importance: false,

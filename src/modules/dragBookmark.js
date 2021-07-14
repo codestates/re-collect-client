@@ -6,12 +6,17 @@ export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
     const accessToken = localStorage.getItem('accessToken');
+    console.log(dragId, dropId);
 
     axios
       .patch(
         `https://api.recollect.today/bookmarks/${dragId}/${dropId}/positions`,
         { categoryId },
         {
+          params: {
+            dragId,
+            dropId,
+          },
           headers: {
             authorizaiton: `Bearer ${accessToken}`,
           },
