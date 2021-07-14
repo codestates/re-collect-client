@@ -1,16 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
-import CategoryBox from "./CategoryBox";
-import CollectBookmark from "./CollectBookmark";
+import React, { useState, useEffect, useRef } from 'react';
+import CategoryBox from './CategoryBox';
+import CollectBookmark from './CollectBookmark';
 import {
   getBookmark,
   getGuestBookmark,
   editBookmark,
   editGuestBookmark,
-} from "../modules/bookmark";
-import { useSelector, useDispatch } from "react-redux";
+} from '../modules/bookmark';
+import { dragBookmark, dragBookmarkToLast } from '../modules/dragBookmark';
+import { notify } from '../modules/notification';
+import { useSelector, useDispatch } from 'react-redux';
 
 function BookmarksContainer() {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
 
   const guestBookmarks = useSelector(
     (state) => state.bookmarkReducer.guestBookmarks
@@ -43,8 +45,8 @@ function BookmarksContainer() {
   const dragItemNode = useRef();
 
   const handleDragStart = (e, item) => {
-    dragItemNode.current = { target: e.target, item: item };
-    dragItemNode.current.target.addEventListener("dragend", handleDragEnd);
+    dragItemNode.current = { target: e.target, item };
+    dragItemNode.current.target.addEventListener('dragend', handleDragEnd);
     dragItem.current = item;
 
     setTimeout(() => {
@@ -82,27 +84,31 @@ function BookmarksContainer() {
   };
 
   const handleDragEnd = (e) => {
-    const originalCategory = dragItemNode.current.item.grp.category;
-    const changingCategory = dragItem.current.grp.category;
-    if (originalCategory !== changingCategory) {
-      const groupIdx = dragItemNode.current.item.grpI;
-      const itemIdx = dragItemNode.current.item.itemI;
-      const findingBookmark = { ...list[groupIdx].bookmarks[itemIdx] };
-      findingBookmark.category = {
-        value: changingCategory,
-        label: changingCategory,
-      };
-      if (accessToken) {
-        dispatch(editBookmark(findingBookmark));
+    const original = dragItemNode.current;
+    const changing = dragItem.current;
+
+    const params = {
+      categoryId: changing.grp.id,
+      dragId: original.item.grp.bookmarks[original.item.itemI],
+      dropId: changing.grp.bookmarks[changing.itemI + 1],
+      originalCategory: original.item.grp.title,
+      changingCategory: changing.grp.title,
+    };
+
+    if (accessToken) {
+      if (changing.grp.bookmarks.length === changing.itemI + 1) {
+        dispatch(dragBookmarkToLast(params));
       } else {
-        dispatch(editGuestBookmark(findingBookmark));
+        dispatch(dragBookmark(params));
       }
+    } else {
+      dispatch(notify('로그인하지 않으면 순서가 저장되지 않습니다', 2000));
     }
 
     setDragging(false);
 
     dragItem.current = null;
-    dragItemNode.current.target.removeEventListener("dragend", handleDragEnd);
+    dragItemNode.current.target.removeEventListener('dragend', handleDragEnd);
     dragItemNode.current = null;
   };
 
@@ -111,9 +117,9 @@ function BookmarksContainer() {
       dragItem.current.grpI === item.grpI &&
       dragItem.current.itemI === item.itemI
     ) {
-      return "categorybox__bookmark current";
+      return 'categorybox__bookmark current';
     }
-    return "categorybox__bookmark";
+    return 'categorybox__bookmark';
   };
 
   return (
@@ -144,7 +150,7 @@ function BookmarksContainer() {
                   className={`${
                     dragging
                       ? getStyles({ grpI, itemI })
-                      : "categorybox__bookmark"
+                      : 'categorybox__bookmark'
                   }`}
                   data={{
                     item,

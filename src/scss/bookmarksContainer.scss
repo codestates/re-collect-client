@@ -74,6 +74,8 @@
     font-size: #{$bookmarkfont};
     text-align: left;
     line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &.current {
       opacity: 0.3;
