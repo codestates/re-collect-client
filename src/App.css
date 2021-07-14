@@ -1218,7 +1218,7 @@ body {
   margin: 0;
   font-size: 2.8vw;
   font-weight: 800;
-  word-spacing: -10px;
+  word-spacing: -8px;
   white-space: nowrap;
 }
 .landing__inner--third .desc__inner .desc-text p {
@@ -1836,7 +1836,7 @@ body,
   margin-top: 5px;
   color: #214bc8;
   font-weight: 700;
-  font-size: 1.7vw;
+  font-size: 3vw;
 }
 .modalWrapper button {
   margin-top: 15px;
@@ -1993,7 +1993,7 @@ body,
   margin-bottom: 12px;
 }
 .modalWrapper .changePwdModal .inputContainer {
-  margin-top: 15px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2019,14 +2019,14 @@ body,
 }
 .modalWrapper .delAccountModal {
   display: flex;
-  height: 280px;
+  height: 290px;
   flex-direction: column;
   align-items: center;
 }
 .modalWrapper .delAccountModal p {
   font-size: 14px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 35px;
   margin-bottom: 12px;
 }
 .modalWrapper .delAccountModal .inputContainer {
@@ -2240,7 +2240,7 @@ body,
   cursor: pointer;
   color: white;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2396,6 +2396,30 @@ input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #fff;
+}
+
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+}
+
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #fff;
+}
+
 .profile-container {
   width: 100vw;
   display: flex;
@@ -2452,6 +2476,18 @@ input:-webkit-autofill {
 .profile-container__inner--left .profilebox__userinfo input:disabled {
   background-color: transparent;
 }
+.profile-container__inner--left .profilebox__userinfo input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__userinfo input:focus::-moz-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__userinfo input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__userinfo input:focus::-ms-input-placeholder {
+  color: transparent;
+}
 .profile-container__inner--left .profilebox__userinfo .edit-info {
   color: grey;
 }
@@ -2502,6 +2538,18 @@ input:-webkit-autofill {
 .profile-container__inner--left .profilebox__companyngitrepo__inner input:disabled {
   background-color: transparent;
 }
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus::-moz-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus::-ms-input-placeholder {
+  color: transparent;
+}
 .profile-container__inner--left .profilebox__companyngitrepo .edit-info {
   color: grey;
 }
@@ -2533,6 +2581,18 @@ input:-webkit-autofill {
 }
 .profile-container__inner--left .profilebox__companyngitrepo__inner input:disabled {
   background-color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus::-moz-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:focus::-ms-input-placeholder {
+  color: transparent;
 }
 .profile-container__inner--left .profilebox__companyngitrepo .edit-info {
   color: grey;
@@ -2819,7 +2879,7 @@ input:-webkit-autofill {
     display: none;
   }
 }
-
+@charset "UTF-8";
 /* Arrows */
 .slick-prev,
 .slick-next {

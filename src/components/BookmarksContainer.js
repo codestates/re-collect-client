@@ -68,12 +68,13 @@ function BookmarksContainer() {
 
   useEffect(() => {
     if (accessToken) {
+      console.log("reduced is : ", reducedbookmarks);
       setList(reducedbookmarks);
     } else {
       setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
       setLoading(false); //로딩 false
     }
-  }, [items, reducedbookmarks]);
+  }, [items, reducedbookmarks, guestBookmarks]);
 
   // ///무한스크롤////
   //const collectViewRef = useRef('');
@@ -133,8 +134,8 @@ function BookmarksContainer() {
 
     const params = {
       categoryId: changing.grp.id,
-      dragId: original.item.grp.bookmarks[original.item.itemI],
-      dropId: changing.grp.bookmarks[changing.itemI + 1],
+      dragId: original.item.grp.bookmarks[original.item.itemI].id,
+
       originalCategory: original.item.grp.title,
       changingCategory: changing.grp.title,
     };
@@ -143,6 +144,7 @@ function BookmarksContainer() {
       if (changing.grp.bookmarks.length === changing.itemI + 1) {
         dispatch(dragBookmarkToLast(params));
       } else {
+        params.dropId = changing.grp.bookmarks[changing.itemI + 1].id;
         dispatch(dragBookmark(params));
       }
     } else {
@@ -180,7 +182,6 @@ function BookmarksContainer() {
           ref={collectViewRef}
           onScroll={handleScroll}
         >
-          {" "}
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
@@ -195,7 +196,7 @@ function BookmarksContainer() {
             >
               {grp.bookmarks.map((item, itemI) => (
                 <CollectBookmark
-                  key={item.bookmarkId}
+                  key={item.id}
                   className={`${
                     dragging
                       ? getStyles({ grpI, itemI })
@@ -220,7 +221,7 @@ function BookmarksContainer() {
               ))}
             </CategoryBox>
           ))}
-          {loading && <div className="loading">Loading ...</div>}
+          {loading && <div className="loading"></div>}
         </div>
       )}
     </>
