@@ -409,7 +409,7 @@ const initialState = {
   },
   unreadBookmarks: null,
   userBookmarks: {
-    reducebookmarks: [],
+    reducedbookmarks: [],
     category: [],
     bookmarks: [],
     isLoading: false,
