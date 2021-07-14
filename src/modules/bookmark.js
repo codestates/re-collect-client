@@ -1,49 +1,47 @@
-import initialState from "./initialState";
-import axios from "axios";
-import bookmarkConverter from "../lib/bookmarkConverter";
-import reduceGuestBookmark from "../lib/reduceGuestBookmark";
-import reducebookmark from "../lib/reducebookmark";
-import { notificationReducer, notify } from "./notification";
-import { getAccessToken } from "../modules/getAccessToken";
-import Api from "../lib/customAPI";
+import initialState from './initialState';
+import axios from 'axios';
+import bookmarkConverter from '../lib/bookmarkConverter';
+import reduceGuestBookmark from '../lib/reduceGuestBookmark';
+import reducebookmark from '../lib/reducebookmark';
+import { notificationReducer, notify } from './notification';
+import { getAccessToken } from '../modules/getAccessToken';
+import Api from '../lib/customAPI';
 
-const GET_BOOKMARK = "GET_BOOKMARK";
-const GET_BOOKMARK_SUCCESS = "GET_BOOKMARK_SUCCESS";
-const GET_BOOKMARK_FAIL = "GET_BOOKMARK_FAIL";
-const GET_GUEST_BOOKMARK = "GET_GUEST_BOOKMARK";
+const GET_BOOKMARK = 'GET_BOOKMARK';
+const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
+const GET_BOOKMARK_FAIL = 'GET_BOOKMARK_FAIL';
+const GET_GUEST_BOOKMARK = 'GET_GUEST_BOOKMARK';
 
-const POST_BOOKMARK = "POST_BOOKMARK";
-const POST_BOOKMARK_SUCCESS = "POST_BOOKMARK_SUCCESS";
-const POST_BOOKMARK_FAIL = "POST_BOOKMARK_FAIL";
-const POST_GUEST_BOOKMARK = "POST_GUEST_BOOKMARK";
+const POST_BOOKMARK = 'POST_BOOKMARK';
+const POST_BOOKMARK_SUCCESS = 'POST_BOOKMARK_SUCCESS';
+const POST_BOOKMARK_FAIL = 'POST_BOOKMARK_FAIL';
+const POST_GUEST_BOOKMARK = 'POST_GUEST_BOOKMARK';
 
-const EDIT_START = "EDIT_START";
-const EDIT_END = "EDIT_END";
-const EDIT_BOOKMARK_SUCCESS = "EDIT_BOOKMARK_SUCCESS";
-const EDIT_BOOKMARK_FAIL = "EDIT_BOOKMARK_FAIL";
-const EDIT_GUEST_BOOKMARK = "EDIT_GUEST_BOOKMARK";
+const EDIT_START = 'EDIT_START';
+const EDIT_END = 'EDIT_END';
+const EDIT_BOOKMARK_SUCCESS = 'EDIT_BOOKMARK_SUCCESS';
+const EDIT_BOOKMARK_FAIL = 'EDIT_BOOKMARK_FAIL';
+const EDIT_GUEST_BOOKMARK = 'EDIT_GUEST_BOOKMARK';
 
-const DELETE_BOOKMARK_SUCCESS = "DELETE_BOOKMARK_SUCCESS";
-const DELETE_BOOKMARK_FAIL = "DELETE_BOOKMARK_FAIL";
-const DELETE_GUEST_BOOKMARK = "DELETE_GUEST_BOOKMARK";
+const DELETE_BOOKMARK_SUCCESS = 'DELETE_BOOKMARK_SUCCESS';
+const DELETE_BOOKMARK_FAIL = 'DELETE_BOOKMARK_FAIL';
+const DELETE_GUEST_BOOKMARK = 'DELETE_GUEST_BOOKMARK';
 
 export const getGuestBookmark = () => ({ type: GET_GUEST_BOOKMARK });
 
 export const getBookmark = () => (dispatch) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
 
   dispatch({ type: GET_BOOKMARK });
 
   axios
-    .get("https://api.recollect.today/collect", {
+    .get('https://api.recollect.today/collect', {
       headers: { authorization: `Bearer ${accessToken}` },
       withCredentials: true,
     })
     .then((res) => {
       dispatch({
         type: GET_BOOKMARK_SUCCESS,
-        // category: res.data.category,
-        // bookmarks: res.data.bookmark,
         userBookmarks: res.data,
       });
     })
@@ -61,20 +59,20 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
   const addingBookmark = bookmarkConverter(bookmark, false);
 
   //현재 등록되어 있는 북마크 아이디, 북마크배열, 카테고리 오브젝트 파악
-  const currentBookmarkId = getState().bookmarkReducer.guestBookmarks
-    .bookmarkId;
+  const currentBookmarkId =
+    getState().bookmarkReducer.guestBookmarks.bookmarkId;
   const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
   const currentCategory = { ...category };
   const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
   // 게스트가 3번 이하로 추가할 때 알림
   if (currentBookmarkId <= 5) {
-    dispatch(notify("로그인을 하지 않으면 북마크가 저장되지 않습니다", 10000));
+    dispatch(notify('로그인을 하지 않으면 북마크가 저장되지 않습니다', 10000));
     //로그인 유도 팝업 띄우기
   }
 
   //추가하는 북마크의 북마크아이디 등록
-  addingBookmark.bookmarkId = currentBookmarkId;
+  addingBookmark.id = currentBookmarkId;
 
   //추가하는 북마크의 카테고리 아이디 등록
   if (addingBookmark.category.__isNew__) {
@@ -111,7 +109,7 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 };
 
 export const addBookmark = (bookmark) => (dispatch) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, false);
   convertedBookmark.category = convertedBookmark.category.value;
 
@@ -119,7 +117,7 @@ export const addBookmark = (bookmark) => (dispatch) => {
 
   axios
     .post(
-      "https://api.recollect.today/bookmark",
+      'https://api.recollect.today/bookmark',
       { ...convertedBookmark },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -131,7 +129,7 @@ export const addBookmark = (bookmark) => (dispatch) => {
     })
     .then(() => {
       dispatch(getBookmark());
-      dispatch(notify("북마크를 추가했습니다"));
+      dispatch(notify('북마크를 추가했습니다'));
     })
     .catch((e) => {
       if (e.response) {
@@ -145,7 +143,7 @@ export const addBookmark = (bookmark) => (dispatch) => {
       dispatch({
         type: POST_BOOKMARK_FAIL,
         bookmark: convertedBookmark,
-        error: "unknown error",
+        error: 'unknown error',
       });
     });
 };
@@ -179,7 +177,7 @@ export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
     editingBookmark.categoryId = newCategoryId;
   }
   editingBookmark.category = editingBookmark.category.value;
-  currentBookmarks.splice(editingBookmark.bookmarkId, 1, editingBookmark);
+  currentBookmarks.splice(editingBookmark.id, 1, editingBookmark);
 
   const reducedbookmarks = reduceGuestBookmark(
     currentBookmarks,
@@ -192,11 +190,11 @@ export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
     category: currentCategory,
     reducedbookmarks,
   });
-  dispatch(notify("북마크를 수정했습니다"));
+  dispatch(notify('북마크를 수정했습니다'));
 };
 
 export const editBookmark = (bookmark) => (dispatch) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, true);
   const id = convertedBookmark.bookmarkId;
 
@@ -211,7 +209,7 @@ export const editBookmark = (bookmark) => (dispatch) => {
   if (accessToken) {
     axios
       .put(
-        "https://api.recollect.today/bookmarks",
+        'https://api.recollect.today/bookmarks',
         { ...convertedBookmark },
         {
           params: { id },
@@ -224,7 +222,7 @@ export const editBookmark = (bookmark) => (dispatch) => {
       })
       .then(() => {
         dispatch(getBookmark());
-        dispatch(notify("북마크를 수정했습니다"));
+        dispatch(notify('북마크를 수정했습니다'));
       })
       .catch((e) => {
         console.log(e.response);
@@ -233,15 +231,15 @@ export const editBookmark = (bookmark) => (dispatch) => {
             type: EDIT_BOOKMARK_FAIL,
             error: e.response.data.message,
           });
-          dispatch(notify("북마크 수정 실패했습니다"));
+          dispatch(notify('북마크 수정 실패했습니다'));
           return;
         }
 
-        dispatch({ type: EDIT_BOOKMARK_FAIL, error: "unknown error" });
-        dispatch(notify("북마크 수정 실패했습니다"));
+        dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'unknown error' });
+        dispatch(notify('북마크 수정 실패했습니다'));
       });
   } else {
-    dispatch({ type: EDIT_BOOKMARK_FAIL, error: "accessToken Error" });
+    dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'accessToken Error' });
   }
 };
 
@@ -252,7 +250,7 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
   const currentCategory = { ...category };
   let findIdx;
   currentBookmarks.filter((el, idx) => {
-    if (el.bookmarkId === bookmark.bookmarkId) {
+    if (el.id === bookmark.id) {
       findIdx = idx;
     }
   });
@@ -276,14 +274,15 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
     reducedbookmarks: newReducedbookmarks,
   });
 
-  dispatch(notify("북마크를 삭제했습니다"));
+  dispatch(notify('북마크를 삭제했습니다'));
 };
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
+  console.log('딜리트 북마크 확인', bookmark);
   if (accessToken) {
     axios
-      .delete("https://api.recollect.today/bookmarks", {
+      .delete('https://api.recollect.today/bookmarks', {
         params: { id: bookmark.id },
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
@@ -293,10 +292,10 @@ export const deleteBookmark = (bookmark) => (dispatch) => {
       })
       .then(() => {
         dispatch(getBookmark());
-        dispatch(notify("북마크를 삭제했습니다"));
+        dispatch(notify('북마크를 삭제했습니다'));
       })
       .catch((e) => {
-        dispatch(notify("북마크 삭제 실패했습니다"));
+        dispatch(notify('북마크 삭제 실패했습니다'));
         dispatch({
           type: DELETE_BOOKMARK_FAIL,
           error: e.response.data.message,
@@ -313,9 +312,14 @@ export const bookmarkReducer = (state = initialState, action) => {
         userBookmarks: { ...state.userBookmarks, isLoading: true },
       };
     case GET_BOOKMARK_SUCCESS:
+      console.log('액션', action.userBookmarks);
       return {
         ...state,
-        userBookmarks: { ...state.userBookmarks, isLoading: false },
+        userBookmarks: {
+          ...state.userBookmarks,
+          ...action.userBookmarks,
+          isLoading: false,
+        },
       };
     case GET_BOOKMARK_FAIL:
       return {

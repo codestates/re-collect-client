@@ -22,7 +22,7 @@ export const signupInitialize = () => ({
 
 export const signupThunk = (signUpInfo) => async (dispatch) => {
   const { username, pwd } = signUpInfo;
-  const email = signUpInfo.email + '@' + signUpInfo.emailService;
+  const email = signUpInfo.email + '@' + signUpInfo.emailService.value;
   try {
     const result = await axios.post(
       'https://api.recollect.today/signup',
@@ -145,7 +145,6 @@ export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
 
 export const loginThunk = (userinfo) => async (dispatch) => {
   try {
-    console.log('여기까지');
     const result = await axios.post(
       'https://api.recollect.today/login',
       {
@@ -159,14 +158,13 @@ export const loginThunk = (userinfo) => async (dispatch) => {
     );
     console.log(result);
 
-    const accessToken = result.headers.authorization;
+    const accessToken = result.data.accessToken;
 
     if (accessToken) {
       localStorage.setItem('accessToken', accessToken);
       dispatch({ type: LOGIN_SUCCESS });
     } else {
       dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
-      
     }
   } catch (e) {
     if (e.response) {
