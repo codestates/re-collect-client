@@ -23,6 +23,7 @@
       bottom: 24px;
     }
     font-size: #{$headerfont};
+    font-weight: 700;
     color: #{$blue};
   }
 
@@ -41,6 +42,7 @@
     text-align: center;
     cursor: pointer;
     color: #{$blue};
+    font-weight: 600;
   }
 
   &__search {
@@ -107,7 +109,28 @@
     }
 
     &::-webkit-scrollbar {
-      width: 0;
+      width: 10px;
+      
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 10%;
+      background-color: rgba(0, 0, 0, 0.3);
+      background-clip: padding-box;
+      border-right: 3px solid transparent;
+      border-top: 35px solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgb(226, 226, 226);
+    }
+
+    .loading{
+      color: #{$logocolor};
+      //border: solid 1px;
+      height: 350px;
+      text-align:center;
+      line-height: 350px;
     }
   }
 }

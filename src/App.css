@@ -1,4 +1,5 @@
 .bigBookmark {
+  border: 1px solid #214bc8;
   height: 45px;
   line-height: 45px;
   width: 100%;
@@ -62,6 +63,7 @@
   display: none;
 }
 .categorybox__header-text {
+  font-weight: 600;
   padding-left: 5px;
 }
 .categorybox__view {
@@ -96,6 +98,8 @@
   font-size: 11px;
   text-align: left;
   line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .categorybox__bookmark.current {
   opacity: 0.3;
@@ -263,6 +267,7 @@
   padding-top: 64px;
   padding-bottom: 24px;
   font-size: 36px;
+  font-weight: 700;
   color: #214bc8;
 }
 .collectview__nav {
@@ -279,6 +284,7 @@
   text-align: center;
   cursor: pointer;
   color: #214bc8;
+  font-weight: 600;
 }
 .collectview__search {
   grid-column-start: 7;
@@ -333,7 +339,23 @@
   overflow-x: hidden;
 }
 .collectview__bookmarks::-webkit-scrollbar {
-  width: 0;
+  width: 10px;
+}
+.collectview__bookmarks::-webkit-scrollbar-thumb {
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+  border-right: 3px solid transparent;
+  border-top: 35px solid transparent;
+}
+.collectview__bookmarks::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+.collectview__bookmarks .loading {
+  color: #214bc8;
+  height: 350px;
+  text-align: center;
+  line-height: 350px;
 }
 
 @media (max-width: 1440px) {
@@ -791,6 +813,7 @@
 .exploreHeader {
   color: #214bc8;
   font-size: 2.8vw;
+  font-weight: 700;
   margin-top: 94px;
 }
 
@@ -865,15 +888,15 @@
 }
 
 #carousel {
-  background-color: khaki;
   text-align: center;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  border: solid 1px #000;
+  width: 250px;
+  max-width: 250px;
+  height: 350px;
 }
 
 .explore__searchProfile {
-  width: 200px;
-  min-height: 320px;
-  height: 45vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -907,9 +930,17 @@
 .explore__searchProfile .companyInfo {
   margin-top: 30px;
   font-size: 12px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .explore__searchProfile .companyInfo div {
   margin: 5px;
+}
+.explore__searchProfile .companyInfo div:hover {
+  color: #214bc8;
 }
 .explore__searchProfile .companyInfo .icon {
   padding-right: 3px;
@@ -944,7 +975,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 13px;
 }
 .footer__inner {
@@ -1072,13 +1103,14 @@ body {
 }
 .landing__inner--first .first-wrap .introtext p {
   font-size: 1.7vw;
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 2%;
   word-break: keep-all;
   word-spacing: -7px;
 }
 .landing__inner--first .first-wrap .introtext button {
   font-family: 'IBM Plex Mono';
+  font-weight: 700;
   width: 70%;
   padding: 3.7% 0;
   background-color: #214bc8;
@@ -1124,6 +1156,7 @@ body {
 }
 .landing__inner--second .desc-wrap p {
   font-size: 1.7vw;
+  font-weight: 700;
   margin-top: 10%;
   word-break: keep-all;
   width: fit-content;
@@ -1167,6 +1200,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 3.2vw;
+  font-weight: 800;
   word-spacing: -8px;
   white-space: nowrap;
 }
@@ -1195,7 +1229,8 @@ body {
 .landing__inner--third .desc__inner .desc-text h2 {
   margin: 0;
   font-size: 2.8vw;
-  word-spacing: -8px;
+  font-weight: 800;
+  word-spacing: -10px;
   white-space: nowrap;
 }
 .landing__inner--third .desc__inner .desc-text p {
@@ -1224,7 +1259,8 @@ body {
   text-align: center;
   font-size: 1.5vw;
   margin-bottom: 3%;
-  word-spacing: -5px;
+  word-spacing: -7px;
+  font-weight: 700;
 }
 .landing__inner--third .desc-dragdrop img {
   display: block;
@@ -1238,7 +1274,7 @@ body {
   width: 78vw;
   margin-top: 4%;
   font-size: 2.8vw;
-  font-weight: 600;
+  font-weight: 800;
   word-spacing: -5px;
   margin-left: 1vw;
 }
@@ -1285,7 +1321,8 @@ body {
 }
 .landing__inner--fourth .alarm-desc-wrapper .alarm-desc__inner h2 {
   font-size: 2.7vw;
-  word-spacing: -6px;
+  word-spacing: -8px;
+  font-weight: 800;
 }
 .landing__inner--fourth .alarm-desc-wrapper .alarm-desc__inner p {
   font-size: 1.7vw;
@@ -1338,8 +1375,9 @@ body {
   font-size: 7vw;
 }
 .landing__inner--fifth .profile-wrapper .landing__searchProfile p {
-  margin-top: 3%;
+  margin-top: 5%;
   font-size: 2vw;
+  font-weight: 700;
 }
 .landing__inner--fifth .profile-wrapper .landing__searchProfile .socialInfo {
   font-size: 1vw;
@@ -1361,7 +1399,7 @@ body {
   margin-top: 5%;
   text-align: center;
   font-size: 2.8vw;
-  font-weight: 600;
+  font-weight: 800;
   word-spacing: -7px;
 }
 .landing__inner--fifth .collection-desc a {
@@ -1387,7 +1425,7 @@ body {
   margin-bottom: 5%;
   font-size: 3.6vw;
   word-spacing: -9px;
-  font-weight: 900;
+  font-weight: 800;
   white-space: nowrap;
 }
 .landing__inner--sixth .values-wrapper {
@@ -1398,7 +1436,7 @@ body {
   margin-bottom: 8%;
   word-spacing: -5px;
   word-break: keep-all;
-  font-weight: 500;
+  font-weight: 600;
 }
 .landing__inner--sixth .values-wrapper__up {
   display: flex;
@@ -1439,6 +1477,7 @@ body {
   border-radius: 2px;
   color: white;
   font-size: 2.5vw;
+  font-weight: 600;
   text-align: center;
 }
 .landing__inner--sixth .button-bottom:hover {
@@ -1784,17 +1823,19 @@ body,
   position: fixed;
   z-index: 1;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.144);
+  backdrop-filter: blur(2px);
 }
 
 .modalWrapper {
   position: fixed;
   left: 50%;
-  top: 20%;
+  top: 25%;
   transform: translate(-50%, 0);
   margin: 0 auto;
   background-color: white;
   z-index: 1;
-  width: 230px;
+  width: 280px;
   border: 1px solid #214bc8;
 }
 @media (max-width: 834px) {
@@ -1812,8 +1853,10 @@ body,
   }
 }
 .modalWrapper .logo {
-  margin-top: 0px;
+  margin-top: 5px;
   color: #214bc8;
+  font-weight: 700;
+  font-size: 1.7vw;
 }
 .modalWrapper button {
   margin-top: 15px;
@@ -1915,33 +1958,6 @@ body,
   margin-top: 15px;
   padding: 0px 10px;
 }
-.modalWrapper .signUpmodal {
-  display: flex;
-  width: 100%;
-  height: 310px;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .signUpmodal .inputContainer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .signUpmodal .inputContainer input {
-  margin-top: 10px;
-  width: 180px;
-  height: 30px;
-  border: 1px solid #214bc8;
-  outline: none;
-}
-.modalWrapper .signUpmodal .signUperrorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-  margin-top: 5px;
-}
 .modalWrapper .findPwdpModal {
   display: flex;
   width: 100%;
@@ -1983,39 +1999,39 @@ body,
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.modalWrapper .changePwdpModal {
+.modalWrapper .changePwdModal {
   display: flex;
   width: 100%;
   height: 300px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdpModal p {
+.modalWrapper .changePwdModal p {
   font-size: 14px;
   text-align: center;
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.modalWrapper .changePwdpModal .inputContainer {
+.modalWrapper .changePwdModal .inputContainer {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdpModal .inputContainer input {
+.modalWrapper .changePwdModal .inputContainer input {
   margin-top: 8px;
   width: 180px;
   height: 30px;
   border: 1px solid #214bc8;
   outline: none;
 }
-.modalWrapper .changePwdpModal .inputContainer input:first-child {
+.modalWrapper .changePwdModal .inputContainer input:first-child {
   margin-bottom: 8px;
 }
-.modalWrapper .changePwdpModal button {
+.modalWrapper .changePwdModal button {
   margin-top: 15px;
 }
-.modalWrapper .changePwdpModal .changePwdErrorMessage {
+.modalWrapper .changePwdModal .changePwdErrorMessage {
   display: flex;
   margin-top: 10px;
   color: black;
@@ -2104,6 +2120,148 @@ body,
   font-size: 9px;
 }
 
+.signUpmodal__modalWrapper {
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  background-color: white;
+  z-index: 1;
+  width: 420px;
+  border: 1px solid #214bc8;
+  display: flex;
+  height: 560px;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 834px) {
+  .signUpmodal__modalWrapper {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0);
+  }
+}
+@media (max-width: 600px) {
+  .signUpmodal__modalWrapper {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, 0);
+  }
+}
+.signUpmodal__modalWrapper .logo {
+  margin-top: 0px;
+  color: #214bc8;
+}
+.signUpmodal__modalWrapper .closeBtn {
+  color: black;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  text-align: end;
+}
+.signUpmodal__modalWrapper .closeBtn i {
+  font-size: 14px;
+}
+.signUpmodal__modalWrapper .closeBtn:hover {
+  cursor: pointer;
+  color: #214bc8;
+}
+.signUpmodal__inputContainer {
+  display: flex;
+  margin-top: 30px;
+  width: 360px;
+}
+.signUpmodal__inputs {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #214bc8;
+  outline: none;
+  font-size: 13px;
+  padding-left: 8px;
+}
+.signUpmodal__inputs::-webkit-input-placeholder {
+  line-height: 100px;
+  padding-left: 0px;
+}
+.signUpmodal__inputs.email {
+  width: 100px;
+  border-right: none;
+}
+.signUpmodal__inputs.username {
+  width: 280px;
+}
+.signUpmodal__inputs.pwd,
+.signUpmodal__inputs.pwdCheck {
+  padding-right: 80px;
+  margin-right: -45px;
+}
+.signUpmodal__atSign {
+  border-top: 1px solid #214bc8;
+  border-bottom: 1px solid #214bc8;
+  width: 20px;
+  height: 45px;
+  line-height: 42px;
+  text-align: center;
+  font-family: 'Noto Sans KR';
+  font-size: 13px;
+}
+.signUpmodal__faLock {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  margin-top: 12px;
+}
+.signUpmodal__faCheck {
+  margin-left: -12px;
+  margin-top: 23px;
+  font-size: 7px;
+  color: white;
+}
+.signUpmodal__duplicatedCheckBtn {
+  margin-left: 10px;
+  width: 70px;
+  height: 45px;
+  background-color: #214bc8;
+  border: 1px solid #214bc8;
+  color: #c4c4c4;
+}
+.signUpmodal__duplicatedCheckBtn:hover {
+  cursor: pointer;
+  color: white;
+}
+.signUpmodal__messageContainer {
+  align-self: start;
+  position: relative;
+  height: 0;
+  top: 5px;
+  left: 7.5%;
+  color: red;
+  font-size: 12px;
+  font-family: 'Noto Sans KR';
+}
+.signUpmodal__messageContainer.overall {
+  align-self: inherit;
+  left: 0;
+}
+.signUpmodal__messageContainer.valid {
+  color: green;
+}
+.signUpmodal__createBtn {
+  margin-top: 50px;
+  width: 360px;
+  height: 45px;
+  background-color: #214bc8;
+  border: 1px solid #214bc8;
+  color: #c4c4c4;
+}
+.signUpmodal__createBtn:hover {
+  cursor: pointer;
+  color: white;
+}
+
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2139,6 +2297,7 @@ body,
 .nav-container__inner-container {
   float: right;
   line-height: 80px;
+  font-weight: 800;
   width: 50%;
   display: flex;
   justify-content: space-between;
@@ -2277,6 +2436,7 @@ input:-webkit-autofill {
   width: 40vw;
   height: 50%;
   font-size: 14px;
+  font-weight: 700;
 }
 .profile-container__inner--left .profilebox {
   margin-top: 7vh;
@@ -2540,6 +2700,7 @@ input:-webkit-autofill {
   padding-top: 64px;
   padding-bottom: 64px;
   font-size: 36px;
+  font-weight: 700;
   color: #214bc8;
 }
 .recollect__bookmarks {
@@ -2556,11 +2717,12 @@ input:-webkit-autofill {
   align-items: center;
 }
 .recollect__bookmarks .skeleton .logoPng {
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
+  font-size: 15px;
+  width: 40px;
+  height: 40px;
 }
 .recollect__bookmarks .skeleton p {
+  color: #bdbaba;
   text-align: center;
 }
 
@@ -2635,6 +2797,7 @@ input:-webkit-autofill {
   align-items: center;
 }
 .searching__bookmarks .skeleton p {
+  color: #bdbaba;
   text-align: center;
 }
 

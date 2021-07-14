@@ -84,6 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #{$logocolor};
+  
   //border: solid 1px #{$logocolor};
 
   &__inner {
@@ -117,7 +118,7 @@ body {
 
         p {
           font-size: 1.7vw;
-          font-weight: bold;
+          font-weight: 700;
           margin-top: 2%;
           word-break: keep-all;
           word-spacing: -7px;
@@ -126,6 +127,7 @@ body {
 
         button {
           font-family: "IBM Plex Mono";
+          font-weight: 700;
           width: 70%;
           //height: 60px;
           padding: 3.7% 0;
@@ -185,6 +187,7 @@ body {
 
       p {
         font-size: 1.7vw;
+        font-weight: 700;
         margin-top: 10%;
         word-break: keep-all;
         width: fit-content;
@@ -244,6 +247,7 @@ body {
       padding: 0;
       margin: 0;
       font-size: 3.2vw;
+      font-weight: 800;
       word-spacing: -8px;
       white-space: nowrap;
     }
@@ -281,7 +285,8 @@ body {
             margin: 0;
             //margin-top: 1%; //줄임
             font-size: 2.8vw;
-            word-spacing: -8px;
+            font-weight: 800;
+            word-spacing: -10px;
             white-space: nowrap;
           }
 
@@ -320,7 +325,8 @@ body {
         text-align: center;
         font-size: 1.5vw;
         margin-bottom: 3%;
-        word-spacing: -5px;
+        word-spacing: -7px;
+        font-weight: 700;
       }
 
       img {
@@ -340,7 +346,7 @@ body {
         width: 78vw;
         margin-top: 4%; //줄임
         font-size: 2.8vw;
-        font-weight: 600;
+        font-weight: 800;
         word-spacing: -5px;
         margin-left: 1vw;
         //line-height: 1em;
@@ -404,7 +410,9 @@ body {
           word-spacing: -5px;
           h2 {
             font-size: 2.7vw;
-            word-spacing: -6px;
+            word-spacing: -8px;
+            font-weight: 800;
+            
           }
           p {
             font-size: 1.7vw;
@@ -469,8 +477,9 @@ body {
           font-size: 7vw;
         }
         p {
-          margin-top: 3%;
+          margin-top: 5%;
           font-size: 2vw;
+          font-weight: 700;
         }
 
         .socialInfo {
@@ -492,7 +501,7 @@ body {
       margin-top: 5%; //줄임
       text-align: center;
       font-size: 2.8vw;
-      font-weight: 600;
+      font-weight: 800;
       word-spacing: -7px;
 
       a {
@@ -533,7 +542,7 @@ body {
       margin-bottom: 5%;
       font-size: 3.6vw;
       word-spacing: -9px;
-      font-weight: 900;
+      font-weight: 800;
       white-space: nowrap;
     }
 
@@ -545,7 +554,7 @@ body {
       margin-bottom: 8%;
       word-spacing: -5px;
       word-break: keep-all;
-      font-weight: 500;
+      font-weight: 600;
 
       &__up {
         display: flex;
@@ -591,6 +600,7 @@ body {
       border-radius: 2px;
       color: white;
       font-size: 2.5vw;
+      font-weight: 600;
       text-align: center;
 
       &:hover {

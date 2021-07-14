@@ -11,17 +11,12 @@ function DelAccountModal(props) {
   const { profile } = state;
   const dispatch = useDispatch();
 
-  // const [pwdInfo, setPwdInfo] = useState({
-  //   password:"",
-  //   newpassword: "",
-  //   newpasswordcheck: "",
-  // });
   const InputRef = useRef("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    setErrorMessage(profile.error);
-  }, [profile.error]);
+  // useEffect(() => {
+  //   setErrorMessage(profile.error);
+  // }, [profile.error]);
 
   const delAccountValidCheck = () => {
     const delAccountmessage = InputRef.current.value;
@@ -36,16 +31,20 @@ function DelAccountModal(props) {
 
   const handleDelAccount = () => {
     dispatch(delAccount());
-
+    setErrorMessage("");
     InputRef.current.value = "";
-
-    setTimeout(() => {
+    
+    const accessToken = localStorage.getItem('accessToken');
+    if(!accessToken){
+      setTimeout(() => {
       props.setModalMode("");
-    }, 2000);
+      }, 2000);
 
-    setTimeout(() => {
-      history.push("/");
-    }, 2000);
+      setTimeout(() => {
+        history.push("/");
+      }, 2000);
+    }
+
   };
 
   return (

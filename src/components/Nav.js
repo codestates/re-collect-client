@@ -51,6 +51,7 @@ function Nav(props) {
           onClick={() => {
             props.setModalMode('');
           }}
+          onClick={handleToggleBtn}
         >
           Home
         </Link>
@@ -59,6 +60,7 @@ function Nav(props) {
           onClick={() => {
             props.setModalMode('');
           }}
+          onClick={handleToggleBtn}
         >
           Recollect
         </Link>
@@ -66,13 +68,17 @@ function Nav(props) {
           onClick={() => {
             props.setModalMode('explore');
           }}
+          onClick={handleToggleBtn}
           to="/explore"
         >
           Explore
         </Link>
         {accessToken ? (
           <>
-            <Link to="/profile">Profile</Link>
+            <Link to="/profile"
+            onClick={handleToggleBtn}>
+              Profile
+            </Link>
             <div
               onClick={() => {
                 dispatch(logoutThunk());
@@ -85,7 +91,9 @@ function Nav(props) {
           <div
             onClick={() => {
               props.setModalMode('login');
+              handleToggleBtn();
             }}
+            
           >
             Login
           </div>
