@@ -10,7 +10,7 @@ export const addVisitCount = (id) => async (dispatch) => {
   if (accessToken) {
     console.log(accessToken)
     axios
-      .patch(`https://api.recollect.today/bookmarks/${id}`, {
+      .patch(`https://api.recollect.today/bookmarks/${id}`, {},{
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
       })
