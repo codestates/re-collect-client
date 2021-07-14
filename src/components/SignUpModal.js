@@ -110,84 +110,90 @@ function SignUpModal(props) {
         ...message,
         email: '사용할 수 있는 이메일',
       });
-    }
-    if (username) {
+    } else if (username) {
       setMessage({
         ...message,
         username: '사용할 수 있는 유저네임',
       });
-    }
-    if (overall) {
+    } else if (overall) {
       props.setModalMode('successSignup');
       dispatch(signupInitialize());
+    } else {
+      setMessage({
+        ...message,
+        email: '',
+        username: '',
+        overall: '',
+      });
     }
   }, [isSignupSuccess]);
-
-  const signUpValidationCheck = (mode) => {
-    const email = signUpInfo.email;
-    const pwd = signUpInfo.pwd;
-    const pwdCheck = signUpInfo.pwdCheck;
-    const username = signUpInfo.username;
-
-    switch (mode) {
-      case 'pwd':
-        if (!IsValidiatePassword(pwd)) {
-          setMessage({
-            ...message,
-            pwd: '8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.',
-          });
-        } else {
-          setMessage({
-            ...message,
-            pwd: '',
-          });
-        }
-        break;
-      case 'pwdCheck':
-        if (pwd === pwdCheck) {
-          setMessage({
-            ...message,
-            pwdCheck: '',
-          });
-        } else {
-          setMessage({
-            ...message,
-            pwdCheck: '비밀번호가 일치하지 않습니다.',
-          });
-        }
-        break;
-
-      case 'username':
-        if (!IsValidiateUsername(username)) {
-          setMessage({
-            ...message,
-            username: '유저네임은 4글자이상 16글자 이하로 만들수 있습니다.',
-          });
-        } else {
-          setMessage({
-            ...message,
-            username: '',
-          });
-        }
-        break;
-    }
-  };
 
   const handleSignUpInputChange = (e) => {
     const { name, value } = e.target;
     const { email, username } = isSignupSuccess;
 
-    if (email && (name === 'email' || name === 'emailService')) {
-      dispatch(validationInitialize('email'));
+    if (name === 'email') {
+      if (email) {
+        dispatch(validationInitialize('email'));
+      }
+      setSignUpInfo({
+        ...signUpInfo,
+        email: value,
+      });
+      return;
     }
 
     if (username && name === 'username') {
       dispatch(validationInitialize('username'));
     }
 
-    setSignUpInfo({
-      ...signUpInfo,
-      [name]: value,
+    setSignUpInfo((state) => {
+      state[name] = value;
+      switch (name) {
+        case 'pwd':
+          if (!IsValidiatePassword(state.pwd)) {
+            setMessage({
+              ...message,
+              pwd: '8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.',
+            });
+          } else {
+            setMessage({
+              ...message,
+              pwd: '',
+            });
+          }
+          break;
+        case 'pwdCheck':
+          if (state.pwd !== state.pwdCheck) {
+            setMessage({
+              ...message,
+              pwdCheck: '비밀번호가 일치하지 않습니다.',
+            });
+          } else {
+            setMessage({
+              ...message,
+              pwdCheck: '',
+            });
+          }
+          break;
+        case 'username':
+          if (!IsValidiateUsername(state.username)) {
+            setMessage({
+              ...message,
+              username: '4~16자 영문 대 소문자, 숫자를 사용하세요.',
+            });
+          } else {
+            setMessage({
+              ...message,
+              username: '',
+            });
+          }
+          break;
+        default:
+          console.log('here');
+          break;
+      }
+      return state;
     });
   };
 
@@ -299,7 +305,6 @@ function SignUpModal(props) {
             placeholder=" 비밀번호"
             onChange={(e) => {
               handleSignUpInputChange(e);
-              signUpValidationCheck(e.target.name);
             }}
           />
           <FontAwesomeIcon className="signUpmodal__faLock" icon={faLock} />
@@ -314,7 +319,6 @@ function SignUpModal(props) {
             placeholder=" 비밀번호 확인"
             onChange={(e) => {
               handleSignUpInputChange(e);
-              signUpValidationCheck(e.target.name);
             }}
           />
           <FontAwesomeIcon className="signUpmodal__faLock" icon={faLock} />
@@ -330,7 +334,6 @@ function SignUpModal(props) {
             placeholder=" 유저네임"
             onChange={(e) => {
               handleSignUpInputChange(e);
-              signUpValidationCheck(e.target.name);
             }}
           />
           <button

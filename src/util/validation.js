@@ -2,8 +2,11 @@ module.exports = {
   IsValidiateUsername: (username) => {
     //const blank_pattern = /^\s+|\s+$/g;
     const tab_space = /\s/g;
-    if (username.replace(tab_space, '' ) === '' || username.search(/\s/g) !== -1) {
-      return false; 
+    if (
+      username.replace(tab_space, '') === '' ||
+      username.search(/\s/g) !== -1
+    ) {
+      return false;
     }
     return /^[a-zA-Z0-9_]{4,16}$/.test(username); //한글적용안됨
   },
@@ -26,7 +29,8 @@ module.exports = {
 
   IsValidateCompany: (company) => {
     const tab_space = /\s/g;
-    if(company.replace(tab_space, '') === ''){ //공백제거했을 때 빈문자열인 경우
+    if (company.replace(tab_space, '') === '') {
+      //공백제거했을 때 빈문자열인 경우
       return false;
     }
     return company;
@@ -34,7 +38,7 @@ module.exports = {
 
   IsValidateGitRepo: (gitRepo) => {
     const tab_space = /\s/g;
-    if(gitRepo.replace(tab_space, '') === ''){
+    if (gitRepo.replace(tab_space, '') === '') {
       return false;
     }
     return gitRepo;

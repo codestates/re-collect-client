@@ -4,13 +4,13 @@ export default function bookmarkConverter(bookmark, isEdit) {
   const importance = bookmark.importance ? 1 : 0;
 
   if (isEdit) {
-    const { url, text, categoryId, bookmarkId } = bookmark;
+    const { url, text, categoryId, id } = bookmark;
     return {
       color,
       importance,
       url,
       text,
-      bookmarkId,
+      id,
       categoryId,
       category,
     };

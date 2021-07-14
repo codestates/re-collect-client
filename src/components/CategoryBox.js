@@ -5,7 +5,7 @@ export default function CategoryBox(props) {
   return (
     <div className="categorybox">
       <div className="categorybox__header">
-        <button className="categorybox__header-editbtn">edit</button>
+        {/* <button className="categorybox__header-editbtn">edit</button> */}
         <span className="categorybox__header-text">{props.title}</span>
         <div className="categorybox__header-pencil">
           <FontAwesomeIcon icon={faPencilAlt} />

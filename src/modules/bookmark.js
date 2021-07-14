@@ -196,20 +196,15 @@ export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
 export const editBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, true);
-  const id = convertedBookmark.bookmarkId;
+  const id = convertedBookmark.id;
 
-  delete convertedBookmark.bookmarkId;
-
-  if (convertedBookmark.category.__isNew__) {
-    delete convertedBookmark.categoryId;
-  }
-  convertedBookmark.categoryTitle = convertedBookmark.category.value;
-  delete convertedBookmark.category;
+  delete convertedBookmark.categoryId;
+  convertedBookmark.category = convertedBookmark.category.value;
 
   if (accessToken) {
     axios
       .put(
-        'https://api.recollect.today/bookmarks',
+        `https://api.recollect.today/bookmarks/${id}`,
         { ...convertedBookmark },
         {
           params: { id },
@@ -279,11 +274,12 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  console.log('딜리트 북마크 확인', bookmark);
+
+  const id = bookmark.id;
   if (accessToken) {
     axios
-      .delete('https://api.recollect.today/bookmarks', {
-        params: { id: bookmark.id },
+      .delete(`https://api.recollect.today/bookmarks/${id}`, {
+        params: { id },
         headers: { authorization: `Bearer ${accessToken}` },
         withCredentials: true,
       })
@@ -296,10 +292,17 @@ export const deleteBookmark = (bookmark) => (dispatch) => {
       })
       .catch((e) => {
         dispatch(notify('북마크 삭제 실패했습니다'));
-        dispatch({
-          type: DELETE_BOOKMARK_FAIL,
-          error: e.response.data.message,
-        });
+        if (e.response) {
+          dispatch({
+            type: DELETE_BOOKMARK_FAIL,
+            error: e.response.data.message,
+          });
+        } else {
+          dispatch({
+            type: DELETE_BOOKMARK_FAIL,
+            error: 'Unknown Error',
+          });
+        }
       });
   }
 };

@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useInView } from "react-intersection-observer";
-import CategoryBox from "./CategoryBox";
-import CollectBookmark from "./CollectBookmark";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useInView } from 'react-intersection-observer';
+import CategoryBox from './CategoryBox';
+import CollectBookmark from './CollectBookmark';
 import {
   getBookmark,
   getGuestBookmark,
   editBookmark,
   editGuestBookmark,
-} from "../modules/bookmark";
-import { dragBookmark, dragBookmarkToLast } from "../modules/dragBookmark";
-import { notify } from "../modules/notification";
-import { useSelector, useDispatch } from "react-redux";
+} from '../modules/bookmark';
+import { dragBookmark, dragBookmarkToLast } from '../modules/dragBookmark';
+import { notify } from '../modules/notification';
+import { useSelector, useDispatch } from 'react-redux';
 
 function BookmarksContainer() {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
 
   const guestBookmarks = useSelector(
     (state) => state.bookmarkReducer.guestBookmarks
@@ -34,9 +34,9 @@ function BookmarksContainer() {
 
   const handleScroll = (event) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    console.log(scrollTop, "scrolltop"); //scrollTop: 이미 스크롤된 높이(영역)
-    console.log(clientHeight, "clientheight"); //clientHeight: 눈에 보이는 높이
-    console.log(scrollHeight, "scrollheight"); //scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
+    console.log(scrollTop, 'scrolltop'); //scrollTop: 이미 스크롤된 높이(영역)
+    console.log(clientHeight, 'clientheight'); //clientHeight: 눈에 보이는 높이
+    console.log(scrollHeight, 'scrollheight'); //scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
 
     if (scrollTop + clientHeight >= scrollHeight) {
       //setLoading(true);
@@ -68,7 +68,6 @@ function BookmarksContainer() {
 
   useEffect(() => {
     if (accessToken) {
-      console.log("reduced is : ", reducedbookmarks);
       setList(reducedbookmarks);
     } else {
       setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
@@ -91,7 +90,7 @@ function BookmarksContainer() {
 
   const handleDragStart = (e, item) => {
     dragItemNode.current = { target: e.target, item };
-    dragItemNode.current.target.addEventListener("dragend", handleDragEnd);
+    dragItemNode.current.target.addEventListener('dragend', handleDragEnd);
     dragItem.current = item;
 
     setTimeout(() => {
@@ -141,20 +140,23 @@ function BookmarksContainer() {
     };
 
     if (accessToken) {
-      if (changing.grp.bookmarks.length === changing.itemI + 1) {
+      if (
+        changing.grp.bookmarks.length === changing.itemI + 1 ||
+        changing.grp.bookmarks.length === 0
+      ) {
         dispatch(dragBookmarkToLast(params));
       } else {
         params.dropId = changing.grp.bookmarks[changing.itemI + 1].id;
         dispatch(dragBookmark(params));
       }
     } else {
-      dispatch(notify("로그인하지 않으면 순서가 저장되지 않습니다", 2000));
+      dispatch(notify('로그인하지 않으면 순서가 저장되지 않습니다', 2000));
     }
 
     setDragging(false);
 
     dragItem.current = null;
-    dragItemNode.current.target.removeEventListener("dragend", handleDragEnd);
+    dragItemNode.current.target.removeEventListener('dragend', handleDragEnd);
     dragItemNode.current = null;
   };
 
@@ -163,9 +165,9 @@ function BookmarksContainer() {
       dragItem.current.grpI === item.grpI &&
       dragItem.current.itemI === item.itemI
     ) {
-      return "categorybox__bookmark current";
+      return 'categorybox__bookmark current';
     }
-    return "categorybox__bookmark";
+    return 'categorybox__bookmark';
   };
 
   return (
@@ -200,7 +202,7 @@ function BookmarksContainer() {
                   className={`${
                     dragging
                       ? getStyles({ grpI, itemI })
-                      : "categorybox__bookmark"
+                      : 'categorybox__bookmark'
                   }`}
                   data={{
                     item,
