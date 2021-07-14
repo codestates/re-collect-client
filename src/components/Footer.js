@@ -1,6 +1,13 @@
 import React from "react";
 
 function Footer() {
+
+  const ShareUrl = () => {
+    const url = window.document.location.href;
+    console.log(url,' what is url');
+  }
+  ShareUrl();
+
   return (
     <div className="footer">
       <div className="footer__inner">
@@ -13,7 +20,7 @@ function Footer() {
         <a href="https://github.com/codestates/re-collect-client" title="Check Recollect Repository&Wiki" target="_blank">Repo&Wiki</a>
 
         <a href="mailto:recollect.today.service@gmail.com" title="Send Feedback">Feedback</a>
-        <a href="">Share</a>
+        <a href="" >Share</a>
       </div>
 
     </div>

@@ -9,7 +9,16 @@ const initialState = {
     gitrepo: '',
     createdAt: '',
     recollectcount: 0,
-    favorite: {},
+    favorite:           {
+      category: '카테고리를 추가하세요',
+      categoryId: null,
+      bookmarkId: 0,
+      text: '새로운 북마크를 추가하세요',
+      url: '',
+      importance: 0,
+      color: '#214bc8',
+      visitCounts: 1,
+    },
     error: null,
   },
 };
@@ -50,9 +59,9 @@ export const getProfile = () => (dispatch) => {
     .then((res) => {
       console.log(res);
 
-      const favorite = res.data.bookmarks.reduce((prev, curr) => {
+      const favorite = res.data.bookmark.reduce((prev, curr) => {
         return prev.visitCounts > curr.visitCounts ? prev : curr;
-      });
+      },);
 
       dispatch({
         type: GET_PROFILE_SUCCESS,
