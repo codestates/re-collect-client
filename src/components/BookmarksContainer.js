@@ -223,7 +223,7 @@ function BookmarksContainer() {
               ))}
             </CategoryBox>
           ))}
-          {loading && <div className="loading">Loading ...</div>}
+          {loading && <div className="loading"></div>}
         </div>
       )}
     </>

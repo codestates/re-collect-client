@@ -19,7 +19,7 @@ function Recollect() {
     } else {
       console.log(guestBookmarks);
     }
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="recollect">
@@ -33,6 +33,8 @@ function Recollect() {
                 text={unread.text}
                 color={unread.color}
                 importance={unread.importance}
+                id={unread.id}
+                url={unread.url}
               />
             );
           })

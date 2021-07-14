@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { notify } from './notification';
+import { getAccessToken } from "../modules/getAccessToken";
 
 const initialState = {
   profile: {
@@ -57,8 +58,6 @@ export const getProfile = () => (dispatch) => {
       withCredentials: true,
     })
     .then((res) => {
-      console.log(res);
-
       const favorite = res.data.bookmark.reduce((prev, curr) => {
         return prev.visitCounts > curr.visitCounts ? prev : curr;
       },);
@@ -78,7 +77,14 @@ export const getProfile = () => (dispatch) => {
     })
     .catch((err) => {
       dispatch({ type: GET_PROFILE_FAIL, error: err.message });
-      //dispatch(notify('로드실패.'));
+      
+      // if (err.response.status === 401) {
+      //   dispatch(getAccessToken());
+      //   return;
+      // } else {
+      //   console.log('err');
+      // }
+      dispatch(notify('로드실패.'));
     });
 };
 
