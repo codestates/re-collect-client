@@ -25,12 +25,13 @@ function SetNewPwdModal(props) {
     }
   };
 
-  const requestNewPwd = (pwd, tempPwd) => {
+  const requestNewPwd = (tempPwd, pwd) => {
     const email = window.location.search.slice(1);
+    console.log(pwd, tempPwd, email);
     axios
-      .post(`https://api.recollect.today/auth/pwd&${email}`, {
-        pwd,
-        tempPwd,
+      .post(`https://api.recollect.today/auth/pwd?${email}`, {
+        tempPwd: tempPwd,
+        pwd: pwd,
       })
       .then((res) => props.setModalMode("successSetNewPwd"))
       .catch((err) => console.log(err));

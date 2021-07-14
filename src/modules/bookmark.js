@@ -315,7 +315,11 @@ export const bookmarkReducer = (state = initialState, action) => {
     case GET_BOOKMARK_SUCCESS:
       return {
         ...state,
-        userBookmarks: { ...state.userBookmarks, isLoading: false },
+        userBookmarks: {
+          ...state.userBookmarks,
+          userBookmarks: action.userBookmarks,
+          isLoading: false,
+        },
       };
     case GET_BOOKMARK_FAIL:
       return {

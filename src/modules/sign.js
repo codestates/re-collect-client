@@ -1,20 +1,20 @@
-import axios from 'axios';
+import axios from "axios";
 
-const SIGNUP_INITIALIZE = 'SIGNUP_INITIALIZE';
-const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-const SIGNUP_FAIL = 'SIGNUP_FAIL';
+const SIGNUP_INITIALIZE = "SIGNUP_INITIALIZE";
+const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+const SIGNUP_FAIL = "SIGNUP_FAIL";
 
-const SIGNUP_EMAIL_VALIDATION_SUCCESS = 'SIGNUP_EMAIL_VALIDATION_SUCCESS';
-const SIGNUP_EMAIL_VALIDATION_FAIL = 'SIGNUP_EMAIL_VALIDATION_FAIL';
-const SIGNUP_USERNAME_VALIDATION_SUCCESS = 'SIGNUP_USERNAME_VALIDATION_SUCCESS';
-const SIGNUP_USERNAME_VALIDATION_FAIL = 'SIGNUP_USERNAME_VALIDATION_FAIL';
+const SIGNUP_EMAIL_VALIDATION_SUCCESS = "SIGNUP_EMAIL_VALIDATION_SUCCESS";
+const SIGNUP_EMAIL_VALIDATION_FAIL = "SIGNUP_EMAIL_VALIDATION_FAIL";
+const SIGNUP_USERNAME_VALIDATION_SUCCESS = "SIGNUP_USERNAME_VALIDATION_SUCCESS";
+const SIGNUP_USERNAME_VALIDATION_FAIL = "SIGNUP_USERNAME_VALIDATION_FAIL";
 
-const EMAIL_VALIDATION_INITIALIZE = 'EMAIL_VALIDATION_INITIALIZE';
-const USERNAME_VALIDATION_INITIALIZE = 'USERNAME_VALIDATION_INITIALIZE';
+const EMAIL_VALIDATION_INITIALIZE = "EMAIL_VALIDATION_INITIALIZE";
+const USERNAME_VALIDATION_INITIALIZE = "USERNAME_VALIDATION_INITIALIZE";
 
-const LOGIN_INITIALIZE = 'LOGIN_INITIALIZE';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_FAIL = 'LOGIN_FAIL';
+const LOGIN_INITIALIZE = "LOGIN_INITIALIZE";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGIN_FAIL = "LOGIN_FAIL";
 
 export const signupInitialize = () => ({
   type: SIGNUP_INITIALIZE,
@@ -22,17 +22,17 @@ export const signupInitialize = () => ({
 
 export const signupThunk = (signUpInfo) => async (dispatch) => {
   const { username, pwd } = signUpInfo;
-  const email = signUpInfo.email + '@' + signUpInfo.emailService;
+  const email = signUpInfo.email + "@" + signUpInfo.emailService;
   try {
     const result = await axios.post(
-      'https://api.recollect.today/signup',
+      "https://api.recollect.today/signup",
       {
         username,
         pwd,
         email,
       },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
     );
@@ -43,16 +43,16 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
     switch (e.response.status) {
       case 501:
       case 500:
-        error = '서버 오류';
+        error = "서버 오류";
         break;
       case 409:
-        error = '사용중인 계정입니다.';
+        error = "사용중인 계정입니다.";
         break;
       case 422:
-        error = '잘못된 정보입력';
+        error = "잘못된 정보입력";
         break;
       default:
-        error = 'Unknown Error';
+        error = "Unknown Error";
     }
     dispatch({
       type: SIGNUP_FAIL,
@@ -63,10 +63,10 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
 
 export const validationInitialize = (name) => (dispatch) => {
   switch (name) {
-    case 'email':
+    case "email":
       dispatch({ type: EMAIL_VALIDATION_INITIALIZE });
       break;
-    case 'username':
+    case "username":
       dispatch({ type: USERNAME_VALIDATION_INITIALIZE });
       break;
     default:
@@ -77,9 +77,9 @@ export const validationInitialize = (name) => (dispatch) => {
 export const emailValidation = (email) => (dispatch) => {
   axios
     .post(
-      'https://api.recollect.today/auth/email',
+      "https://api.recollect.today/auth/email",
       { email },
-      { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+      { headers: { "Content-Type": "application/json" }, withCredentials: true }
     )
     .then(() => {
       dispatch({ type: SIGNUP_EMAIL_VALIDATION_SUCCESS });
@@ -89,16 +89,16 @@ export const emailValidation = (email) => (dispatch) => {
       switch (e.response.status) {
         case 501:
         case 500:
-          error = '서버 오류';
+          error = "서버 오류";
           break;
         case 409:
-          error = '사용중인 이메일 입니다.';
+          error = "사용중인 이메일 입니다.";
           break;
         case 422:
-          error = '잘못된 정보입력';
+          error = "잘못된 정보입력";
           break;
         default:
-          error = 'Unknown Error';
+          error = "Unknown Error";
       }
 
       dispatch({
@@ -111,9 +111,9 @@ export const emailValidation = (email) => (dispatch) => {
 export const usernameValidation = (username) => (dispatch) => {
   axios
     .post(
-      'https://api.recollect.today/auth/username',
+      "https://api.recollect.today/auth/username",
       { username },
-      { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+      { headers: { "Content-Type": "application/json" }, withCredentials: true }
     )
     .then(() => {
       dispatch({ type: SIGNUP_USERNAME_VALIDATION_SUCCESS });
@@ -123,16 +123,16 @@ export const usernameValidation = (username) => (dispatch) => {
       switch (e.response.status) {
         case 501:
         case 500:
-          error = '서버 오류';
+          error = "서버 오류";
           break;
         case 409:
-          error = '사용중인 유저네임 입니다.';
+          error = "사용중인 유저네임 입니다.";
           break;
         case 422:
-          error = '잘못된 정보입력';
+          error = "잘못된 정보입력";
           break;
         default:
-          error = 'Unknown Error';
+          error = "Unknown Error";
       }
       dispatch({
         type: SIGNUP_USERNAME_VALIDATION_FAIL,
@@ -145,53 +145,52 @@ export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
 
 export const loginThunk = (userinfo) => async (dispatch) => {
   try {
-    console.log('여기까지');
+    console.log("여기까지");
     const result = await axios.post(
-      'https://api.recollect.today/login',
+      "https://api.recollect.today/login",
       {
         pwd: userinfo.password,
         email: userinfo.email,
       },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
     );
     console.log(result);
 
-    const accessToken = result.headers.authorization;
+    const accessToken = result.data.accessToken;
 
     if (accessToken) {
-      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem("accessToken", accessToken);
       dispatch({ type: LOGIN_SUCCESS });
     } else {
-      dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
-      
+      dispatch({ type: LOGIN_FAIL, error: "Login failed" });
     }
   } catch (e) {
     if (e.response) {
       dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
       return;
     }
-    dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
+    dispatch({ type: LOGIN_FAIL, error: "unknown error occured" });
   }
 };
 
 export const logoutThunk = () => () => {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem("accessToken");
 
   axios
-    .get('https://api.recollect.today/logout', {
+    .get("https://api.recollect.today/logout", {
       headers: {
         authorization: `Bearer ${accessToken}`,
         withCredentials: true,
       },
     })
     .then(() => {
-      localStorage.removeItem('accessToken');
+      localStorage.removeItem("accessToken");
     })
     .catch(() => {
-      localStorage.removeItem('accessToken');
+      localStorage.removeItem("accessToken");
     });
 };
 
