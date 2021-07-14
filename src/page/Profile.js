@@ -17,18 +17,24 @@ import {
   editUsername,
   editCompany,
   editGitRepo,
-  getFavorite,
 } from '../modules/editProfile';
-
-import { notify } from '../modules/notification';
 
 function Profile(props) {
   const state = useSelector((state) => state.profileReducer);
   const { profile } = state;
   const dispatch = useDispatch();
 
-  const [errorMessage, setErrMessage] = useState("");
+  const [errorMessage, setErrMessage] = useState({
+    username:'', 
+    company:'', 
+    gitrepo:''
+  });
 
+  // const [inputReadMode, setInputReadMode] = useState({
+  //   usernameMode: true,
+  //   companyMode: true,
+  //   gitRepoMode: true,
+  // });
   const [usernameInputReadMode, setUsernameInputReadMode] = useState(true);
   const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
   const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
@@ -37,36 +43,31 @@ function Profile(props) {
   const companyInputRef = useRef('');
   const gitRepoInputRef = useRef('');
 
-  // useEffect(() => {
-  //   setErrMessage(error);
-  // }, [error]);
+
 
   useEffect(() => {
     dispatch(getProfile());
-    // setErrMessage(""); //에러메세지 초기화시점 체크
+    
     console.log('useeffect get 요청 실행');
   }, [dispatch]);
   console.log('render');
   
-  const cancelClick = () => {
-    document.addEventListener('click', function(e){
-      if(e.target !== userInputRef.current) {
-        //console.log(e.target);
-        console.log(userInputRef.current, 'what?');//두번찍히는이유?
-      }
+  // const cancelClick = () => {
+  //   document.addEventListener('click', function(e){
+  //     if(e.target !== userInputRef.current) {
+  //       //console.log(e.target);
+  //       console.log(userInputRef.current, 'what?');//두번찍히는이유?
+  //     }
       
       
-    })
-  }
+  //   })
+  // }
 
   useEffect(() => {
-    cancelClick();
+    //cancelClick();
   },[])//빈배열 넣어주어야 두번안찍힘
-  // const [inputReadMode, setInputReadMode] = useState({
-  //   usernameMode: true,
-  //   companyMode: true,
-  //   gitRepoMode: true,
-  // });
+
+
 
   /*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
   const usernameInputActive = (e) => {
@@ -77,11 +78,11 @@ function Profile(props) {
     if (e.currentTarget.getAttribute('name') === 'usernamecheck') {
       console.log(e.currentTarget.getAttribute('name'), 'username target');
       if (!IsValidiateUsername(userInputRef.current.value)) {
-        //setErrMessage("유저네임은 4글자이상 16글자 이하로 만들수 있습니다.");
-        dispatch(notify("유저네임은 4글자이상 16글자 이하로 만들 수 있습니다."));
+        setErrMessage({...errorMessage,username:"유저네임은 4글자이상 16글자 이하로 만들수 있습니다."});
         return;
       }
       dispatch(editUsername(userInputRef.current.value));
+      setErrMessage({username:'', company:'', gitrepo:''}); 
     }
   };
 
@@ -92,12 +93,12 @@ function Profile(props) {
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
 
     if (e.currentTarget.getAttribute('name') === 'companycheck') {
-      if (!IsValidateCompany(companyInputRef.current.value)) {
-        //setErrMessage("공백은 입력하실 수 없습니다.");
-        dispatch(notify("공백은 입력하실 수 없습니다."));
-        return; 
+      if(!IsValidateCompany(companyInputRef.current.value)){
+        setErrMessage({...errorMessage,company:"공백은 입력하실 수 없습니다."});
+        return;
       }
       dispatch(editCompany(companyInputRef.current.value));
+      setErrMessage({username:'', company:'', gitrepo:''}); 
     }
   };
 
@@ -109,14 +110,18 @@ function Profile(props) {
 
     if (e.currentTarget.getAttribute('name') === 'gitrepocheck') {
       if (!IsValidateGitRepo(gitRepoInputRef.current.value)) {
-        //setErrMessage("공백은 입력하실 수 없습니다.");
-        dispatch(notify("공백은 입력하실 수 없습니다."));
+        setErrMessage({...errorMessage,gitrepo:"공백은 입력하실 수 없습니다."});
         return; 
       }
       dispatch(editGitRepo(gitRepoInputRef.current.value));
+      setErrMessage({username:'', company:'', gitrepo:''});
     }
   };
 
+  //   useEffect(() => {
+  //   setErrMessage(errorMessage);
+  //   console.log(errorMessage.username);
+  // }, [errorMessage]);
 
   return (
     <div className="profile-container">
@@ -141,7 +146,7 @@ function Profile(props) {
                 name={usernameInputReadMode ? 'usernamepen' : 'usernamecheck'}
                 onClick={usernameInputActive}
               />
-              {/* <div className="errorMessage">{errorMessage}</div> */}
+              <div className="errorMessage">{errorMessage.username}</div>
             </div>
             <p>{profile.email}</p>
             <p>Jonined Recollect on {profile.createdAt.slice(0, 10)}</p>
@@ -182,7 +187,7 @@ function Profile(props) {
                 name={companyInputReadMode ? 'companypen' : 'companycheck'}
                 onClick={companyInputActive}
               />
-              {/* <div className="errorMessage">{errorMessage}</div> */}
+              <div className="errorMessage">{errorMessage.company}</div>
             </div>
             <div className="profilebox__companyngitrepo__inner">
               <FontAwesomeIcon icon={faGithub} />
@@ -200,7 +205,7 @@ function Profile(props) {
                 name={gitRepoInputReadMode ? 'gitrepopen' : 'gitrepocheck'}
                 onClick={gitRepoInputActive}
               />
-              {/* <div className="errorMessage">{errorMessage}</div> */}
+              <div className="errorMessage">{errorMessage.gitrepo}</div>
             </div>
           </div>
           <div className="profilebox__btns">

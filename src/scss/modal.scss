@@ -16,6 +16,8 @@ body,
   position: fixed;
   z-index: 1;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.144);
+  backdrop-filter: blur(2px);
 }
 
 .modalWrapper {
@@ -32,17 +34,19 @@ body,
   }
   position: fixed;
   left: 50%;
-  top: 20%;
+  top: 25%;
   transform: translate(-50%, 0);
   margin: 0 auto;
   background-color: white;
   z-index: 1;
-  width: 230px;
+  width: 280px; //공통 가로 길이
   border: 1px solid #{$logocolor};
-
+  
   .logo {
-    margin-top: 0px;
+    margin-top: 5px;
     color: #{$logocolor};
+    font-weight: 700;
+    font-size: 1.7vw;
   }
   button {
     margin-top: 15px;
@@ -195,7 +199,7 @@ body,
   }
 
   ////change Pwd Modal ////
-  .changePwdpModal {
+  .changePwdModal {
     display: flex;
     width: 100%;
     height: 300px;

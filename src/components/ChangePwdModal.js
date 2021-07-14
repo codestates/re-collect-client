@@ -19,9 +19,9 @@ function ChangePwdModal(props) {
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    setErrorMessage(profile.error);
-  }, [profile.error]);
+  // useEffect(() => {
+  //   setErrorMessage(profile.error);
+  // }, [profile.error]);
 
   const changePwdValidCheck = () => {
     const password = pwdInfo.password;
@@ -66,16 +66,13 @@ function ChangePwdModal(props) {
       setTimeout(() => {
         props.setModalMode("");     
         }, 2000);   
-
-    setTimeout(() => {
-      props.setModalMode('');
-    }, 2000);
+      
   };
 
   return (
     <div className="modal">
       <div className="modalWrapper">
-        <div className="changePwdpModal">
+        <div className="changePwdModal">
           <div
             className="closeBtn"
             onClick={() => {

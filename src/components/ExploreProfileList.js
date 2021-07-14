@@ -16,9 +16,9 @@ function ExploreProfileList({ className, ...props }, settings) {
       <div className={`${className}__searchProfile__profileImage`}>
         <FontAwesomeIcon icon={faUserCircle} />
       </div>
-
+      <p>
       {props.user.username ? `${props.user.username}` : "-"}
-
+      </p>
       <div className="socialInfo">
         <div>
           <div> 28 </div>

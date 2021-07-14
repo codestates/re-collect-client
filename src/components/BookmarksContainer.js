@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useInView } from "react-intersection-observer";
 import CategoryBox from './CategoryBox';
 import CollectBookmark from './CollectBookmark';
 import {
@@ -17,6 +18,7 @@ function BookmarksContainer() {
   const guestBookmarks = useSelector(
     (state) => state.bookmarkReducer.guestBookmarks
   );
+
   const reducedbookmarks = useSelector(
     (state) => state.bookmarkReducer.userBookmarks.reducedbookmarks
   );
@@ -25,10 +27,43 @@ function BookmarksContainer() {
   const [list, setList] = useState([]);
   const [dragging, setDragging] = useState(false);
 
+  ///무한스크롤////
+  const [loading, setLoading] = useState(true);
+  const [previtems, setPrevItems] = useState(0);
+  const [items, setItems] = useState(8);
+
+  const handleScroll = (event) => {
+    const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+    console.log(scrollTop, 'scrolltop')//scrollTop: 이미 스크롤된 높이(영역)
+    console.log(clientHeight, 'clientheight')//clientHeight: 눈에 보이는 높이
+    console.log(scrollHeight, 'scrollheight')//scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
+    
+
+    if (scrollTop + clientHeight >= scrollHeight) { 
+      //setLoading(true);
+      setItems(items+4)
+      console.log(items);
+    }
+  };
+
+  // useEffect(() => {
+  //   const loadBookmarks = async (page) => {
+  //     setLoading(true);
+  //     const newItems = await getBookmark();
+  //     setList((prev) => [...prev, ...newItems]);
+  //     setLoading(false);
+  //   };
+
+  //   loadBookmarks();
+  // }, [page]);
+   ///무한스크롤////
+
   useEffect(() => {
     if (accessToken) {
       dispatch(getBookmark());
+      
     } else {
+      setLoading(true);
       dispatch(getGuestBookmark());
     }
   }, []);
@@ -37,9 +72,23 @@ function BookmarksContainer() {
     if (accessToken) {
       setList(reducedbookmarks);
     } else {
-      setList(guestBookmarks.reducedbookmarks);
+      setList(guestBookmarks.reducedbookmarks.slice(previtems, items));//8개씩 끊어서 보여줌
+      setLoading(false);//로딩 false
     }
-  }, [reducedbookmarks, guestBookmarks]);
+  }, [items]);
+
+
+// ///무한스크롤////
+  //const collectViewRef = useRef('');
+  const collectViewRef = useCallback (node => {
+    if (node !== null){
+      const scrollHeight = node.scrollHeight;
+      console.log(scrollHeight);
+    }
+  },[])
+// ///무한스크롤////
+
+
 
   const dragItem = useRef();
   const dragItemNode = useRef();
@@ -122,6 +171,7 @@ function BookmarksContainer() {
     return 'categorybox__bookmark';
   };
 
+
   return (
     <>
       {list.length === 0 ? (
@@ -131,7 +181,8 @@ function BookmarksContainer() {
           왼쪽 추가하기 버튼을 눌러 북마크를 추가하세요
         </span>
       ) : (
-        <div className="collectview__bookmarks">
+        <div className="collectview__bookmarks"  ref={collectViewRef} onScroll={handleScroll}>
+          {' '}
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
@@ -169,8 +220,10 @@ function BookmarksContainer() {
                   }
                 ></CollectBookmark>
               ))}
-            </CategoryBox>
+            </CategoryBox> 
           ))}
+          
+          {loading && <div className="loading">Loading ...</div>}
         </div>
       )}
     </>

@@ -63,6 +63,7 @@
   display: none;
 }
 .categorybox__header-text {
+  font-weight: 600;
   padding-left: 5px;
 }
 .categorybox__view {
@@ -163,8 +164,7 @@
   .categorybox__header {
     text-align: center;
   }
-  .categorybox__header-editbtn,
-  .categorybox__bookmark-editbtn {
+  .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
     display: none;
   }
   .categorybox__bookmark-ellipsis {
@@ -266,6 +266,7 @@
   padding-top: 64px;
   padding-bottom: 24px;
   font-size: 36px;
+  font-weight: 700;
   color: #214bc8;
 }
 .collectview__nav {
@@ -278,10 +279,11 @@
   grid-column-end: 6;
   height: 40px;
   line-height: 40px;
-  background-color: #ebff9d;
+  background-color: #EBFF9D;
   text-align: center;
   cursor: pointer;
   color: #214bc8;
+  font-weight: 600;
 }
 .collectview__search {
   grid-column-start: 7;
@@ -298,7 +300,7 @@
   padding-right: 40px;
   margin-right: -40px;
   font-size: 16px;
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
 }
 .collectview__searchBar:focus {
   border: 1px rgba(0, 0, 0, 0.3) solid;
@@ -336,7 +338,23 @@
   overflow-x: hidden;
 }
 .collectview__bookmarks::-webkit-scrollbar {
-  width: 0;
+  width: 10px;
+}
+.collectview__bookmarks::-webkit-scrollbar-thumb {
+  height: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+  border-right: 3px solid transparent;
+  border-top: 35px solid transparent;
+}
+.collectview__bookmarks::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+.collectview__bookmarks .loading {
+  color: #214bc8;
+  height: 350px;
+  text-align: center;
+  line-height: 350px;
 }
 
 @media (max-width: 1440px) {
@@ -431,8 +449,7 @@
   height: 0;
   text-align: center;
 }
-.sidebar__input,
-.sidebar__input--url,
+.sidebar__input, .sidebar__input--url,
 .bottomPopup__input,
 .bottomPopup__input--url {
   border-radius: 0;
@@ -440,13 +457,10 @@
   width: 80%;
   padding-left: 8px;
   font-size: 16px;
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
   background: white;
 }
-.sidebar__input:hover,
-.sidebar__input:focus,
-.sidebar__input--url:hover,
-.sidebar__input--url:focus,
+.sidebar__input:hover, .sidebar__input:focus, .sidebar__input--url:hover, .sidebar__input--url:focus,
 .bottomPopup__input:hover,
 .bottomPopup__input:focus,
 .bottomPopup__input--url:hover,
@@ -455,8 +469,7 @@
   outline: 0;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
-.sidebar__input::placeholder,
-.sidebar__input--url::placeholder,
+.sidebar__input::placeholder, .sidebar__input--url::placeholder,
 .bottomPopup__input::placeholder,
 .bottomPopup__input--url::placeholder {
   color: rgba(0, 0, 0, 0.5);
@@ -488,9 +501,7 @@
   width: 90px;
   display: flex;
 }
-.sidebar__color-circle--blue,
-.sidebar__color-circle--green,
-.sidebar__color-circle--red,
+.sidebar__color-circle--blue, .sidebar__color-circle--green, .sidebar__color-circle--red,
 .bottomPopup__color-circle--blue,
 .bottomPopup__color-circle--green,
 .bottomPopup__color-circle--red {
@@ -505,9 +516,7 @@
   line-height: 20px;
   text-overflow: unset;
 }
-.sidebar__color-circle--blue:hover,
-.sidebar__color-circle--green:hover,
-.sidebar__color-circle--red:hover,
+.sidebar__color-circle--blue:hover, .sidebar__color-circle--green:hover, .sidebar__color-circle--red:hover,
 .bottomPopup__color-circle--blue:hover,
 .bottomPopup__color-circle--green:hover,
 .bottomPopup__color-circle--red:hover {
@@ -562,7 +571,7 @@
   border: 1px rgba(0, 0, 0, 0.5) solid;
   background-color: white;
   font-size: 16px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   cursor: pointer;
 }
 .sidebar__btn:hover,
@@ -604,11 +613,11 @@
   top: 17px;
   width: 100%;
   height: 36px;
-  border: 1px #ff0000 solid;
-  color: #ff0000;
+  border: 1px #FF0000 solid;
+  color: #FF0000;
   background-color: white;
   font-size: 16px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   cursor: pointer;
 }
 .sidebar__deleteBtn:hover,
@@ -794,6 +803,7 @@
 .exploreHeader {
   color: #214bc8;
   font-size: 2.8vw;
+  font-weight: 700;
   margin-top: 94px;
 }
 
@@ -955,7 +965,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 100;
+  font-weight: 400;
   font-size: 13px;
 }
 .footer__inner {
@@ -964,14 +974,12 @@
   justify-content: center;
   width: 50vw;
 }
-.footer .about,
-.footer a {
+.footer .about, .footer a {
   margin-left: 5%;
   text-decoration: none;
   color: #525151;
 }
-.footer .about:hover,
-.footer a:hover {
+.footer .about:hover, .footer a:hover {
   color: #214bc8;
 }
 
@@ -1083,13 +1091,14 @@ body {
 }
 .landing__inner--first .first-wrap .introtext p {
   font-size: 1.7vw;
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 2%;
   word-break: keep-all;
   word-spacing: -7px;
 }
 .landing__inner--first .first-wrap .introtext button {
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
+  font-weight: 700;
   width: 70%;
   padding: 3.7% 0;
   background-color: #214bc8;
@@ -1135,6 +1144,7 @@ body {
 }
 .landing__inner--second .desc-wrap p {
   font-size: 1.7vw;
+  font-weight: 700;
   margin-top: 10%;
   word-break: keep-all;
   width: fit-content;
@@ -1178,6 +1188,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 3.2vw;
+  font-weight: 800;
   word-spacing: -8px;
   white-space: nowrap;
 }
@@ -1206,7 +1217,8 @@ body {
 .landing__inner--third .desc__inner .desc-text h2 {
   margin: 0;
   font-size: 2.8vw;
-  word-spacing: -8px;
+  font-weight: 800;
+  word-spacing: -10px;
   white-space: nowrap;
 }
 .landing__inner--third .desc__inner .desc-text p {
@@ -1235,7 +1247,8 @@ body {
   text-align: center;
   font-size: 1.5vw;
   margin-bottom: 3%;
-  word-spacing: -5px;
+  word-spacing: -7px;
+  font-weight: 700;
 }
 .landing__inner--third .desc-dragdrop img {
   display: block;
@@ -1249,7 +1262,7 @@ body {
   width: 78vw;
   margin-top: 4%;
   font-size: 2.8vw;
-  font-weight: 600;
+  font-weight: 800;
   word-spacing: -5px;
   margin-left: 1vw;
 }
@@ -1277,7 +1290,7 @@ body {
   text-align: center;
   font-size: 2.3vw;
   white-space: nowrap;
-  background-color: #ebff9d;
+  background-color: #EBFF9D;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 .landing__inner--fourth .alarm-desc-wrapper {
@@ -1296,7 +1309,8 @@ body {
 }
 .landing__inner--fourth .alarm-desc-wrapper .alarm-desc__inner h2 {
   font-size: 2.7vw;
-  word-spacing: -6px;
+  word-spacing: -8px;
+  font-weight: 800;
 }
 .landing__inner--fourth .alarm-desc-wrapper .alarm-desc__inner p {
   font-size: 1.7vw;
@@ -1349,8 +1363,9 @@ body {
   font-size: 7vw;
 }
 .landing__inner--fifth .profile-wrapper .landing__searchProfile p {
-  margin-top: 3%;
+  margin-top: 5%;
   font-size: 2vw;
+  font-weight: 700;
 }
 .landing__inner--fifth .profile-wrapper .landing__searchProfile .socialInfo {
   font-size: 1vw;
@@ -1361,18 +1376,14 @@ body {
   margin-top: 10%;
   font-size: 1vw;
 }
-.landing__inner--fifth
-  .profile-wrapper
-  .landing__searchProfile
-  .companyInfo
-  div {
+.landing__inner--fifth .profile-wrapper .landing__searchProfile .companyInfo div {
   margin: 3px;
 }
 .landing__inner--fifth .collection-desc {
   margin-top: 5%;
   text-align: center;
   font-size: 2.8vw;
-  font-weight: 600;
+  font-weight: 800;
   word-spacing: -7px;
 }
 .landing__inner--fifth .collection-desc a {
@@ -1398,7 +1409,7 @@ body {
   margin-bottom: 5%;
   font-size: 3.6vw;
   word-spacing: -9px;
-  font-weight: 900;
+  font-weight: 800;
   white-space: nowrap;
 }
 .landing__inner--sixth .values-wrapper {
@@ -1409,7 +1420,7 @@ body {
   margin-bottom: 8%;
   word-spacing: -5px;
   word-break: keep-all;
-  font-weight: 500;
+  font-weight: 600;
 }
 .landing__inner--sixth .values-wrapper__up {
   display: flex;
@@ -1442,7 +1453,7 @@ body {
   white-space: nowrap;
 }
 .landing__inner--sixth .button-bottom {
-  font-family: 'IBM Plex Mono';
+  font-family: "IBM Plex Mono";
   width: 29vw;
   padding: 4.5% 0;
   background-color: #214bc8;
@@ -1450,6 +1461,7 @@ body {
   border-radius: 2px;
   color: white;
   font-size: 2.5vw;
+  font-weight: 600;
   text-align: center;
 }
 .landing__inner--sixth .button-bottom:hover {
@@ -1472,7 +1484,7 @@ body {
   height: 150px;
   width: 100%;
   margin-bottom: 10px;
-  background-image: url('./logo_cut.png');
+  background-image: url("./logo_cut.png");
   background-repeat: no-repeat;
   background-size: 150px;
   background-position: center;
@@ -1484,8 +1496,7 @@ body {
   line-height: 30px;
   margin: 0 auto;
   color: #214bc8;
-  animation: typing 2s steps(9, start) infinite,
-    blink-caret 0.5s step-end infinite;
+  animation: typing 2s steps(9, start) infinite, blink-caret 0.5s step-end infinite;
   display: inline-block;
   overflow: clip;
   white-space: nowrap;
@@ -1502,8 +1513,7 @@ body {
 }
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from,
-  to {
+  from, to {
     border-color: transparent;
   }
   50% {
@@ -1576,7 +1586,7 @@ body {
     align-items: center;
   }
   .landing__inner--first .first-wrap .mobile-introtext button {
-    font-family: 'IBM Plex Mono';
+    font-family: "IBM Plex Mono";
     width: 55vw;
     padding: 3% 0;
     font-size: 4.5vw;
@@ -1597,15 +1607,15 @@ body {
     align-items: center;
   }
   .landing__inner--second .desc-wrap--1 img,
-  .landing__inner--second .desc-wrap--2 img,
-  .landing__inner--second .desc-wrap--3 img {
+.landing__inner--second .desc-wrap--2 img,
+.landing__inner--second .desc-wrap--3 img {
     width: 53vw;
     margin-top: 0;
     order: 2;
   }
   .landing__inner--second .desc-wrap--1 p,
-  .landing__inner--second .desc-wrap--2 p,
-  .landing__inner--second .desc-wrap--3 p {
+.landing__inner--second .desc-wrap--2 p,
+.landing__inner--second .desc-wrap--3 p {
     margin-top: 15%;
     order: 1;
     text-align: center;
@@ -1722,9 +1732,7 @@ body {
     margin-left: 7.5%;
     width: 40%;
   }
-  .landing__inner--fifth
-    .profile-wrapper
-    .landing__searchProfile__profileImage {
+  .landing__inner--fifth .profile-wrapper .landing__searchProfile__profileImage {
     font-size: 12vw;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile p {
@@ -1795,17 +1803,19 @@ body,
   position: fixed;
   z-index: 1;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.144);
+  backdrop-filter: blur(2px);
 }
 
 .modalWrapper {
   position: fixed;
   left: 50%;
-  top: 20%;
+  top: 25%;
   transform: translate(-50%, 0);
   margin: 0 auto;
   background-color: white;
   z-index: 1;
-  width: 230px;
+  width: 280px;
   border: 1px solid #214bc8;
 }
 @media (max-width: 834px) {
@@ -1823,8 +1833,10 @@ body,
   }
 }
 .modalWrapper .logo {
-  margin-top: 0px;
+  margin-top: 5px;
   color: #214bc8;
+  font-weight: 700;
+  font-size: 1.7vw;
 }
 .modalWrapper button {
   margin-top: 15px;
@@ -1967,39 +1979,39 @@ body,
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.modalWrapper .changePwdpModal {
+.modalWrapper .changePwdModal {
   display: flex;
   width: 100%;
   height: 300px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdpModal p {
+.modalWrapper .changePwdModal p {
   font-size: 14px;
   text-align: center;
   margin-top: 25px;
   margin-bottom: 12px;
 }
-.modalWrapper .changePwdpModal .inputContainer {
+.modalWrapper .changePwdModal .inputContainer {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdpModal .inputContainer input {
+.modalWrapper .changePwdModal .inputContainer input {
   margin-top: 8px;
   width: 180px;
   height: 30px;
   border: 1px solid #214bc8;
   outline: none;
 }
-.modalWrapper .changePwdpModal .inputContainer input:first-child {
+.modalWrapper .changePwdModal .inputContainer input:first-child {
   margin-bottom: 8px;
 }
-.modalWrapper .changePwdpModal button {
+.modalWrapper .changePwdModal button {
   margin-top: 15px;
 }
-.modalWrapper .changePwdpModal .changePwdErrorMessage {
+.modalWrapper .changePwdModal .changePwdErrorMessage {
   display: flex;
   margin-top: 10px;
   color: black;
@@ -2162,8 +2174,7 @@ body,
 .signUpmodal__inputs.username {
   width: 280px;
 }
-.signUpmodal__inputs.pwd,
-.signUpmodal__inputs.pwdCheck {
+.signUpmodal__inputs.pwd, .signUpmodal__inputs.pwdCheck {
   padding-right: 80px;
   margin-right: -45px;
 }
@@ -2174,7 +2185,7 @@ body,
   height: 45px;
   line-height: 42px;
   text-align: center;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-size: 13px;
 }
 .signUpmodal__faLock {
@@ -2208,7 +2219,7 @@ body,
   left: 7.5%;
   color: red;
   font-size: 12px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 }
 .signUpmodal__messageContainer.overall {
   align-self: inherit;
@@ -2247,7 +2258,7 @@ body,
   height: 100%;
   text-indent: -9999px;
   margin-left: 6vw;
-  background-image: url('./logo.png');
+  background-image: url("./logo.png");
   background-repeat: no-repeat;
   background-size: 95px auto;
   background-position: center;
@@ -2265,6 +2276,7 @@ body,
 .nav-container__inner-container {
   float: right;
   line-height: 80px;
+  font-weight: 800;
   width: 50%;
   display: flex;
   justify-content: space-between;
@@ -2403,6 +2415,7 @@ input:-webkit-autofill {
   width: 40vw;
   height: 50%;
   font-size: 14px;
+  font-weight: 700;
 }
 .profile-container__inner--left .profilebox {
   margin-top: 7vh;
@@ -2462,8 +2475,7 @@ input:-webkit-autofill {
 .profile-container__inner--left .profilebox__follow p:nth-child(1) {
   margin-left: 0;
 }
-.profile-container__inner--left .profilebox__follow p:nth-child(2),
-.profile-container__inner--left .profilebox__follow p:nth-child(3) {
+.profile-container__inner--left .profilebox__follow p:nth-child(2), .profile-container__inner--left .profilebox__follow p:nth-child(3) {
   color: grey;
 }
 .profile-container__inner--left .profilebox__companyngitrepo {
@@ -2481,17 +2493,13 @@ input:-webkit-autofill {
   border-bottom: dotted 1px #214bc8;
   text-align: center;
 }
-.profile-container__inner--left
-  .profilebox__companyngitrepo__inner
-  input::placeholder {
+.profile-container__inner--left .profilebox__companyngitrepo__inner input::placeholder {
   text-align: center;
   color: #214bc8;
   font-size: 14px;
   font-family: IBM Plex Mono;
 }
-.profile-container__inner--left
-  .profilebox__companyngitrepo__inner
-  input:disabled {
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:disabled {
   background-color: transparent;
 }
 .profile-container__inner--left .profilebox__companyngitrepo .edit-info {
@@ -2517,17 +2525,13 @@ input:-webkit-autofill {
   border-bottom: dotted 1px #214bc8;
   text-align: center;
 }
-.profile-container__inner--left
-  .profilebox__companyngitrepo__inner
-  input::placeholder {
+.profile-container__inner--left .profilebox__companyngitrepo__inner input::placeholder {
   text-align: center;
   color: #214bc8;
   font-size: 14px;
   font-family: IBM Plex Mono;
 }
-.profile-container__inner--left
-  .profilebox__companyngitrepo__inner
-  input:disabled {
+.profile-container__inner--left .profilebox__companyngitrepo__inner input:disabled {
   background-color: transparent;
 }
 .profile-container__inner--left .profilebox__companyngitrepo .edit-info {
@@ -2666,6 +2670,7 @@ input:-webkit-autofill {
   padding-top: 64px;
   padding-bottom: 64px;
   font-size: 36px;
+  font-weight: 700;
   color: #214bc8;
 }
 .recollect__bookmarks {
@@ -2885,12 +2890,10 @@ input:-webkit-autofill {
   padding: 5px;
   cursor: pointer;
 }
-.slick-dots li button:hover,
-.slick-dots li button:focus {
+.slick-dots li button:hover, .slick-dots li button:focus {
   outline: none;
 }
-.slick-dots li button:hover:before,
-.slick-dots li button:focus:before {
+.slick-dots li button:hover:before, .slick-dots li button:focus:before {
   opacity: 1;
 }
 .slick-dots li button:before {
@@ -2898,10 +2901,10 @@ input:-webkit-autofill {
   position: absolute;
   top: 0;
   left: 0;
-  content: '•';
+  content: "•";
   width: 20px;
   height: 20px;
-  font-family: 'slick';
+  font-family: "slick";
   font-size: 25px;
   line-height: 20px;
   text-align: center;
@@ -3020,9 +3023,7 @@ input:-webkit-autofill {
     margin-left: 18%;
     width: 27vw;
   }
-  .landing__inner--fifth
-    .profile-wrapper
-    .landing__searchProfile__profileImage {
+  .landing__inner--fifth .profile-wrapper .landing__searchProfile__profileImage {
     font-size: 12vw;
   }
   .landing__inner--fifth .profile-wrapper .landing__searchProfile p {

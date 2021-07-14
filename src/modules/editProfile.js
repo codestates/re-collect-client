@@ -50,7 +50,7 @@ export const getProfile = () => (dispatch) => {
     .then((res) => {
       console.log(res);
 
-      const favorite = res.data.bookmark.reduce((prev, curr) => {
+      const favorite = res.data.bookmarks.reduce((prev, curr) => {
         return prev.visitCounts > curr.visitCounts ? prev : curr;
       });
 
@@ -75,8 +75,6 @@ export const getProfile = () => (dispatch) => {
 
 export const editUsername = (username) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
-  console.log(username, '유저인풋이 뭐니?');
-
   axios
     .patch(
       'https://api.recollect.today/profile/username',
@@ -114,6 +112,7 @@ export const editUsername = (username) => (dispatch) => {
 
 export const editCompany = (company) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
+  console.log('컴패니수정하지 뭐하니?');
   axios
     .patch(
       'https://api.recollect.today/profile/company',
@@ -181,7 +180,7 @@ export const editPwd = (pwdInfo) => (dispatch) => {
       'https://api.recollect.today/profile/pwd',
       {
         pwd: pwdInfo.password,
-        newPwd: pwdInfo.newpassword //일단 새비번 문자열만 보냄.
+        newPwd: pwdInfo.newpassword 
       },
       {
         headers: { authorization: `Bearer ${accessToken}` },
@@ -218,10 +217,12 @@ export const delAccount = () => (dispatch) => {
         type: DEL_ACCOUNT_SUCCESS,
       });
       dispatch(notify("계정을 삭제했습니다."));
+      localStorage.removeItem('accessToken');
     })
     .catch((err) => {
       console.error(err.message);
       dispatch({ type: DEL_ACCOUNT_FAIL, error: err.message });
+      
     });
 };
 
