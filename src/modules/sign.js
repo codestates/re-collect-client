@@ -158,20 +158,20 @@ export const loginThunk = (userinfo) => async (dispatch) => {
     );
     console.log(result);
 
-    // const accessToken = result.headers;
+    const accessToken = result.headers.authorization;
 
-    // if (accessToken) {
-    //   localStorage.setItem('accessToken', accessToken);
-    //   dispatch({ type: LOGIN_SUCCESS });
-    // } else {
-    //   dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
-    // }
+    if (accessToken) {
+      localStorage.setItem('accessToken', accessToken);
+      dispatch({ type: LOGIN_SUCCESS });
+    } else {
+      dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
+    }
   } catch (e) {
-    // if (e.response) {
-    //   dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
-    //   return;
-    // }
-    // dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
+    if (e.response) {
+      dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
+      return;
+    }
+    dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
   }
 };
 
