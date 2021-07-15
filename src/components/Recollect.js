@@ -25,7 +25,7 @@ function Recollect() {
     <div className="recollect">
       <div className="recollect__title">Recollect</div>
       <div className="recollect__bookmarks">
-        {unreadBookmarks !== null ? (
+        {unreadBookmarks.length !== 0 ? (
           unreadBookmarks.map((unread) => {
             return (
               <BigBookmark

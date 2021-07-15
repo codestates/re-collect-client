@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { logoutThunk } from '../modules/sign';
-import { Link, withRouter } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutThunk } from "../modules/sign";
+import { Link, withRouter } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Nav(props) {
   const [isvisible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
+  const accessToken = localStorage.getItem("accessToken");
 
   const handleToggleBtn = () => {
     setVisible((isvisible) => !isvisible);
   };
-
-  const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
     handleToggleBtn();
@@ -28,7 +27,7 @@ function Nav(props) {
       <Link
         to="/"
         onClick={() => {
-          props.setModalMode('');
+          props.setModalMode("");
         }}
         className="nav-container__logo"
       >
@@ -43,14 +42,14 @@ function Nav(props) {
       <div
         className={
           isvisible
-            ? 'nav-container__inner-container toggle'
-            : 'nav-container__inner-container toggle on'
+            ? "nav-container__inner-container toggle"
+            : "nav-container__inner-container toggle on"
         }
       >
         <Link
           to="/"
           onClick={() => {
-            props.setModalMode('');
+            props.setModalMode("");
             handleToggleBtn();
           }}
         >
@@ -59,7 +58,7 @@ function Nav(props) {
         <Link
           to="/collect"
           onClick={() => {
-            props.setModalMode('');
+            props.setModalMode("");
             handleToggleBtn();
           }}
         >
@@ -67,7 +66,7 @@ function Nav(props) {
         </Link>
         <Link
           onClick={() => {
-            props.setModalMode('explore');
+            props.setModalMode("explore");
             handleToggleBtn();
           }}
           to="/explore"
@@ -91,7 +90,7 @@ function Nav(props) {
         ) : (
           <div
             onClick={() => {
-              props.setModalMode('login');
+              props.setModalMode("login");
               handleToggleBtn();
             }}
           >
