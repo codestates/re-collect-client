@@ -86,7 +86,7 @@ const initialState = {
       },
     ],
   },
-  unreadBookmarks: null,
+  unreadBookmarks: [],
   userBookmarks: {
     reducedbookmarks: [],
     category: [],

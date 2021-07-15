@@ -18,7 +18,7 @@ export const dragBookmark =
             dropId: dropId,
           },
           headers: {
-            authorizaiton: `Bearer ${accessToken}`,
+            authorization: `Bearer ${accessToken}`,
           },
           withCredentials: true,
         }
@@ -53,7 +53,7 @@ export const dragBookmarkToLast =
         {
           params: { id: dragId },
           headers: {
-            authorizaiton: `Bearer ${accessToken}`,
+            authorization: `Bearer ${accessToken}`,
           },
           withCredentials: true,
         }
