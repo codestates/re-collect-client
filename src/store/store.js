@@ -1,12 +1,14 @@
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "../modules";
-import thunk from "redux-thunk";
-import logger from "redux-logger";
+import { createStore, applyMiddleware, compose } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from '../modules';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
-);
+const enhancer =
+  process.env.NODE_ENV === 'production'
+    ? compose(applyMiddleware(thunk))
+    : composeWithDevTools(applyMiddleware(thunk, logger));
+
+const store = createStore(rootReducer, enhancer);
 
 export default store;
