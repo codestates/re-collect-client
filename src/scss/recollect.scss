@@ -1,4 +1,4 @@
-@import "./util";
+@import './util';
 
 .recollect {
   flex: 1;
@@ -32,6 +32,7 @@
     width: 36vw;
     min-width: 530px;
     margin-bottom: 40px;
+    background-color: whitesmoke;
     .skeleton {
       font-size: 20px;
       height: 30vh;
@@ -43,10 +44,13 @@
         font-size: 15px;
         width: 40px;
         height: 40px;
+        filter: grayscale(1) opacity(0.5);
       }
       p {
-        color: rgb(189, 186, 186);
+        color: #{$blue};
+        filter: grayscale(1) opacity(0.5);
         text-align: center;
+        font-weight: 500;
       }
     }
   }
@@ -79,6 +83,11 @@
     &__bookmarks {
       width: 71vw;
       min-width: 200px;
+      .skeleton {
+        p {
+          font-size: 14px;
+        }
+      }
     }
   }
 }

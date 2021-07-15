@@ -1,4 +1,4 @@
-@import "./util";
+@import './util';
 
 .searching {
   display: flex;
@@ -19,7 +19,9 @@
       justify-content: center;
       align-items: center;
       p {
-        color: rgb(189, 186, 186);
+        color: #{$blue};
+        filter: grayscale(1) opacity(0.5);
+        font-weight: 500;
         text-align: center;
       }
     }

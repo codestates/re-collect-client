@@ -89,8 +89,11 @@
     position: relative;
     height: 0;
     top: 20%;
-
+    color: #{$blue};
+    filter: grayscale(1) opacity(0.5);
+    font-weight: 500;
     text-align: center;
+    font-size: 20px;
   }
 
   &__bookmarks {
@@ -109,27 +112,26 @@
     }
 
     &::-webkit-scrollbar {
-      width: 10px;
-      
+      width: 0px;
     }
 
-    &::-webkit-scrollbar-thumb {
-      height: 10%;
-      background-color: rgba(0, 0, 0, 0.3);
-      background-clip: padding-box;
-      border-right: 3px solid transparent;
-      border-top: 35px solid transparent;
-    }
+    // &::-webkit-scrollbar-thumb {
+    //   height: 10%;
+    //   background-color: rgba(0, 0, 0, 0.3);
+    //   background-clip: padding-box;
+    //   border-right: 3px solid transparent;
+    //   border-top: 35px solid transparent;
+    // }
 
-    &::-webkit-scrollbar-track {
-      background-color: rgb(226, 226, 226);
-    }
+    // &::-webkit-scrollbar-track {
+    //   background-color: rgb(226, 226, 226);
+    // }
 
-    .loading{
+    .loading {
       color: #{$logocolor};
       //border: solid 1px;
       height: 350px;
-      text-align:center;
+      text-align: center;
       line-height: 350px;
     }
   }
