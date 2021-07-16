@@ -120,17 +120,39 @@
   flex: 1;
 }
 .categorybox__bookmark-ellipsis {
-  display: none;
-}
-.categorybox__bookmark-editbtn {
-  background-color: transparent;
-  border-style: hidden;
-  line-height: 20px;
-  color: transparent;
+  display: initial;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.2);
+  width: 23px;
+  font-size: 15px;
   cursor: pointer;
 }
-.categorybox__bookmark-editbtn:hover {
-  color: gray;
+.categorybox__bookmark-ellipsis.important {
+  color: white;
+}
+.categorybox__bookmark-ellipsis.red:hover {
+  color: #f24626;
+  transform: scale(1.3);
+}
+.categorybox__bookmark-ellipsis.red.important:hover {
+  color: #0bbf0d;
+  transform: scale(1.3);
+}
+.categorybox__bookmark-ellipsis.blue:hover {
+  color: #214bc8;
+  transform: scale(1.3);
+}
+.categorybox__bookmark-ellipsis.blue.important:hover {
+  color: #fa830f;
+  transform: scale(1.3);
+}
+.categorybox__bookmark-ellipsis.green:hover {
+  color: #0eae61;
+  transform: scale(1.3);
+}
+.categorybox__bookmark-ellipsis.green.important:hover {
+  color: #610c00;
+  transform: scale(1.3);
 }
 .categorybox__bookmark-triangle {
   cursor: grab;
@@ -160,23 +182,13 @@
 @media (max-width: 600px) {
   .categorybox {
     max-width: 300px;
+    max-height: 400px;
   }
   .categorybox__header {
     text-align: center;
   }
   .categorybox__header-editbtn, .categorybox__bookmark-editbtn {
     display: none;
-  }
-  .categorybox__bookmark-ellipsis {
-    display: initial;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.2);
-    width: 23px;
-    font-size: 15px;
-    cursor: pointer;
-  }
-  .categorybox__bookmark-ellipsis:hover {
-    color: #214bc8;
   }
   .categorybox__header-pencil {
     display: initial;

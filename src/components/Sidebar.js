@@ -1,6 +1,7 @@
 import CollectInputBox from './CollectInputBox';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { editEnd } from '../modules/bookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,6 +9,7 @@ export default function Sidebar() {
   const isEdit = useSelector(
     (state) => state.bookmarkReducer.tempBookmark.isEdit
   );
+  const dispatch = useDispatch();
 
   const [xposition, setXposition] = useState(-300);
   const [width, setWidth] = useState(300);
@@ -30,6 +32,7 @@ export default function Sidebar() {
     } else {
       setXposition(-300);
       setWidth(0);
+      dispatch(editEnd());
     }
   };
 

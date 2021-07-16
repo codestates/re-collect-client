@@ -95,12 +95,28 @@ function SignUpModal(props) {
   });
 
   useEffect(() => {
-    setMessage({
-      ...message,
-      email: signupError.email,
-      username: signupError.username,
-      overall: signupError.overall,
-    });
+    const { email, username, overall } = signupError;
+
+    if (email) {
+      setMessage({
+        ...message,
+        email: signupError.email,
+      });
+    }
+
+    if (username) {
+      setMessage({
+        ...message,
+        username: signupError.username,
+      });
+    }
+
+    if (overall) {
+      setMessage({
+        ...message,
+        overall: signupError.overall,
+      });
+    }
   }, [signupError]);
 
   useEffect(() => {
@@ -205,6 +221,23 @@ function SignUpModal(props) {
   };
 
   const handleSignUp = () => {
+    const { email, emailService, pwd, pwdCheck, username } = signUpInfo;
+    if (!email || !emailService || !pwd || !pwdCheck || !username) {
+      setMessage({
+        ...message,
+        overall: '모든 항목은 필수입니다',
+      });
+      return;
+    }
+
+    if (!isSignupSuccess.email || !isSignupSuccess.username) {
+      setMessage({
+        ...message,
+        overall: '이메일, 유저네임 중복확인을 먼저 해주세요!',
+      });
+      return;
+    }
+
     dispatch(signupThunk(signUpInfo));
     setSignUpInfo({
       ...signUpInfo,
@@ -224,6 +257,11 @@ function SignUpModal(props) {
   };
 
   const handleValidiateEmail = () => {
+    if (!signUpInfo.emailService.value || !signUpInfo.email) {
+      setMessage({ ...message, email: '모든 항목은 필수 입니다' });
+      return;
+    }
+
     const email = signUpInfo.email + '@' + signUpInfo.emailService.value;
     if (!IsValidateEmail(email)) {
       setMessage({
