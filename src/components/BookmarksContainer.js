@@ -34,9 +34,9 @@ function BookmarksContainer() {
 
   const handleScroll = (event) => {
     const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    console.log(scrollTop, 'scrolltop'); //scrollTop: 이미 스크롤된 높이(영역)
-    console.log(clientHeight, 'clientheight'); //clientHeight: 눈에 보이는 높이
-    console.log(scrollHeight, 'scrollheight'); //scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
+    // console.log(scrollTop, 'scrolltop'); //scrollTop: 이미 스크롤된 높이(영역)
+    // console.log(clientHeight, 'clientheight'); //clientHeight: 눈에 보이는 높이
+    // console.log(scrollHeight, 'scrollheight'); //scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
 
     if (scrollTop + clientHeight >= scrollHeight) {
       //setLoading(true);
@@ -187,6 +187,7 @@ function BookmarksContainer() {
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
+              categoryId={grp.id}
               title={grp.title}
               dragEnterHandler={
                 dragging && !grp.bookmarks.length

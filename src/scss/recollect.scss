@@ -68,6 +68,7 @@
 @include mobile {
   .recollect {
     &__toCollectBtn {
+      top: 130px;
       left: 15vw;
       font-size: 22px;
     }
