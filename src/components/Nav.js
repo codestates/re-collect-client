@@ -7,6 +7,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Nav(props) {
   const [isvisible, setVisible] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
+
+
 
   const dispatch = useDispatch();
 
@@ -74,7 +77,7 @@ function Nav(props) {
         >
           Explore
         </Link>
-        {accessToken ? (
+        {accessToken && isLogin? (
           <>
             <Link to="/profile" onClick={handleToggleBtn}>
               Profile
@@ -83,6 +86,7 @@ function Nav(props) {
               to="/"
               onClick={() => {
                 dispatch(logoutThunk());
+                setIsLogin(false)
               }}
             >
               Logout
@@ -93,6 +97,7 @@ function Nav(props) {
             onClick={() => {
               props.setModalMode('login');
               handleToggleBtn();
+              
             }}
           >
             Login
