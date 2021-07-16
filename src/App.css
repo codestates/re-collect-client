@@ -325,7 +325,11 @@
   position: relative;
   height: 0;
   top: 20%;
+  color: #214bc8;
+  filter: grayscale(1) opacity(0.5);
+  font-weight: 500;
   text-align: center;
+  font-size: 20px;
 }
 .collectview__bookmarks {
   grid-area: bookmarks;
@@ -338,17 +342,7 @@
   overflow-x: hidden;
 }
 .collectview__bookmarks::-webkit-scrollbar {
-  width: 10px;
-}
-.collectview__bookmarks::-webkit-scrollbar-thumb {
-  height: 10%;
-  background-color: rgba(0, 0, 0, 0.3);
-  background-clip: padding-box;
-  border-right: 3px solid transparent;
-  border-top: 35px solid transparent;
-}
-.collectview__bookmarks::-webkit-scrollbar-track {
-  background-color: #e2e2e2;
+  width: 0px;
 }
 .collectview__bookmarks .loading {
   color: #214bc8;
@@ -1836,7 +1830,7 @@ body,
   margin-top: 5px;
   color: #214bc8;
   font-weight: 700;
-  font-size: 3vw;
+  font-size: 1.7vw;
 }
 .modalWrapper button {
   margin-top: 15px;
@@ -2242,7 +2236,7 @@ body,
   cursor: pointer;
   color: white;
 }
-
+@charset "UTF-8";
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2739,6 +2733,7 @@ textarea:focus:-ms-input-placeholder {
   width: 36vw;
   min-width: 530px;
   margin-bottom: 40px;
+  background-color: whitesmoke;
 }
 .recollect__bookmarks .skeleton {
   font-size: 20px;
@@ -2752,10 +2747,13 @@ textarea:focus:-ms-input-placeholder {
   font-size: 15px;
   width: 40px;
   height: 40px;
+  filter: grayscale(1) opacity(0.5);
 }
 .recollect__bookmarks .skeleton p {
-  color: #bdbaba;
+  color: #214bc8;
+  filter: grayscale(1) opacity(0.5);
   text-align: center;
+  font-weight: 500;
 }
 
 @media (max-width: 834px) {
@@ -2778,6 +2776,9 @@ textarea:focus:-ms-input-placeholder {
   .recollect__bookmarks {
     width: 71vw;
     min-width: 200px;
+  }
+  .recollect__bookmarks .skeleton p {
+    font-size: 14px;
   }
 }
 .top-btn {
@@ -2829,7 +2830,9 @@ textarea:focus:-ms-input-placeholder {
   align-items: center;
 }
 .searching__bookmarks .skeleton p {
-  color: #bdbaba;
+  color: #214bc8;
+  filter: grayscale(1) opacity(0.5);
+  font-weight: 500;
   text-align: center;
 }
 
@@ -2881,7 +2884,7 @@ textarea:focus:-ms-input-placeholder {
     display: none;
   }
 }
-
+@charset "UTF-8";
 /* Arrows */
 .slick-prev,
 .slick-next {

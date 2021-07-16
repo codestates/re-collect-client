@@ -104,27 +104,27 @@ function SignUpModal(props) {
   }, [signupError]);
 
   useEffect(() => {
-    const { email, username, overall } = isSignupSuccess;
+    const { email, username } = isSignupSuccess;
     if (email) {
       setMessage({
         ...message,
         email: '사용할 수 있는 이메일',
       });
-    } else if (username) {
+    }
+
+    if (username) {
       setMessage({
         ...message,
         username: '사용할 수 있는 유저네임',
       });
-    } else if (overall) {
+    }
+  }, [isSignupSuccess]);
+
+  useEffect(() => {
+    const { overall } = isSignupSuccess;
+    if (overall) {
       props.setModalMode('successSignup');
       dispatch(signupInitialize());
-    } else {
-      setMessage({
-        ...message,
-        email: '',
-        username: '',
-        overall: '',
-      });
     }
   }, [isSignupSuccess]);
 

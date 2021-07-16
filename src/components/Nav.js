@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutThunk } from '../modules/sign';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Nav(props) {
   const [isvisible, setVisible] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-
-
 
   const dispatch = useDispatch();
 
@@ -18,6 +16,10 @@ function Nav(props) {
   };
 
   const accessToken = localStorage.getItem('accessToken');
+
+  // useEffect(() => {
+  //   setLogout(false);
+  // }, [isLogout]);
 
   useEffect(() => {
     handleToggleBtn();
@@ -77,7 +79,7 @@ function Nav(props) {
         >
           Explore
         </Link>
-        {accessToken && isLogin? (
+        {accessToken && isLogin ? (
           <>
             <Link to="/profile" onClick={handleToggleBtn}>
               Profile
@@ -86,7 +88,7 @@ function Nav(props) {
               to="/"
               onClick={() => {
                 dispatch(logoutThunk());
-                setIsLogin(false)
+                setIsLogin(false);
               }}
             >
               Logout
@@ -97,7 +99,7 @@ function Nav(props) {
             onClick={() => {
               props.setModalMode('login');
               handleToggleBtn();
-              
+              setIsLogin(true);
             }}
           >
             Login
