@@ -1,16 +1,7 @@
-@import './util';
+@import "./util";
 
-html,
-body,
-.app {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.modal {
+//// 공통태그 logo, input, button, error, closeBtn, bottomTab ////
+.modalpage {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -20,8 +11,7 @@ body,
   backdrop-filter: blur(2px);
 }
 
-.modalWrapper {
-  //// 공통 태그 ////
+.modal {
   @include tablet {
     left: 50%;
     top: 20%;
@@ -42,12 +32,27 @@ body,
   width: 280px; //공통 가로 길이
   border: 1px solid #{$logocolor};
 
-  .logo {
+  &__logo {
     margin-top: 5px;
     color: #{$logocolor};
     font-weight: 700;
     font-size: 1.7vw;
+    margin-bottom: 30px;
   }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input {
+      margin-bottom: 8px;
+      width: 180px;
+      height: 30px;
+      border: 1px solid #{$blue};
+      outline: none;
+    }
+  }
+
   button {
     margin-top: 15px;
     width: 180px;
@@ -55,13 +60,21 @@ body,
     background-color: #{$blue};
     border: 1px solid #{$blue};
     color: #c4c4c4;
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
   }
-  button:hover {
-    cursor: pointer;
-    color: white;
+
+  &__error {
+    display: flex;
+    color: black;
+    margin-top: 10px;
+    font-size: 9px;
   }
-  // buttonContainer : 회원가입, 비밀번호변경 버튼
-  .buttonContainer {
+
+  // 회원가입, 비밀번호변경 버튼
+  &__bottomTab {
     width: 180px;
     display: flex;
     justify-content: space-between;
@@ -77,8 +90,8 @@ body,
       }
     }
   }
-  // close 버튼
-  .closeBtn {
+
+  &__closeBtn {
     color: black;
     width: 100%;
     padding: 5px;
@@ -97,64 +110,23 @@ body,
   }
 
   //// Login모달 ////
-  .loginModal {
+  &__login {
     display: flex;
     width: 100%;
     height: 270px;
     flex-direction: column;
     align-items: center;
-    .inputContainer {
-      margin-top: 25px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      input {
-        margin-bottom: 10px;
-        width: 180px;
-        height: 30px;
-        border: 1px solid #{$blue};
-        outline: none;
-      }
-    }
-    .loginErrorMessage {
-      display: flex;
-      margin-top: 10px;
-      color: black;
-      font-size: 9px;
-      margin-top: 15px;
-    }
   }
-  .setNewPwdmodal {
+
+  &__setNewPwd {
     display: flex;
     width: 100%;
     height: 300px;
     flex-direction: column;
     align-items: center;
-    .inputContainer {
-      margin-top: 25px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      input {
-        margin-bottom: 10px;
-        width: 180px;
-        height: 30px;
-        border: 1px solid #{$blue};
-        outline: none;
-      }
-    }
-    .errorMessage {
-      display: flex;
-      margin-top: 10px;
-      color: black;
-      font-size: 9px;
-      margin-top: 15px;
-      padding: 0px 10px;
-    }
   }
 
-  ////find Pwd Modal ////
-  .findPwdpModal {
+  &__findPwd {
     display: flex;
     width: 100%;
     height: 270px;
@@ -163,56 +135,31 @@ body,
     p {
       font-size: 14px;
       text-align: center;
-      margin-top: 25px;
-      margin-bottom: 12px;
-    }
-    input {
-      width: 180px;
-      height: 30px;
-      border: 1px solid #{$blue};
-      outline: none;
-    }
-    button {
-      margin-top: 15px;
-    }
-    .findPwdErrorMessage {
-      display: flex;
-      margin-top: 10px;
-      color: black;
-      font-size: 9px;
+      margin-top: 0px;
     }
   }
 
   //// Sent Email Modal ////
-  .sentEmailModal {
+  &__sentEmail {
     display: flex;
     width: 100%;
-    height: 220px;
+    height: 270px;
     flex-direction: column;
     align-items: center;
     p {
       font-size: 14px;
       text-align: center;
-      margin-top: 25px;
-      margin-bottom: 12px;
     }
   }
 
   ////change Pwd Modal ////
-  .changePwdModal {
+  &__changePwd {
     display: flex;
     width: 100%;
     height: 300px;
     flex-direction: column;
     align-items: center;
-    p {
-      font-size: 14px;
-      text-align: center;
-      margin-top: 25px;
-      margin-bottom: 12px;
-    }
     .inputContainer {
-      margin-top: 25px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -227,19 +174,10 @@ body,
         }
       }
     }
-
-    button {
-      margin-top: 15px;
-    }
-    .changePwdErrorMessage {
-      display: flex;
-      margin-top: 10px;
-      color: black;
-      font-size: 9px;
-    }
   }
+
   ////delete Account Modal ////
-  .delAccountModal {
+  &__delAccount {
     display: flex;
     height: 290px;
     flex-direction: column;
@@ -247,77 +185,54 @@ body,
     p {
       font-size: 14px;
       text-align: center;
-      margin-top: 35px;
-      margin-bottom: 12px;
-    }
-    .inputContainer {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      input {
-        margin-top: 0px;
-        width: 180px;
-        height: 30px;
-        border: 1px solid #{$blue};
-        outline: none;
-      }
-    }
-    button {
-      margin-top: 15px;
-    }
-    .delAccountErrorMessage {
-      display: flex;
-      margin-top: 10px;
-      color: black;
-      font-size: 9px;
+      margin-bottom: 22px;
     }
   }
   //// success-Signup Modal ////
-  .successSignupModal {
+  &__successSignup {
     display: flex;
-    height: 270px;
+    height: 240px;
     flex-direction: column;
     align-items: center;
     background-color: white;
     width: 100%;
-    height: 270px;
     color: #{$blue};
     p {
       font-size: 14px;
-      margin-top: 60px;
       text-align: center;
     }
   }
+
   //// Explore Modal ////
-  .exploreModalWrapper {
+  &__explore {
     display: flex;
-    height: 215px;
+    height: 250px;
     flex-direction: column;
     align-items: center;
     background-color: white;
     width: 100%;
     box-shadow: 0px 8px 8px rgba(233, 229, 229, 0.267);
-    .contents {
+    &__contents {
       width: 100%;
-      margin-top: 0;
+      margin-top: 10px;
       display: flex;
       background-color: white;
       flex-direction: column;
       flex: 1;
       align-items: center;
-      // justify-content: center;
       p {
         margin-top: 8px;
         text-align: center;
+        word-spacing: -3px;
       }
       input {
         width: 180px;
         height: 30px;
         outline: none;
+        border: 1px solid #{$blue};
       }
     }
-    .exploreErrorMessage {
+    &__error {
       display: none;
       margin-top: 10px;
       color: black;
@@ -357,7 +272,7 @@ body,
       margin-top: 0px;
       color: #{$logocolor};
       font-weight: 700;
-      font-size: 35px;
+      font-size: 30px;
     }
 
     .closeBtn {
@@ -423,7 +338,7 @@ body,
     height: 45px;
     line-height: 42px;
     text-align: center;
-    font-family: 'Noto Sans KR';
+    font-family: "Noto Sans KR";
     font-size: 13px;
   }
 
@@ -462,7 +377,7 @@ body,
     left: 7.5%;
     color: red;
     font-size: 12px;
-    font-family: 'Noto Sans KR';
+    font-family: "Noto Sans KR";
     &.overall {
       align-self: inherit;
       left: 0;

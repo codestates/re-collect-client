@@ -1,4 +1,4 @@
-@import './util';
+@import "./util";
 
 .recollect {
   flex: 1;
@@ -10,8 +10,8 @@
   padding-top: 80px;
   &__toCollectBtn {
     position: fixed;
-    top: 94px;
-    left: 15vw;
+    top: 142px;
+    left: 10vw;
     font-size: 30px;
     cursor: pointer;
     &:hover {
@@ -26,55 +26,58 @@
     font-size: #{$headerfont};
     font-weight: 700;
     color: #{$blue};
+    text-align: center;
   }
 
   &__bookmarks {
-    width: 36vw;
-    min-width: 530px;
     margin-bottom: 40px;
+  }
+  &__skeleton {
+    font-size: 20px;
+    width: 60vw;
+    height: 35vw;
     background-color: whitesmoke;
-    .skeleton {
-      font-size: 20px;
-      height: 30vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .logoPng {
-        font-size: 15px;
-        width: 40px;
-        height: 40px;
-        filter: grayscale(1) opacity(0.5);
-      }
-      p {
-        color: #{$blue};
-        filter: grayscale(1) opacity(0.5);
-        text-align: center;
-        font-weight: 500;
-      }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .logoPng {
+      font-size: 15px;
+      width: 40px;
+      height: 40px;
+      filter: grayscale(1) opacity(0.5);
+    }
+    p {
+      color: #{$blue};
+      filter: grayscale(1) opacity(0.5);
+      text-align: center;
+      font-weight: 500;
     }
   }
 }
 
-@include tablet {
-  .recollect {
-    &__toCollectBtn {
-      top: 80px;
-      left: 5vw;
-    }
-  }
-}
+// @include tablet {
+//   .recollect {
+//     &__toCollectBtn {
+//       top: 80px;
+//       left: 5vw;
+//     }
+//   }
+// }
 
 @include mobile {
   .recollect {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
     &__toCollectBtn {
-      top: 130px;
-      left: 15vw;
+      top: 189px;
+      left: 10vw;
       font-size: 22px;
     }
     &__title {
       padding: {
-        top: 100px;
+        top: 110px;
         bottom: 35px;
       }
       font-size: 22px;
@@ -84,11 +87,19 @@
     &__bookmarks {
       width: 71vw;
       min-width: 200px;
-      .skeleton {
-        p {
-          font-size: 14px;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    &__skeleton {
+      text-align: center;
+      // 모바일 중앙정렬부터 //
+      p {
+        font-size: 14px;
       }
+      width: 60vw;
+      height: 35vw;
     }
   }
 }

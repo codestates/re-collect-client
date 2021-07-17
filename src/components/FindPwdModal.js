@@ -7,7 +7,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 function FindPwdModal(props) {
   const findPwdValidCheck = () => {
     const email = document.querySelector(".findPwdEmail").value;
-    const error = document.querySelector(".findPwdErrorMessage");
+    const error = document.querySelector(".modal__error");
     if (!IsValidateEmail(email)) {
       error.textContent = "이메일을 확인해주세요";
       return;
@@ -29,11 +29,11 @@ function FindPwdModal(props) {
   };
 
   return (
-    <div className="modal">
-      <div className="modalWrapper">
-        <div className="findPwdpModal">
+    <div className="modalpage">
+      <div className="modal">
+        <div className="modal__findPwd">
           <div
-            className="closeBtn"
+            className="modal__closeBtn"
             onClick={() => {
               props.setModalMode("");
             }}
@@ -41,18 +41,18 @@ function FindPwdModal(props) {
             <FontAwesomeIcon icon={faTimes} />
           </div>
 
-          <div className="logo"> Recollect </div>
+          <div className="modal__logo"> Recollect </div>
           <p>
             이메일을 입력하면 <br /> 인증번호를 보내드려요.
           </p>
-          <div className="inputContainer">
+          <div className="modal__input">
             <input
               className="findPwdEmail"
               type="email"
               placeholder=" 이메일"
             />
           </div>
-          <div className="findPwdErrorMessage"></div>
+          <div className="modal__error"></div>
           <button
             onClick={() => {
               findPwdValidCheck();
@@ -60,7 +60,7 @@ function FindPwdModal(props) {
           >
             비밀번호 재설정
           </button>
-          <div className="buttonContainer">
+          <div className="modal__bottomTab">
             <div
               onClick={() => {
                 props.setModalMode("signup");
@@ -76,7 +76,6 @@ function FindPwdModal(props) {
               로그인
             </div>
           </div>
-          <div className="signUperrorMessage"> </div>
         </div>
       </div>
     </div>
@@ -84,7 +83,3 @@ function FindPwdModal(props) {
 }
 
 export default FindPwdModal;
-
-// findPwdModal //
-// 200 ok 응답시 =>  "임시비밀번호가 전송되었습니다. 이메일을 확인해주세요" 모달
-// 쿼리스트링으로 들어온 email을 출력하여 비밀번호 변경 요청하기

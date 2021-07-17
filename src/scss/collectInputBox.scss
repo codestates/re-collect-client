@@ -1,4 +1,4 @@
-@import './util';
+@import "./util";
 
 .sidebar {
   &__collectInputBox {
@@ -31,7 +31,7 @@
     width: 80%;
     padding-left: 8px;
     font-size: 16px;
-    font-family: 'IBM Plex Mono';
+    font-family: "IBM Plex Mono";
     background: white;
 
     &:hover,
@@ -58,6 +58,12 @@
   }
   &__input--url {
     height: 180px;
+    overflow-wrap: break-word;
+    resize: none;
+    padding-top: 10px;
+    &::placeholder {
+      padding-top: 65px;
+    }
   }
 
   &__customizingSection {
@@ -137,7 +143,7 @@
     border: 1px rgba(0, 0, 0, 0.5) solid;
     background-color: white;
     font-size: 16px;
-    font-family: 'Noto Sans KR';
+    font-family: "Noto Sans KR";
     cursor: pointer;
     &:hover {
       box-shadow: #{$btnboxshadow};
@@ -176,7 +182,7 @@
     color: #{$errorcolor};
     background-color: white;
     font-size: 16px;
-    font-family: 'Noto Sans KR';
+    font-family: "Noto Sans KR";
     cursor: pointer;
     &:hover {
       box-shadow: #{$btnboxshadow};

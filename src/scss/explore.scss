@@ -1,228 +1,144 @@
 @import "./util";
 
-.exploreContainer {
+.explore {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-
-  //// Tablet ////
   @include tablet {
-    color: black;
-    .exploreHeader {
-      font-size: 30px;
-      margin-top: 94px;
-    }
-    //// searchbar Tablet
-    .searchBar {
-      width: 560px;
-      height: 40px;
-      margin-top: 50px;
-      input {
-        width: 90%;
-        height: 100%;
-        outline: none;
+    .explore {
+      &__text {
+        color: #{$blue};
+        font-size: 30px;
+        margin-top: 120px;
       }
-      button {
-        width: 10%;
-        height: 100%;
-        &:hover {
-          cursor: pointer;
+      &__searchBar {
+        width: 560px;
+        height: 40px;
+        margin-top: 50px;
+        input {
+          width: 90%;
+          height: 100%;
+          outline: none;
+        }
+        button {
+          width: 10%;
+          height: 100%;
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
-    }
-
-    //// Recommendation Tablet
-    .exploreSearchRecommendation {
-      display: inline-flex;
-      width: 560px;
-      margin-top: 30px;
-      justify-content: center;
-      align-content: center;
-      .recommendTitle {
-        color: gray;
-        margin-left: 5px;
-      }
-      .recommendTags {
-        flex: 1;
-      }
-      .recommendTag {
-        font-size: 9px;
-        display: inline-flex;
-        height: 30px;
-        justify-content: center;
-        align-items: center;
-        padding: 6px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        border: 1px solid black;
-        &:hover {
-          cursor: pointer;
-          color: black;
+      &__recommendation {
+        span {
+          font-size: 12px;
         }
       }
-    }
-
-    //// interestingBookmark Tablet
-    .interestingBookmarksCategory {
-      margin-top: 105px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      p {
-        font-size: 28px;
-        margin: 0;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        text-align: center;
+      &__interestingBookmarks {
+        p {
+          font-size: 25px;
+        }
       }
     }
   }
 
   //// Mobile ////
   @include mobile {
-    //// Explore Header mobile
-    .exploreHeader {
-      font-size: 30px;
-      margin-top: 94px;
-      // nav-bar가 커져서 64px => 94px로 변경
-    }
-    //// search-bar mobile
-    .searchBar {
-      width: 310px;
-      height: 35px;
-      margin-top: 50px;
-      input {
-        width: 90%;
-        height: 100%;
-        outline: none;
+    .explore {
+      &__searchBar {
+        width: 310px;
+        height: 35px;
       }
-      button {
-        width: 10%;
-        height: 100%;
-        &:hover {
-          cursor: pointer;
+      &__recommendation {
+        width: 310px;
+        display: inline-block;
+        margin-top: 10px;
+        &__title {
+          margin-left: 5px;
+        }
+        span {
+          font-size: 12px;
         }
       }
-    }
-    //// recommendation mobile
-    .exploreSearchRecommendation {
-      width: 310px;
-      margin-top: 30px;
-      display: inline-block;
-      justify-content: center;
-      align-content: center;
-      .recommendTitle {
-        color: gray;
-        margin-left: 5px;
-      }
-      .recommendTags {
-        flex: 1;
-      }
-      .recommendTag {
-        font-size: 9px;
-        display: inline-flex;
-        height: 30px;
-        justify-content: center;
-        align-items: center;
-        padding: 6px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-        border: 1px solid black;
-        &:hover {
-          cursor: pointer;
-          color: black;
+      &__interestingBookmarks {
+        p {
+          font-size: 20px;
+          margin: 0;
+          color: #{$blue};
         }
-      }
-    }
-
-    //// interestingBookmark mobile
-    .interestingBookmarksCategory {
-      margin-top: 105px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      p {
-        font-size: 24px;
-        margin: 0;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        text-align: center;
-        width: 292px;
+        ul {
+          width: 292px;
+        }
       }
     }
   }
 }
 
 /// Laptop ////
-.searchContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-}
-//// explore header Laptop
-.exploreHeader {
-  color: #{$logocolor};
-  font-size: 2.8vw;
-  font-weight: 700;
-  margin-top: 94px;
-}
-//// search bar Laptop
-.searchBar {
-  width: 560px;
-  height: 40px;
-  margin-top: 50px;
+.explore {
+  &__text {
+    color: #{$logocolor};
+    font-size: #{$headerfont};
+    font-weight: 700;
+    margin-top: 120px;
+    text-align: center;
+  }
 
-  input {
-    width: 88%;
-    height: 100%;
-    outline: none;
-    border: 1px solid black;
-    border-right: none;
-    font-size: 16px;
-    padding-left: 10px;
-    &::placeholder {
-      color: rgba(0, 0, 0, 0.5);
+  &__search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  &__searchBar {
+    width: 560px;
+    height: 40px;
+    margin-top: 50px;
+    input {
+      width: 88%;
+      height: 100%;
+      outline: none;
+      border: 1px solid black;
+      border-right: none;
+      font-size: 16px;
+      padding-left: 10px;
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    button {
+      font-size: 16px;
+      color: gray;
+      border: 1px solid black;
+      border-left: none;
+      background-color: white;
+      width: 10%;
+      height: 100%;
+      &:hover {
+        color: black;
+        cursor: pointer;
+      }
     }
   }
-  button {
-    font-size: 16px;
-    color: gray;
-    border: 1px solid black;
-    border-left: none;
-    background-color: white;
-    width: 10%;
-    height: 100%;
-    &:hover {
-      color: black;
-      cursor: pointer;
+
+  &__recommendation {
+    width: 560px;
+    margin-top: 30px;
+    display: flex;
+    padding-left: 8px;
+    justify-content: center;
+    align-content: center;
+    div {
+      color: rgb(128, 119, 119);
     }
   }
-}
-//// recommendation Laptop
-.exploreSearchRecommendation {
-  width: 560px;
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  div {
-    color: gray;
-  }
-  .recommendTags {
+
+  &__tags {
     font-size: 14px;
     flex: 1;
   }
-  .recommendTag {
+  span {
     display: inline-flex;
     height: 30px;
     justify-content: center;
@@ -230,22 +146,46 @@
     padding: 6px;
     margin-bottom: 5px;
     margin-left: 5px;
-    border: 1px solid black;
+    border: 1px solid rgb(128, 119, 119);
     &:hover {
       cursor: pointer;
       color: black;
     }
   }
-}
-//// profile carousal Laptop
-.exploreProfileCarousal {
-  margin-top: 40px;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
+
+  &__RandomProfile {
+    margin-top: 40px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__interestingBookmarks {
+    margin: 105px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    p {
+      color: #{$logocolor};
+      font-size: #{$headerfont};
+      font-weight: 700;
+      margin: 0;
+    }
+    ul {
+      margin-top: 30px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 530px;
+    }
+  }
 }
 
 // Carousel
@@ -253,29 +193,33 @@
   text-align: center;
   box-shadow: #{$boxshadow};
   border: solid 1px #000;
-  width: 250px;
-  max-width: 250px;
-  height: 350px;
+  width: 21vw;
+  aspect-ratio: 3/4;
 }
 .explore__searchProfile {
-  // min-height: 320px;
-  // height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   &:hover {
     cursor: pointer;
   }
-  .explore__searchProfile__profileImage {
+  color: #{$blue};
+  &__profileImage {
     margin-top: 25px;
     font-size: 85px;
+    .photo-icon {
+      height: 100%;
+      width: 80px;
+      font-weight: lighter;
+    }
   }
   p {
     margin-top: 0px;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 25px;
+    font-weight: 700;
   }
-  .socialInfo {
+  &__socialInfo {
     margin-top: 20px;
     font-size: 12px;
     display: flex;
@@ -289,7 +233,7 @@
       margin: 0 3px;
     }
   }
-  .companyInfo {
+  &__companyInfo {
     margin-top: 30px;
     font-size: 12px;
     width: 100%;
@@ -306,27 +250,5 @@
     .icon {
       padding-right: 3px;
     }
-  }
-}
-//// interesting bookmark Laptop
-.interestingBookmarksCategory {
-  margin: 105px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  p {
-    // font-size: 30px;
-    font-size: 2.4vw;
-    margin: 0;
-  }
-  ul {
-    margin-top: 30px;
-    padding: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 530px;
   }
 }

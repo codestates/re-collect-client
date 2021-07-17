@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { useSelector, useDispatch } from 'react-redux';
-import { loginInitialize, loginThunk } from '../modules/sign';
-import { IsValidateEmail, IsValidiatePassword } from '../util/validation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { loginInitialize, loginThunk } from "../modules/sign";
+import { IsValidateEmail, IsValidiatePassword } from "../util/validation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function LoginModal(props) {
   const history = useHistory();
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem("accessToken");
   const { isLogin, error } = useSelector((state) => state.signReducer.user);
   const dispatch = useDispatch();
   const [loginInfo, setLoginInfo] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     setErrorMessage(error);
@@ -23,10 +23,10 @@ function LoginModal(props) {
 
   useEffect(() => {
     if (accessToken) {
-      props.setModalMode('');
-      history.push('/loading');
+      props.setModalMode("");
+      history.push("/loading");
       setTimeout(() => {
-        history.push('/collect');
+        history.push("/collect");
       }, 2000);
     }
   }, [accessToken]);
@@ -36,10 +36,10 @@ function LoginModal(props) {
     const pwd = loginInfo.password;
 
     if (!IsValidateEmail(email)) {
-      setErrorMessage('이메일을 확인해주세요');
+      setErrorMessage("이메일을 확인해주세요");
       return;
     } else if (!IsValidiatePassword(pwd)) {
-      setErrorMessage('비밀번호를 확인해주세요');
+      setErrorMessage("비밀번호를 확인해주세요");
       return;
     } else {
       handleLogin();
@@ -59,21 +59,21 @@ function LoginModal(props) {
   };
 
   return (
-    <div className="modal">
-      <div className="modalWrapper">
-        <div className="loginModal">
+    <div className="modalpage">
+      <div className="modal">
+        <div className="modal__login">
           <div
-            className="closeBtn"
+            className="modal__closeBtn"
             onClick={() => {
               dispatch(loginInitialize());
-              props.setModalMode('');
+              props.setModalMode("");
             }}
           >
             <FontAwesomeIcon icon={faTimes} />
           </div>
 
-          <div className="logo"> Recollect </div>
-          <div className="inputContainer">
+          <div className="modal__logo"> Recollect </div>
+          <div className="modal__input">
             <input
               className="loginEmail"
               type="email"
@@ -95,7 +95,7 @@ function LoginModal(props) {
               }}
             />
           </div>
-          <div className="loginErrorMessage">{errorMessage}</div>
+          <div className="modal__error">{errorMessage}</div>
           <button
             onClick={() => {
               loginValidCheck();
@@ -103,17 +103,17 @@ function LoginModal(props) {
           >
             로그인
           </button>
-          <div className="buttonContainer">
+          <div className="modal__bottomTab">
             <div
               onClick={() => {
-                props.setModalMode('signup');
+                props.setModalMode("signup");
               }}
             >
               회원가입
             </div>
             <div
               onClick={() => {
-                props.setModalMode('findPwd');
+                props.setModalMode("findPwd");
               }}
             >
               비밀번호 찾기

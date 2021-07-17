@@ -1,6 +1,6 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteCategory } from '../modules/category';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteCategory } from "../modules/category";
 
 function CategoryReallyDeleteModal(props) {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function CategoryReallyDeleteModal(props) {
   return (
     <div className={`${props.className}__container`}>
       <div className={`${props.className}__text`}>
-        카테고리를 삭제하면 포함된
+        카테고리에 포함된
         <br />
         모든 북마크들이 사라집니다
         <br />

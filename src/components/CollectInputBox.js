@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Creatable from 'react-select/creatable';
+import React, { useState, useEffect } from "react";
+import Creatable from "react-select/creatable";
 import {
   addBookmark,
   addGuestBookmark,
@@ -8,45 +8,45 @@ import {
   editEnd,
   deleteBookmark,
   deleteGuestBookmark,
-} from '../modules/bookmark';
-import { useSelector, useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { notify } from '../modules/notification';
+} from "../modules/bookmark";
+import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { notify } from "../modules/notification";
 
 const customStyles = {
   container: (provided, state) => ({
     ...provided,
-    width: '80%',
+    width: "80%",
     height: 36,
-    border: '1px rgba(0, 0, 0, 0.5) solid',
+    border: "1px rgba(0, 0, 0, 0.5) solid",
     fontSize: 16,
     marginBottom: 15,
-    display: 'flex',
-    background: 'white',
+    display: "flex",
+    background: "white",
   }),
 
   control: () => ({
-    display: 'flex',
+    display: "flex",
     flex: 1,
     width: 40,
   }),
 
   placeholder: (provided) => ({
     ...provided,
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: "rgba(0, 0, 0, 0.5)",
   }),
 
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
+    const transition = "opacity 300ms";
 
     return { ...provided, opacity, transition };
   },
 };
 
 function CollectInputBox(props) {
-  const accessToken = localStorage.getItem('accessToken');
+  const accessToken = localStorage.getItem("accessToken");
 
   const { reducedbookmarks, category } = useSelector(
     (state) => state.bookmarkReducer.userBookmarks
@@ -66,13 +66,13 @@ function CollectInputBox(props) {
   );
 
   const [bookmarkInput, setbookmarkInput] = useState({
-    category: '',
+    category: "",
     categoryId: null,
     id: null,
-    text: '',
-    url: '',
+    text: "",
+    url: "",
     importance: false,
-    color: '',
+    color: "",
   });
 
   useEffect(() => {
@@ -108,7 +108,7 @@ function CollectInputBox(props) {
 
   const handleInputChange = (e) => {
     const { value, name } = e.target;
-    if (name === 'importance') {
+    if (name === "importance") {
       setbookmarkInput((oldValue) => {
         return {
           ...bookmarkInput,
@@ -125,13 +125,13 @@ function CollectInputBox(props) {
 
   const handleInitialize = () => {
     setbookmarkInput({
-      category: '',
+      category: "",
       categoryId: null,
       id: null,
-      text: '',
-      url: '',
+      text: "",
+      url: "",
       importance: false,
-      color: '',
+      color: "",
     });
   };
 
@@ -143,17 +143,17 @@ function CollectInputBox(props) {
     const { text, url, category } = bookmarkInput;
 
     if (!text || !url || !category) {
-      if (!category) dispatch(notify('카테고리를 지정해주세요!'));
-      if (!text) dispatch(notify('텍스트를 입력해주세요!'));
-      if (!url) dispatch(notify('url을 입력해주세요!'));
+      if (!category) dispatch(notify("카테고리를 지정해주세요!"));
+      if (!text) dispatch(notify("텍스트를 입력해주세요!"));
+      if (!url) dispatch(notify("url을 입력해주세요!"));
       return;
     }
 
     switch (mode) {
-      case 'edit':
+      case "edit":
         handleEditBookmark();
         break;
-      case 'add':
+      case "add":
         handleAddBookmark();
         break;
       default:
@@ -162,7 +162,7 @@ function CollectInputBox(props) {
   };
 
   const handleAddBookmark = () => {
-    console.log('진입여부');
+    console.log("진입여부");
     if (accessToken) {
       dispatch(addBookmark(bookmarkInput));
     } else {
@@ -195,7 +195,7 @@ function CollectInputBox(props) {
   return (
     <div className={`${props.className}__collectInputBox`}>
       <div className={`${props.className}__text`}>
-        {isEdit ? '북마크 수정/삭제하기' : '북마크 추가하기'}
+        {isEdit ? "북마크 수정/삭제하기" : "북마크 추가하기"}
       </div>
       <Creatable
         className={`${props.className}__select`}
@@ -214,7 +214,7 @@ function CollectInputBox(props) {
         onChange={handleInputChange}
         placeholder="Text"
       />
-      <input
+      <textarea
         className={`${props.className}__input--url`}
         name="url"
         type="url"
@@ -228,46 +228,46 @@ function CollectInputBox(props) {
           <button
             id="#214bc8"
             className={`${props.className}__color-circle--blue${
-              bookmarkInput.color === '#214bc8' ? ' active' : ''
+              bookmarkInput.color === "#214bc8" ? " active" : ""
             }`}
             onClick={(e) => {
               handleColorPick(e);
             }}
           >
-            {bookmarkInput.color === '#214bc8' ? (
+            {bookmarkInput.color === "#214bc8" ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
-              ''
+              ""
             )}
           </button>
           <button
             id="#0eae61"
             className={`${props.className}__color-circle--green${
-              bookmarkInput.color === '#0eae61' ? ' active' : ''
+              bookmarkInput.color === "#0eae61" ? " active" : ""
             }`}
             onClick={(e) => {
               handleColorPick(e);
             }}
           >
-            {bookmarkInput.color === '#0eae61' ? (
+            {bookmarkInput.color === "#0eae61" ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
-              ''
+              ""
             )}
           </button>
           <button
             id="#f24626"
             className={`${props.className}__color-circle--red${
-              bookmarkInput.color === '#f24626' ? ' active' : ''
+              bookmarkInput.color === "#f24626" ? " active" : ""
             }`}
             onClick={(e) => {
               handleColorPick(e);
             }}
           >
-            {bookmarkInput.color === '#f24626' ? (
+            {bookmarkInput.color === "#f24626" ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
-              ''
+              ""
             )}
           </button>
         </div>
@@ -295,24 +295,24 @@ function CollectInputBox(props) {
                 }
           }
           disabled={
-            bookmarkInput.text === '' && bookmarkInput.url === '' ? true : false
+            bookmarkInput.text === "" && bookmarkInput.url === "" ? true : false
           }
         >
-          {isEdit ? '취소' : '지우기'}
+          {isEdit ? "취소" : "지우기"}
         </button>
         <button
           className={`${props.className}__btn right`}
           onClick={
             isEdit
               ? () => {
-                  handleCheckBefore('edit');
+                  handleCheckBefore("edit");
                 }
               : () => {
-                  handleCheckBefore('add');
+                  handleCheckBefore("add");
                 }
           }
         >
-          {isEdit ? '수정' : '추가'}
+          {isEdit ? "수정" : "추가"}
         </button>
       </div>
       {isEdit ? (
@@ -325,7 +325,7 @@ function CollectInputBox(props) {
           </button>
         </div>
       ) : (
-        ''
+        ""
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-@import './util';
+@import "./util";
 
 .searching {
   display: flex;
@@ -11,19 +11,18 @@
     width: 36vw;
     min-width: 500px;
     margin-bottom: 30px;
-
-    .skeleton {
-      font-size: 20px;
-      height: 30vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      p {
-        color: #{$blue};
-        filter: grayscale(1) opacity(0.5);
-        font-weight: 500;
-        text-align: center;
-      }
+  }
+  &__skeleton {
+    font-size: 20px;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: #{$blue};
+      filter: grayscale(1) opacity(0.5);
+      font-weight: 500;
+      text-align: center;
     }
   }
 }
@@ -33,9 +32,9 @@
     &__bookmarks {
       width: 71vw;
       min-width: 200px;
-      .skeleton {
-        font-size: 14px;
-      }
+    }
+    &__skeleton {
+      font-size: 14px;
     }
   }
 }

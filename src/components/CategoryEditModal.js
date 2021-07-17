@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { editCategory, categoryEditEnd } from '../modules/category';
-import { notify } from '../modules/notification';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { editCategory, categoryEditEnd } from "../modules/category";
+import { notify } from "../modules/notification";
 
-import CategoryReallyDeleteModal from './CategoryReallyDeleteModal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CategoryReallyDeleteModal from "./CategoryReallyDeleteModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function CategoryEditModal() {
   const { isCategoryEdit, id, title } = useSelector(
@@ -15,8 +15,8 @@ function CategoryEditModal() {
 
   const [reallyDelete, setreallyDelete] = useState(false);
   const [data, setData] = useState({
-    id: '',
-    title: '',
+    id: "",
+    title: "",
   });
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function CategoryEditModal() {
 
   const handleEditCategory = () => {
     if (data.title.length === 0) {
-      dispatch(notify('제목을 꼭 입력해주세요!'));
+      dispatch(notify("제목을 꼭 입력해주세요!"));
       return;
     }
     dispatch(editCategory(data));
@@ -68,7 +68,7 @@ function CategoryEditModal() {
             <FontAwesomeIcon icon={faTimes} />
           </div>
           <div className="categoryEditModal__text">
-            카테고리이름 수정 및 <br />
+            카테고리 제목 수정 및 <br />
             카테고리 삭제
           </div>
           <input

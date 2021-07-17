@@ -5,17 +5,7 @@ function SetNewPwd(props) {
     props.setModalMode("setNewPwd");
   }, []);
 
-  return (
-    <div className="SetNewPwd__container">
-      {/* <button
-        onClick={() => {
-          props.setModalMode("setNewPwd");
-        }}
-      >
-        click me
-      </button> */}
-    </div>
-  );
+  return <div className="SetNewPwd__container"></div>;
 }
 
 export default SetNewPwd;

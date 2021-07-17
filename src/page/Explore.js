@@ -53,29 +53,30 @@ export default function SimpleSlider(props) {
   }, []);
 
   return (
-    <div className="exploreContainer">
-      <div className="searchContainer">
-        <div className="exploreHeader"> Explore </div>
-        <div className="searchBar">
+    <div className="explore">
+      <div className="explore__text"> Explore </div>
+      <div className="explore__search">
+        <div className="explore__searchBar">
           <input type="text" placeholder="search" />
           <button>
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <div className="exploreSearchRecommendation">
-          <div className="recommendTitle"> Recommendation </div>
-          <div className="recommendTags">
-            <span className="recommendTag"> 프론트엔드 해외취업 </span>
-            <span className="recommendTag"> JWT토큰 </span>
-            <span className="recommendTag"> 비동기 이해하기 </span>
-            <span className="recommendTag"> 그림으로 보는 알고리즘 </span>
-            <span className="recommendTag"> 호주 리드개발자가 되기까지</span>
+        <div className="explore__recommendation">
+          <div className="explore__recommendation__title"> Recommendation </div>
+          <div className="explore__recommendation__tags">
+            <span> 프론트엔드 해외취업 </span>
+            <span> JWT토큰 </span>
+            <span> 비동기 이해하기 </span>
+            <span> 그림으로 보는 알고리즘 </span>
+            <span> 리드개발자가 되기까지</span>
           </div>
         </div>
       </div>
-      <div className="exploreProfileCarousal">
+
+      {/* <div className="exploreProfileCarousal"> */}
+      <div className="explore__RandomProfile">
         <Slider {...settings}>
-          {/* users데이터를 받아와서 렌덜할시 끊기는 오류가 있어서 fakeData사용 */}
           {state === null
             ? fakeData.map((el) => {
                 return (
@@ -100,14 +101,34 @@ export default function SimpleSlider(props) {
         </Slider>
       </div>
       {/* bookmark 더미데이터 initialState에 넣어두는게 맞을지? */}
-      <div className="interestingBookmarksCategory">
+      <div className="explore__interestingBookmarks">
         <p> Interesting Bookmarks</p>
         <ul>
-          <BigBookmark text={""} url={`https://www.google.com/`} />
-          <BigBookmark url={`https://www.google.com/`} />
-          <BigBookmark url={`https://www.google.com/`} />
-          <BigBookmark url={`https://www.google.com/`} />
-          <BigBookmark url={`https://www.google.com/`} />
+          <BigBookmark
+            text={"Algebraic Effects for the Rest of Us"}
+            color={`green`}
+            url={`https://overreacted.io/algebraic-effects-for-the-rest-of-us/`}
+          />
+          <BigBookmark
+            text={"redux-thunk로 프로미스다루기"}
+            color={`orange`}
+            url={`https://react.vlpt.us/redux-middleware/05-redux-thunk-with-promise.html`}
+          />
+          <BigBookmark
+            text={"day.js 공식문서"}
+            color={`black`}
+            url={`https://day.js.org/docs/en/display/difference`}
+          />
+          <BigBookmark
+            text={"Hook API 참고서"}
+            color={`skyblue`}
+            url={`https://ko.reactjs.org/docs/hooks-reference.html#useref`}
+          />
+          <BigBookmark
+            text={"Interceptor란"}
+            color={`red`}
+            url={`https://docu94.tistory.com/131`}
+          />
         </ul>
       </div>
     </div>

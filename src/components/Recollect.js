@@ -1,32 +1,36 @@
-import React, { useEffect } from 'react';
-import BigBookmark from './BigBookmark';
-import { useSelector, useDispatch } from 'react-redux';
-import { recollect } from '../modules/getRecollect';
+import React, { useState, useEffect } from "react";
+import BigBookmark from "./BigBookmark";
+import { useSelector, useDispatch } from "react-redux";
+import { recollect } from "../modules/getRecollect";
+import { getBookmark } from "../modules/bookmark";
 
 function Recollect() {
   const { bookmarks } = useSelector(
     (state) => state.bookmarkReducer.userBookmarks
   );
   const dispatch = useDispatch();
-  const accessToken = localStorage.getItem('accessToken');
-  const { guestBookmarks } = useSelector((state) => state.bookmarkReducer);
-  // 읽지않은 북마크 //
+  const accessToken = localStorage.getItem("accessToken");
   const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
+
+  const [unreads, setUnreads] = useState([]);
 
   useEffect(() => {
     if (accessToken) {
       dispatch(recollect(bookmarks));
-    } else {
-      console.log(guestBookmarks);
     }
   }, []);
+
+  useEffect(() => {
+    setUnreads(unreadBookmarks);
+    console.log(unreads);
+  }, [bookmarks]);
 
   return (
     <div className="recollect">
       <div className="recollect__title">Recollect</div>
       <div className="recollect__bookmarks">
-        {unreadBookmarks.length !== 0 ? (
-          unreadBookmarks.map((unread) => {
+        {unreads.length !== 0 ? (
+          unreads.map((unread) => {
             return (
               <BigBookmark
                 key={unread.id}
@@ -39,7 +43,7 @@ function Recollect() {
             );
           })
         ) : (
-          <div className="skeleton">
+          <div className="recollect__skeleton">
             <img src="logo_cut.png" className="logoPng" />
             <p>리콜렉트할 북마크가 없어요!</p>
           </div>

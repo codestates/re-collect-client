@@ -33,37 +33,35 @@ function DelAccountModal(props) {
     dispatch(delAccount());
     setErrorMessage("");
     InputRef.current.value = "";
-    
-      setTimeout(() => {
+
+    setTimeout(() => {
       props.setModalMode("");
-      }, 2000);
+    }, 1000);
 
-      setTimeout(() => {
-        history.push("/");
-      }, 2000);
-    
-
+    setTimeout(() => {
+      history.push("/");
+    }, 1000);
   };
 
   return (
-    <div className="modal">
-      <div className="modalWrapper">
-        <div className="delAccountModal">
+    <div className="modalpage">
+      <div className="modal">
+        <div className="modal__delAccount">
           <div
-            className="closeBtn"
+            className="modal__closeBtn"
             onClick={() => {
               props.setModalMode("");
             }}
           >
             <FontAwesomeIcon icon={faTimes} />
           </div>
-          <div className="logo"> Recollect </div>
+          <div className="modal__logo"> Recollect </div>
           <p>
             아래 문구를 입력하고
             <br />
             계정을 삭제합니다.
           </p>
-          <div className="inputContainer">
+          <div className="modal__input">
             <input
               className="delMessage"
               type="text"
@@ -78,7 +76,7 @@ function DelAccountModal(props) {
           >
             계정 삭제
           </button>
-          <div className="delAccountErrorMessage">{errorMessage}</div>
+          <div className="modal__error">{errorMessage}</div>
         </div>
       </div>
     </div>

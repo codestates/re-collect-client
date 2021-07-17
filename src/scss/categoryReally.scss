@@ -1,16 +1,16 @@
-@import './util';
+@import "./util";
 
 .categoryReally {
   &__container {
     position: fixed;
     left: 50%;
-    top: 30%;
+    top: 25%;
     transform: translate(-50%, 0);
     margin: 0 auto;
     background-color: white;
     z-index: 1;
     width: 280px; //공통 가로 길이
-    height: 200px;
+    height: 280px;
     border: 1px solid #{$logocolor};
     display: flex;
     flex-direction: column;
@@ -18,15 +18,16 @@
   }
   &__text {
     width: 200px;
-    margin-top: 30px;
+    margin-top: 70px;
     font-size: 16px;
     text-align: center;
+    word-spacing: -3px;
   }
 
   &__Btns {
     width: 200px;
     height: 35px;
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-between;
   }
@@ -44,13 +45,14 @@
 
   &__yesBtns {
     width: 80px;
-    border: 1px solid red;
-    color: red;
+    border: 1px rgba(0, 0, 0, 0.7) solid;
+    color: rgba(0, 0, 0, 0.7);
     background: white;
     &:hover {
       cursor: pointer;
-      background: red;
-      color: white;
+      // background: red;
+      border: 1px solid red;
+      color: red;
     }
   }
 }

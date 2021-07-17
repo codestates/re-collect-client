@@ -84,7 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #{$logocolor};
-  
+
   //border: solid 1px #{$logocolor};
 
   &__inner {
@@ -412,7 +412,6 @@ body {
             font-size: 2.7vw;
             word-spacing: -8px;
             font-weight: 800;
-            
           }
           p {
             font-size: 1.7vw;
@@ -482,13 +481,13 @@ body {
           font-weight: 700;
         }
 
-        .socialInfo {
+        &__socialInfo {
           font-size: 1vw;
           display: flex;
           justify-content: space-around;
         }
 
-        .companyInfo {
+        &__companyInfo {
           margin-top: 10%;
           font-size: 1vw;
           div {

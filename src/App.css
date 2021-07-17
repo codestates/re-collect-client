@@ -2,7 +2,7 @@
   border: 1px solid #214bc8;
   height: 45px;
   line-height: 45px;
-  width: 100%;
+  width: 500px;
   margin-bottom: 25px;
   padding-left: 5px;
   font-size: 1.5vw;
@@ -30,16 +30,17 @@
 }
 @media (max-width: 600px) {
   .bigBookmark {
+    width: 70vw;
     height: 32px;
     margin-bottom: 11px;
     font-size: 11px;
-    line-height: 22px;
+    line-height: 28px;
   }
   .bigBookmark__triangle {
-    border-top: 15px solid transparent;
-    border-left: 23.4px solid transparent;
-    border-right: 23.4px solid #214bc8;
-    border-bottom: 15px solid transparent;
+    border-top: 14px solid transparent;
+    border-left: 16px solid transparent;
+    border-right: 20px solid #214bc8;
+    border-bottom: 16px solid transparent;
   }
 }
 .categorybox {
@@ -144,7 +145,7 @@
   transform: scale(1.3);
 }
 .categorybox__bookmark-ellipsis.red.important:hover {
-  color: #0bbf0d;
+  color: #ffffff;
   transform: scale(1.3);
 }
 .categorybox__bookmark-ellipsis.blue:hover {
@@ -152,7 +153,7 @@
   transform: scale(1.3);
 }
 .categorybox__bookmark-ellipsis.blue.important:hover {
-  color: #fa830f;
+  color: #ffffff;
   transform: scale(1.3);
 }
 .categorybox__bookmark-ellipsis.green:hover {
@@ -160,7 +161,7 @@
   transform: scale(1.3);
 }
 .categorybox__bookmark-ellipsis.green.important:hover {
-  color: #610c00;
+  color: #ffffff;
   transform: scale(1.3);
 }
 .categorybox__bookmark-triangle {
@@ -251,6 +252,9 @@
     font-size: 20px;
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.05);
   }
+  .bottomPopup__plusBtn:hover {
+    cursor: pointer;
+  }
   .bottomPopup__contentsBackground {
     flex: 7;
     display: flex;
@@ -302,11 +306,12 @@
   margin-top: 15px;
   font-size: 16px;
   text-align: center;
+  word-spacing: -3px;
 }
 .categoryEditModal__titleInput {
   width: 200px;
   height: 35px;
-  margin-top: 15px;
+  margin-top: 25px;
   border: 1px solid #214bc8;
 }
 .categoryEditModal__titleInput:focus {
@@ -316,7 +321,7 @@
 .categoryEditModal__editBtn {
   width: 200px;
   height: 35px;
-  margin-top: 30px;
+  margin-top: 20px;
   background-color: #214bc8;
   border: 1px solid #214bc8;
   color: #c4c4c4;
@@ -329,25 +334,25 @@
   width: 200px;
   height: 35px;
   margin-top: 15px;
-  border: 1px solid red;
-  color: red;
+  border: 1px rgba(0, 0, 0, 0.7) solid;
+  color: rgba(0, 0, 0, 0.7);
   background: white;
 }
 .categoryEditModal__deleteBtn:hover {
+  border: 1px red solid;
   cursor: pointer;
-  background: red;
-  color: white;
+  color: red;
 }
 .categoryReally__container {
   position: fixed;
   left: 50%;
-  top: 30%;
+  top: 25%;
   transform: translate(-50%, 0);
   margin: 0 auto;
   background-color: white;
   z-index: 1;
   width: 280px;
-  height: 200px;
+  height: 280px;
   border: 1px solid #214bc8;
   display: flex;
   flex-direction: column;
@@ -355,14 +360,15 @@
 }
 .categoryReally__text {
   width: 200px;
-  margin-top: 30px;
+  margin-top: 70px;
   font-size: 16px;
   text-align: center;
+  word-spacing: -3px;
 }
 .categoryReally__Btns {
   width: 200px;
   height: 35px;
-  margin-top: 30px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -378,14 +384,14 @@
 }
 .categoryReally__yesBtns {
   width: 80px;
-  border: 1px solid red;
-  color: red;
+  border: 1px rgba(0, 0, 0, 0.7) solid;
+  color: rgba(0, 0, 0, 0.7);
   background: white;
 }
 .categoryReally__yesBtns:hover {
   cursor: pointer;
-  background: red;
-  color: white;
+  border: 1px solid red;
+  color: red;
 }
 .collectview {
   display: flex;
@@ -413,15 +419,24 @@
   height: 70px;
 }
 .collectview__alarm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   grid-column-start: 1;
   grid-column-end: 6;
-  height: 40px;
-  line-height: 40px;
-  background-color: #EBFF9D;
+  height: 45px;
+  line-height: 45px;
+  transform: translateY(-2px);
+  background-color: #e2fc61;
   text-align: center;
   cursor: pointer;
   color: #214bc8;
+  font-size: 90%;
   font-weight: 600;
+  border-radius: 15px;
+}
+.collectview__alarm .jello-horizontal {
+  margin-right: 8px;
 }
 .collectview__search {
   grid-column-start: 7;
@@ -517,7 +532,6 @@
   .collectview__alarm {
     width: 100%;
     height: 38px;
-    font-size: 2.3vw;
     text-overflow: clip;
   }
   .collectview__search {
@@ -546,6 +560,8 @@
   }
   .collectview__alarm {
     width: 300px;
+    font-size: 80%;
+    word-spacing: -5px;
   }
   .collectview__search {
     width: 300px;
@@ -559,6 +575,66 @@
     justify-content: center;
     grid-template-columns: none;
     grid-template-rows: none;
+  }
+}
+@-webkit-keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 }
 .sidebar__collectInputBox {
@@ -620,6 +696,13 @@
 .sidebar__input--url,
 .bottomPopup__input--url {
   height: 180px;
+  overflow-wrap: break-word;
+  resize: none;
+  padding-top: 10px;
+}
+.sidebar__input--url::placeholder,
+.bottomPopup__input--url::placeholder {
+  padding-top: 65px;
 }
 .sidebar__customizingSection,
 .bottomPopup__customizingSection {
@@ -776,175 +859,87 @@
 .error__toHomeBtn {
   color: #214bc8;
 }
-.exploreContainer {
+.explore {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
 }
 @media (max-width: 834px) {
-  .exploreContainer {
-    color: black;
-  }
-  .exploreContainer .exploreHeader {
+  .explore .explore__text {
+    color: #214bc8;
     font-size: 30px;
-    margin-top: 94px;
+    margin-top: 120px;
   }
-  .exploreContainer .searchBar {
+  .explore .explore__searchBar {
     width: 560px;
     height: 40px;
     margin-top: 50px;
   }
-  .exploreContainer .searchBar input {
+  .explore .explore__searchBar input {
     width: 90%;
     height: 100%;
     outline: none;
   }
-  .exploreContainer .searchBar button {
+  .explore .explore__searchBar button {
     width: 10%;
     height: 100%;
   }
-  .exploreContainer .searchBar button:hover {
+  .explore .explore__searchBar button:hover {
     cursor: pointer;
   }
-  .exploreContainer .exploreSearchRecommendation {
-    display: inline-flex;
-    width: 560px;
-    margin-top: 30px;
-    justify-content: center;
-    align-content: center;
+  .explore .explore__recommendation span {
+    font-size: 12px;
   }
-  .exploreContainer .exploreSearchRecommendation .recommendTitle {
-    color: gray;
-    margin-left: 5px;
-  }
-  .exploreContainer .exploreSearchRecommendation .recommendTags {
-    flex: 1;
-  }
-  .exploreContainer .exploreSearchRecommendation .recommendTag {
-    font-size: 9px;
-    display: inline-flex;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    padding: 6px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    border: 1px solid black;
-  }
-  .exploreContainer .exploreSearchRecommendation .recommendTag:hover {
-    cursor: pointer;
-    color: black;
-  }
-  .exploreContainer .interestingBookmarksCategory {
-    margin-top: 105px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-  }
-  .exploreContainer .interestingBookmarksCategory p {
-    font-size: 28px;
-    margin: 0;
-  }
-  .exploreContainer .interestingBookmarksCategory ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
+  .explore .explore__interestingBookmarks p {
+    font-size: 25px;
   }
 }
 @media (max-width: 600px) {
-  .exploreContainer .exploreHeader {
-    font-size: 30px;
-    margin-top: 94px;
-  }
-  .exploreContainer .searchBar {
+  .explore .explore__searchBar {
     width: 310px;
     height: 35px;
-    margin-top: 50px;
   }
-  .exploreContainer .searchBar input {
-    width: 90%;
-    height: 100%;
-    outline: none;
-  }
-  .exploreContainer .searchBar button {
-    width: 10%;
-    height: 100%;
-  }
-  .exploreContainer .searchBar button:hover {
-    cursor: pointer;
-  }
-  .exploreContainer .exploreSearchRecommendation {
+  .explore .explore__recommendation {
     width: 310px;
-    margin-top: 30px;
     display: inline-block;
-    justify-content: center;
-    align-content: center;
+    margin-top: 10px;
   }
-  .exploreContainer .exploreSearchRecommendation .recommendTitle {
-    color: gray;
+  .explore .explore__recommendation__title {
     margin-left: 5px;
   }
-  .exploreContainer .exploreSearchRecommendation .recommendTags {
-    flex: 1;
+  .explore .explore__recommendation span {
+    font-size: 12px;
   }
-  .exploreContainer .exploreSearchRecommendation .recommendTag {
-    font-size: 9px;
-    display: inline-flex;
-    height: 30px;
-    justify-content: center;
-    align-items: center;
-    padding: 6px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    border: 1px solid black;
-  }
-  .exploreContainer .exploreSearchRecommendation .recommendTag:hover {
-    cursor: pointer;
-    color: black;
-  }
-  .exploreContainer .interestingBookmarksCategory {
-    margin-top: 105px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-  }
-  .exploreContainer .interestingBookmarksCategory p {
-    font-size: 24px;
+  .explore .explore__interestingBookmarks p {
+    font-size: 20px;
     margin: 0;
+    color: #214bc8;
   }
-  .exploreContainer .interestingBookmarksCategory ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
+  .explore .explore__interestingBookmarks ul {
     width: 292px;
   }
 }
 
-.searchContainer {
+.explore__text {
+  color: #214bc8;
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 120px;
+  text-align: center;
+}
+.explore__search {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
 }
-
-.exploreHeader {
-  color: #214bc8;
-  font-size: 2.8vw;
-  font-weight: 700;
-  margin-top: 94px;
-}
-
-.searchBar {
+.explore__searchBar {
   width: 560px;
   height: 40px;
   margin-top: 50px;
 }
-.searchBar input {
+.explore__searchBar input {
   width: 88%;
   height: 100%;
   outline: none;
@@ -953,10 +948,10 @@
   font-size: 16px;
   padding-left: 10px;
 }
-.searchBar input::placeholder {
+.explore__searchBar input::placeholder {
   color: rgba(0, 0, 0, 0.5);
 }
-.searchBar button {
+.explore__searchBar button {
   font-size: 16px;
   color: gray;
   border: 1px solid black;
@@ -965,26 +960,26 @@
   width: 10%;
   height: 100%;
 }
-.searchBar button:hover {
+.explore__searchBar button:hover {
   color: black;
   cursor: pointer;
 }
-
-.exploreSearchRecommendation {
+.explore__recommendation {
   width: 560px;
   margin-top: 30px;
   display: flex;
+  padding-left: 8px;
   justify-content: center;
   align-content: center;
 }
-.exploreSearchRecommendation div {
-  color: gray;
+.explore__recommendation div {
+  color: #807777;
 }
-.exploreSearchRecommendation .recommendTags {
+.explore__tags {
   font-size: 14px;
   flex: 1;
 }
-.exploreSearchRecommendation .recommendTag {
+.explore span {
   display: inline-flex;
   height: 30px;
   justify-content: center;
@@ -992,14 +987,13 @@
   padding: 6px;
   margin-bottom: 5px;
   margin-left: 5px;
-  border: 1px solid black;
+  border: 1px solid #807777;
 }
-.exploreSearchRecommendation .recommendTag:hover {
+.explore span:hover {
   cursor: pointer;
   color: black;
 }
-
-.exploreProfileCarousal {
+.explore__RandomProfile {
   margin-top: 40px;
   width: 100vw;
   display: flex;
@@ -1008,48 +1002,77 @@
   align-items: center;
   flex-direction: column;
 }
+.explore__interestingBookmarks {
+  margin: 105px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.explore__interestingBookmarks p {
+  color: #214bc8;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+.explore__interestingBookmarks ul {
+  margin-top: 30px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 530px;
+}
 
 #carousel {
   text-align: center;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   border: solid 1px #000;
-  width: 250px;
-  max-width: 250px;
-  height: 350px;
+  width: 21vw;
+  aspect-ratio: 3/4;
 }
 
 .explore__searchProfile {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #214bc8;
 }
 .explore__searchProfile:hover {
   cursor: pointer;
 }
-.explore__searchProfile .explore__searchProfile__profileImage {
+.explore__searchProfile__profileImage {
   margin-top: 25px;
   font-size: 85px;
+}
+.explore__searchProfile__profileImage .photo-icon {
+  height: 100%;
+  width: 80px;
+  font-weight: lighter;
 }
 .explore__searchProfile p {
   margin-top: 0px;
   margin-bottom: 0;
-  font-size: 15px;
+  font-size: 25px;
+  font-weight: 700;
 }
-.explore__searchProfile .socialInfo {
+.explore__searchProfile__socialInfo {
   margin-top: 20px;
   font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.explore__searchProfile .socialInfo div {
+.explore__searchProfile__socialInfo div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 3px;
 }
-.explore__searchProfile .companyInfo {
+.explore__searchProfile__companyInfo {
   margin-top: 30px;
   font-size: 12px;
   width: 100%;
@@ -1058,35 +1081,14 @@
   align-items: center;
   justify-content: center;
 }
-.explore__searchProfile .companyInfo div {
+.explore__searchProfile__companyInfo div {
   margin: 5px;
 }
-.explore__searchProfile .companyInfo div:hover {
+.explore__searchProfile__companyInfo div:hover {
   color: #214bc8;
 }
-.explore__searchProfile .companyInfo .icon {
+.explore__searchProfile__companyInfo .icon {
   padding-right: 3px;
-}
-
-.interestingBookmarksCategory {
-  margin: 105px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-.interestingBookmarksCategory p {
-  font-size: 2.4vw;
-  margin: 0;
-}
-.interestingBookmarksCategory ul {
-  margin-top: 30px;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  width: 530px;
 }
 .footer {
   color: #525151;
@@ -1499,16 +1501,16 @@ body {
   font-size: 2vw;
   font-weight: 700;
 }
-.landing__inner--fifth .profile-wrapper .landing__searchProfile .socialInfo {
+.landing__inner--fifth .profile-wrapper .landing__searchProfile__socialInfo {
   font-size: 1vw;
   display: flex;
   justify-content: space-around;
 }
-.landing__inner--fifth .profile-wrapper .landing__searchProfile .companyInfo {
+.landing__inner--fifth .profile-wrapper .landing__searchProfile__companyInfo {
   margin-top: 10%;
   font-size: 1vw;
 }
-.landing__inner--fifth .profile-wrapper .landing__searchProfile .companyInfo div {
+.landing__inner--fifth .profile-wrapper .landing__searchProfile__companyInfo div {
   margin: 3px;
 }
 .landing__inner--fifth .collection-desc {
@@ -1919,17 +1921,7 @@ body {
     margin-left: 1.1%;
   }
 }
-html,
-body,
-.app {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.modal {
+.modalpage {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -1939,7 +1931,7 @@ body,
   backdrop-filter: blur(2px);
 }
 
-.modalWrapper {
+.modal {
   position: fixed;
   left: 50%;
   top: 25%;
@@ -1951,26 +1943,39 @@ body,
   border: 1px solid #214bc8;
 }
 @media (max-width: 834px) {
-  .modalWrapper {
+  .modal {
     left: 50%;
     top: 20%;
     transform: translate(-50%, 0);
   }
 }
 @media (max-width: 600px) {
-  .modalWrapper {
+  .modal {
     left: 50%;
     top: 20%;
     transform: translate(-50%, 0);
   }
 }
-.modalWrapper .logo {
+.modal__logo {
   margin-top: 5px;
   color: #214bc8;
   font-weight: 700;
   font-size: 1.7vw;
+  margin-bottom: 30px;
 }
-.modalWrapper button {
+.modal__input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal__input input {
+  margin-bottom: 8px;
+  width: 180px;
+  height: 30px;
+  border: 1px solid #214bc8;
+  outline: none;
+}
+.modal button {
   margin-top: 15px;
   width: 180px;
   height: 30px;
@@ -1978,27 +1983,33 @@ body,
   border: 1px solid #214bc8;
   color: #c4c4c4;
 }
-.modalWrapper button:hover {
+.modal button:hover {
   cursor: pointer;
   color: white;
 }
-.modalWrapper .buttonContainer {
+.modal__error {
+  display: flex;
+  color: black;
+  margin-top: 10px;
+  font-size: 9px;
+}
+.modal__bottomTab {
   width: 180px;
   display: flex;
   justify-content: space-between;
 }
-.modalWrapper .buttonContainer div {
+.modal__bottomTab div {
   border: none;
   margin-top: 8px;
   background-color: white;
   color: black;
   font-size: 10px;
 }
-.modalWrapper .buttonContainer div:hover {
+.modal__bottomTab div:hover {
   cursor: pointer;
   color: #214bc8;
 }
-.modalWrapper .closeBtn {
+.modal__closeBtn {
   color: black;
   width: 100%;
   padding: 5px;
@@ -2008,224 +2019,126 @@ body,
   align-content: flex-end;
   text-align: end;
 }
-.modalWrapper .closeBtn i {
+.modal__closeBtn i {
   font-size: 14px;
 }
-.modalWrapper .closeBtn:hover {
+.modal__closeBtn:hover {
   cursor: pointer;
   color: #214bc8;
 }
-.modalWrapper .loginModal {
+.modal__login {
   display: flex;
   width: 100%;
   height: 270px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .loginModal .inputContainer {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .loginModal .inputContainer input {
-  margin-bottom: 10px;
-  width: 180px;
-  height: 30px;
-  border: 1px solid #214bc8;
-  outline: none;
-}
-.modalWrapper .loginModal .loginErrorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-  margin-top: 15px;
-}
-.modalWrapper .setNewPwdmodal {
+.modal__setNewPwd {
   display: flex;
   width: 100%;
   height: 300px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .setNewPwdmodal .inputContainer {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .setNewPwdmodal .inputContainer input {
-  margin-bottom: 10px;
-  width: 180px;
-  height: 30px;
-  border: 1px solid #214bc8;
-  outline: none;
-}
-.modalWrapper .setNewPwdmodal .errorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-  margin-top: 15px;
-  padding: 0px 10px;
-}
-.modalWrapper .findPwdpModal {
+.modal__findPwd {
   display: flex;
   width: 100%;
   height: 270px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .findPwdpModal p {
+.modal__findPwd p {
   font-size: 14px;
   text-align: center;
-  margin-top: 25px;
-  margin-bottom: 12px;
+  margin-top: 0px;
 }
-.modalWrapper .findPwdpModal input {
-  width: 180px;
-  height: 30px;
-  border: 1px solid #214bc8;
-  outline: none;
-}
-.modalWrapper .findPwdpModal button {
-  margin-top: 15px;
-}
-.modalWrapper .findPwdpModal .findPwdErrorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-}
-.modalWrapper .sentEmailModal {
+.modal__sentEmail {
   display: flex;
   width: 100%;
-  height: 220px;
+  height: 270px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .sentEmailModal p {
+.modal__sentEmail p {
   font-size: 14px;
   text-align: center;
-  margin-top: 25px;
-  margin-bottom: 12px;
 }
-.modalWrapper .changePwdModal {
+.modal__changePwd {
   display: flex;
   width: 100%;
   height: 300px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdModal p {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 12px;
-}
-.modalWrapper .changePwdModal .inputContainer {
-  margin-top: 25px;
+.modal__changePwd .inputContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .changePwdModal .inputContainer input {
+.modal__changePwd .inputContainer input {
   margin-top: 8px;
   width: 180px;
   height: 30px;
   border: 1px solid #214bc8;
   outline: none;
 }
-.modalWrapper .changePwdModal .inputContainer input:first-child {
+.modal__changePwd .inputContainer input:first-child {
   margin-bottom: 8px;
 }
-.modalWrapper .changePwdModal button {
-  margin-top: 15px;
-}
-.modalWrapper .changePwdModal .changePwdErrorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-}
-.modalWrapper .delAccountModal {
+.modal__delAccount {
   display: flex;
   height: 290px;
   flex-direction: column;
   align-items: center;
 }
-.modalWrapper .delAccountModal p {
+.modal__delAccount p {
   font-size: 14px;
   text-align: center;
-  margin-top: 35px;
-  margin-bottom: 12px;
+  margin-bottom: 22px;
 }
-.modalWrapper .delAccountModal .inputContainer {
-  margin-top: 15px;
+.modal__successSignup {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.modalWrapper .delAccountModal .inputContainer input {
-  margin-top: 0px;
-  width: 180px;
-  height: 30px;
-  border: 1px solid #214bc8;
-  outline: none;
-}
-.modalWrapper .delAccountModal button {
-  margin-top: 15px;
-}
-.modalWrapper .delAccountModal .delAccountErrorMessage {
-  display: flex;
-  margin-top: 10px;
-  color: black;
-  font-size: 9px;
-}
-.modalWrapper .successSignupModal {
-  display: flex;
-  height: 270px;
+  height: 240px;
   flex-direction: column;
   align-items: center;
   background-color: white;
   width: 100%;
-  height: 270px;
   color: #214bc8;
 }
-.modalWrapper .successSignupModal p {
+.modal__successSignup p {
   font-size: 14px;
-  margin-top: 60px;
   text-align: center;
 }
-.modalWrapper .exploreModalWrapper {
+.modal__explore {
   display: flex;
-  height: 215px;
+  height: 250px;
   flex-direction: column;
   align-items: center;
   background-color: white;
   width: 100%;
   box-shadow: 0px 8px 8px rgba(233, 229, 229, 0.267);
 }
-.modalWrapper .exploreModalWrapper .contents {
+.modal__explore__contents {
   width: 100%;
-  margin-top: 0;
+  margin-top: 10px;
   display: flex;
   background-color: white;
   flex-direction: column;
   flex: 1;
   align-items: center;
 }
-.modalWrapper .exploreModalWrapper .contents p {
+.modal__explore__contents p {
   margin-top: 8px;
   text-align: center;
+  word-spacing: -3px;
 }
-.modalWrapper .exploreModalWrapper .contents input {
+.modal__explore__contents input {
   width: 180px;
   height: 30px;
   outline: none;
+  border: 1px solid #214bc8;
 }
-.modalWrapper .exploreModalWrapper .exploreErrorMessage {
+.modal__explore__error {
   display: none;
   margin-top: 10px;
   color: black;
@@ -2265,7 +2178,7 @@ body,
   margin-top: 0px;
   color: #214bc8;
   font-weight: 700;
-  font-size: 35px;
+  font-size: 30px;
 }
 .signUpmodal__modalWrapper .closeBtn {
   color: black;
@@ -2852,8 +2765,8 @@ textarea:focus:-ms-input-placeholder {
 }
 .recollect__toCollectBtn {
   position: fixed;
-  top: 94px;
-  left: 15vw;
+  top: 142px;
+  left: 10vw;
   font-size: 30px;
   cursor: pointer;
 }
@@ -2866,48 +2779,42 @@ textarea:focus:-ms-input-placeholder {
   font-size: 36px;
   font-weight: 700;
   color: #214bc8;
+  text-align: center;
 }
 .recollect__bookmarks {
-  width: 36vw;
-  min-width: 530px;
   margin-bottom: 40px;
-  background-color: whitesmoke;
 }
-.recollect__bookmarks .skeleton {
+.recollect__skeleton {
   font-size: 20px;
-  height: 30vh;
+  width: 60vw;
+  height: 35vw;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.recollect__bookmarks .skeleton .logoPng {
+.recollect__skeleton .logoPng {
   font-size: 15px;
   width: 40px;
   height: 40px;
   filter: grayscale(1) opacity(0.5);
 }
-.recollect__bookmarks .skeleton p {
+.recollect__skeleton p {
   color: #214bc8;
   filter: grayscale(1) opacity(0.5);
   text-align: center;
   font-weight: 500;
 }
 
-@media (max-width: 834px) {
-  .recollect__toCollectBtn {
-    top: 80px;
-    left: 5vw;
-  }
-}
 @media (max-width: 600px) {
   .recollect__toCollectBtn {
-    top: 130px;
-    left: 15vw;
+    top: 189px;
+    left: 10vw;
     font-size: 22px;
   }
   .recollect__title {
-    padding-top: 100px;
+    padding-top: 110px;
     padding-bottom: 35px;
     font-size: 22px;
     color: #214bc8;
@@ -2915,8 +2822,17 @@ textarea:focus:-ms-input-placeholder {
   .recollect__bookmarks {
     width: 71vw;
     min-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
-  .recollect__bookmarks .skeleton p {
+  .recollect__skeleton {
+    text-align: center;
+    width: 60vw;
+    height: 35vw;
+  }
+  .recollect__skeleton p {
     font-size: 14px;
   }
 }
@@ -2961,14 +2877,14 @@ textarea:focus:-ms-input-placeholder {
   min-width: 500px;
   margin-bottom: 30px;
 }
-.searching__bookmarks .skeleton {
+.searching__skeleton {
   font-size: 20px;
   height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.searching__bookmarks .skeleton p {
+.searching__skeleton p {
   color: #214bc8;
   filter: grayscale(1) opacity(0.5);
   font-weight: 500;
@@ -2980,7 +2896,7 @@ textarea:focus:-ms-input-placeholder {
     width: 71vw;
     min-width: 200px;
   }
-  .searching__bookmarks .skeleton {
+  .searching__skeleton {
     font-size: 14px;
   }
 }
@@ -3036,7 +2952,7 @@ textarea:focus:-ms-input-placeholder {
   cursor: pointer;
   background: white;
   color: gray;
-  top: 50%;
+  top: 43%;
   padding: 0;
   border: none;
   outline: none;
@@ -3048,11 +2964,11 @@ textarea:focus:-ms-input-placeholder {
 }
 
 .slick-prev {
-  left: -30px;
+  left: -78px;
 }
 
 .slick-next {
-  right: -30px;
+  right: -71px;
 }
 
 /* Dots */

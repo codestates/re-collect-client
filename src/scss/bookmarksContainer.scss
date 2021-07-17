@@ -1,4 +1,4 @@
-@import './util';
+@import "./util";
 
 .categorybox {
   min-width: 240px;
@@ -119,7 +119,7 @@
       }
       &.important {
         &:hover {
-          color: #0bbf0d;
+          color: #ffffff;
           transform: scale(1.3);
         }
       }
@@ -132,7 +132,7 @@
       }
       &.important {
         &:hover {
-          color: #fa830f;
+          color: #ffffff;
           transform: scale(1.3);
         }
       }
@@ -145,7 +145,7 @@
       }
       &.important {
         &:hover {
-          color: #610c00;
+          color: #ffffff;
           transform: scale(1.3);
         }
       }
