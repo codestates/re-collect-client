@@ -16,8 +16,12 @@ recollect : 기억해내다, "모아서  + 다시보다" <br />
 
 읽지 않은 북마크들은 알림을 통해 Recollect하실 수 있습니다!
 
+## 📎 배포링크 /QR
 
-## 사용한 기술 스택
+<img width="100" alt="스크린샷 2021-07-16 오후 11 51 29" src="https://user-images.githubusercontent.com/54028005/126044174-8749994f-1a3a-4570-bdee-a4f88ebf0a35.png"> <br />
+https://recollect.today/
+
+## 🛠 사용한 기술 스택
 <!-- ### 프론트
 
 <img src="https://img.shields.io/badge/FRONT-HTML5-orange?style=for-the-badge&logo=html5" >
@@ -49,7 +53,7 @@ recollect : 기억해내다, "모아서  + 다시보다" <br />
 ### Server-Side flow chart
 ![서버사이드아키텍쳐](https://user-images.githubusercontent.com/54028005/126043590-be3230c2-7d8d-4cba-971a-598d6f26f1fd.png)
 
-## 우리를 소개합니다
+## 🌝 우리를 소개합니다
 | 이름(깃헙링크) | Position & Role|
 | ------- | ----- |
 | [김시윤](https://github.com/siyooonkim) | 💻 Front-end, 🌟 Team leader|
@@ -57,8 +61,8 @@ recollect : 기억해내다, "모아서  + 다시보다" <br />
 | [박유빈](https://github.com/Justicexx0099) | 💻 Back-end, 📝 Record Manager |
 | [이석준](https://github.com/CodingGorani) | 💻 Front-end, 🗣 Communication Manager |
 
-## Wiki
+## 🗒 Wiki
 https://github.com/codestates/re-collect-client/wiki
-## Server repository
+## ⚙️ Server repository
 https://github.com/codestates/re-collect-server
 
