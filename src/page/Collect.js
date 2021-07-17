@@ -16,6 +16,13 @@ export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
   const [searchInput, setSearchInput] = useState('');
 
+    ///새로고침시 최상단이동//
+    useEffect(() => {
+      window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+      };
+    }, []);
+
   useEffect(() => {
     setCategoryEdit(isCategoryEdit);
   }, [isCategoryEdit]);
