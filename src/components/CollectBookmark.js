@@ -49,6 +49,7 @@ export default function CollectBookmark(props) {
         <a
           href={data.item.url}
           target="_blank"
+          rel="noopener noreferrer" //추가
           className="categorybox__bookmark-text"
           title="해당 북마크 링크로 이동하기"
         >

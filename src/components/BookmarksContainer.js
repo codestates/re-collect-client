@@ -28,22 +28,22 @@ function BookmarksContainer() {
   const [dragging, setDragging] = useState(false);
 
   ///무한스크롤////
-  const [loading, setLoading] = useState(true);
-  const [previtems, setPrevItems] = useState(0);
-  const [items, setItems] = useState(8);
+  // const [loading, setLoading] = useState(true);
+  // const [previtems, setPrevItems] = useState(0);
+  // const [items, setItems] = useState(8);
 
-  const handleScroll = (event) => {
-    const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    // console.log(scrollTop, 'scrolltop'); //scrollTop: 이미 스크롤된 높이(영역)
-    // console.log(clientHeight, 'clientheight'); //clientHeight: 눈에 보이는 높이
-    // console.log(scrollHeight, 'scrollheight'); //scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
+  // const handleScroll = (event) => {
+  //   const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+  //   console.log(scrollTop, 'scrolltop'); //scrollTop: 이미 스크롤된 높이(영역)
+  //   console.log(clientHeight, 'clientheight'); //clientHeight: 눈에 보이는 높이
+  //   console.log(scrollHeight, 'scrollheight'); //scrollHeight: 스크롤될 수 있는 collectview__bookmarks 높이
 
-    if (scrollTop + clientHeight >= scrollHeight) {
-      //setLoading(true);
-      setItems(items + 4);
-      console.log(items);
-    }
-  };
+  //   if (scrollTop + clientHeight >= scrollHeight) {
+  //     //setLoading(true);
+  //     setItems(items + 4);
+  //     console.log(items);
+  //   }
+  // };
 
   // useEffect(() => {
   //   const loadBookmarks = async (page) => {
@@ -61,7 +61,7 @@ function BookmarksContainer() {
     if (accessToken) {
       dispatch(getBookmark());
     } else {
-      setLoading(true);
+      //setLoading(true);
       dispatch(getGuestBookmark());
     }
   }, []);
@@ -70,19 +70,20 @@ function BookmarksContainer() {
     if (accessToken) {
       setList(reducedbookmarks);
     } else {
-      setList(guestBookmarks.reducedbookmarks.slice(previtems, items)); //8개씩 끊어서 보여줌
-      setLoading(false); //로딩 false
+      setList(guestBookmarks.reducedbookmarks);
+      //.slice(previtems, items)); //8개씩 끊어서 보여줌
+      //setLoading(false); //로딩 false
     }
-  }, [items, reducedbookmarks, guestBookmarks]);
+  }, [reducedbookmarks, guestBookmarks]); //items,
 
   // ///무한스크롤////
   //const collectViewRef = useRef('');
-  const collectViewRef = useCallback((node) => {
-    if (node !== null) {
-      const scrollHeight = node.scrollHeight;
-      console.log(scrollHeight);
-    }
-  }, []);
+  // const collectViewRef = useCallback((node) => {
+  //   if (node !== null) {
+  //     const scrollHeight = node.scrollHeight;
+  //     console.log(scrollHeight);
+  //   }
+  // }, []);
   // ///무한스크롤////
 
   const dragItem = useRef();
@@ -181,8 +182,8 @@ function BookmarksContainer() {
       ) : (
         <div
           className="collectview__bookmarks"
-          ref={collectViewRef}
-          onScroll={handleScroll}
+          // ref={collectViewRef}
+          // onScroll={handleScroll}
         >
           {list.map((grp, grpI) => (
             <CategoryBox

@@ -5,7 +5,7 @@
   width: 100%;
   margin-bottom: 25px;
   padding-left: 5px;
-  font-size: 20px;
+  font-size: 1.5vw;
   text-align: left;
   cursor: pointer;
 }
@@ -19,6 +19,15 @@
   float: right;
 }
 
+.favoritebookmark {
+  cursor: default;
+}
+
+@media (max-width: 834px) {
+  .favoritebookmark {
+    font-size: 1.9vw;
+  }
+}
 @media (max-width: 600px) {
   .bigBookmark {
     height: 32px;
@@ -379,7 +388,6 @@
   color: white;
 }
 .collectview {
-  background: white;
   display: flex;
   height: 120vh;
   width: 100vw;

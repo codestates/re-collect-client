@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Flip, Fade, Zoom, Bounce } from 'react-reveal';
 import Pulse from 'react-reveal/Pulse';
