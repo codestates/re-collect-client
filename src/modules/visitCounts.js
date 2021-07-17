@@ -8,12 +8,12 @@ export const addVisitCount = (id) => async (dispatch) => {
   const accessToken = localStorage.getItem(`accessToken`);
 
   if (accessToken) {
-    console.log(accessToken);
     axios
       .patch(
         `https://api.recollect.today/bookmarks/${id}`,
         {},
         {
+          // params: { id: id },
           headers: { authorization: `Bearer ${accessToken}` },
           withCredentials: true,
         }
@@ -27,7 +27,7 @@ export const addVisitCount = (id) => async (dispatch) => {
           dispatch(getAccessToken());
           return;
         } else {
-          console.log("err");
+          console.log(err);
         }
       });
   }

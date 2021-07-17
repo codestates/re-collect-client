@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { notify } from './notification';
-import { getAccessToken } from "../modules/getAccessToken";
+//import { getAccessToken } from "../modules/getAccessToken";
 
 const initialState = {
   profile: {
@@ -10,7 +10,7 @@ const initialState = {
     gitrepo: '',
     createdAt: '',
     recollectcount: 0,
-    favorite:           {
+    favorite:{
       category: '카테고리를 추가하세요',
       categoryId: null,
       bookmarkId: 0,
@@ -28,30 +28,32 @@ const GET_PROFILE = 'GET_PROFILE';
 const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
 const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
 
-const EDIT_USERNAME = 'EDIT_USERNAME';
+//const EDIT_USERNAME = 'EDIT_USERNAME';
 const EDIT_USERNAME_SUCCESS = 'EDIT_USERNAME_SUCCESS';
 const EDIT_USERNAME_FAIL = 'EDIT_USERNAME_FAIL';
 
-const EDIT_COMPANY = 'EDIT_COMPANY';
+//const EDIT_COMPANY = 'EDIT_COMPANY';
 const EDIT_COMPANY_SUCCESS = 'EDIT_COMPANY_SUCCESS';
 const EDIT_COMPANY_FAIL = 'EDIT_COMPANY_FAIL';
 
-const EDIT_GITREPO = 'EDIT_GITREPO';
+//const EDIT_GITREPO = 'EDIT_GITREPO';
 const EDIT_GITREPO_SUCCESS = 'EDIT_GITREPO_SUCCESS';
 const EDIT_GITREPO_FAIL = 'EDIT_GITREPO_FAIL';
 
-const EDIT_PWD = 'EDIT_PWD';
+//const EDIT_PWD = 'EDIT_PWD';
 const EDIT_PWD_SUCCESS = 'EDIT_PWD_SUCCESS';
 const EDIT_PWD_FAIL = 'EDIT_PWD_FAIL';
 
-const GET_FAVORITE = 'GET_FAVORITE';
+//const GET_FAVORITE = 'GET_FAVORITE';
 
-const DEL_ACCOUNT = 'DEL_ACCOUNT';
+//const DEL_ACCOUNT = 'DEL_ACCOUNT';
 const DEL_ACCOUNT_SUCCESS = 'DEL_ACCOUNT_SUCCESS';
 const DEL_ACCOUNT_FAIL = 'DEL_ACCOUNT_FAIL';
 
 export const getProfile = () => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
+
+  dispatch({type: GET_PROFILE});
   axios
     .get('https://api.recollect.today/profile', {
       headers: { authorization: `Bearer ${accessToken}` },
@@ -60,7 +62,7 @@ export const getProfile = () => (dispatch) => {
     .then((res) => {
       const favorite = res.data.bookmark.reduce((prev, curr) => {
         return prev.visitCounts > curr.visitCounts ? prev : curr;
-      },);
+      }, []);
 
       dispatch({
         type: GET_PROFILE_SUCCESS,
@@ -243,15 +245,20 @@ export const delAccount = () => (dispatch) => {
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_PROFILE:
+      return {
+        ...state,
+        profile: {...state.profile},
+      };
     case GET_PROFILE_SUCCESS:
       return {
         ...state,
-        profile: action.profile,
+        profile: {...state.profile, ...action.profile},
       };
     case GET_PROFILE_FAIL:
       return {
         ...state,
-        profile: {...state.profile, error: action.error},
+        profile: {...state.profile, ...action.profile, error: action.error},
       };
     case EDIT_USERNAME_SUCCESS:
       return {

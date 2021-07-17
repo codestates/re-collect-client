@@ -50,6 +50,7 @@
   "devDependencies": {
     "@babel/highlight": "^7.14.5",
     "axios": "^0.21.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "dotenv": "^8.2.0",
     "eslint": "^7.29.0",
     "gulp": "^4.0.2",

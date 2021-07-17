@@ -64,6 +64,7 @@
         p {
           font-size: 20px;
           margin: 0;
+          color: #{$blue};
         }
         ul {
           width: 292px;
@@ -170,16 +171,18 @@
     align-items: center;
     flex: 1;
     p {
-      // font-size: 30px;
-      font-size: 2.4vw;
+      color: #{$logocolor};
+      font-size: #{$headerfont};
+      font-weight: 700;
       margin: 0;
     }
     ul {
       margin-top: 30px;
       padding: 0;
-      text-align: center;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       width: 530px;
     }
   }
@@ -190,9 +193,8 @@
   text-align: center;
   box-shadow: #{$boxshadow};
   border: solid 1px #000;
-  width: 250px;
-  max-width: 250px;
-  height: 350px;
+  width: 21vw;
+  aspect-ratio: 3/4;
 }
 .explore__searchProfile {
   display: flex;
@@ -201,6 +203,7 @@
   &:hover {
     cursor: pointer;
   }
+  color: #{$blue};
   &__profileImage {
     margin-top: 25px;
     font-size: 85px;
@@ -213,7 +216,8 @@
   p {
     margin-top: 0px;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 25px;
+    font-weight: 700;
   }
   &__socialInfo {
     margin-top: 20px;

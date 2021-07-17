@@ -36,11 +36,11 @@ function DelAccountModal(props) {
 
     setTimeout(() => {
       props.setModalMode("");
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
       history.push("/");
-    }, 2000);
+    }, 1000);
   };
 
   return (

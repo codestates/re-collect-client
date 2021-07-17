@@ -67,7 +67,7 @@ function Nav(props) {
         </Link>
         <Link
           onClick={() => {
-            props.setModalMode("explore");
+            setTimeout(() => props.setModalMode("explore"), 2000);
             handleToggleBtn();
           }}
           to="/explore"

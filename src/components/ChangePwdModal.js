@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { IsValidiatePassword } from "../util/validation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { editPwd } from "../modules/editProfile";
-import { notify } from "../modules/notification";
 
 function ChangePwdModal(props) {
   const state = useSelector((state) => state.profileReducer);
-  const { profile } = state;
+  //const { profile } = state;
   const dispatch = useDispatch();
 
   const [pwdInfo, setPwdInfo] = useState({

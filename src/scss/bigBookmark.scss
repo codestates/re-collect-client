@@ -7,7 +7,7 @@
   width: 500px;
   margin-bottom: 25px;
   padding-left: 5px;
-  font-size: 20px;
+  font-size: 1.5vw;
   text-align: left;
   cursor: pointer;
 
@@ -21,6 +21,16 @@
       bottom: 21.5px solid transparent;
     }
     float: right;
+  }
+}
+
+.favoritebookmark {
+  cursor: default;
+}
+
+@include tablet {
+  .favoritebookmark {
+    font-size: 1.9vw;
   }
 }
 
