@@ -9,15 +9,12 @@ function Recollect() {
   );
   const dispatch = useDispatch();
   const accessToken = localStorage.getItem("accessToken");
-  const { guestBookmarks } = useSelector((state) => state.bookmarkReducer);
   // 읽지않은 북마크 //
   const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
 
   useEffect(() => {
     if (accessToken) {
       dispatch(recollect(bookmarks));
-    } else {
-      console.log(guestBookmarks);
     }
   }, []);
 
@@ -39,7 +36,7 @@ function Recollect() {
             );
           })
         ) : (
-          <div className="skeleton">
+          <div className="recollect__skeleton">
             <img src="logo_cut.png" className="logoPng" />
             <p>리콜렉트할 북마크가 없어요!</p>
           </div>

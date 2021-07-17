@@ -4,7 +4,7 @@
   border: 1px solid #{$blue};
   height: 45px;
   line-height: 45px;
-  width: 100%;
+  width: 500px;
   margin-bottom: 25px;
   padding-left: 5px;
   font-size: 20px;
@@ -26,16 +26,17 @@
 
 @include mobile {
   .bigBookmark {
-    height: 22px;
+    width: 70vw;
+    height: 32px;
     margin-bottom: 11px;
     font-size: 11px;
-    line-height: 22px;
+    line-height: 28px;
     &__triangle {
       border: {
-        top: 10px solid transparent;
-        left: 11px solid transparent;
-        right: 15px solid #{$blue};
-        bottom: 10px solid transparent;
+        top: 14px solid transparent;
+        left: 16px solid transparent;
+        right: 20px solid #{$blue};
+        bottom: 16px solid transparent;
       }
     }
   }

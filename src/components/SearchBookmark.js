@@ -16,7 +16,6 @@ export function SearchBookmark({ searchInput }) {
       <div className="searching__bookmarks">
         {searchingBookmark.length !== 0 ? (
           searchingBookmark.map((bookmark) => {
-            console.log(bookmark);
             return (
               <BigBookmark
                 id={bookmark.id}
@@ -28,7 +27,7 @@ export function SearchBookmark({ searchInput }) {
             );
           })
         ) : (
-          <div className="skeleton">
+          <div className="searching__skeleton">
             <p>검색어와 일치하는 북마크가 없습니다.</p>
           </div>
         )}

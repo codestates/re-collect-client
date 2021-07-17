@@ -9,7 +9,7 @@ function SetNewPwdModal(props) {
     const password1 = document.querySelector(".resetPwd").value;
     const password2 = document.querySelector(".resetPwdCheck").value;
     const tempPwd = document.querySelector(".tempPwd").value;
-    const error = document.querySelector(".errorMessage");
+    const error = document.querySelector(".modal__error");
     if (!tempPwd) {
       error.textContent = "인증번호를 입력해주세요";
     } else if (!IsValidiatePassword(password1)) {
@@ -38,23 +38,23 @@ function SetNewPwdModal(props) {
   };
 
   return (
-    <div className="modal">
-      <div className="modalWrapper">
-        <div className="setNewPwdmodal">
+    <div className="modalpage">
+      <div className="modal">
+        <div className="modal__setNewPwd">
           <div
-            className="closeBtn"
+            className="modal__closeBtn"
             onClick={() => {
               props.setModalMode("");
             }}
           >
             <FontAwesomeIcon icon={faTimes} />
           </div>
-          <div className="logo"> Recollect </div>
-          <div className="inputContainer">
+          <div className="modal__logo"> Recollect </div>
+          <div className="modal__input">
             <input
               className="tempPwd"
               type="password"
-              placeholder="임시비밀번호 6자리"
+              placeholder="인증번호 6자리"
             />
             <input
               className="resetPwd"
@@ -74,7 +74,7 @@ function SetNewPwdModal(props) {
           >
             새 비밀번호 설정하기
           </button>
-          <div className="errorMessage"> </div>
+          <div className="modal__error"> </div>
         </div>
       </div>
     </div>
@@ -82,6 +82,3 @@ function SetNewPwdModal(props) {
 }
 
 export default SetNewPwdModal;
-
-// 카테고리input 카테고리 플레이스홀더 제거하는게 조금 더 편할 것 같은데
-// Text와는 다르게 Category뒤에 깜빡거려서 낮선느낌

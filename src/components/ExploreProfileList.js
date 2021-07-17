@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle, faLaptop } from "@fortawesome/free-solid-svg-icons";
+import { faLaptop } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { userInfoLists } from "./Explore_temp";
 
@@ -14,12 +15,10 @@ function ExploreProfileList({ className, ...props }, settings) {
       key={props.key}
     >
       <div className={`${className}__searchProfile__profileImage`}>
-        <FontAwesomeIcon icon={faUserCircle} />
+        <FontAwesomeIcon icon={faUserCircle} className="photo-icon" />
       </div>
-      <p>
-      {props.user.username ? `${props.user.username}` : "-"}
-      </p>
-      <div className="socialInfo">
+      <p>{props.user.username ? `${props.user.username}` : "-"}</p>
+      <div className={`${className}__searchProfile__socialInfo`}>
         <div>
           <div> 28 </div>
           <div> Recollects </div>
@@ -33,7 +32,7 @@ function ExploreProfileList({ className, ...props }, settings) {
           <div> Followers </div>
         </div>
       </div>
-      <div className="companyInfo">
+      <div className={`${className}__searchProfile__companyInfo`}>
         <div>
           <FontAwesomeIcon className="icon" icon={faLaptop} />
           {props.user.company ? `Work at ${props.user.company}` : "-"}
