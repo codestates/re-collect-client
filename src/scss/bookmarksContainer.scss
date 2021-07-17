@@ -101,18 +101,54 @@
     flex: 1;
   }
   &__bookmark-ellipsis {
-    display: none;
-  }
-
-  &__bookmark-editbtn {
-    background-color: transparent;
-    border-style: hidden;
-    line-height: 20px;
-    color: transparent;
+    display: initial;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.2);
+    width: 23px;
+    font-size: 15px;
     cursor: pointer;
 
-    &:hover {
-      color: gray;
+    &.important {
+      color: white;
+    }
+
+    &.red {
+      &:hover {
+        color: #{$red};
+        transform: scale(1.3);
+      }
+      &.important {
+        &:hover {
+          color: #0bbf0d;
+          transform: scale(1.3);
+        }
+      }
+    }
+
+    &.blue {
+      &:hover {
+        color: #{$blue};
+        transform: scale(1.3);
+      }
+      &.important {
+        &:hover {
+          color: #fa830f;
+          transform: scale(1.3);
+        }
+      }
+    }
+
+    &.green {
+      &:hover {
+        color: #{$green};
+        transform: scale(1.3);
+      }
+      &.important {
+        &:hover {
+          color: #610c00;
+          transform: scale(1.3);
+        }
+      }
     }
   }
 
@@ -150,6 +186,7 @@
 @include mobile {
   .categorybox {
     max-width: 300px;
+    max-height: 400px;
     &__header {
       text-align: center;
     }
@@ -157,18 +194,6 @@
     &__header-editbtn,
     &__bookmark-editbtn {
       display: none;
-    }
-
-    &__bookmark-ellipsis {
-      display: initial;
-      text-align: center;
-      color: rgba(0, 0, 0, 0.2);
-      width: 23px;
-      font-size: 15px;
-      cursor: pointer;
-      &:hover {
-        color: #{$blue};
-      }
     }
 
     &__header-pencil {
@@ -181,5 +206,3 @@
     }
   }
 }
-
-

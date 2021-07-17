@@ -1,4 +1,4 @@
-@import "./util";
+@import './util';
 
 .bigBookmark {
   border: 1px solid #{$blue};
@@ -36,16 +36,16 @@
 
 @include mobile {
   .bigBookmark {
-    height: 22px;
+    height: 32px;
     margin-bottom: 11px;
     font-size: 11px;
     line-height: 22px;
     &__triangle {
       border: {
-        top: 10px solid transparent;
-        left: 11px solid transparent;
-        right: 15px solid #{$blue};
-        bottom: 10px solid transparent;
+        top: 15px solid transparent;
+        left: 23.4px solid transparent;
+        right: 23.4px solid #{$blue};
+        bottom: 15px solid transparent;
       }
     }
   }

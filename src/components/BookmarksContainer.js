@@ -71,10 +71,10 @@ function BookmarksContainer() {
       setList(reducedbookmarks);
     } else {
       setList(guestBookmarks.reducedbookmarks);
-        //.slice(previtems, items)); //8개씩 끊어서 보여줌
+      //.slice(previtems, items)); //8개씩 끊어서 보여줌
       //setLoading(false); //로딩 false
     }
-  }, [reducedbookmarks, guestBookmarks]);//items,
+  }, [reducedbookmarks, guestBookmarks]); //items,
 
   // ///무한스크롤////
   //const collectViewRef = useRef('');
@@ -188,6 +188,7 @@ function BookmarksContainer() {
           {list.map((grp, grpI) => (
             <CategoryBox
               key={grp.id}
+              categoryId={grp.id}
               title={grp.title}
               dragEnterHandler={
                 dragging && !grp.bookmarks.length
