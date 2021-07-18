@@ -5,6 +5,7 @@ function ScrollToTop() {
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
+    console.log(`${scrolled} = scrollTop`);
     if (scrolled > 300){
       setVisible(true)
     } 
@@ -23,10 +24,27 @@ function ScrollToTop() {
   //window.addEventListener('scroll', toggleVisible);
 
   useEffect(() => {
-      window.addEventListener('scroll', toggleVisible);
+    let timer;
+      //window.addEventListener('scroll', toggleVisible);
+      window.addEventListener('scroll', function(){
+        if(!timer){
+          timer = setTimeout(() => {
+            timer = null;
+            toggleVisible();
+          }, 3000 );
+        }
+      });
 
       return () => {
-        window.removeEventListener('scroll', toggleVisible);
+        //window.removeEventListener('scroll', toggleVisible);
+        window.removeEventListener('scroll', function(){
+          if(!timer){
+            timer = setTimeout(() => {
+              timer = null;
+              toggleVisible();
+            }, 3000 );
+          }
+        });
       };
   }, [visible])
 
