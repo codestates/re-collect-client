@@ -70,8 +70,8 @@ function Profile(props) {
   //   const { value, name } = e.target;
   //   console.log(`${value}`);
   //     setInputValue({
-  //       ...inputValue, //복사
-  //       [name]: value, //name키를 가진 값에 value 할당.
+  //       ...inputValue, 
+  //       [name]: value, 
   //     })      
   // };
 
@@ -87,6 +87,7 @@ function Profile(props) {
 
     if (e.currentTarget.getAttribute("name") === "usernamecheck") {
       //console.log(e.currentTarget.getAttribute("name"), "username target");
+
       if (!IsValidiateUsername(userInputRef.current.value)) {
         setErrMessage({
           ...errorMessage,
