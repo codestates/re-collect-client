@@ -29,6 +29,12 @@ function Profile(props) {
     gitrepo: "",
   });
 
+  // const [inputValue, setInputValue] = useState({
+  //   username: '',
+  //   company: '',
+  //   gitrepo: '',
+  // });
+
   // const [inputReadMode, setInputReadMode] = useState({
   //   usernameMode: true,
   //   companyMode: true,
@@ -59,6 +65,16 @@ function Profile(props) {
   //   })
   // }
 
+    //-------------onchange event 랜더링 
+  // const handleInputValue = (e) => {
+  //   const { value, name } = e.target;
+  //   console.log(`${value}`);
+  //     setInputValue({
+  //       ...inputValue, 
+  //       [name]: value, 
+  //     })      
+  // };
+
   useEffect(() => {
     //cancelClick();
   }, []); //빈배열 넣어주어야 두번안찍힘
@@ -70,7 +86,8 @@ function Profile(props) {
     userInputRef.current.disabled = !userInputRef.current.disabled;
 
     if (e.currentTarget.getAttribute("name") === "usernamecheck") {
-      console.log(e.currentTarget.getAttribute("name"), "username target");
+      //console.log(e.currentTarget.getAttribute("name"), "username target");
+
       if (!IsValidiateUsername(userInputRef.current.value)) {
         setErrMessage({
           ...errorMessage,
@@ -142,6 +159,7 @@ function Profile(props) {
                 readOnly
                 disabled
                 ref={userInputRef}
+                //onChange={handleInputValue}
               />
               <FontAwesomeIcon
                 icon={usernameInputReadMode ? faPen : faCheck}
