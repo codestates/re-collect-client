@@ -358,6 +358,10 @@
   flex-direction: column;
   align-items: center;
 }
+.categoryReally__closeBtn {
+  align-self: flex-end;
+  margin-right: 5px;
+}
 .categoryReally__text {
   width: 200px;
   margin-top: 70px;
