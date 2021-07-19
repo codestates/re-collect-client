@@ -2059,6 +2059,9 @@ body {
   text-align: center;
   margin-top: 0px;
 }
+.modal__findPwd button {
+  margin-top: 0px;
+}
 .modal__sentEmail {
   display: flex;
   width: 100%;
