@@ -47,12 +47,12 @@ export const getBookmark = () => (dispatch) => {
     })
     .catch((err) => {
       //// accessToken요청 확인필요 ////
-      if (err.response.status === 401) {
-        dispatch(getAccessToken());
-        return;
-      } else {
-        dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
-      }
+      // if (err.response.status === 401) {
+      //   dispatch(getAccessToken());
+      //   return;
+      // } else {
+      dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
+      // }
     });
 };
 
@@ -133,10 +133,10 @@ export const addBookmark = (bookmark) => (dispatch) => {
       dispatch(notify("북마크를 추가했습니다"));
     })
     .catch((e) => {
-      if (e.response.status === 401) {
-        dispatch(getAccessToken());
-        return;
-      }
+      // if (e.response.status === 401) {
+      //   dispatch(getAccessToken());
+      //   return;
+      // }
       if (e.response) {
         dispatch({
           type: POST_BOOKMARK_FAIL,
@@ -225,10 +225,10 @@ export const editBookmark = (bookmark) => (dispatch) => {
         dispatch(notify("북마크를 수정했습니다"));
       })
       .catch((e) => {
-        if (e.response.status === 401) {
-          dispatch(getAccessToken());
-          return;
-        }
+        // if (e.response.status === 401) {
+        //   dispatch(getAccessToken());
+        //   return;
+        // }
         console.log(e.response);
         if (e.response) {
           dispatch({
@@ -301,10 +301,10 @@ export const deleteBookmark = (bookmark) => (dispatch) => {
       })
       .catch((e) => {
         dispatch(notify("북마크 삭제 실패했습니다"));
-        if (e.response.status === 401) {
-          dispatch(getAccessToken());
-          return;
-        }
+        // if (err.response.status === 401) {
+        //   dispatch(getAccessToken());
+        //   return;
+        // }
         if (e.response) {
           dispatch({
             type: DELETE_BOOKMARK_FAIL,

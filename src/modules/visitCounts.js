@@ -21,12 +21,11 @@ export const addVisitCount = (id) => async (dispatch) => {
         dispatch(getBookmark());
       })
       .catch((err) => {
-        if (err.response.status === 401) {
-          dispatch(getAccessToken());
-          return;
-        } else {
-          console.log(err);
-        }
+        // if (err.response.status === 401) {
+        //   dispatch(getAccessToken());
+        //   return;
+        // }
+        console.log(err);
       });
   }
 };

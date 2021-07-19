@@ -152,7 +152,8 @@ body {
       img {
         width: 48vw;
         margin-left: 6%;
-        box-shadow: #{$boxshadow};
+        //box-shadow: #{$boxshadow};
+        box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
         //border: solid 3px red;
       }
@@ -273,7 +274,8 @@ body {
           //border: solid 1px tomato;
           width: 30vw;
           margin: 1.5%;
-          box-shadow: #{$boxshadow};
+         //box-shadow: #{$boxshadow};
+          box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
           box-sizing: border-box;
         }
 
@@ -335,7 +337,8 @@ body {
         width: 80vw;
         //margin-left: 1%; //
         //border: solid 1px tomato;
-        box-shadow: #{$boxshadow};
+        //box-shadow: #{$boxshadow};
+        box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
       }
 
@@ -376,6 +379,9 @@ body {
       //border: solid 1px tomato;
       margin-top: 10%;
       margin-bottom: 7%;
+      .jello-horizontal{
+        margin-right: 2%;
+      }
       .alarm {
         max-width: 65%;
         height: 70px;
@@ -384,6 +390,7 @@ body {
         line-height: 70px;
         text-align: center;
         font-size: 2.3vw;
+        font-weight: 700;
         white-space: nowrap;
         background-color: #{$alarmcolor};
         box-shadow: #{$boxshadow};

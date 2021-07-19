@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { Flip, Fade, Zoom, Bounce } from 'react-reveal';
 import Pulse from 'react-reveal/Pulse';
 import Jello from 'react-reveal/Jello';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 import ExploreProfileList from '../components/ExploreProfileList';
 import { userInfoLists } from '../components/Explore_temp';
 
@@ -33,7 +35,7 @@ function Landing() {
               </div>
 
               <Fade duration={3000}>
-                <img src="introgifsample.png" alt="introgif" />
+                <img src="draganddrop.gif" alt="introgif" />
               </Fade>
 
               <div className="mobile-introtext">
@@ -75,8 +77,8 @@ function Landing() {
               </Zoom>
             </div>
             <div className="desc-wrap desc-wrap--3">
-              <img className="desc3-img" src="desc03.png" alt="desc3" />
               <Zoom>
+              <img className="desc3-img" src="desc03.png" alt="desc3" />
                 <p className="desc3">
                   저장만 해두고
                   <br />
@@ -105,8 +107,8 @@ function Landing() {
 
             <div className="desc">
               <div className="desc__inner">
-                <Zoom duration={2000}>
-                  <img src="collectgifsample.png" alt="collect-gif" />
+                <Zoom duration={800} >
+                  <img src="collectvertical.gif" alt="collect-gif" />
                 </Zoom>
                 <div className="desc-text">
                   <Fade duration={2000}>
@@ -135,7 +137,7 @@ function Landing() {
               </Fade>
 
               <Pulse>
-                <img src="dragsample.png" alt="drag-drop-gif" />
+                <img src="draganddrop.gif" alt="drag-drop-gif" />
               </Pulse>
 
               <div className="desc-dragdrop__desc">
@@ -160,7 +162,7 @@ function Landing() {
             <div className="alarm-wrapper">
               <Jello delay={1000}>
                 <div className="alarm">
-                  9 Unread bookmarks, Start to Recollect !
+                <FontAwesomeIcon className="jello-horizontal" icon={faBell} />Unread bookmarks, Start to Recollect !
                 </div>
               </Jello>
             </div>
