@@ -1,6 +1,8 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteCategory } from "../modules/category";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteCategory } from '../modules/category';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function CategoryReallyDeleteModal(props) {
   const dispatch = useDispatch();
@@ -11,6 +13,14 @@ function CategoryReallyDeleteModal(props) {
 
   return (
     <div className={`${props.className}__container`}>
+      <div
+        className={`${props.className}__closeBtn`}
+        onClick={() => {
+          props.handleClose();
+        }}
+      >
+        <FontAwesomeIcon icon={faTimes} />
+      </div>
       <div className={`${props.className}__text`}>
         카테고리에 포함된
         <br />

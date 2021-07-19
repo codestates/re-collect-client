@@ -12,7 +12,7 @@ function Recollect() {
   const accessToken = localStorage.getItem("accessToken");
   const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
 
-  const [unreads, setUnreads] = useState([]);
+  // const [unreadBookmarks, setUnreads] = useState([]);
 
   useEffect(() => {
     if (accessToken) {
@@ -20,17 +20,17 @@ function Recollect() {
     }
   }, []);
 
-  useEffect(() => {
-    setUnreads(unreadBookmarks);
-    console.log(unreads);
-  }, [bookmarks]);
+  // useEffect(() => {
+  //   setUnreads(unreadBookmarks);
+  //   console.log(unreads);
+  // }, [bookmarks]);
 
   return (
     <div className="recollect">
       <div className="recollect__title">Recollect</div>
       <div className="recollect__bookmarks">
-        {unreads.length !== 0 ? (
-          unreads.map((unread) => {
+        {unreadBookmarks.length !== 0 ? (
+          unreadBookmarks.map((unread) => {
             return (
               <BigBookmark
                 key={unread.id}

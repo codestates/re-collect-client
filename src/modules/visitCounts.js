@@ -13,22 +13,19 @@ export const addVisitCount = (id) => async (dispatch) => {
         `https://api.recollect.today/bookmarks/${id}`,
         {},
         {
-          // params: { id: id },
           headers: { authorization: `Bearer ${accessToken}` },
           withCredentials: true,
         }
       )
       .then(() => {
-        console.log("여기맞아?");
         dispatch(getBookmark());
       })
       .catch((err) => {
-        if (err.response.status === 401) {
-          dispatch(getAccessToken());
-          return;
-        } else {
-          console.log(err);
-        }
+        // if (err.response.status === 401) {
+        //   dispatch(getAccessToken());
+        //   return;
+        // }
+        console.log(err);
       });
   }
 };

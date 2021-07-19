@@ -2,7 +2,7 @@
   border: 1px solid #214bc8;
   height: 45px;
   line-height: 45px;
-  width: 500px;
+  width: 33vw;
   margin-bottom: 25px;
   padding-left: 5px;
   font-size: 1.5vw;
@@ -306,75 +306,6 @@
   margin-top: 15px;
   font-size: 16px;
   text-align: center;
-}
-.categoryEditModal__titleInput {
-  width: 200px;
-  height: 35px;
-  margin-top: 15px;
-  border: 1px solid #214bc8;
-}
-.categoryEditModal__titleInput:focus {
-  border: 1px solid #214bc8;
-  outline: 0;
-}
-.categoryEditModal__editBtn {
-  width: 200px;
-  height: 35px;
-  margin-top: 30px;
-  background-color: #214bc8;
-  border: 1px solid #214bc8;
-  color: #c4c4c4;
-}
-.categoryEditModal__editBtn:hover {
-  cursor: pointer;
-  color: white;
-}
-.categoryEditModal__deleteBtn {
-  width: 200px;
-  height: 35px;
-  margin-top: 15px;
-  border: 1px solid red;
-  color: red;
-  background: white;
-}
-.categoryEditModal__deleteBtn:hover {
-  cursor: pointer;
-  background: red;
-  color: white;
-}
-.categoryEditModal__background {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  z-index: 1;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.144);
-  backdrop-filter: blur(2px);
-}
-.categoryEditModal__container {
-  position: fixed;
-  left: 50%;
-  top: 25%;
-  transform: translate(-50%, 0);
-  margin: 0 auto;
-  background-color: white;
-  z-index: 1;
-  width: 280px;
-  height: 280px;
-  border: 1px solid #214bc8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.categoryEditModal__closeBtn {
-  align-self: flex-end;
-  margin-right: 5px;
-}
-.categoryEditModal__text {
-  width: 200px;
-  margin-top: 15px;
-  font-size: 16px;
-  text-align: center;
   word-spacing: -3px;
 }
 .categoryEditModal__titleInput {
@@ -415,55 +346,6 @@
 .categoryReally__container {
   position: fixed;
   left: 50%;
-  top: 30%;
-  transform: translate(-50%, 0);
-  margin: 0 auto;
-  background-color: white;
-  z-index: 1;
-  width: 280px;
-  height: 200px;
-  border: 1px solid #214bc8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.categoryReally__text {
-  width: 200px;
-  margin-top: 30px;
-  font-size: 16px;
-  text-align: center;
-}
-.categoryReally__Btns {
-  width: 200px;
-  height: 35px;
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-.categoryReally__noBtns {
-  width: 80px;
-  background-color: #214bc8;
-  border: 1px solid #214bc8;
-  color: #c4c4c4;
-}
-.categoryReally__noBtns:hover {
-  cursor: pointer;
-  color: white;
-}
-.categoryReally__yesBtns {
-  width: 80px;
-  border: 1px solid red;
-  color: red;
-  background: white;
-}
-.categoryReally__yesBtns:hover {
-  cursor: pointer;
-  background: red;
-  color: white;
-}
-.categoryReally__container {
-  position: fixed;
-  left: 50%;
   top: 25%;
   transform: translate(-50%, 0);
   margin: 0 auto;
@@ -475,6 +357,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.categoryReally__closeBtn {
+  align-self: flex-end;
+  margin-right: 5px;
 }
 .categoryReally__text {
   width: 200px;
@@ -549,7 +435,7 @@
   text-align: center;
   cursor: pointer;
   color: #214bc8;
-  font-size: 90%;
+  font-size: 80%;
   font-weight: 600;
   border-radius: 15px;
 }
@@ -651,6 +537,9 @@
     width: 100%;
     height: 38px;
     text-overflow: clip;
+    margin-bottom: 10px;
+    font-size: 75%;
+    word-spacing: -3px;
   }
   .collectview__search {
     width: 100%;
@@ -1371,7 +1260,7 @@ body {
 .landing__inner--first .first-wrap img {
   width: 48vw;
   margin-left: 6%;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
 .landing__inner--first .first-wrap .mobile-introtext {
@@ -1460,7 +1349,7 @@ body {
 .landing__inner--third .desc__inner img {
   width: 30vw;
   margin: 1.5%;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
 .landing__inner--third .desc__inner .desc-text {
@@ -1505,7 +1394,7 @@ body {
 .landing__inner--third .desc-dragdrop img {
   display: block;
   width: 80vw;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
 .landing__inner--third .desc-dragdrop__desc {
@@ -1533,6 +1422,9 @@ body {
   margin-top: 10%;
   margin-bottom: 7%;
 }
+.landing__inner--fourth .alarm-wrapper .jello-horizontal {
+  margin-right: 2%;
+}
 .landing__inner--fourth .alarm-wrapper .alarm {
   max-width: 65%;
   height: 70px;
@@ -1541,6 +1433,7 @@ body {
   line-height: 70px;
   text-align: center;
   font-size: 2.3vw;
+  font-weight: 700;
   white-space: nowrap;
   background-color: #EBFF9D;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
@@ -2168,6 +2061,9 @@ body {
 .modal__findPwd p {
   font-size: 14px;
   text-align: center;
+  margin-top: 0px;
+}
+.modal__findPwd button {
   margin-top: 0px;
 }
 .modal__sentEmail {

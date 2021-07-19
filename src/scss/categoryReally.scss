@@ -1,4 +1,4 @@
-@import "./util";
+@import './util';
 
 .categoryReally {
   &__container {
@@ -16,6 +16,11 @@
     flex-direction: column;
     align-items: center;
   }
+  &__closeBtn {
+    align-self: flex-end;
+    margin-right: 5px;
+  }
+
   &__text {
     width: 200px;
     margin-top: 70px;
