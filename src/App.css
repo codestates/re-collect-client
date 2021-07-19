@@ -306,6 +306,75 @@
   margin-top: 15px;
   font-size: 16px;
   text-align: center;
+}
+.categoryEditModal__titleInput {
+  width: 200px;
+  height: 35px;
+  margin-top: 15px;
+  border: 1px solid #214bc8;
+}
+.categoryEditModal__titleInput:focus {
+  border: 1px solid #214bc8;
+  outline: 0;
+}
+.categoryEditModal__editBtn {
+  width: 200px;
+  height: 35px;
+  margin-top: 30px;
+  background-color: #214bc8;
+  border: 1px solid #214bc8;
+  color: #c4c4c4;
+}
+.categoryEditModal__editBtn:hover {
+  cursor: pointer;
+  color: white;
+}
+.categoryEditModal__deleteBtn {
+  width: 200px;
+  height: 35px;
+  margin-top: 15px;
+  border: 1px solid red;
+  color: red;
+  background: white;
+}
+.categoryEditModal__deleteBtn:hover {
+  cursor: pointer;
+  background: red;
+  color: white;
+}
+.categoryEditModal__background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.144);
+  backdrop-filter: blur(2px);
+}
+.categoryEditModal__container {
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  background-color: white;
+  z-index: 1;
+  width: 280px;
+  height: 280px;
+  border: 1px solid #214bc8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.categoryEditModal__closeBtn {
+  align-self: flex-end;
+  margin-right: 5px;
+}
+.categoryEditModal__text {
+  width: 200px;
+  margin-top: 15px;
+  font-size: 16px;
+  text-align: center;
   word-spacing: -3px;
 }
 .categoryEditModal__titleInput {
@@ -342,6 +411,55 @@
   border: 1px red solid;
   cursor: pointer;
   color: red;
+}
+.categoryReally__container {
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  background-color: white;
+  z-index: 1;
+  width: 280px;
+  height: 200px;
+  border: 1px solid #214bc8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.categoryReally__text {
+  width: 200px;
+  margin-top: 30px;
+  font-size: 16px;
+  text-align: center;
+}
+.categoryReally__Btns {
+  width: 200px;
+  height: 35px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.categoryReally__noBtns {
+  width: 80px;
+  background-color: #214bc8;
+  border: 1px solid #214bc8;
+  color: #c4c4c4;
+}
+.categoryReally__noBtns:hover {
+  cursor: pointer;
+  color: white;
+}
+.categoryReally__yesBtns {
+  width: 80px;
+  border: 1px solid red;
+  color: red;
+  background: white;
+}
+.categoryReally__yesBtns:hover {
+  cursor: pointer;
+  background: red;
+  color: white;
 }
 .categoryReally__container {
   position: fixed;
