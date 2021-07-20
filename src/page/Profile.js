@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faCheck, faLaptop } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
-import FavoriteBookmark from "../components/FavoriteBookmark";
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faCheck, faLaptop } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
+import FavoriteBookmark from '../components/FavoriteBookmark';
 import {
   IsValidiateUsername,
   IsValidateCompany,
   IsValidateGitRepo,
-} from "../util/validation";
+} from '../util/validation';
 
 import {
   getProfile,
   editUsername,
   editCompany,
   editGitRepo,
-} from "../modules/editProfile";
+} from '../modules/editProfile';
 
 function Profile(props) {
   const state = useSelector((state) => state.profileReducer);
@@ -24,9 +24,9 @@ function Profile(props) {
   const dispatch = useDispatch();
 
   const [errorMessage, setErrMessage] = useState({
-    username: "",
-    company: "",
-    gitrepo: "",
+    username: '',
+    company: '',
+    gitrepo: '',
   });
 
   // const [inputValue, setInputValue] = useState({
@@ -44,16 +44,13 @@ function Profile(props) {
   const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
   const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
 
-  const userInputRef = useRef("");
-  const companyInputRef = useRef("");
-  const gitRepoInputRef = useRef("");
+  const userInputRef = useRef('');
+  const companyInputRef = useRef('');
+  const gitRepoInputRef = useRef('');
 
   useEffect(() => {
     dispatch(getProfile());
-
-    console.log("useeffect get 요청 실행");
   }, [dispatch]);
-  console.log("render");
 
   // const cancelClick = () => {
   //   document.addEventListener('click', function(e){
@@ -65,14 +62,14 @@ function Profile(props) {
   //   })
   // }
 
-    //-------------onchange event 랜더링 
+  //-------------onchange event 랜더링
   // const handleInputValue = (e) => {
   //   const { value, name } = e.target;
   //   console.log(`${value}`);
   //     setInputValue({
-  //       ...inputValue, 
-  //       [name]: value, 
-  //     })      
+  //       ...inputValue,
+  //       [name]: value,
+  //     })
   // };
 
   useEffect(() => {
@@ -85,18 +82,18 @@ function Profile(props) {
     userInputRef.current.readOnly = !userInputRef.current.readOnly;
     userInputRef.current.disabled = !userInputRef.current.disabled;
 
-    if (e.currentTarget.getAttribute("name") === "usernamecheck") {
+    if (e.currentTarget.getAttribute('name') === 'usernamecheck') {
       //console.log(e.currentTarget.getAttribute("name"), "username target");
 
       if (!IsValidiateUsername(userInputRef.current.value)) {
         setErrMessage({
           ...errorMessage,
-          username: "유저네임은 4~16글자, 영문 대소문자로 만들수 있습니다.",
+          username: '유저네임은 4~16글자, 영문 대소문자로 만들수 있습니다.',
         });
         return;
       }
       dispatch(editUsername(userInputRef.current.value));
-      setErrMessage({ username: "", company: "", gitrepo: "" });
+      setErrMessage({ username: '', company: '', gitrepo: '' });
     }
   };
 
@@ -106,16 +103,16 @@ function Profile(props) {
     companyInputRef.current.readOnly = !companyInputRef.current.readOnly;
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
 
-    if (e.currentTarget.getAttribute("name") === "companycheck") {
+    if (e.currentTarget.getAttribute('name') === 'companycheck') {
       if (!IsValidateCompany(companyInputRef.current.value)) {
         setErrMessage({
           ...errorMessage,
-          company: "공백은 입력하실 수 없습니다.",
+          company: '공백은 입력하실 수 없습니다.',
         });
         return;
       }
       dispatch(editCompany(companyInputRef.current.value));
-      setErrMessage({ username: "", company: "", gitrepo: "" });
+      setErrMessage({ username: '', company: '', gitrepo: '' });
     }
   };
 
@@ -125,16 +122,16 @@ function Profile(props) {
     gitRepoInputRef.current.readOnly = !gitRepoInputRef.current.readOnly;
     gitRepoInputRef.current.disabled = !gitRepoInputRef.current.disabled;
 
-    if (e.currentTarget.getAttribute("name") === "gitrepocheck") {
+    if (e.currentTarget.getAttribute('name') === 'gitrepocheck') {
       if (!IsValidateGitRepo(gitRepoInputRef.current.value)) {
         setErrMessage({
           ...errorMessage,
-          gitrepo: "공백은 입력하실 수 없습니다.",
+          gitrepo: '공백은 입력하실 수 없습니다.',
         });
         return;
       }
       dispatch(editGitRepo(gitRepoInputRef.current.value));
-      setErrMessage({ username: "", company: "", gitrepo: "" });
+      setErrMessage({ username: '', company: '', gitrepo: '' });
     }
   };
 
@@ -164,7 +161,7 @@ function Profile(props) {
               <FontAwesomeIcon
                 icon={usernameInputReadMode ? faPen : faCheck}
                 className="edit-info"
-                name={usernameInputReadMode ? "usernamepen" : "usernamecheck"}
+                name={usernameInputReadMode ? 'usernamepen' : 'usernamecheck'}
                 onClick={usernameInputActive}
               />
               <div className="errorMessage">{errorMessage.username}</div>
@@ -198,14 +195,14 @@ function Profile(props) {
                 placeholder={
                   profile.company
                     ? `Working at ${profile.company}`
-                    : "Working at..."
+                    : 'Working at...'
                 }
                 ref={companyInputRef}
               />
               <FontAwesomeIcon
                 icon={companyInputReadMode ? faPen : faCheck}
                 className="edit-info"
-                name={companyInputReadMode ? "companypen" : "companycheck"}
+                name={companyInputReadMode ? 'companypen' : 'companycheck'}
                 onClick={companyInputActive}
               />
               <div className="errorMessage">{errorMessage.company}</div>
@@ -217,13 +214,13 @@ function Profile(props) {
                 name="gitrepo"
                 readOnly
                 disabled
-                placeholder={profile.gitrepo ? profile.gitrepo : "-"}
+                placeholder={profile.gitrepo ? profile.gitrepo : '-'}
                 ref={gitRepoInputRef}
               />
               <FontAwesomeIcon
                 icon={gitRepoInputReadMode ? faPen : faCheck}
                 className="edit-info"
-                name={gitRepoInputReadMode ? "gitrepopen" : "gitrepocheck"}
+                name={gitRepoInputReadMode ? 'gitrepopen' : 'gitrepocheck'}
                 onClick={gitRepoInputActive}
               />
               <div className="errorMessage">{errorMessage.gitrepo}</div>
@@ -232,14 +229,14 @@ function Profile(props) {
           <div className="profilebox__btns">
             <button
               onClick={() => {
-                props.setModalMode("changePwd");
+                props.setModalMode('changePwd');
               }}
             >
               비밀번호 변경
             </button>
             <button
               onClick={() => {
-                props.setModalMode("delAccount");
+                props.setModalMode('delAccount');
               }}
             >
               계정 삭제

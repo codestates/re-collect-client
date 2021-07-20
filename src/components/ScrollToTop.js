@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-    console.log(`${scrolled} = scrollTop`);
     if (scrolled > 300) {
       setVisible(true);
     } else if (scrolled <= 300) {
@@ -16,7 +15,7 @@ function ScrollToTop() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -24,7 +23,7 @@ function ScrollToTop() {
 
   useEffect(() => {
     let timer;
-    window.addEventListener("scroll", function () {
+    window.addEventListener('scroll', function () {
       if (!timer) {
         timer = setTimeout(() => {
           timer = null;
@@ -34,7 +33,7 @@ function ScrollToTop() {
     });
 
     return () => {
-      window.removeEventListener("scroll", toggleVisible);
+      window.removeEventListener('scroll', toggleVisible);
     };
   }, [visible]);
 
@@ -42,7 +41,7 @@ function ScrollToTop() {
     <button
       className="top-btn"
       onClick={scrollToTop}
-      style={{ display: visible ? "block" : "none" }}
+      style={{ display: visible ? 'block' : 'none' }}
     >
       TOP
     </button>

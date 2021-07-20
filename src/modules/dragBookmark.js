@@ -6,7 +6,6 @@ export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
     const accessToken = localStorage.getItem('accessToken');
-    console.log(dragId, dropId, categoryId);
 
     axios
       .patch(

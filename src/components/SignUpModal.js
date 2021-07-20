@@ -1,49 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   signupInitialize,
   signupThunk,
   emailValidation,
   usernameValidation,
   validationInitialize,
-} from "../modules/sign";
+} from '../modules/sign';
 import {
   IsValidateEmail,
   IsValidiateUsername,
   IsValidiatePassword,
-} from "../util/validation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes, faLock, faCheck } from "@fortawesome/free-solid-svg-icons";
-import Creatable from "react-select/creatable";
-import emailOptions from "../util/emaiOptions";
+} from '../util/validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
+import Creatable from 'react-select/creatable';
+import emailOptions from '../util/emaiOptions';
 
 const customStyles = {
   container: (provided, state) => ({
     ...provided,
     width: 160,
     height: 45,
-    border: "1px #214bc8 solid",
-    borderLeft: "none",
-    display: "flex",
-    background: "white",
-    boxSizing: "border-box",
+    border: '1px #214bc8 solid',
+    borderLeft: 'none',
+    display: 'flex',
+    background: 'white',
+    boxSizing: 'border-box',
   }),
 
   control: () => ({
-    display: "flex",
+    display: 'flex',
     flex: 1,
     width: 40,
   }),
 
   placeholder: (provided) => ({
     ...provided,
-    color: "rgba(0, 0, 0, 0.5)",
+    color: 'rgba(0, 0, 0, 0.5)',
     fontSize: 13,
   }),
 
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = "opacity 300ms";
+    const transition = 'opacity 300ms';
 
     return { ...provided, opacity, transition };
   },
@@ -51,16 +51,16 @@ const customStyles = {
   valueContainer: (provided) => ({
     ...provided,
     fontSize: 13,
-    fontFamily: "Noto Sans KR",
+    fontFamily: 'Noto Sans KR',
     paddingLeft: 0,
   }),
 
   menu: (provided) => ({
     ...provided,
-    border: "1px #214bc8 solid",
+    border: '1px #214bc8 solid',
     borderRadius: 2,
     marginTop: 9,
-    fontFamily: "Noto Sans KR",
+    fontFamily: 'Noto Sans KR',
   }),
 
   indicatorsContainer: (provided) => ({
@@ -79,19 +79,19 @@ function SignUpModal(props) {
   );
   const dispatch = useDispatch();
   const [signUpInfo, setSignUpInfo] = useState({
-    email: "",
-    emailService: "",
-    pwd: "",
-    pwdCheck: "",
-    username: "",
+    email: '',
+    emailService: '',
+    pwd: '',
+    pwdCheck: '',
+    username: '',
   });
 
   const [message, setMessage] = useState({
-    email: "",
-    pwd: "",
-    pwdCheck: "",
-    username: "",
-    overall: "",
+    email: '',
+    pwd: '',
+    pwdCheck: '',
+    username: '',
+    overall: '',
   });
 
   useEffect(() => {
@@ -124,14 +124,14 @@ function SignUpModal(props) {
     if (email) {
       setMessage({
         ...message,
-        email: "사용할 수 있는 이메일",
+        email: '사용할 수 있는 이메일',
       });
     }
 
     if (username) {
       setMessage({
         ...message,
-        username: "사용할 수 있는 유저네임",
+        username: '사용할 수 있는 유저네임',
       });
     }
   }, [isSignupSuccess]);
@@ -139,7 +139,7 @@ function SignUpModal(props) {
   useEffect(() => {
     const { overall } = isSignupSuccess;
     if (overall) {
-      props.setModalMode("successSignup");
+      props.setModalMode('successSignup');
       dispatch(signupInitialize());
     }
   }, [isSignupSuccess]);
@@ -148,9 +148,9 @@ function SignUpModal(props) {
     const { name, value } = e.target;
     const { email, username } = isSignupSuccess;
 
-    if (name === "email") {
+    if (name === 'email') {
       if (email) {
-        dispatch(validationInitialize("email"));
+        dispatch(validationInitialize('email'));
       }
       setSignUpInfo({
         ...signUpInfo,
@@ -159,54 +159,53 @@ function SignUpModal(props) {
       return;
     }
 
-    if (username && name === "username") {
-      dispatch(validationInitialize("username"));
+    if (username && name === 'username') {
+      dispatch(validationInitialize('username'));
     }
 
     setSignUpInfo((state) => {
       state[name] = value;
       switch (name) {
-        case "pwd":
+        case 'pwd':
           if (!IsValidiatePassword(state.pwd)) {
             setMessage({
               ...message,
-              pwd: "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.",
+              pwd: '8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.',
             });
           } else {
             setMessage({
               ...message,
-              pwd: "",
+              pwd: '',
             });
           }
           break;
-        case "pwdCheck":
+        case 'pwdCheck':
           if (state.pwd !== state.pwdCheck) {
             setMessage({
               ...message,
-              pwdCheck: "비밀번호가 일치하지 않습니다.",
+              pwdCheck: '비밀번호가 일치하지 않습니다.',
             });
           } else {
             setMessage({
               ...message,
-              pwdCheck: "",
+              pwdCheck: '',
             });
           }
           break;
-        case "username":
+        case 'username':
           if (!IsValidiateUsername(state.username)) {
             setMessage({
               ...message,
-              username: "4~16자 영문 대 소문자, 숫자를 사용하세요.",
+              username: '4~16자 영문 대 소문자, 숫자를 사용하세요.',
             });
           } else {
             setMessage({
               ...message,
-              username: "",
+              username: '',
             });
           }
           break;
         default:
-          console.log("here");
           break;
       }
       return state;
@@ -225,7 +224,7 @@ function SignUpModal(props) {
     if (!email || !emailService || !pwd || !pwdCheck || !username) {
       setMessage({
         ...message,
-        overall: "모든 항목은 필수입니다",
+        overall: '모든 항목은 필수입니다',
       });
       return;
     }
@@ -233,7 +232,7 @@ function SignUpModal(props) {
     if (!isSignupSuccess.email || !isSignupSuccess.username) {
       setMessage({
         ...message,
-        overall: "이메일, 유저네임 중복확인을 먼저 해주세요!",
+        overall: '이메일, 유저네임 중복확인을 먼저 해주세요!',
       });
       return;
     }
@@ -241,32 +240,32 @@ function SignUpModal(props) {
     dispatch(signupThunk(signUpInfo));
     setSignUpInfo({
       ...signUpInfo,
-      email: "",
-      emailService: "",
-      pwd: "",
-      pwdCheck: "",
-      username: "",
+      email: '',
+      emailService: '',
+      pwd: '',
+      pwdCheck: '',
+      username: '',
     });
     setMessage({
-      email: "",
-      pwd: "",
-      pwdCheck: "",
-      username: "",
-      overall: "",
+      email: '',
+      pwd: '',
+      pwdCheck: '',
+      username: '',
+      overall: '',
     });
   };
 
   const handleValidiateEmail = () => {
     if (!signUpInfo.emailService.value || !signUpInfo.email) {
-      setMessage({ ...message, email: "모든 항목은 필수 입니다" });
+      setMessage({ ...message, email: '모든 항목은 필수 입니다' });
       return;
     }
 
-    const email = signUpInfo.email + "@" + signUpInfo.emailService.value;
+    const email = signUpInfo.email + '@' + signUpInfo.emailService.value;
     if (!IsValidateEmail(email)) {
       setMessage({
         ...message,
-        email: "잘못된 이메일 형식입니다.",
+        email: '잘못된 이메일 형식입니다.',
       });
       return;
     }
@@ -278,7 +277,7 @@ function SignUpModal(props) {
     if (username.length === 0 || !IsValidiateUsername(username)) {
       setMessage({
         ...message,
-        username: "올바른 유저네임을 입력해주세요!",
+        username: '올바른 유저네임을 입력해주세요!',
       });
       return;
     }
@@ -291,7 +290,7 @@ function SignUpModal(props) {
         <div
           className="closeBtn"
           onClick={() => {
-            props.setModalMode("");
+            props.setModalMode('');
             dispatch(signupInitialize());
           }}
         >
@@ -329,7 +328,7 @@ function SignUpModal(props) {
         </div>
         <div
           className={`signUpmodal__messageContainer ${
-            isSignupSuccess.email && "valid"
+            isSignupSuccess.email && 'valid'
           }`}
         >
           {message.email}
@@ -383,7 +382,7 @@ function SignUpModal(props) {
         </div>
         <div
           className={`signUpmodal__messageContainer ${
-            isSignupSuccess.username && "valid"
+            isSignupSuccess.username && 'valid'
           }`}
         >
           {message.username}
