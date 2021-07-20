@@ -1,40 +1,38 @@
-import React from "react";
-import axios from "axios";
-import { IsValidiatePassword } from "../util/validation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import axios from 'axios';
+import { IsValidiatePassword } from '../util/validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function SetNewPwdModal(props) {
   const signUpValidCheck = () => {
-    const password1 = document.querySelector(".resetPwd").value;
-    const password2 = document.querySelector(".resetPwdCheck").value;
-    const tempPwd = document.querySelector(".tempPwd").value;
-    const error = document.querySelector(".modal__error");
+    const password1 = document.querySelector('.resetPwd').value;
+    const password2 = document.querySelector('.resetPwdCheck').value;
+    const tempPwd = document.querySelector('.tempPwd').value;
+    const error = document.querySelector('.modal__error');
     if (!tempPwd) {
-      error.textContent = "인증번호를 입력해주세요";
+      error.textContent = '인증번호를 입력해주세요';
     } else if (!IsValidiatePassword(password1)) {
       error.textContent =
-        "비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.";
+        '비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.';
       return;
     } else if (!(password1 === password2)) {
-      error.textContent = "비밀번호가 서로 다릅니다.";
+      error.textContent = '비밀번호가 서로 다릅니다.';
       return;
     } else {
-      error.textContent = "";
+      error.textContent = '';
       requestNewPwd(tempPwd, password1);
     }
   };
 
   const requestNewPwd = (tempPwd, pwd) => {
     const email = window.location.search.slice(1);
-    console.log(pwd, tempPwd, email);
     axios
       .post(`https://api.recollect.today/auth/pwd?${email}`, {
         tempPwd: tempPwd,
         pwd: pwd,
       })
-      .then((res) => props.setModalMode("successSetNewPwd"))
-      .catch((err) => console.log(err));
+      .then((res) => props.setModalMode('successSetNewPwd'));
   };
 
   return (
@@ -44,7 +42,7 @@ function SetNewPwdModal(props) {
           <div
             className="modal__closeBtn"
             onClick={() => {
-              props.setModalMode("");
+              props.setModalMode('');
             }}
           >
             <FontAwesomeIcon icon={faTimes} />

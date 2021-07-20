@@ -1,31 +1,30 @@
-import React from "react";
-import axios from "axios";
-import { IsValidateEmail } from "../util/validation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import axios from 'axios';
+import { IsValidateEmail } from '../util/validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function FindPwdModal(props) {
   const findPwdValidCheck = () => {
-    const email = document.querySelector(".findPwdEmail").value;
-    const error = document.querySelector(".modal__error");
+    const email = document.querySelector('.findPwdEmail').value;
+    const error = document.querySelector('.modal__error');
     if (!IsValidateEmail(email)) {
-      error.textContent = "이메일을 확인해주세요";
+      error.textContent = '이메일을 확인해주세요';
       return;
     } else {
-      error.textContent = "";
+      error.textContent = '';
       sendMailRequest(email);
     }
   };
 
   const sendMailRequest = (email) => {
     axios
-      .post("https://api.recollect.today/auth/tmp", {
+      .post('https://api.recollect.today/auth/tmp', {
         email: email,
       })
       .then((res) => {
-        props.setModalMode("sentEmail");
-      })
-      .catch((err) => console.log(err, "에러가 발생했습니다"));
+        props.setModalMode('sentEmail');
+      });
   };
 
   return (
@@ -35,7 +34,7 @@ function FindPwdModal(props) {
           <div
             className="modal__closeBtn"
             onClick={() => {
-              props.setModalMode("");
+              props.setModalMode('');
             }}
           >
             <FontAwesomeIcon icon={faTimes} />
@@ -63,14 +62,14 @@ function FindPwdModal(props) {
           <div className="modal__bottomTab">
             <div
               onClick={() => {
-                props.setModalMode("signup");
+                props.setModalMode('signup');
               }}
             >
               회원가입
             </div>
             <div
               onClick={() => {
-                props.setModalMode("login");
+                props.setModalMode('login');
               }}
             >
               로그인
