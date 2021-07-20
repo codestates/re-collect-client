@@ -1,0 +1,12 @@
+@import "./util";
+
+//// SetNewPwd ////
+.SetNewPwd__container {
+  width: 100vw;
+  height: 82vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #{$logocolor};
+  background-color: rgb(206, 201, 201);
+}

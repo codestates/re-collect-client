@@ -1,0 +1,354 @@
+@import "./util.scss";
+
+//webkit autofill 초기화
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus,
+// input:-webkit-autofill:active {
+//     transition: background-color 5000s ease-in-out 0s;
+// }
+input:-webkit-autofill {
+  //background-color: #fff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:focus::-webkit-input-placeholder, 
+textarea:focus::-webkit-input-placeholder { /* WebKit browsers */ color:#fff; } 
+input:focus:-moz-placeholder, 
+textarea:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color:#fff; } 
+input:focus::-moz-placeholder, 
+textarea:focus::-moz-placeholder { /* Mozilla Firefox 19+ */ color:#fff; } 
+input:focus:-ms-input-placeholder, 
+textarea:focus:-ms-input-placeholder { /* Internet Explorer 10+ */ color:#fff; }
+
+
+.profile-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #{$logocolor};
+  .errorMessage{
+    font-size: 1vw;
+  }
+  &__inner {
+    width: 28vw;
+    height: 90vh;
+    text-align: center;
+  }
+  &__inner--left {
+    //margin-right: 6vw;
+    width:40vw;
+    height: 50%;
+    font-size: 14px;
+    font-weight: 700;
+
+    
+    .profilebox {
+      margin-top: 7vh;
+      
+      &__photo {
+        .photo-icon {
+          height: 100%;
+          width: 80px;
+          font-weight: lighter;
+        }
+      }
+
+      &__userinfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .usernamebox{
+          margin-bottom: 1vh;
+        }
+        input{
+          margin-top:1.5vh;
+          font-family: IBM Plex Mono;
+          font-size: 20px;
+          width:50%;
+          margin-left:1.5vw;
+          margin-right: 0.5vw;
+          border:none;
+          border-bottom: dotted 1px #{$logocolor};
+          //outline:none;
+          text-align: center;
+          &::placeholder{
+            text-align: center;
+            font-family: IBM Plex Mono;
+            color: #{$logocolor};
+          }
+          &:disabled{
+            background-color: transparent;
+          }
+          &:focus{
+          &::-webkit-input-placeholder{
+            color: transparent}
+    
+          &::-moz-placeholder{
+            color: transparent}
+    
+          &:-ms-input-placeholder{
+            color: transparent}
+    
+          &::-ms-input-placeholder{
+            color: transparent}
+          }
+        }
+        .edit-info{
+          color:grey;
+
+          &:hover{
+            color:#{$logocolor};
+            cursor: pointer;
+          }
+        }
+        p{
+          
+          word-spacing: -3px;
+          line-height: 0.3vh;
+        }
+      }
+
+      &__follow {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        p {
+          width: 100px;
+          margin-left: 1.5vw;
+          &:nth-child(1) {
+            margin-left: 0;
+          }
+
+          &:nth-child(2), &:nth-child(3){
+            color: grey;
+          }
+        }
+      }
+
+      &__companyngitrepo{
+        display: flex;
+        flex-direction: column;
+
+        &__inner{
+          margin-top: 1.5vh;
+          input{
+            font-family: IBM Plex Mono;
+            width:50%;
+            margin-right: 0.5vw;
+            border:none;
+            border-bottom: dotted 1px #{$logocolor};
+            //outline:none;
+            text-align: center;
+            &::placeholder{
+              text-align: center;
+              color: #{$logocolor};
+              font-size:14px;
+              font-family: IBM Plex Mono;
+            }  
+            &:disabled{
+              background-color: transparent;
+            }
+            &:focus{
+              &::-webkit-input-placeholder{
+                color: transparent}
+        
+              &::-moz-placeholder{
+                color: transparent}
+        
+              &:-ms-input-placeholder{
+                color: transparent}
+        
+              &::-ms-input-placeholder{
+                color: transparent}
+              }        
+          }
+
+        }
+
+        .edit-info{
+          color: grey;
+
+          &:hover{
+            color:#{$logocolor};
+            cursor: pointer;
+          }
+        }
+      }
+
+      &__companyngitrepo{
+        display: flex;
+        flex-direction: column;
+
+        &__inner{
+          margin-top: 1.5vh;
+          input{
+            font-family: IBM Plex Mono;
+            text-overflow: ellipsis;
+            width:50%;
+            margin-right: 0.5vw;
+            border:none;
+            border-bottom: dotted 1px #{$logocolor};
+            //outline:none;
+            text-align: center;
+            &::placeholder{
+              text-align: center;
+              color: #{$logocolor};
+              font-size:14px;
+              font-family: IBM Plex Mono;
+            }   
+            &:disabled{
+              background-color: transparent;
+            } 
+            &:focus{
+              &::-webkit-input-placeholder{
+                color: transparent}
+        
+              &::-moz-placeholder{
+                color: transparent}
+        
+              &:-ms-input-placeholder{
+                color: transparent}
+        
+              &::-ms-input-placeholder{
+                color: transparent}
+              }        
+          }
+
+        }
+
+        .edit-info{
+          color: grey;
+
+          &:hover{
+            color:#{$logocolor};
+            cursor: pointer;
+          }
+        }
+      }
+
+      &__btns {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        button {
+          border: none;
+          background-color: transparent;
+          font-size: 14px;
+          font-weight: 600;
+          margin-top: 20px;
+          color: rgb(78, 78, 78);
+          width: fit-content;
+
+          &:hover {
+            cursor: pointer;
+            color: #{$logocolor};
+          }
+        }
+      }
+    }
+  }
+
+  .slicebox {
+    width: 1px;
+    height: 60vh;
+    margin-top: 90px;
+    border-right: solid 1px;
+    //margin-right: 1.3vw;
+  }
+
+  &__inner--right {
+    //background-color: whitesmoke;
+    width:40vw;
+    display:flex;
+    justify-content: center;
+    .popular-recollect {
+      margin-top: 40vh;
+      margin-left: 5vw;
+      width:75%;
+      h1 {
+        font-size: 20px;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.profile-container {
+  @include tablet {
+
+    &__inner {
+      transform: scale(0.9);
+    }
+    &__inner--left {
+      width: 55vw;
+      display:flex;
+      justify-content: center;
+      margin-left: -13vw;
+      margin-right: -3vw;
+      .profilebox {
+        height: fit-content;
+        &__follow {
+          margin-top:0;
+        }
+      }
+    }
+    &__inner--right {
+      .popular-recollect {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        width:90%;
+        h1 {
+          font-size: 2.5vw;
+        }
+      }
+    }
+  }
+  @include mobile {
+    //background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__inner {
+      transform: scale(1);
+      margin-top: 15vh;
+      width:70vw;
+      margin-left:0;
+
+    }
+    &__inner--left{
+      margin-left:-5px;
+      .profilebox{
+        &__follow{
+          margin-top: -5px;
+        }      
+      }
+    }
+    .slicebox{
+      display: none;
+    }
+    .slicebox-row{
+      width:80vw;
+      border-top:solid 1px;
+      margin-top:50px;
+    }
+    &__inner--right{
+      margin-left:-5vw;
+      margin-top:50px;
+      
+      height: fit-content;
+      margin-bottom: 80px;
+      
+      .popular-recollect{
+        margin-top:0; 
+        h1{
+          font-size: 4.3vw;
+        }
+
+      }
+    }
+  }
+}

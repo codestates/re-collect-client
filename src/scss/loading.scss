@@ -1,0 +1,63 @@
+@import './util';
+
+.loading {
+  height: 100vh;
+
+  &__box {
+    height: 200px;
+    width: 250px;
+    position: absolute;
+    top: calc(50% - 120px);
+    left: calc(50% - 125px);
+    text-align: center;
+  }
+  &__logo {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 10px;
+    background: {
+      image: url('./logo_cut.png');
+      repeat: no-repeat;
+      size: 150px;
+      position: center;
+    }
+  }
+
+  &__letter {
+    text-align: center;
+    font-size: 36px;
+
+    padding-right: 2px;
+    line-height: 30px;
+    margin: 0 auto;
+    color: #{$blue};
+
+    animation: typing 2s steps(9, start) infinite,
+      blink-caret 0.5s step-end infinite;
+
+    display: inline-block;
+    overflow: clip;
+    white-space: nowrap;
+
+    border-right: 3px solid #{$blue};
+  }
+}
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 199.41px;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #{$blue};
+  }
+}

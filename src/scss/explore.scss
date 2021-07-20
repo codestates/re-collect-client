@@ -1,0 +1,254 @@
+@import "./util";
+
+.explore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  @include tablet {
+    .explore {
+      &__text {
+        color: #{$blue};
+        font-size: 30px;
+        margin-top: 120px;
+      }
+      &__searchBar {
+        width: 560px;
+        height: 40px;
+        margin-top: 50px;
+        input {
+          width: 90%;
+          height: 100%;
+          outline: none;
+        }
+        button {
+          width: 10%;
+          height: 100%;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      &__recommendation {
+        span {
+          font-size: 12px;
+        }
+      }
+      &__interestingBookmarks {
+        p {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  //// Mobile ////
+  @include mobile {
+    .explore {
+      &__searchBar {
+        width: 310px;
+        height: 35px;
+      }
+      &__recommendation {
+        width: 310px;
+        display: inline-block;
+        margin-top: 10px;
+        &__title {
+          margin-left: 5px;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+      &__interestingBookmarks {
+        p {
+          font-size: 20px;
+          margin: 0;
+          color: #{$blue};
+        }
+        ul {
+          width: 292px;
+        }
+      }
+    }
+  }
+}
+
+/// Laptop ////
+.explore {
+  &__text {
+    color: #{$logocolor};
+    font-size: #{$headerfont};
+    font-weight: 700;
+    margin-top: 120px;
+    text-align: center;
+  }
+
+  &__search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  &__searchBar {
+    width: 560px;
+    height: 40px;
+    margin-top: 50px;
+    input {
+      width: 88%;
+      height: 100%;
+      outline: none;
+      border: 1px solid black;
+      border-right: none;
+      font-size: 16px;
+      padding-left: 10px;
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    button {
+      font-size: 16px;
+      color: gray;
+      border: 1px solid black;
+      border-left: none;
+      background-color: white;
+      width: 10%;
+      height: 100%;
+      &:hover {
+        color: black;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__recommendation {
+    width: 560px;
+    margin-top: 30px;
+    display: flex;
+    padding-left: 8px;
+    justify-content: center;
+    align-content: center;
+    div {
+      color: rgb(128, 119, 119);
+    }
+  }
+
+  &__tags {
+    font-size: 14px;
+    flex: 1;
+  }
+  span {
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border: 1px solid rgb(128, 119, 119);
+    &:hover {
+      cursor: pointer;
+      color: black;
+    }
+  }
+
+  &__RandomProfile {
+    margin-top: 40px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__interestingBookmarks {
+    margin: 105px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    p {
+      color: #{$logocolor};
+      font-size: #{$headerfont};
+      font-weight: 700;
+      margin: 0;
+    }
+    ul {
+      margin-top: 30px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 530px;
+    }
+  }
+}
+
+// Carousel
+#carousel {
+  text-align: center;
+  box-shadow: #{$boxshadow};
+  border: solid 1px #000;
+  width: 21vw;
+  aspect-ratio: 3/4;
+}
+.explore__searchProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+  color: #{$blue};
+  &__profileImage {
+    margin-top: 25px;
+    font-size: 85px;
+    .photo-icon {
+      height: 100%;
+      width: 80px;
+      font-weight: lighter;
+    }
+  }
+  p {
+    margin-top: 0px;
+    margin-bottom: 0;
+    font-size: 25px;
+    font-weight: 700;
+  }
+  &__socialInfo {
+    margin-top: 20px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+    }
+  }
+  &__companyInfo {
+    margin-top: 30px;
+    font-size: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    div {
+      margin: 5px;
+      &:hover {
+        color: #{$blue};
+      }
+    }
+    .icon {
+      padding-right: 3px;
+    }
+  }
+}

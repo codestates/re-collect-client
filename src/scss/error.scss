@@ -1,0 +1,16 @@
+@import './util';
+
+.error {
+  height: 80vh;
+  width: 100vw;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  color:rgb(93, 94, 95);
+  &__toHomeBtn {
+    color: #{$blue};
+  }
+}

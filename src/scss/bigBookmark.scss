@@ -1,0 +1,53 @@
+@import "./util";
+
+.bigBookmark {
+  border: 1px solid #{$blue};
+  height: 45px;
+  line-height: 45px;
+  width: 33vw;
+  margin-bottom: 25px;
+  padding-left: 5px;
+  font-size: 1.5vw;
+  text-align: left;
+  cursor: pointer;
+
+  &__triangle {
+    width: 0px;
+    height: 0px;
+    border: {
+      top: 21.5px solid transparent;
+      left: 33.5px solid transparent;
+      right: 33.5px solid #{$blue};
+      bottom: 21.5px solid transparent;
+    }
+    float: right;
+  }
+}
+
+.favoritebookmark {
+  cursor: default;
+}
+
+@include tablet {
+  .favoritebookmark {
+    font-size: 1.9vw;
+  }
+}
+
+@include mobile {
+  .bigBookmark {
+    width: 70vw;
+    height: 32px;
+    margin-bottom: 11px;
+    font-size: 11px;
+    line-height: 28px;
+    &__triangle {
+      border: {
+        top: 14px solid transparent;
+        left: 16px solid transparent;
+        right: 20px solid #{$blue};
+        bottom: 16px solid transparent;
+      }
+    }
+  }
+}

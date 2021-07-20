@@ -1,0 +1,208 @@
+@import "./util";
+
+.categorybox {
+  min-width: 240px;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    height: 24px;
+    padding: 0 15px;
+    border-bottom: 1px solid;
+    font-size: #{$bookmarkfont};
+    text-align: right;
+    line-height: 24px;
+  }
+
+  &__header-editbtn {
+    background-color: transparent;
+    color: rgba(128, 128, 128, 0.6);
+    border-style: none;
+    font-size: #{$bookmarkfont};
+    cursor: pointer;
+
+    &:hover {
+      color: #{$blue};
+    }
+  }
+  &__header-pencil {
+    display: none;
+  }
+
+  &__header-text {
+    font-weight: 600;
+    padding: {
+      left: 5px;
+    }
+  }
+
+  &__view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    padding: 35px 5px 0 15px;
+    background-color: white;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      height: 10%;
+      background-color: rgba(0, 0, 0, 0.3);
+      background-clip: padding-box;
+      border-right: 3px solid transparent;
+      border-top: 35px solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: white;
+    }
+  }
+
+  &__bookmark {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 11px;
+    padding-left: 5px;
+    width: auto;
+    height: 24px;
+    font-size: #{$bookmarkfont};
+    text-align: left;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.current {
+      opacity: 0.3;
+    }
+
+    &:hover {
+      text-overflow: ellipsis;
+      transform: scale(1.02, 1.02);
+    }
+  }
+
+  &__bookmark-textcontainer {
+    flex: 1;
+    cursor: grab;
+    text-overflow: unset;
+  }
+
+  &__bookmark-text {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    flex: 1;
+  }
+  &__bookmark-ellipsis {
+    display: initial;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.2);
+    width: 23px;
+    font-size: 15px;
+    cursor: pointer;
+
+    &.important {
+      color: white;
+    }
+
+    &.red {
+      &:hover {
+        color: #{$red};
+        transform: scale(1.3);
+      }
+      &.important {
+        &:hover {
+          color: #ffffff;
+          transform: scale(1.3);
+        }
+      }
+    }
+
+    &.blue {
+      &:hover {
+        color: #{$blue};
+        transform: scale(1.3);
+      }
+      &.important {
+        &:hover {
+          color: #ffffff;
+          transform: scale(1.3);
+        }
+      }
+    }
+
+    &.green {
+      &:hover {
+        color: #{$green};
+        transform: scale(1.3);
+      }
+      &.important {
+        &:hover {
+          color: #ffffff;
+          transform: scale(1.3);
+        }
+      }
+    }
+  }
+
+  &__bookmark-triangle {
+    cursor: grab;
+    width: 0px;
+    height: 0px;
+    border: {
+      top: 11px solid transparent;
+      left: 17.5px solid transparent;
+      right: 17.5px solid;
+      bottom: 11px solid transparent;
+    }
+    z-index: 0;
+
+    margin-left: -10px;
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__footer {
+    height: 35px;
+  }
+}
+
+@include tablet {
+  .categorybox {
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@include mobile {
+  .categorybox {
+    max-width: 300px;
+    max-height: 400px;
+    &__header {
+      text-align: center;
+    }
+
+    &__header-editbtn,
+    &__bookmark-editbtn {
+      display: none;
+    }
+
+    &__header-pencil {
+      display: initial;
+      float: right;
+      cursor: pointer;
+      &:hover {
+        color: #{$blue};
+      }
+    }
+  }
+}
