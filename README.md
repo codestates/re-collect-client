@@ -61,6 +61,9 @@ https://recollect.today/
 ### Server-Side flow chart
 ![서버사이드아키텍쳐](https://user-images.githubusercontent.com/54028005/126043590-be3230c2-7d8d-4cba-971a-598d6f26f1fd.png)
 
+## 주요기능별 시연 GIF
+
+
 ## 🌝 우리를 소개합니다
 | 이름(깃헙링크) | Position & Role|
 | ------- | ----- |
@@ -69,8 +72,28 @@ https://recollect.today/
 | [박유빈](https://github.com/Justicexx0099) | 💻 Back-end, 📝 Record Manager |
 | [이석준](https://github.com/CodingGorani) | 💻 Front-end, 🗣 Communication Manager |
 
+## 프로젝트 회고
+
+<details>
+  <summary> 김시윤 </summary>
+</details>
+
+<details>
+  <summary> 김지우 </summary>
+</details>
+
+<details>
+  <summary> 이석준 </summary>
+</details>
+
+<details>
+  <summary> 박유빈 </summary>
+</details>
+
 ## 🗒 Wiki
 https://github.com/codestates/re-collect-client/wiki
 ## ⚙️ Server repository
 https://github.com/codestates/re-collect-server
 
+## 더 자세한 내용은 아래 링크에서 확인
+https://codestates.notion.site/9-Collector-Recollect-3fcb48a9a7a8422a8c615619382851b3
