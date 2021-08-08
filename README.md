@@ -42,6 +42,7 @@ https://recollect.today/
 ![서버사이드아키텍쳐](https://user-images.githubusercontent.com/54028005/126043590-be3230c2-7d8d-4cba-971a-598d6f26f1fd.png)
 
 ## 주요기능별 시연 GIF
+
 <details>
   <summary> 회원가입, 로그인, 비밀번호 찾기, 로그아웃 </summary>
   
@@ -67,6 +68,8 @@ https://recollect.today/
   
 </details>
 
+---
+
 <details>
   <summary> 랜딩 페이지 </summary>
   
@@ -82,6 +85,8 @@ https://recollect.today/
   </details>
   
 </details>
+
+---
 
 <details>
   <summary> 콜렉트 페이지 (북마크 페이지) </summary>
@@ -138,6 +143,8 @@ https://recollect.today/
   
 </details>
 
+---
+
 <details>
  <summary>프로필 페이지</summary>
   
@@ -163,6 +170,8 @@ https://recollect.today/
   
 </details>
 
+---
+
 </details>
 
 <details>
@@ -179,6 +188,8 @@ https://recollect.today/
   </details>
   
 </details>
+
+---
 
 <details>
  <summary>이메일 알림</summary>
