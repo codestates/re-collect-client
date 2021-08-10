@@ -1,7 +1,9 @@
-import {GET_BOOKMARK, GET_BOOKMARK_SUCCESS, GET_BOOKMARK_FAIL, GET_GUEST_BOOKMARK} from './acitons/getBookmark'
-import {POST_BOOKMARK, POST_BOOKMARK_SUCCESS, POST_BOOKMARK_FAIL, POST_GUEST_BOOKMARK} from './actions/addBookmark'
-import {EDIT_START, EDIT_END, EDIT_BOOKMARK_SUCCESS, EDIT_BOOKMARK_FAIL, EDIT_GUEST_BOOKMARK} from './actions/editBookmark'
-import {DELETE_BOOKMARK_SUCCESS, DELETE_BOOKMARK_FAIL, DELETE_GUEST_BOOKMARK} from './actions/deleteBookmark'
+import initialState from '../modules/initialState'
+
+import {GET_BOOKMARK, GET_BOOKMARK_SUCCESS, GET_BOOKMARK_FAIL, GET_GUEST_BOOKMARK} from '../actions/getBookmark'
+import {POST_BOOKMARK, POST_BOOKMARK_SUCCESS, POST_BOOKMARK_FAIL, POST_GUEST_BOOKMARK} from '../actions/addBookmark'
+import {EDIT_START, EDIT_END, EDIT_BOOKMARK_SUCCESS, EDIT_BOOKMARK_FAIL, EDIT_GUEST_BOOKMARK} from '../actions/editBookmark'
+import {DELETE_BOOKMARK_SUCCESS, DELETE_BOOKMARK_FAIL, DELETE_GUEST_BOOKMARK} from '../actions/deleteBookmark'
 
 
 export const bookmarkReducer = (state = initialState, action) => {

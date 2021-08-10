@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getBookmark } from '../getBookmark';
-import { notify } from './notification';
+import { notify } from '../notify';
 
 export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>

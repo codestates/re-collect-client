@@ -1,3 +1,8 @@
+import axios from "axios";
+import reduceGuestBookmark from "../lib/reduceGuestBookmark";
+import { notify } from "./notify";
+import { getBookmark } from "./getBookmark";
+
 export const DELETE_BOOKMARK_SUCCESS = 'DELETE_BOOKMARK_SUCCESS';
 export const DELETE_BOOKMARK_FAIL = 'DELETE_BOOKMARK_FAIL';
 export const DELETE_GUEST_BOOKMARK = 'DELETE_GUEST_BOOKMARK';

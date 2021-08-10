@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const GET_BOOKMARK = 'GET_BOOKMARK';
 export const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
 export const GET_BOOKMARK_FAIL = 'GET_BOOKMARK_FAIL';
