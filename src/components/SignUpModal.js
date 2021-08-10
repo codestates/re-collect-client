@@ -15,7 +15,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Creatable from 'react-select/creatable';
-import emailOptions from '../util/emaiOptions';
+import emailOptions from '../util/emailOptions';
 
 const customStyles = {
   container: (provided, state) => ({
@@ -117,7 +117,7 @@ function SignUpModal(props) {
         overall: signupError.overall,
       });
     }
-  }, [signupError]);
+  }, [signupError, message]);
 
   useEffect(() => {
     const { email, username } = isSignupSuccess;
@@ -134,7 +134,7 @@ function SignUpModal(props) {
         username: '사용할 수 있는 유저네임',
       });
     }
-  }, [isSignupSuccess]);
+  }, [isSignupSuccess, message]);
 
   useEffect(() => {
     const { overall } = isSignupSuccess;
@@ -142,7 +142,7 @@ function SignUpModal(props) {
       props.setModalMode('successSignup');
       dispatch(signupInitialize());
     }
-  }, [isSignupSuccess]);
+  }, [isSignupSuccess, dispatch, props]);
 
   const handleSignUpInputChange = (e) => {
     const { name, value } = e.target;

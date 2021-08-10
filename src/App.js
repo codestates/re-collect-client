@@ -86,13 +86,11 @@ function App() {
       <NofiticationCenter />
       <Switch>
         <Route path="/loading" component={Loading}></Route>
-        <Route path="/loading" component={Loading}></Route>
         <Route path="/collect" component={Collect}></Route>
         <Route path="/auth/pwd">
           <SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
         </Route>
         <Route path="/profile">
-          {/* <Profile modalMode={modalMode} setModalMode={setModalMode} /> */}
           {accessToken ? (
             <Profile modalMode={modalMode} setModalMode={setModalMode} />
           ) : (
