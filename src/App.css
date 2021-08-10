@@ -2301,7 +2301,7 @@ body {
   cursor: pointer;
   color: white;
 }
-@charset "UTF-8";
+
 .nav-container {
   position: fixed;
   z-index: 2;
@@ -2953,7 +2953,7 @@ textarea:focus:-ms-input-placeholder {
     display: none;
   }
 }
-@charset "UTF-8";
+
 /* Arrows */
 .slick-prev,
 .slick-next {
