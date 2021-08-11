@@ -1,4 +1,4 @@
-import initialState from '../modules/initialState'
+import initialState from './initialState'
 
 import {GET_BOOKMARK, GET_BOOKMARK_SUCCESS, GET_BOOKMARK_FAIL, GET_GUEST_BOOKMARK} from '../actions/getBookmark'
 import {POST_BOOKMARK, POST_BOOKMARK_SUCCESS, POST_BOOKMARK_FAIL, POST_GUEST_BOOKMARK} from '../actions/addBookmark'

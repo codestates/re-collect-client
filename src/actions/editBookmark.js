@@ -1,8 +1,8 @@
 import axios from "axios";
 import bookmarkConverter from "../lib/bookmarkConverter";
 import reduceGuestBookmark from "../lib/reduceGuestBookmark";
-import { getBookmark } from "./getBookmark";
 import { notify } from "./notify";
+import { getBookmark } from "./getBookmark";
 
 export const EDIT_START = 'EDIT_START';
 export const EDIT_END = 'EDIT_END';

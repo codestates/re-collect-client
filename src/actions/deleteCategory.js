@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { getBookmark } from './bookmark';
 import { notify } from './notify';
+import { getBookmark } from './bookmark';
 
 export const deleteCategory = (id) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
