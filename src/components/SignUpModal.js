@@ -6,7 +6,7 @@ import {
   emailValidation,
   usernameValidation,
   validationInitialize,
-} from '../modules/sign';
+} from '../actions/signUp';
 import {
   IsValidateEmail,
   IsValidiateUsername,

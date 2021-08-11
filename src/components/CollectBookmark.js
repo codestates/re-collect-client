@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { editStart } from '../modules/bookmark';
+import { editStart } from '../actions/editBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { addVisitCount } from '../modules/visitCounts';

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BigBookmark from "./BigBookmark";
 import { useSelector, useDispatch } from "react-redux";
 import { recollect } from "../modules/getRecollect";
-import { getBookmark } from "../modules/bookmark";
+
 
 function Recollect() {
   const { bookmarks } = useSelector(
