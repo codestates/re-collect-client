@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { notify } from './notification';
+import { notify } from '../actions/notify';
 //import { getAccessToken } from "../modules/getAccessToken";
 
 const initialState = {

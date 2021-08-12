@@ -1,4 +1,4 @@
-import { logoutThunk } from '../modules/sign';
+import { logoutThunk } from '../actions/signInOut';
 import axios from 'axios';
 
 export const getAccessToken = () => (dispatch) => {

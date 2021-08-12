@@ -1,4 +1,4 @@
-import {ENQUEUE_NOTIFICATION, DEQUEUE_NOTIFICATION} from './actions/notify'
+import {ENQUEUE_NOTIFICATION, DEQUEUE_NOTIFICATION} from '../actions/notify'
 
 
 const initialState = {

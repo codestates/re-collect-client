@@ -1,3 +1,11 @@
+import {
+  CATEGORY_EDIT_START,
+  CATEGORY_EDIT_END,
+  CATEGORY_EDIT_SUCCESS,
+  CATEGORY_EDIT_FAIL,
+} from '../actions/editCategory'
+import {CATEGORY_DELETE_SUCCESS, CATEGORY_DELETE_FAIL} from '../actions/deleteCategory'
+
 const initialState = {
   isCategoryEdit: false,
   id: '',

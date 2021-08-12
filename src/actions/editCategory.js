@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { notify } from './notify';
-import { getBookmark } from './bookmark';
+import { getBookmark } from './getBookmark';
 
 export const CATEGORY_EDIT_START = 'CATEGORY_EDIT_START';
 export const CATEGORY_EDIT_END = 'CATEGORY_EDIT_END';

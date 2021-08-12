@@ -98,43 +98,59 @@ function SignUpModal(props) {
     const { email, username, overall } = signupError;
 
     if (email) {
-      setMessage({
-        ...message,
-        email: signupError.email,
-      });
+      setMessage(
+        (oldMessage) => {
+          return {
+            ...oldMessage,
+            email: signupError.email
+          }
+        }
+      );
     }
 
     if (username) {
-      setMessage({
-        ...message,
-        username: signupError.username,
-      });
+      setMessage(
+        (oldMessage) => {
+          return {
+            ...oldMessage,
+            username: signupError.username,
+          }
+        }
+      );
     }
 
     if (overall) {
-      setMessage({
-        ...message,
-        overall: signupError.overall,
-      });
+      setMessage(
+        (oldMessage) => {
+          return {
+            ...oldMessage,
+            overall: signupError.overall,
+          }
+        }
+      );
     }
-  }, [signupError, message]);
+  }, [signupError]);
 
   useEffect(() => {
     const { email, username } = isSignupSuccess;
     if (email) {
-      setMessage({
-        ...message,
-        email: '사용할 수 있는 이메일',
-      });
+      setMessage(
+        (oldMessage) => ({
+          ...oldMessage,
+          email:'사용할 수 있는 이메일',
+        })
+      );
     }
 
     if (username) {
-      setMessage({
-        ...message,
-        username: '사용할 수 있는 유저네임',
-      });
+      setMessage(
+        (oldMessage) => ({
+          ...oldMessage,
+          username: '사용할 수 있는 유저네임',
+        })
+      );
     }
-  }, [isSignupSuccess, message]);
+  }, [isSignupSuccess]);
 
   useEffect(() => {
     const { overall } = isSignupSuccess;

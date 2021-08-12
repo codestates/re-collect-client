@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getBookmark } from '../modules/bookmark';
+import { getBookmark } from '../actions/getBookmark';
 import { getAccessToken } from '../modules/getAccessToken';
 import { recollect } from '../modules/getRecollect';
 

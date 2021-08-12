@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { notify } from './notify';
-import { getBookmark } from './bookmark';
+import { getBookmark } from './getBookmark';
+
+export const CATEGORY_DELETE_SUCCESS = 'CATEGORY_DELETE_SUCCESS';
+export const CATEGORY_DELETE_FAIL = 'CATEGORY_DELETE_FAIL';
 
 export const deleteCategory = (id) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');

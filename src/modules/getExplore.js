@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../reducers/initialState';
 import axios from 'axios';
 
 export const GET_INFO = 'GET_INFO';
