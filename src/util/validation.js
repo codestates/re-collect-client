@@ -1,14 +1,13 @@
 module.exports = {
   IsValidiateUsername: (username) => {
-    //const blank_pattern = /^\s+|\s+$/g;
-    const tab_space = /\s/g;
+    const tabSpace = /\s/g;
     if (
-      username.replace(tab_space, '') === '' ||
+      username.replace(tabSpace, '') === '' ||
       username.search(/\s/g) !== -1
     ) {
       return false;
     }
-    return /^[a-zA-Z0-9_]{4,16}$/.test(username); //한글적용안됨
+    return /^[a-zA-Z0-9_]{4,16}$/.test(username); //현재 한글 적용 X
   },
 
   IsValidiatePassword: (password) => {
@@ -28,17 +27,17 @@ module.exports = {
   },
 
   IsValidateCompany: (company) => {
-    const tab_space = /\s/g;
-    if (company.replace(tab_space, '') === '') {
-      //공백제거했을 때 빈문자열인 경우
+    const tabSpace = /\s/g;
+    //공백제거했을 때 빈문자열인 경우
+    if (company.replace(tabSpace, '') === '') {
       return false;
     }
     return company;
   },
 
   IsValidateGitRepo: (gitRepo) => {
-    const tab_space = /\s/g;
-    if (gitRepo.replace(tab_space, '') === '') {
+    const tabSpace = /\s/g;
+    if (gitRepo.replace(tabSpace, '') === '') {
       return false;
     }
     return gitRepo;
