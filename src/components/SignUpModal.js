@@ -22,6 +22,7 @@ function SignUpModal(props) {
   const { isSignupSuccess, signupError } = useSelector(
     (state) => state.signReducer
   );
+
   const dispatch = useDispatch();
 
   const infoInitialState = {
