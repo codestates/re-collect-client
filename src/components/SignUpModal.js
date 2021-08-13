@@ -16,139 +16,68 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Creatable from 'react-select/creatable';
 import emailOptions from '../util/emailOptions';
-
-const customStyles = {
-  container: (provided, state) => ({
-    ...provided,
-    width: 160,
-    height: 45,
-    border: '1px #214bc8 solid',
-    borderLeft: 'none',
-    display: 'flex',
-    background: 'white',
-    boxSizing: 'border-box',
-  }),
-
-  control: () => ({
-    display: 'flex',
-    flex: 1,
-    width: 40,
-  }),
-
-  placeholder: (provided) => ({
-    ...provided,
-    color: 'rgba(0, 0, 0, 0.5)',
-    fontSize: 13,
-  }),
-
-  singleValue: (provided, state) => {
-    const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
-
-    return { ...provided, opacity, transition };
-  },
-
-  valueContainer: (provided) => ({
-    ...provided,
-    fontSize: 13,
-    fontFamily: 'Noto Sans KR',
-    paddingLeft: 0,
-  }),
-
-  menu: (provided) => ({
-    ...provided,
-    border: '1px #214bc8 solid',
-    borderRadius: 2,
-    marginTop: 9,
-    fontFamily: 'Noto Sans KR',
-  }),
-
-  indicatorsContainer: (provided) => ({
-    ...provided,
-  }),
-
-  dropdownIndicator: (provided) => ({
-    ...provided,
-    fontSize: 10,
-  }),
-};
+import customStyles from '../util/signUpCategoryStyle';
 
 function SignUpModal(props) {
   const { isSignupSuccess, signupError } = useSelector(
     (state) => state.signReducer
   );
   const dispatch = useDispatch();
-  const [signUpInfo, setSignUpInfo] = useState({
+
+  const infoInitialState = {
     email: '',
     emailService: '',
     pwd: '',
     pwdCheck: '',
     username: '',
-  });
+  };
 
-  const [message, setMessage] = useState({
+  const messageInitialState = {
     email: '',
     pwd: '',
     pwdCheck: '',
     username: '',
     overall: '',
-  });
+  };
+
+  const [signUpInfo, setSignUpInfo] = useState(infoInitialState);
+  const [message, setMessage] = useState(messageInitialState);
 
   useEffect(() => {
     const { email, username, overall } = signupError;
 
+    function setMessageHandler(message) {
+      setMessage((oldMessage) => ({
+        ...oldMessage,
+        [message]: message,
+      }));
+    }
+
     if (email) {
-      setMessage(
-        (oldMessage) => {
-          return {
-            ...oldMessage,
-            email: signupError.email
-          }
-        }
-      );
+      setMessageHandler(email);
     }
-
     if (username) {
-      setMessage(
-        (oldMessage) => {
-          return {
-            ...oldMessage,
-            username: signupError.username,
-          }
-        }
-      );
+      setMessageHandler(username);
     }
-
     if (overall) {
-      setMessage(
-        (oldMessage) => {
-          return {
-            ...oldMessage,
-            overall: signupError.overall,
-          }
-        }
-      );
+      setMessageHandler(overall);
     }
   }, [signupError]);
 
   useEffect(() => {
     const { email, username } = isSignupSuccess;
     if (email) {
-      setMessage(
-        (oldMessage) => ({
-          ...oldMessage,
-          email:'사용할 수 있는 이메일',
-        })
-      );
+      setMessage((oldMessage) => ({
+        ...oldMessage,
+        email: '사용할 수 있는 이메일',
+      }));
     }
 
     if (username) {
-      setMessage(
-        (oldMessage) => ({
-          ...oldMessage,
-          username: '사용할 수 있는 유저네임',
-        })
-      );
+      setMessage((oldMessage) => ({
+        ...oldMessage,
+        username: '사용할 수 있는 유저네임',
+      }));
     }
   }, [isSignupSuccess]);
 
@@ -254,21 +183,8 @@ function SignUpModal(props) {
     }
 
     dispatch(signupThunk(signUpInfo));
-    setSignUpInfo({
-      ...signUpInfo,
-      email: '',
-      emailService: '',
-      pwd: '',
-      pwdCheck: '',
-      username: '',
-    });
-    setMessage({
-      email: '',
-      pwd: '',
-      pwdCheck: '',
-      username: '',
-      overall: '',
-    });
+    setSignUpInfo(infoInitialState);
+    setMessage(messageInitialState);
   };
 
   const handleValidiateEmail = () => {
