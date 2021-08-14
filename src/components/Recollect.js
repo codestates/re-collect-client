@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import BigBookmark from "./BigBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { recollect } from "../actions/getRecollect";
+import React, { useEffect } from 'react';
+import BigBookmark from './BigBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { recollect } from '../actions/getRecollect';
 
 function Recollect() {
   const { bookmarks } = useSelector(
     (state) => state.bookmarkReducer.userBookmarks
   );
   const dispatch = useDispatch();
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
   const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editCategory, categoryEditEnd } from "../modules/category";
-import { notify } from "../modules/notification";
+import { editCategory, categoryEditEnd } from "../actions/editCategory";
+import { notify } from "../actions/notify";
 
 import CategoryReallyDeleteModal from "./CategoryReallyDeleteModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

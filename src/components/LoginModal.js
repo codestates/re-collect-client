@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { loginInitialize, loginThunk } from "../modules/sign";
+import { loginInitialize, loginThunk } from "../actions/signInOut";
 import { IsValidateEmail, IsValidiatePassword } from "../util/validation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
