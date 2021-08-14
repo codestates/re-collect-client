@@ -1,7 +1,5 @@
-import axios from 'axios';
-import { getBookmark } from '../modules/bookmark';
-import { getAccessToken } from '../modules/getAccessToken';
-import { recollect } from '../modules/getRecollect';
+import axios from "axios";
+import { getBookmark } from "../modules/bookmark";
 
 // actions
 export const addVisitCount = (id) => async (dispatch) => {

@@ -1,4 +1,4 @@
-import { addVisitCount } from "../modules/visitCounts";
+import { addVisitCount } from "../actions/addVisitCount";
 import { useDispatch } from "react-redux";
 
 export default function BigBookmark({ id, text, color, importance, url }) {
