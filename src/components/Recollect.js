@@ -7,15 +7,16 @@ function Recollect() {
   const { bookmarks } = useSelector(
     (state) => state.bookmarkReducer.userBookmarks
   );
+  const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
   const dispatch = useDispatch();
   const accessToken = localStorage.getItem("accessToken");
-  const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
 
   useEffect(() => {
+    console.log(bookmarks);
     if (accessToken) {
       dispatch(recollect(bookmarks));
     }
-  }, []);
+  }, [bookmarks]);
 
   return (
     <div className="recollect">
