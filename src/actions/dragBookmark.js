@@ -5,21 +5,15 @@ import { getBookmark } from './getBookmark';
 export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
-    const accessToken = localStorage.getItem('accessToken');
-
     axios
       .patch(
-        `https://api.recollect.today/bookmarks/${dragId}/${dropId}/position`,
+        `/bookmarks/${dragId}/${dropId}/position`,
         { categoryId: categoryId },
         {
           params: {
             dragId: dragId,
             dropId: dropId,
           },
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-          withCredentials: true,
         }
       )
       .then(() => {
@@ -44,17 +38,12 @@ export const dragBookmark =
 export const dragBookmarkToLast =
   ({ dragId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
-    const accessToken = localStorage.getItem('accessToken');
     axios
       .patch(
-        `https://api.recollect.today/bookmarks/${dragId}/position`,
+        `/bookmarks/${dragId}/position`,
         { categoryId: categoryId },
         {
           params: { id: dragId },
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-          withCredentials: true,
         }
       )
       .then(() => {

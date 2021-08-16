@@ -1,8 +1,8 @@
-import axios from "axios";
-import bookmarkConverter from "../lib/bookmarkConverter";
-import reduceGuestBookmark from "../lib/reduceGuestBookmark";
-import { notify } from "./notify";
-import { getBookmark } from "./getBookmark";
+import axios from 'axios';
+import bookmarkConverter from '../lib/bookmarkConverter';
+import reduceGuestBookmark from '../lib/reduceGuestBookmark';
+import { notify } from './notify';
+import { getBookmark } from './getBookmark';
 
 export const EDIT_START = 'EDIT_START';
 export const EDIT_END = 'EDIT_END';
@@ -56,50 +56,42 @@ export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
 };
 
 export const editBookmark = (bookmark) => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, true);
   const id = convertedBookmark.id;
 
   delete convertedBookmark.categoryId;
   convertedBookmark.category = convertedBookmark.category.value;
+  axios
+    .put(
+      `/bookmarks/${id}`,
+      { ...convertedBookmark },
+      {
+        params: { id },
+      }
+    )
+    .then(() => {
+      dispatch({ type: EDIT_BOOKMARK_SUCCESS });
+    })
+    .then(() => {
+      dispatch(getBookmark());
+      dispatch(notify('북마크를 수정했습니다'));
+    })
+    .catch((e) => {
+      // if (e.response.status === 401) {
+      //   dispatch(getAccessToken());
+      //   return;
+      // }
 
-  if (accessToken) {
-    axios
-      .put(
-        `https://api.recollect.today/bookmarks/${id}`,
-        { ...convertedBookmark },
-        {
-          params: { id },
-          headers: { authorization: `Bearer ${accessToken}` },
-          withCredentials: true,
-        }
-      )
-      .then(() => {
-        dispatch({ type: EDIT_BOOKMARK_SUCCESS });
-      })
-      .then(() => {
-        dispatch(getBookmark());
-        dispatch(notify('북마크를 수정했습니다'));
-      })
-      .catch((e) => {
-        // if (e.response.status === 401) {
-        //   dispatch(getAccessToken());
-        //   return;
-        // }
-
-        if (e.response) {
-          dispatch({
-            type: EDIT_BOOKMARK_FAIL,
-            error: e.response.data.message,
-          });
-          dispatch(notify('북마크 수정 실패했습니다'));
-          return;
-        }
-
-        dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'unknown error' });
+      if (e.response) {
+        dispatch({
+          type: EDIT_BOOKMARK_FAIL,
+          error: e.response.data.message,
+        });
         dispatch(notify('북마크 수정 실패했습니다'));
-      });
-  } else {
-    dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'accessToken Error' });
-  }
+        return;
+      }
+
+      dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'unknown error' });
+      dispatch(notify('북마크 수정 실패했습니다'));
+    });
 };

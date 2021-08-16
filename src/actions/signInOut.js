@@ -4,20 +4,18 @@ export const LOGIN_INITIALIZE = 'LOGIN_INITIALIZE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
-
 export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
 
 export const loginThunk = (userinfo) => async (dispatch) => {
   try {
     const result = await axios.post(
-      'https://api.recollect.today/login',
+      '/login',
       {
         pwd: userinfo.password,
         email: userinfo.email,
       },
       {
         headers: { 'Content-Type': 'application/json' },
-        withCredentials: true,
       }
     );
 
@@ -39,15 +37,8 @@ export const loginThunk = (userinfo) => async (dispatch) => {
 };
 
 export const logoutThunk = () => () => {
-  const accessToken = localStorage.getItem('accessToken');
-
   axios
-    .get('https://api.recollect.today/logout', {
-      headers: {
-        authorization: `Bearer ${accessToken}`,
-        withCredentials: true,
-      },
-    })
+    .get('/logout')
     .then(() => {
       localStorage.removeItem('accessToken');
     })

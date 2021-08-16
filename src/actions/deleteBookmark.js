@@ -1,7 +1,7 @@
-import axios from "axios";
-import reduceGuestBookmark from "../lib/reduceGuestBookmark";
-import { notify } from "./notify";
-import { getBookmark } from "./getBookmark";
+import axios from 'axios';
+import reduceGuestBookmark from '../lib/reduceGuestBookmark';
+import { notify } from './notify';
+import { getBookmark } from './getBookmark';
 
 export const DELETE_BOOKMARK_SUCCESS = 'DELETE_BOOKMARK_SUCCESS';
 export const DELETE_BOOKMARK_FAIL = 'DELETE_BOOKMARK_FAIL';
@@ -42,40 +42,35 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
 };
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
-
   const id = bookmark.id;
-  if (accessToken) {
-    axios
-      .delete(`https://api.recollect.today/bookmarks/${id}`, {
-        params: { id },
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
-      })
-      .then(() => {
-        dispatch({ type: DELETE_BOOKMARK_SUCCESS });
-      })
-      .then(() => {
-        dispatch(getBookmark());
-        dispatch(notify('북마크를 삭제했습니다'));
-      })
-      .catch((e) => {
-        dispatch(notify('북마크 삭제 실패했습니다'));
-        // if (err.response.status === 401) {
-        //   dispatch(getAccessToken());
-        //   return;
-        // }
-        if (e.response) {
-          dispatch({
-            type: DELETE_BOOKMARK_FAIL,
-            error: e.response.data.message,
-          });
-        } else {
-          dispatch({
-            type: DELETE_BOOKMARK_FAIL,
-            error: 'Unknown Error',
-          });
-        }
-      });
-  }
+
+  axios
+    .delete(`/bookmarks/${id}`, {
+      params: { id },
+    })
+    .then(() => {
+      dispatch({ type: DELETE_BOOKMARK_SUCCESS });
+    })
+    .then(() => {
+      dispatch(getBookmark());
+      dispatch(notify('북마크를 삭제했습니다'));
+    })
+    .catch((e) => {
+      dispatch(notify('북마크 삭제 실패했습니다'));
+      // if (err.response.status === 401) {
+      //   dispatch(getAccessToken());
+      //   return;
+      // }
+      if (e.response) {
+        dispatch({
+          type: DELETE_BOOKMARK_FAIL,
+          error: e.response.data.message,
+        });
+      } else {
+        dispatch({
+          type: DELETE_BOOKMARK_FAIL,
+          error: 'Unknown Error',
+        });
+      }
+    });
 };

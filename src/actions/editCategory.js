@@ -21,17 +21,9 @@ export const categoryEditEnd = () => ({
 
 export const editCategory = (category) => (dispatch) => {
   const { id, title } = category;
-  const accessToken = localStorage.getItem('accessToken');
 
   axios
-    .put(
-      'https://api.recollect.today/category',
-      { id, title },
-      {
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
-      }
-    )
+    .put('/category', { id, title })
     .then(() => {
       dispatch({ type: CATEGORY_EDIT_SUCCESS });
     })
@@ -53,4 +45,4 @@ export const editCategory = (category) => (dispatch) => {
           break;
       }
     });
-}
+};
