@@ -4,8 +4,8 @@ import { getProfile } from './getProfile';
 //import { getAccessToken } from "../modules/getAccessToken";
 
 //const EDIT_GITREPO = 'EDIT_GITREPO';
-const EDIT_GITREPO_SUCCESS = 'EDIT_GITREPO_SUCCESS';
-const EDIT_GITREPO_FAIL = 'EDIT_GITREPO_FAIL';
+export const EDIT_GITREPO_SUCCESS = 'EDIT_GITREPO_SUCCESS';
+export const EDIT_GITREPO_FAIL = 'EDIT_GITREPO_FAIL';
 
 export const editGitRepo = (gitrepo) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');

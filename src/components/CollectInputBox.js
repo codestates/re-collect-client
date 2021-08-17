@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Creatable from 'react-select/creatable';
-import {
-  addBookmark,
-  addGuestBookmark,
-  editBookmark,
-  editGuestBookmark,
-  editEnd,
-  deleteBookmark,
-  deleteGuestBookmark,
-} from '../modules/bookmark';
+import { addBookmark, addGuestBookmark } from "../actions/addBookmark"
+import { editBookmark, editGuestBookmark, editEnd } from "../actions/editBookmark"
+import { deleteBookmark, deleteGuestBookmark } from '../actions/deleteBookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { notify } from '../modules/notification';
+import { notify } from '../actions/notify';
 
 const customStyles = {
   container: (provided, state) => ({

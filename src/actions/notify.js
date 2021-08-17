@@ -12,4 +12,4 @@ export const notify =
     setTimeout(() => {
       dispatch({ type: DEQUEUE_NOTIFICATION });
     }, dissmissTime);
-  }
+  };

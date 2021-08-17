@@ -3,13 +3,9 @@ import { notify } from './notify';
 import { getProfile } from './getProfile';
 //import { getAccessToken } from "../modules/getAccessToken";
 
-
-
-
-
 //const EDIT_COMPANY = 'EDIT_COMPANY';
-const EDIT_COMPANY_SUCCESS = 'EDIT_COMPANY_SUCCESS';
-const EDIT_COMPANY_FAIL = 'EDIT_COMPANY_FAIL';
+export const EDIT_COMPANY_SUCCESS = 'EDIT_COMPANY_SUCCESS';
+export const EDIT_COMPANY_FAIL = 'EDIT_COMPANY_FAIL';
 
 export const editCompany = (company) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');

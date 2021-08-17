@@ -1,15 +1,7 @@
 import initialState from "./initialState";
-const RECOLLECT = "RECOLLECT";
+import { RECOLLECT } from "../actions/getRecollect";
+// import {GET_BOOKMARK, GET_BOOKMARK_SUCCESS, GET_BOOKMARK_FAIL, GET_GUEST_BOOKMARK} from '../actions/getBookmark'
 
-// actions
-export const recollect = (bookmarks) => async (dispatch) => {
-  const unreadBookmarks = bookmarks.filter((bookmark) => {
-    return bookmark.visitCounts === 0;
-  });
-  dispatch({ type: RECOLLECT, unreadBookmarks });
-};
-
-// Reducer
 export const recollectReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECOLLECT:

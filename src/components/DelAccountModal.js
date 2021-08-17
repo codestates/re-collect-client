@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,8 +7,8 @@ import { delAccount } from '../actions/delAccount';
 
 function DelAccountModal(props) {
   const history = useHistory();
-  const state = useSelector((state) => state.profileReducer);
-  const { profile } = state;
+  //const state = useSelector((state) => state.profileReducer);
+  //const { profile } = state;
   const dispatch = useDispatch();
 
   const InputRef = useRef('');

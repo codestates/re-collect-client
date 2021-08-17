@@ -2,9 +2,9 @@ import axios from 'axios';
 import { notify } from './notify';
 //import { getAccessToken } from "../modules/getAccessToken";
 
-const GET_PROFILE = 'GET_PROFILE';
-const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
-const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
+export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
+export const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
 
 export const getProfile = () => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');

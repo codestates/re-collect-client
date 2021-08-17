@@ -6,7 +6,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import ExploreProfileList from "../components/ExploreProfileList";
 import BigBookmark from "../components/BigBookmark";
 import { useSelector, useDispatch } from "react-redux";
-import { getExploreInfo } from "../modules/getExplore";
+import { getExploreInfo } from "../actions/getExplore";
 import SlickArrow from "../components/SlickArrow";
 
 export default function SimpleSlider(props) {
@@ -74,7 +74,6 @@ export default function SimpleSlider(props) {
         </div>
       </div>
 
-      {/* <div className="exploreProfileCarousal"> */}
       <div className="explore__RandomProfile">
         <Slider {...settings}>
           {state === null
@@ -100,12 +99,12 @@ export default function SimpleSlider(props) {
               })}
         </Slider>
       </div>
-      {/* bookmark 더미데이터 initialState에 넣어두는게 맞을지? */}
+
       <div className="explore__interestingBookmarks">
         <p> Interesting Bookmarks</p>
         <ul>
           <BigBookmark
-            text={"Algebraic Effects for the Rest of Us"}
+            text={"Algebraic Effects"}
             color={`green`}
             url={`https://overreacted.io/algebraic-effects-for-the-rest-of-us/`}
           />

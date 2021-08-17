@@ -1,12 +1,9 @@
 import axios from 'axios';
 import { notify } from './notify';
-//import { getAccessToken } from "../modules/getAccessToken";
 
-//const GET_FAVORITE = 'GET_FAVORITE';
-
-//const DEL_ACCOUNT = 'DEL_ACCOUNT';
-const DEL_ACCOUNT_SUCCESS = 'DEL_ACCOUNT_SUCCESS';
-const DEL_ACCOUNT_FAIL = 'DEL_ACCOUNT_FAIL';
+export const DEL_ACCOUNT = 'DEL_ACCOUNT';
+export const DEL_ACCOUNT_SUCCESS = 'DEL_ACCOUNT_SUCCESS';
+export const DEL_ACCOUNT_FAIL = 'DEL_ACCOUNT_FAIL';
 
 export const delAccount = () => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');

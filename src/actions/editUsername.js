@@ -4,8 +4,8 @@ import { getProfile } from './getProfile';
 //import { getAccessToken } from "../modules/getAccessToken";
 
 //const EDIT_USERNAME = 'EDIT_USERNAME';
-const EDIT_USERNAME_SUCCESS = 'EDIT_USERNAME_SUCCESS';
-const EDIT_USERNAME_FAIL = 'EDIT_USERNAME_FAIL';
+export const EDIT_USERNAME_SUCCESS = 'EDIT_USERNAME_SUCCESS';
+export const EDIT_USERNAME_FAIL = 'EDIT_USERNAME_FAIL';
 
 export const editUsername = (username) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');

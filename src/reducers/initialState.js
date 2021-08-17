@@ -94,5 +94,24 @@ const initialState = {
     isLoading: false,
     error: null,
   },
+  profile: {
+    username: '',
+    email: '',
+    company: '',
+    gitrepo: '',
+    createdAt: '',
+    recollectcount: 0,
+    favorite: {
+      category: '카테고리를 추가하세요',
+      categoryId: null,
+      bookmarkId: 0,
+      text: '새로운 북마크를 추가하세요',
+      url: '',
+      importance: 0,
+      color: '#214bc8',
+      visitCounts: 0,
+    },
+    error: null,
+  },
 };
 export default initialState;

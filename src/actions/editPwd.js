@@ -6,8 +6,8 @@ import { getProfile } from './getProfile';
 
 
 //const EDIT_PWD = 'EDIT_PWD';
-const EDIT_PWD_SUCCESS = 'EDIT_PWD_SUCCESS';
-const EDIT_PWD_FAIL = 'EDIT_PWD_FAIL';
+export const EDIT_PWD_SUCCESS = 'EDIT_PWD_SUCCESS';
+export const EDIT_PWD_FAIL = 'EDIT_PWD_FAIL';
 
 export const editPwd = (pwdInfo) => (dispatch) => {
   const accessToken = localStorage.getItem('accessToken');
