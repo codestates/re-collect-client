@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { delAccount } from '../modules/editProfile';
+import { delAccount } from '../actions/delAccount';
 
 function DelAccountModal(props) {
   const history = useHistory();
