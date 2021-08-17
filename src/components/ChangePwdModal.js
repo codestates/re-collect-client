@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { IsValidiatePassword } from "../util/validation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { editPwd } from "../modules/editProfile";
+import { editPwd } from "../actions/editPwd";
 
 function ChangePwdModal(props) {
   const state = useSelector((state) => state.profileReducer);

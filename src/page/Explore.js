@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getExploreInfo } from "../actions/getExplore";
 import SlickArrow from "../components/SlickArrow";
 
-export default function SimpleSlider(props) {
+export default function SimpleSlider() {
   const settings = {
     dots: true, // 캐러셀이미지가 몇번째인지 알려주는 점을 보여줄지 정한다.
     infinite: true, // loop를 만들지(마지막 이미지-처음 이미지-중간 이미지들-마지막 이미지)
@@ -47,7 +47,6 @@ export default function SimpleSlider(props) {
   const state = useSelector((state) => state.getExploreReducer);
   const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
-  // 더미데이터 요청 //
   useEffect(() => {
     dispatch(getExploreInfo());
   }, []);

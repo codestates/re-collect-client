@@ -11,12 +11,10 @@ import {
   IsValidateGitRepo,
 } from "../util/validation";
 
-import {
-  getProfile,
-  editUsername,
-  editCompany,
-  editGitRepo,
-} from "../modules/editProfile";
+import { getProfile } from "../actions/getProfile";
+import { editUsername } from "../actions/editUsername";
+import { editCompany } from "../actions/editCompany";
+import { editGitRepo } from "../actions/editGitRepo";
 
 function Profile(props) {
   const state = useSelector((state) => state.profileReducer);
@@ -77,7 +75,7 @@ function Profile(props) {
   }, []); //빈배열 넣어주어야 두번안찍힘
 
   /*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
-  const usernameInputActive = (e) => {
+  const handleUsernameInput = (e) => {
     setUsernameInputReadMode(!usernameInputReadMode);
     userInputRef.current.readOnly = !userInputRef.current.readOnly;
     userInputRef.current.disabled = !userInputRef.current.disabled;
@@ -98,7 +96,7 @@ function Profile(props) {
   };
 
   /*회사 인풋 활성화 후 체크 버튼 눌렀을 때 회사 변경patch */
-  const companyInputActive = (e) => {
+  const handleCompanyInput = (e) => {
     setCompanyInputReadMode(!companyInputReadMode);
     companyInputRef.current.readOnly = !companyInputRef.current.readOnly;
     companyInputRef.current.disabled = !companyInputRef.current.disabled;
@@ -117,7 +115,7 @@ function Profile(props) {
   };
 
   /*깃레포 인풋 활성화 후 체크 버튼 눌렀을 때 깃레포 변경patch */
-  const gitRepoInputActive = (e) => {
+  const handleGitRepoInput = (e) => {
     setGitRepoInputReadMode(!gitRepoInputReadMode);
     gitRepoInputRef.current.readOnly = !gitRepoInputRef.current.readOnly;
     gitRepoInputRef.current.disabled = !gitRepoInputRef.current.disabled;
@@ -162,7 +160,7 @@ function Profile(props) {
                 icon={usernameInputReadMode ? faPen : faCheck}
                 className="edit-info"
                 name={usernameInputReadMode ? "usernamepen" : "usernamecheck"}
-                onClick={usernameInputActive}
+                onClick={handleUsernameInput}
               />
               <div className="errorMessage">{errorMessage.username}</div>
             </div>
@@ -203,7 +201,7 @@ function Profile(props) {
                 icon={companyInputReadMode ? faPen : faCheck}
                 className="edit-info"
                 name={companyInputReadMode ? "companypen" : "companycheck"}
-                onClick={companyInputActive}
+                onClick={handleCompanyInput}
               />
               <div className="errorMessage">{errorMessage.company}</div>
             </div>
@@ -221,7 +219,7 @@ function Profile(props) {
                 icon={gitRepoInputReadMode ? faPen : faCheck}
                 className="edit-info"
                 name={gitRepoInputReadMode ? "gitrepopen" : "gitrepocheck"}
-                onClick={gitRepoInputActive}
+                onClick={handleGitRepoInput}
               />
               <div className="errorMessage">{errorMessage.gitrepo}</div>
             </div>
