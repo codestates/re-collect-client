@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { editStart } from "../modules/bookmark";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
-import { addVisitCount } from "../actions/addVisitCount";
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { editStart } from '../actions/editBookmark';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { addVisitCount } from '../actions/addVisitCount';
 
 export default function CollectBookmark(props) {
   const { data } = props;
@@ -16,14 +16,14 @@ export default function CollectBookmark(props) {
 
   const handleElipsisHoverColor = (color) => {
     switch (color) {
-      case "#214bc8":
-        return "blue";
-      case "#f24626":
-        return "red";
-      case "#0eae61":
-        return "green";
+      case '#214bc8':
+        return 'blue';
+      case '#f24626':
+        return 'red';
+      case '#0eae61':
+        return 'green';
       default:
-        return "blue";
+        return 'blue';
     }
   };
 
@@ -35,8 +35,8 @@ export default function CollectBookmark(props) {
       onDragEnter={props.handleDragEnter}
       style={{
         border: `1px solid ${data.item.color}`,
-        background: `${data.item.importance === 1 ? data.item.color : "white"}`,
-        color: `${data.item.importance === 1 ? "white" : "black"}`,
+        background: `${data.item.importance === 1 ? data.item.color : 'white'}`,
+        color: `${data.item.importance === 1 ? 'white' : 'black'}`,
       }}
     >
       <div
@@ -57,7 +57,7 @@ export default function CollectBookmark(props) {
       </div>
       <div
         className={`categorybox__bookmark-ellipsis ${
-          data.item.importance === 1 && "important"
+          data.item.importance === 1 && 'important'
         }
         ${handleElipsisHoverColor(data.item.color)}
         `}
@@ -70,7 +70,7 @@ export default function CollectBookmark(props) {
         className="categorybox__bookmark-triangle"
         style={{
           borderRightColor: `${
-            data.item.importance === 1 ? "white" : data.item.color
+            data.item.importance === 1 ? 'white' : data.item.color
           }`,
         }}
       ></div>

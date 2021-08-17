@@ -1,15 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React, { useState, useEffect, useRef } from 'react';
 import CategoryBox from './CategoryBox';
 import CollectBookmark from './CollectBookmark';
-import {
-  getBookmark,
-  getGuestBookmark,
-  editBookmark,
-  editGuestBookmark,
-} from '../modules/bookmark';
-import { dragBookmark, dragBookmarkToLast } from '../modules/dragBookmark';
-import { notify } from '../modules/notification';
+import { getBookmark, getGuestBookmark } from '../actions/getBookmark';
+import { dragBookmark, dragBookmarkToLast } from '../actions/dragBookmark';
+import { notify } from '../actions/notify';
 import { useSelector, useDispatch } from 'react-redux';
 
 function BookmarksContainer() {

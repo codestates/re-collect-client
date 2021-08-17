@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { categoryEditStart } from '../modules/category';
-import { notify } from '../modules/notification';
+import { categoryEditStart } from '../actions/editCategory';
+import { notify } from '../actions/notify';
 
 export default function CategoryBox(props) {
   const accessToken = localStorage.getItem('accessToken');
