@@ -88,7 +88,7 @@ function SignUpModal(props) {
       props.setModalMode('successSignup');
       dispatch(signupInitialize());
     }
-  }, [isSignupSuccess, dispatch, props]);
+  }, [isSignupSuccess]);
 
   const handleSignUpInputChange = (e) => {
     const { name, value } = e.target;
