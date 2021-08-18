@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import BigBookmark from "./BigBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { recollect } from "../actions/getRecollect";
+import React, { useEffect } from 'react';
+import BigBookmark from './BigBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { recollect } from '../actions/getRecollect';
 
 function Recollect() {
   const { bookmarks } = useSelector(
@@ -9,10 +9,9 @@ function Recollect() {
   );
   const { unreadBookmarks } = useSelector((state) => state.recollectReducer);
   const dispatch = useDispatch();
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
-    console.log(bookmarks);
     if (accessToken) {
       dispatch(recollect(bookmarks));
     }
@@ -22,8 +21,8 @@ function Recollect() {
     <div className="recollect">
       <div className="recollect__title">Recollect</div>
       <div className="recollect__bookmarks">
-        {unreadBookmarks.length !== 0 ? (
-          unreadBookmarks.map((unread) => {
+        {unreadBookmarks.data.length !== 0 ? (
+          unreadBookmarks.data.map((unread) => {
             return (
               <BigBookmark
                 key={unread.id}

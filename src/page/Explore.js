@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import Slider from "react-slick";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import ExploreProfileList from "../components/ExploreProfileList";
-import BigBookmark from "../components/BigBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { getExploreInfo } from "../actions/getExplore";
-import SlickArrow from "../components/SlickArrow";
+import React, { useEffect } from 'react';
+import Slider from 'react-slick';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import ExploreProfileList from '../components/ExploreProfileList';
+import BigBookmark from '../components/BigBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { getExploreInfo } from '../actions/getExplore';
+import SlickArrow from '../components/SlickArrow';
 
 export default function SimpleSlider() {
   const settings = {
@@ -44,26 +44,26 @@ export default function SimpleSlider() {
   };
 
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.getExploreReducer);
+  const { exploreUsers } = useSelector((state) => state.getExploreReducer);
   const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
   useEffect(() => {
     dispatch(getExploreInfo());
-  }, []);
+  }, [dispatch]);
 
   return (
-    <div className="explore">
-      <div className="explore__text"> Explore </div>
-      <div className="explore__search">
-        <div className="explore__searchBar">
-          <input type="text" placeholder="search" />
+    <div className='explore'>
+      <div className='explore__text'> Explore </div>
+      <div className='explore__search'>
+        <div className='explore__searchBar'>
+          <input type='text' placeholder='search' />
           <button>
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
-        <div className="explore__recommendation">
-          <div className="explore__recommendation__title"> Recommendation </div>
-          <div className="explore__recommendation__tags">
+        <div className='explore__recommendation'>
+          <div className='explore__recommendation__title'> Recommendation </div>
+          <div className='explore__recommendation__tags'>
             <span> 프론트엔드 해외취업 </span>
             <span> JWT토큰 </span>
             <span> 비동기 이해하기 </span>
@@ -73,57 +73,57 @@ export default function SimpleSlider() {
         </div>
       </div>
 
-      <div className="explore__RandomProfile">
+      <div className='explore__RandomProfile'>
         <Slider {...settings}>
-          {state === null
+          {exploreUsers.data.users === undefined
             ? fakeData.map((el) => {
                 return (
                   <ExploreProfileList
-                    className="explore"
+                    className='explore'
                     key={el.id}
                     user={el}
-                    id="carousel"
+                    id='carousel'
                   />
                 );
               })
-            : state.users.users.map((userInfo) => {
+            : exploreUsers.data.users.map((userInfo) => {
                 return (
                   <ExploreProfileList
-                    className="explore"
+                    className='explore'
                     key={userInfo.id}
                     user={userInfo}
-                    id="carousel"
+                    id='carousel'
                   />
                 );
               })}
         </Slider>
       </div>
 
-      <div className="explore__interestingBookmarks">
+      <div className='explore__interestingBookmarks'>
         <p> Interesting Bookmarks</p>
         <ul>
           <BigBookmark
-            text={"Algebraic Effects"}
+            text={'Algebraic Effects'}
             color={`green`}
             url={`https://overreacted.io/algebraic-effects-for-the-rest-of-us/`}
           />
           <BigBookmark
-            text={"redux-thunk로 프로미스다루기"}
+            text={'redux-thunk로 프로미스다루기'}
             color={`orange`}
             url={`https://react.vlpt.us/redux-middleware/05-redux-thunk-with-promise.html`}
           />
           <BigBookmark
-            text={"day.js 공식문서"}
+            text={'day.js 공식문서'}
             color={`black`}
             url={`https://day.js.org/docs/en/display/difference`}
           />
           <BigBookmark
-            text={"Hook API 참고서"}
+            text={'Hook API 참고서'}
             color={`skyblue`}
             url={`https://ko.reactjs.org/docs/hooks-reference.html#useref`}
           />
           <BigBookmark
-            text={"Interceptor란"}
+            text={'Interceptor란'}
             color={`red`}
             url={`https://docu94.tistory.com/131`}
           />
