@@ -1,11 +1,11 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';
 
 export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
-    axios
+    _axios
       .patch(
         `/bookmarks/${dragId}/${dropId}/position`,
         { categoryId: categoryId },
@@ -38,7 +38,7 @@ export const dragBookmark =
 export const dragBookmarkToLast =
   ({ dragId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
-    axios
+    _axios
       .patch(
         `/bookmarks/${dragId}/position`,
         { categoryId: categoryId },

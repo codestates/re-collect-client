@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getProfile } from './getProfile';
 //import { getAccessToken } from "../modules/getAccessToken";
@@ -8,19 +8,10 @@ export const EDIT_COMPANY_SUCCESS = 'EDIT_COMPANY_SUCCESS';
 export const EDIT_COMPANY_FAIL = 'EDIT_COMPANY_FAIL';
 
 export const editCompany = (company) => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
-
-  axios
-    .patch(
-      'https://api.recollect.today/profile/company',
-      {
-        company: company,
-      },
-      {
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
-      }
-    )
+  _axios
+    .patch('/profile/company', {
+      company: company,
+    })
     .then((res) => {
       dispatch({
         type: EDIT_COMPANY_SUCCESS,

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import { notify } from './notify';
@@ -65,7 +65,7 @@ export const addBookmark = (bookmark) => (dispatch) => {
 
   dispatch({ type: POST_BOOKMARK });
 
-  axios
+  _axios
     .post('/bookmark', { ...convertedBookmark })
     .then(() => {
       dispatch({ type: POST_BOOKMARK_SUCCESS });

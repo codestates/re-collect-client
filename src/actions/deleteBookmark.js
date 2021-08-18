@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';
@@ -44,7 +44,7 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
 export const deleteBookmark = (bookmark) => (dispatch) => {
   const id = bookmark.id;
 
-  axios
+  _axios
     .delete(`/bookmarks/${id}`, {
       params: { id },
     })

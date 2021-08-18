@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getProfile } from './getProfile';
 //import { getAccessToken } from "../modules/getAccessToken";
@@ -8,18 +8,10 @@ export const EDIT_USERNAME_SUCCESS = 'EDIT_USERNAME_SUCCESS';
 export const EDIT_USERNAME_FAIL = 'EDIT_USERNAME_FAIL';
 
 export const editUsername = (username) => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
-  axios
-    .patch(
-      'https://api.recollect.today/profile/username',
-      {
-        username: username, //input.value
-      },
-      {
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
-      }
-    )
+  _axios
+    .patch('/profile/username', {
+      username: username, //input.value
+    })
     .then((res) => {
       dispatch({
         type: EDIT_USERNAME_SUCCESS,

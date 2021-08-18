@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import { notify } from './notify';
@@ -61,7 +61,7 @@ export const editBookmark = (bookmark) => (dispatch) => {
 
   delete convertedBookmark.categoryId;
   convertedBookmark.category = convertedBookmark.category.value;
-  axios
+  _axios
     .put(
       `/bookmarks/${id}`,
       { ...convertedBookmark },

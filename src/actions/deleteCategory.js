@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';
 
@@ -6,7 +7,7 @@ export const CATEGORY_DELETE_SUCCESS = 'CATEGORY_DELETE_SUCCESS';
 export const CATEGORY_DELETE_FAIL = 'CATEGORY_DELETE_FAIL';
 
 export const deleteCategory = (id) => (dispatch) => {
-  axios
+  _axios
     .delete(`/category/${id}`, {
       params: { id },
     })

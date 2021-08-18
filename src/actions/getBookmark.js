@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 
 export const GET_BOOKMARK = 'GET_BOOKMARK';
 export const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
@@ -10,7 +10,7 @@ export const getGuestBookmark = () => ({ type: GET_GUEST_BOOKMARK });
 export const getBookmark = () => (dispatch) => {
   dispatch({ type: GET_BOOKMARK });
 
-  axios
+  _axios
     .get('/collect')
     .then((res) => {
       dispatch({

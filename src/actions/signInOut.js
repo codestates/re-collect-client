@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 
 export const LOGIN_INITIALIZE = 'LOGIN_INITIALIZE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -8,7 +8,7 @@ export const loginInitialize = () => ({ type: LOGIN_INITIALIZE });
 
 export const loginThunk = (userinfo) => async (dispatch) => {
   try {
-    const result = await axios.post(
+    const result = await _axios.post(
       '/login',
       {
         pwd: userinfo.password,
@@ -37,7 +37,7 @@ export const loginThunk = (userinfo) => async (dispatch) => {
 };
 
 export const logoutThunk = () => () => {
-  axios
+  _axios
     .get('/logout')
     .then(() => {
       localStorage.removeItem('accessToken');

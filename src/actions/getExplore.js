@@ -1,9 +1,9 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 
 export const GET_INFO = 'GET_INFO';
 
 export const getExploreInfo = () => (dispatch) => {
-  axios.get('/explore').then((res) => {
+  _axios.get('/explore').then((res) => {
     dispatch({
       type: GET_INFO,
       payload: {

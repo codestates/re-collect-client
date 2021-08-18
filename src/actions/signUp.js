@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 
 export const SIGNUP_INITIALIZE = 'SIGNUP_INITIALIZE';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
@@ -23,7 +23,7 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
   const { username, pwd } = signUpInfo;
   const email = signUpInfo.email + '@' + signUpInfo.emailService.value;
   try {
-    const result = await axios.post(
+    const result = await _axios.post(
       '/signup',
       {
         username,
@@ -73,7 +73,7 @@ export const validationInitialize = (name) => (dispatch) => {
 };
 
 export const emailValidation = (email) => (dispatch) => {
-  axios
+  _axios
     .post(
       '/auth/email',
       { email },
@@ -107,7 +107,7 @@ export const emailValidation = (email) => (dispatch) => {
 };
 
 export const usernameValidation = (username) => (dispatch) => {
-  axios
+  _axios
     .post(
       '/auth/username',
       { username },

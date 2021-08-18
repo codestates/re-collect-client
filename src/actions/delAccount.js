@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 
 export const DEL_ACCOUNT = 'DEL_ACCOUNT';
@@ -6,12 +6,8 @@ export const DEL_ACCOUNT_SUCCESS = 'DEL_ACCOUNT_SUCCESS';
 export const DEL_ACCOUNT_FAIL = 'DEL_ACCOUNT_FAIL';
 
 export const delAccount = () => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
-  axios
-    .delete('https://api.recollect.today/profile', {
-      headers: { authorization: `Bearer ${accessToken}` },
-      withCredentials: true,
-    })
+  _axios
+    .delete('/profile')
     .then((res) => {
       dispatch({
         type: DEL_ACCOUNT_SUCCESS,
@@ -23,4 +19,3 @@ export const delAccount = () => (dispatch) => {
       dispatch({ type: DEL_ACCOUNT_FAIL, error: err.message });
     });
 };
-
