@@ -18,9 +18,9 @@ function Recollect() {
   }, [bookmarks]);
 
   return (
-    <div className="recollect">
-      <div className="recollect__title">Recollect</div>
-      <div className="recollect__bookmarks">
+    <div className='recollect'>
+      <div className='recollect__title'>Recollect</div>
+      <div className='recollect__bookmarks'>
         {unreadBookmarks.data.length !== 0 ? (
           unreadBookmarks.data.map((unread) => {
             return (
@@ -35,8 +35,8 @@ function Recollect() {
             );
           })
         ) : (
-          <div className="recollect__skeleton">
-            <img src="logo_cut.png" className="logoPng" />
+          <div className='recollect__skeleton'>
+            <img src='logo_cut.png' className='logoPng' />
             <p>리콜렉트할 북마크가 없어요!</p>
           </div>
         )}
