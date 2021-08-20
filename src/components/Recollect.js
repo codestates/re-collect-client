@@ -15,7 +15,7 @@ function Recollect() {
     if (accessToken) {
       dispatch(recollect(bookmarks));
     }
-  }, []);
+  }, [bookmarks]);
 
   return (
     <div className="recollect">

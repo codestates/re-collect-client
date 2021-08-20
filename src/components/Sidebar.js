@@ -51,7 +51,7 @@ export default function Sidebar() {
           }}
           className="sidebar__toggleButton"
           style={{
-            transform: `translatex(300px)`,
+            transform: 'translatex(300px)',
           }}
         >
           {width === 300 ? (

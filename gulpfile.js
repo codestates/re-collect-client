@@ -1,16 +1,16 @@
-var gulp = require("gulp");
-var sass = require("gulp-sass")(require("sass"));
-var concat = require("gulp-concat");
-var sourcemaps = require("gulp-sourcemaps");
-var browserSync = require("browser-sync").create();
+var gulp = require('gulp');
+var sass = require('gulp-sass')(require('sass'));
+var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
+//var browserSync = require('browser-sync').create();
 
-gulp.task("sass", () => {
+gulp.task('sass', () => {
   return gulp
-    .src("./src/scss/*.scss") // 입력 경로
+    .src('./src/scss/*.scss') // 입력 경로
     .pipe(sourcemaps.init())
-    .pipe(sass({sourceComments: true}).on('error', sass.logError))//true 설정
+    .pipe(sass({ sourceComments: true }).on('error', sass.logError)) //true 설정
     .pipe(concat('App.css'))
-    .pipe(sourcemaps.write('../maps'))//전역 maps 디렉토리 생성
+    .pipe(sourcemaps.write('../maps')) //전역 maps 디렉토리 생성
     .pipe(gulp.dest('./src')); // 출력 경로
 });
 

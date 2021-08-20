@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import Slider from "react-slick";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import ExploreProfileList from "../components/ExploreProfileList";
-import BigBookmark from "../components/BigBookmark";
-import { useSelector, useDispatch } from "react-redux";
-import { getExploreInfo } from "../actions/getExplore";
-import SlickArrow from "../components/SlickArrow";
+import React, { useEffect } from 'react';
+import Slider from 'react-slick';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import ExploreProfileList from '../components/ExploreProfileList';
+import BigBookmark from '../components/BigBookmark';
+import { useSelector, useDispatch } from 'react-redux';
+import { getExploreInfo } from '../actions/getExplore';
+import SlickArrow from '../components/SlickArrow';
 
-export default function SimpleSlider(props) {
+export default function SimpleSlider() {
   const settings = {
     dots: true, // 캐러셀이미지가 몇번째인지 알려주는 점을 보여줄지 정한다.
     infinite: true, // loop를 만들지(마지막 이미지-처음 이미지-중간 이미지들-마지막 이미지)
@@ -78,25 +78,25 @@ export default function SimpleSlider(props) {
         <Slider {...settings}>
           {state === null
             ? fakeData.map((el) => {
-                return (
-                  <ExploreProfileList
-                    className="explore"
-                    key={el.id}
-                    user={el}
-                    id="carousel"
-                  />
-                );
-              })
+              return (
+                <ExploreProfileList
+                  className="explore"
+                  key={el.id}
+                  user={el}
+                  id="carousel"
+                />
+              );
+            })
             : state.users.users.map((userInfo) => {
-                return (
-                  <ExploreProfileList
-                    className="explore"
-                    key={userInfo.id}
-                    user={userInfo}
-                    id="carousel"
-                  />
-                );
-              })}
+              return (
+                <ExploreProfileList
+                  className="explore"
+                  key={userInfo.id}
+                  user={userInfo}
+                  id="carousel"
+                />
+              );
+            })}
         </Slider>
       </div>
 
@@ -104,29 +104,31 @@ export default function SimpleSlider(props) {
         <p> Interesting Bookmarks</p>
         <ul>
           <BigBookmark
-            text={"Algebraic Effects"}
-            color={`green`}
-            url={`https://overreacted.io/algebraic-effects-for-the-rest-of-us/`}
+            text={'Algebraic Effects'}
+            color={'green'}
+            url={'https://overreacted.io/algebraic-effects-for-the-rest-of-us/'}
           />
           <BigBookmark
-            text={"redux-thunk로 프로미스다루기"}
-            color={`orange`}
-            url={`https://react.vlpt.us/redux-middleware/05-redux-thunk-with-promise.html`}
+            text={'redux-thunk로 프로미스다루기'}
+            color={'orange'}
+            url={
+              'https://react.vlpt.us/redux-middleware/05-redux-thunk-with-promise.html'
+            }
           />
           <BigBookmark
-            text={"day.js 공식문서"}
-            color={`black`}
-            url={`https://day.js.org/docs/en/display/difference`}
+            text={'day.js 공식문서'}
+            color={'black'}
+            url={'https://day.js.org/docs/en/display/difference'}
           />
           <BigBookmark
-            text={"Hook API 참고서"}
-            color={`skyblue`}
-            url={`https://ko.reactjs.org/docs/hooks-reference.html#useref`}
+            text={'Hook API 참고서'}
+            color={'skyblue'}
+            url={'https://ko.reactjs.org/docs/hooks-reference.html#useref'}
           />
           <BigBookmark
-            text={"Interceptor란"}
-            color={`red`}
-            url={`https://docu94.tistory.com/131`}
+            text={'Interceptor란'}
+            color={'red'}
+            url={'https://docu94.tistory.com/131'}
           />
         </ul>
       </div>
