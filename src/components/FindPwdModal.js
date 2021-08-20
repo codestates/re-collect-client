@@ -28,11 +28,11 @@ function FindPwdModal(props) {
   };
 
   return (
-    <div className="modalpage">
-      <div className="modal">
-        <div className="modal__findPwd">
+    <div className='modalpage'>
+      <div className='modal'>
+        <div className='modal__findPwd'>
           <div
-            className="modal__closeBtn"
+            className='modal__closeBtn'
             onClick={() => {
               props.setModalMode('');
             }}
@@ -40,26 +40,26 @@ function FindPwdModal(props) {
             <FontAwesomeIcon icon={faTimes} />
           </div>
 
-          <div className="modal__logo"> Recollect </div>
+          <div className='modal__logo'> Recollect </div>
           <p>
             이메일을 입력하면 <br /> 인증번호를 보내드려요.
           </p>
-          <div className="modal__input">
+          <div className='modal__input'>
             <input
-              className="findPwdEmail"
-              type="email"
-              placeholder=" 이메일"
+              className='findPwdEmail'
+              type='email'
+              placeholder=' 이메일'
             />
           </div>
-          <div className="modal__error"></div>
+          <div className='modal__error'></div>
           <button
             onClick={() => {
               findPwdValidCheck();
             }}
           >
-            비밀번호 재설정
+            인증번호 요청
           </button>
-          <div className="modal__bottomTab">
+          <div className='modal__bottomTab'>
             <div
               onClick={() => {
                 props.setModalMode('signup');

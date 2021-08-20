@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 
 export const GET_INFO = 'GET_INFO';
 export const GET_INFO_SUCCESS = 'GET_INFO_SUCCESS';
@@ -7,8 +8,8 @@ export const GET_INFO_FAIL = 'GET_INFO_FAIL';
 export const getExploreInfo = () => (dispatch) => {
   dispatch({ type: GET_INFO });
 
-  axios
-    .get('https://api.recollect.today/explore')
+  _axios
+    .get('/explore')
     .then((res) => {
       dispatch({
         type: GET_INFO_SUCCESS,
