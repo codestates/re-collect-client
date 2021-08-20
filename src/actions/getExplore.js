@@ -1,4 +1,3 @@
-import axios from 'axios';
 import _axios from '../lib/axiosConfig';
 
 export const GET_INFO = 'GET_INFO';
