@@ -1,10 +1,25 @@
 import _axios from '../lib/axiosConfig';
-// import { getBookmark } from "../actions/getBookmark.js";
-// Todo : merge 후 주석풀고 getBookmark 정상작동하는지 test필요 (siyoon)
+import { getBookmark } from '../actions/getBookmark.js';
+export const ADD_VISITCOUNT = 'ADD_VISITCOUNT';
+export const ADD_VISITCOUNT_SUCCESS = 'ADD_VISITCOUNT_SUCCESS';
+export const ADD_VISITCOUNT_FAIL = 'ADD_VISITCOUNT_FAIL';
 
 export const addVisitCount = (id) => (dispatch) => {
-  _axios.patch(`/bookmarks/${id}`, {});
-  // .then(() => {
-  //   dispatch(getBookmark());
-  // });
+  const accessToken = localStorage.getItem(`accessToken`);
+
+  if (accessToken) {
+    dispatch({ type: ADD_VISITCOUNT });
+
+    _axios
+      .patch(`/bookmarks/${id}`, {})
+      .then(() => {
+        dispatch({ type: ADD_VISITCOUNT_SUCCESS });
+      })
+      .then(() => {
+        dispatch(getBookmark());
+      })
+      .catch((err) => {
+        dispatch({ type: ADD_VISITCOUNT_FAIL, error: '에러가 발생했습니다.' });
+      });
+  }
 };

@@ -19,12 +19,6 @@ export const getBookmark = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      //// accessToken요청 확인필요 ////
-      // if (err.response.status === 401) {
-      //   dispatch(getAccessToken());
-      //   return;
-      // } else {
       dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
-      // }
     });
 };

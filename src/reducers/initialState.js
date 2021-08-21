@@ -87,11 +87,24 @@ const initialState = {
       },
     ],
   },
-  unreadBookmarks: [],
+  unreadBookmarks: {
+    data: [],
+    isLoading: false,
+    error: null,
+  },
+  visitCounts: {
+    isLoading: false,
+    error: null,
+  },
   userBookmarks: {
     reducedbookmarks: [],
     category: [],
     bookmarks: [],
+    isLoading: false,
+    error: null,
+  },
+  exploreUsers: {
+    data: [],
     isLoading: false,
     error: null,
   },

@@ -16,12 +16,12 @@ export default function Collect() {
   const [recollectView, setRecollectView] = useState(false);
   const [searchInput, setSearchInput] = useState('');
 
-    ///새로고침시 최상단이동//
-    useEffect(() => {
-      window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-      };
-    }, []);
+  ///새로고침시 최상단이동//
+  useEffect(() => {
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
   useEffect(() => {
     setCategoryEdit(isCategoryEdit);
@@ -30,6 +30,7 @@ export default function Collect() {
   const recollectViewHandler = () => {
     setRecollectView(!recollectView);
   };
+
   return (
     <>
       {categoryEdit && <CategoryEditModal />}
@@ -41,11 +42,11 @@ export default function Collect() {
         </>
       ) : (
         <>
-          <div className="collectview">
+          <div className='collectview'>
             <Sidebar />
-            <div className="collectview__right">
-              <div className="collectview__title">collect</div>
-              <div className="collectview__nav">
+            <div className='collectview__right'>
+              <div className='collectview__title'>collect</div>
+              <div className='collectview__nav'>
                 <UnreadAlarm viewHandler={recollectViewHandler} />
                 <SearchBar setSearchInput={setSearchInput} />
               </div>
