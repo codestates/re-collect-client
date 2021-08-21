@@ -18,7 +18,6 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
     getState().bookmarkReducer.guestBookmarks;
 
   const currentBookmarkId = bookmarkId;
-  const currentCategoryId = categoryId;
   const currentCategory = { ...category };
   const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
@@ -33,8 +32,9 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 
   //추가하는 북마크의 카테고리 아이디 등록
   if (addingBookmark.category.__isNew__) {
-    currentCategory[currentCategoryId] = addingBookmark.category.value;
-    addingBookmark.categoryId = currentCategoryId;
+    currentCategory[categoryId] = addingBookmark.category.value;
+    addingBookmark.categoryId = categoryId;
+    categoryId += 1;
   } else {
     let findingCategoryId = Object.entries(currentCategory).filter(
       (el) => el[1] === addingBookmark.category.value

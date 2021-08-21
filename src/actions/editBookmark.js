@@ -28,15 +28,16 @@ export const editEnd = () => ({ type: EDIT_END });
 export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
   const editingBookmark = bookmarkConverter(bookmark, true);
 
-  const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
-
+  const { bookmarks, category, categoryId } =
+    getState().bookmarkReducer.guestBookmarks;
   const currentCategory = { ...category };
   const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
   if (editingBookmark.category.__isNew__) {
-    let newCategoryId = Math.max(...Object.keys(currentCategory)) + 1;
+    let newCategoryId = categoryId;
     currentCategory[newCategoryId] = editingBookmark.category.value;
     editingBookmark.categoryId = newCategoryId;
+    categoryId += 1;
   }
   editingBookmark.category = editingBookmark.category.value;
   currentBookmarks.splice(editingBookmark.id, 1, editingBookmark);
@@ -77,21 +78,23 @@ export const editBookmark = (bookmark) => (dispatch) => {
       dispatch(notify('북마크를 수정했습니다'));
     })
     .catch((e) => {
-      // if (e.response.status === 401) {
-      //   dispatch(getAccessToken());
-      //   return;
-      // }
-
-      if (e.response) {
-        dispatch({
-          type: EDIT_BOOKMARK_FAIL,
-          error: e.response.data.message,
-        });
-        dispatch(notify('북마크 수정 실패했습니다'));
-        return;
+      let error;
+      switch (e.response.status) {
+        case 401:
+          error = '북마크 수정 실패 : 식별되지 않은 사용자입니다.';
+          break;
+        case 422:
+          error = '북마크 수정 실패 : 해당 북마크가 존재하지 않습니다.';
+          break;
+        case 501:
+          error = '북마크 수정 실패 : 서버 오류';
+          break;
+        default:
+          error = '북마크 수정 실패 : 알 수 없는 오류';
+          break;
       }
 
-      dispatch({ type: EDIT_BOOKMARK_FAIL, error: 'unknown error' });
-      dispatch(notify('북마크 수정 실패했습니다'));
+      dispatch({ type: EDIT_BOOKMARK_FAIL, error });
+      dispatch(notify(error));
     });
 };

@@ -18,16 +18,18 @@ export const deleteCategory = (id) => (dispatch) => {
       dispatch(getBookmark());
     })
     .catch((e) => {
-      dispatch({ type: CATEGORY_DELETE_FAIL });
+      let error;
       switch (e.response.status) {
         case 500:
-          dispatch(notify(`서버오류`));
+          error = '서버오류';
           break;
         case 401:
-          dispatch(notify('인증되지 않은 사용자입니다.'));
+          error = '인증되지 않은 사용자입니다.';
           break;
         default:
-          break;
+          error = '알 수 없는 오류';
       }
+      dispatch({ type: CATEGORY_DELETE_FAIL });
+      dispatch(notify(error));
     });
 };
