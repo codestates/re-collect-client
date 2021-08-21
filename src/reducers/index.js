@@ -9,14 +9,14 @@ import { recollectReducer } from './getRecollect';
 import { visitCountReducer } from './addVisitCount';
 
 const rootReducer = combineReducers({
-  bookmarkReducer,
-  categoryReducer,
-  signReducer,
-  notificationReducer,
-  profileReducer,
-  getExploreReducer,
-  recollectReducer,
-  visitCountReducer,
+	bookmarkReducer,
+	categoryReducer,
+	signReducer,
+	notificationReducer,
+	profileReducer,
+	getExploreReducer,
+	recollectReducer,
+	visitCountReducer,
 });
 
 export default rootReducer;

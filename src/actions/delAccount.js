@@ -6,16 +6,17 @@ export const DEL_ACCOUNT_SUCCESS = 'DEL_ACCOUNT_SUCCESS';
 export const DEL_ACCOUNT_FAIL = 'DEL_ACCOUNT_FAIL';
 
 export const delAccount = () => (dispatch) => {
-  _axios
-    .delete('/profile')
-    .then((res) => {
-      dispatch({
-        type: DEL_ACCOUNT_SUCCESS,
-      });
-      dispatch(notify('계정을 삭제했습니다.'));
-      localStorage.removeItem('accessToken');
-    })
-    .catch((err) => {
-      dispatch({ type: DEL_ACCOUNT_FAIL, error: err.message });
-    });
+	_axios
+		.delete('/profile')
+		// eslint-disable-next-line no-unused-vars
+		.then((res) => {
+			dispatch({
+				type: DEL_ACCOUNT_SUCCESS,
+			});
+			dispatch(notify('계정을 삭제했습니다.'));
+			localStorage.removeItem('accessToken');
+		})
+		.catch((err) => {
+			dispatch({ type: DEL_ACCOUNT_FAIL, error: err.message });
+		});
 };

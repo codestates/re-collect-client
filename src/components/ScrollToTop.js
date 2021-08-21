@@ -1,51 +1,51 @@
 import React, { useState, useEffect } from 'react';
 
 function ScrollToTop() {
-  const [visible, setVisible] = useState(false);
+	const [visible, setVisible] = useState(false);
 
-  const toggleVisible = () => {
-    const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
-      setVisible(true);
-    } else if (scrolled <= 300) {
-      setVisible(false);
-    }
-  };
+	const toggleVisible = () => {
+		const scrolled = document.documentElement.scrollTop;
+		if (scrolled > 300) {
+			setVisible(true);
+		} else if (scrolled <= 300) {
+			setVisible(false);
+		}
+	};
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+	};
 
-  //window.addEventListener('scroll', toggleVisible);
+	//window.addEventListener('scroll', toggleVisible);
 
-  useEffect(() => {
-    let timer;
-    window.addEventListener('scroll', function () {
-      if (!timer) {
-        timer = setTimeout(() => {
-          timer = null;
-          toggleVisible();
-        }, 3000);
-      }
-    });
+	useEffect(() => {
+		let timer;
+		window.addEventListener('scroll', function () {
+			if (!timer) {
+				timer = setTimeout(() => {
+					timer = null;
+					toggleVisible();
+				}, 3000);
+			}
+		});
 
-    return () => {
-      window.removeEventListener('scroll', toggleVisible);
-    };
-  }, [visible]);
+		return () => {
+			window.removeEventListener('scroll', toggleVisible);
+		};
+	}, [visible]);
 
-  return (
-    <button
-      className="top-btn"
-      onClick={scrollToTop}
-      style={{ display: visible ? 'block' : 'none' }}
-    >
+	return (
+		<button
+			className="top-btn"
+			onClick={scrollToTop}
+			style={{ display: visible ? 'block' : 'none' }}
+		>
       TOP
-    </button>
-  );
+		</button>
+	);
 }
 // window.removeEventListener('scroll', function(){
 //   if(!timer){

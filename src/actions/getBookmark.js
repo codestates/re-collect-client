@@ -8,17 +8,17 @@ export const GET_GUEST_BOOKMARK = 'GET_GUEST_BOOKMARK';
 export const getGuestBookmark = () => ({ type: GET_GUEST_BOOKMARK });
 
 export const getBookmark = () => (dispatch) => {
-  dispatch({ type: GET_BOOKMARK });
+	dispatch({ type: GET_BOOKMARK });
 
-  _axios
-    .get('/collect')
-    .then((res) => {
-      dispatch({
-        type: GET_BOOKMARK_SUCCESS,
-        userBookmarks: res.data,
-      });
-    })
-    .catch((err) => {
-      dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
-    });
+	_axios
+		.get('/collect')
+		.then((res) => {
+			dispatch({
+				type: GET_BOOKMARK_SUCCESS,
+				userBookmarks: res.data,
+			});
+		})
+		.catch((err) => {
+			dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
+		});
 };

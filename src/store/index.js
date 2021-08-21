@@ -6,8 +6,8 @@ import logger from 'redux-logger';
 
 const enhancer =
   process.env.NODE_ENV === 'production'
-    ? compose(applyMiddleware(thunk))
-    : composeWithDevTools(applyMiddleware(thunk, logger));
+  	? compose(applyMiddleware(thunk))
+  	: composeWithDevTools(applyMiddleware(thunk, logger));
 
 const store = createStore(rootReducer, enhancer);
 

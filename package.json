@@ -69,6 +69,7 @@
     "@testing-library/user-event": "^12.1.10",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^7.29.0",
+    "eslint-plugin-react": "^7.24.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6"
   }
