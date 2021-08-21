@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getProfile } from './getProfile';
 //import { getAccessToken } from "../modules/getAccessToken";
@@ -8,19 +8,10 @@ export const EDIT_GITREPO_SUCCESS = 'EDIT_GITREPO_SUCCESS';
 export const EDIT_GITREPO_FAIL = 'EDIT_GITREPO_FAIL';
 
 export const editGitRepo = (gitrepo) => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
-
-  axios
-    .patch(
-      'https://api.recollect.today/profile/gitrepo',
-      {
-        gitrepo: gitrepo, //input.value
-      },
-      {
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
-      }
-    )
+  _axios
+    .patch('/profile/gitrepo', {
+      gitrepo: gitrepo, //input.value
+    })
     .then((res) => {
       dispatch({
         type: EDIT_GITREPO_SUCCESS,

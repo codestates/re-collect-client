@@ -1,25 +1,19 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';
 
 export const dragBookmark =
   ({ dragId, dropId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
-    const accessToken = localStorage.getItem('accessToken');
-
-    axios
+    _axios
       .patch(
-        `https://api.recollect.today/bookmarks/${dragId}/${dropId}/position`,
+        `/bookmarks/${dragId}/${dropId}/position`,
         { categoryId: categoryId },
         {
           params: {
             dragId: dragId,
             dropId: dropId,
           },
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-          withCredentials: true,
         }
       )
       .then(() => {
@@ -37,24 +31,30 @@ export const dragBookmark =
         }
       })
       .catch((e) => {
-        dispatch(notify('오류가 발생하였습니다 새로고침해 주세요!'));
+        let error;
+        switch (e.response.status) {
+          case 401:
+            error = '북마크 이동 실패 : 식별되지 않은 사용자';
+            break;
+          case 500:
+            error = '북마크 이동 실패 : 서버 오류';
+            break;
+          default:
+            error = '북마크 이동 실패 : 알 수 없는 오류발생';
+        }
+        dispatch(notify(error));
       });
   };
 
 export const dragBookmarkToLast =
   ({ dragId, categoryId, originalCategory, changingCategory }) =>
   (dispatch) => {
-    const accessToken = localStorage.getItem('accessToken');
-    axios
+    _axios
       .patch(
-        `https://api.recollect.today/bookmarks/${dragId}/position`,
+        `/bookmarks/${dragId}/position`,
         { categoryId: categoryId },
         {
           params: { id: dragId },
-          headers: {
-            authorization: `Bearer ${accessToken}`,
-          },
-          withCredentials: true,
         }
       )
       .then(() => {
@@ -72,6 +72,17 @@ export const dragBookmarkToLast =
         }
       })
       .catch(() => {
-        dispatch(notify('오류가 발생하였습니다 새로고침해 주세요!'));
+        let error;
+        switch (e.response.status) {
+          case 401:
+            error = '북마크 이동 실패 : 식별되지 않은 사용자';
+            break;
+          case 500:
+            error = '북마크 이동 실패 : 서버 오류';
+            break;
+          default:
+            error = '북마크 이동 실패 : 알 수 없는 오류발생';
+        }
+        dispatch(notify(error));
       });
   };

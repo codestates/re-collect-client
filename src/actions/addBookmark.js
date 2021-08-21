@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import { notify } from './notify';
@@ -13,9 +13,11 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
   const addingBookmark = bookmarkConverter(bookmark, false);
 
   //현재 등록되어 있는 북마크 아이디, 북마크배열, 카테고리 오브젝트 파악
-  const currentBookmarkId = getState().bookmarkReducer.guestBookmarks
-    .bookmarkId;
-  const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
+
+  const { bookmarks, category, bookmarkId, categoryId } =
+    getState().bookmarkReducer.guestBookmarks;
+
+  const currentBookmarkId = bookmarkId;
   const currentCategory = { ...category };
   const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
@@ -30,14 +32,9 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 
   //추가하는 북마크의 카테고리 아이디 등록
   if (addingBookmark.category.__isNew__) {
-    let newCategoryId;
-    if (Object.keys(currentBookmarks).length === 0) {
-      newCategoryId = 0;
-    } else {
-      newCategoryId = Math.max(...Object.keys(currentCategory)) + 1;
-    }
-    currentCategory[newCategoryId] = addingBookmark.category.value;
-    addingBookmark.categoryId = newCategoryId;
+    currentCategory[categoryId] = addingBookmark.category.value;
+    addingBookmark.categoryId = categoryId;
+    categoryId += 1;
   } else {
     let findingCategoryId = Object.entries(currentCategory).filter(
       (el) => el[1] === addingBookmark.category.value
@@ -63,21 +60,13 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 };
 
 export const addBookmark = (bookmark) => (dispatch) => {
-  const accessToken = localStorage.getItem('accessToken');
   const convertedBookmark = bookmarkConverter(bookmark, false);
   convertedBookmark.category = convertedBookmark.category.value;
 
   dispatch({ type: POST_BOOKMARK });
 
-  axios
-    .post(
-      'https://api.recollect.today/bookmark',
-      { ...convertedBookmark },
-      {
-        headers: { authorization: `Bearer ${accessToken}` },
-        withCredentials: true,
-      }
-    )
+  _axios
+    .post('/bookmark', { ...convertedBookmark })
     .then(() => {
       dispatch({ type: POST_BOOKMARK_SUCCESS });
     })

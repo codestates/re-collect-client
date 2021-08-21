@@ -38,11 +38,11 @@ _axios.interceptors.request.use(async (config) => {
       });
   }
   // 토큰 설정 //
-  if (accessToken) {
-    config.headers.authorization = `Bearer ${localStorage.getItem(
-      'accessToken'
-    )}`;
-  }
+  // if (accessToken) {
+  config.headers.authorization = `Bearer ${localStorage.getItem(
+    'accessToken'
+  )}`;
+  // }
   return config;
 });
 

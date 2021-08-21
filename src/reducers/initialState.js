@@ -8,6 +8,7 @@ const initialState = {
 
   guestBookmarks: {
     bookmarkId: 3,
+    categoryId: 1,
     category: { 0: '카테고리를 추가하세요' },
     bookmarks: [
       {
