@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { useHistory } from 'react-router';
-import { useSelector, useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { delAccount } from '../actions/delAccount';
+import React, { useState, useRef } from "react";
+import { useHistory } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { delAccount } from "../actions/delAccount";
 
 function DelAccountModal(props) {
   const history = useHistory();
@@ -11,8 +11,8 @@ function DelAccountModal(props) {
   //const { profile } = state;
   const dispatch = useDispatch();
 
-  const InputRef = useRef('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const InputRef = useRef("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // useEffect(() => {
   //   setErrorMessage(profile.error);
@@ -21,8 +21,8 @@ function DelAccountModal(props) {
   const delAccountValidCheck = () => {
     const delAccountmessage = InputRef.current.value;
 
-    if (delAccountmessage !== '또 만나요 리콜렉트') {
-      setErrorMessage('문구를 다시 입력해주세요.');
+    if (delAccountmessage !== "또 만나요 리콜렉트") {
+      setErrorMessage("문구를 다시 입력해주세요.");
       return;
     }
 
@@ -31,15 +31,15 @@ function DelAccountModal(props) {
 
   const handleDelAccount = () => {
     dispatch(delAccount());
-    setErrorMessage('');
-    InputRef.current.value = '';
+    setErrorMessage("");
+    InputRef.current.value = "";
 
     setTimeout(() => {
-      props.setModalMode('');
+      props.setModalMode("");
     }, 1000);
 
     setTimeout(() => {
-      history.push('/');
+      history.push("/");
     }, 1000);
   };
 
@@ -50,7 +50,7 @@ function DelAccountModal(props) {
           <div
             className="modal__closeBtn"
             onClick={() => {
-              props.setModalMode('');
+              props.setModalMode("");
             }}
           >
             <FontAwesomeIcon icon={faTimes} />

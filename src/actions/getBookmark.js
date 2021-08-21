@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const GET_BOOKMARK = 'GET_BOOKMARK';
 export const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
@@ -24,12 +24,6 @@ export const getBookmark = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      //// accessToken요청 확인필요 ////
-      // if (err.response.status === 401) {
-      //   dispatch(getAccessToken());
-      //   return;
-      // } else {
       dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
-      // }
     });
 };

@@ -13,8 +13,8 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
   const addingBookmark = bookmarkConverter(bookmark, false);
 
   //현재 등록되어 있는 북마크 아이디, 북마크배열, 카테고리 오브젝트 파악
-  const currentBookmarkId =
-    getState().bookmarkReducer.guestBookmarks.bookmarkId;
+  const currentBookmarkId = getState().bookmarkReducer.guestBookmarks
+    .bookmarkId;
   const { bookmarks, category } = getState().bookmarkReducer.guestBookmarks;
   const currentCategory = { ...category };
   const currentBookmarks = bookmarks.map((el) => ({ ...el }));
