@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { editStart } from '../actions/editBookmark';
+import { editStart } from '../redux/actions/editBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { addVisitCount } from '../actions/addVisitCount';
+import { addVisitCount } from '../redux/actions/addVisitCount';
 
 export default function CollectBookmark(props) {
 	const { data } = props;

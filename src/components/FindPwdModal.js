@@ -22,6 +22,7 @@ function FindPwdModal(props) {
 			.post('https://api.recollect.today/auth/tmp', {
 				email: email,
 			})
+			// eslint-disable-next-line no-unused-vars
 			.then((res) => {
 				props.setModalMode('sentEmail');
 			});

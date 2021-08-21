@@ -6,7 +6,7 @@ import {
 	emailValidation,
 	usernameValidation,
 	validationInitialize,
-} from '../actions/signUp';
+} from '../redux/actions/signUp';
 import {
 	IsValidateEmail,
 	IsValidiateUsername,
@@ -158,6 +158,7 @@ function SignUpModal(props) {
 		});
 	};
 
+	// eslint-disable-next-line no-unused-vars
 	const handleEmailServiceInputChange = (newValue, actionMeta) => {
 		setSignUpInfo({
 			...signUpInfo,

@@ -12,6 +12,7 @@ export const editUsername = (username) => (dispatch) => {
 		.patch('/profile/username', {
 			username: username, //input.value
 		})
+		// eslint-disable-next-line no-unused-vars
 		.then((res) => {
 			dispatch({
 				type: EDIT_USERNAME_SUCCESS,

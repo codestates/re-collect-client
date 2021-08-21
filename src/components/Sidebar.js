@@ -1,7 +1,7 @@
 import CollectInputBox from './CollectInputBox';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editEnd } from '../actions/editBookmark';
+import { editEnd } from '../redux/actions/editBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 

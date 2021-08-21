@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-	IsValidateEmail,
-	IsValidiateUsername,
-	IsValidiatePassword,
+	IsValidateEmail
 } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';

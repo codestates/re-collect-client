@@ -12,6 +12,7 @@ export const editCompany = (company) => (dispatch) => {
 		.patch('/profile/company', {
 			company: company,
 		})
+		// eslint-disable-next-line no-unused-vars
 		.then((res) => {
 			dispatch({
 				type: EDIT_COMPANY_SUCCESS,

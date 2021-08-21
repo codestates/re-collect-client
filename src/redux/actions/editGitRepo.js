@@ -12,6 +12,7 @@ export const editGitRepo = (gitrepo) => (dispatch) => {
 		.patch('/profile/gitrepo', {
 			gitrepo: gitrepo, //input.value
 		})
+		// eslint-disable-next-line no-unused-vars
 		.then((res) => {
 			dispatch({
 				type: EDIT_GITREPO_SUCCESS,
