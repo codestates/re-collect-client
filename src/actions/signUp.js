@@ -1,17 +1,19 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 
 export const SIGNUP_INITIALIZE = 'SIGNUP_INITIALIZE';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 
-export const SIGNUP_EMAIL_VALIDATION_SUCCESS = 'SIGNUP_EMAIL_VALIDATION_SUCCESS';
+export const SIGNUP_EMAIL_VALIDATION_SUCCESS =
+  'SIGNUP_EMAIL_VALIDATION_SUCCESS';
 export const SIGNUP_EMAIL_VALIDATION_FAIL = 'SIGNUP_EMAIL_VALIDATION_FAIL';
-export const SIGNUP_USERNAME_VALIDATION_SUCCESS = 'SIGNUP_USERNAME_VALIDATION_SUCCESS';
-export const SIGNUP_USERNAME_VALIDATION_FAIL = 'SIGNUP_USERNAME_VALIDATION_FAIL';
+export const SIGNUP_USERNAME_VALIDATION_SUCCESS =
+  'SIGNUP_USERNAME_VALIDATION_SUCCESS';
+export const SIGNUP_USERNAME_VALIDATION_FAIL =
+  'SIGNUP_USERNAME_VALIDATION_FAIL';
 
 export const EMAIL_VALIDATION_INITIALIZE = 'EMAIL_VALIDATION_INITIALIZE';
 export const USERNAME_VALIDATION_INITIALIZE = 'USERNAME_VALIDATION_INITIALIZE';
-
 
 export const signupInitialize = () => ({
 	type: SIGNUP_INITIALIZE,
@@ -21,8 +23,8 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
 	const { username, pwd } = signUpInfo;
 	const email = signUpInfo.email + '@' + signUpInfo.emailService.value;
 	try {
-		const result = await axios.post(
-			'https://api.recollect.today/signup',
+		const result = await _axios.post(
+			'/signup',
 			{
 				username,
 				pwd,
@@ -30,7 +32,6 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
 			},
 			{
 				headers: { 'Content-Type': 'application/json' },
-				withCredentials: true,
 			}
 		);
 
@@ -72,11 +73,11 @@ export const validationInitialize = (name) => (dispatch) => {
 };
 
 export const emailValidation = (email) => (dispatch) => {
-	axios
+	_axios
 		.post(
-			'https://api.recollect.today/auth/email',
+			'/auth/email',
 			{ email },
-			{ headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+			{ headers: { 'Content-Type': 'application/json' } }
 		)
 		.then(() => {
 			dispatch({ type: SIGNUP_EMAIL_VALIDATION_SUCCESS });
@@ -106,11 +107,11 @@ export const emailValidation = (email) => (dispatch) => {
 };
 
 export const usernameValidation = (username) => (dispatch) => {
-	axios
+	_axios
 		.post(
-			'https://api.recollect.today/auth/username',
+			'/auth/username',
 			{ username },
-			{ headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+			{ headers: { 'Content-Type': 'application/json' } }
 		)
 		.then(() => {
 			dispatch({ type: SIGNUP_USERNAME_VALIDATION_SUCCESS });

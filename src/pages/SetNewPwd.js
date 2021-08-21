@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 function SetNewPwd(props) {
-  useEffect(() => {
-    props.setModalMode("setNewPwd");
-  }, []);
+	useEffect(() => {
+		props.setModalMode('setNewPwd');
+	}, []);
 
-  return <div className="SetNewPwd__container"></div>;
+	return <div className="SetNewPwd__container"></div>;
 }
 
 export default SetNewPwd;

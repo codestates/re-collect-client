@@ -22,7 +22,8 @@
         "quotes": ["error", "single"],
         "no-multi-spaces": ["error"],
         "indent": ["error", "tab"],
-        "eqeqeq": ["error"]
+        "eqeqeq": ["error"],
+        "react/prop-types": 0
 
     }
 }

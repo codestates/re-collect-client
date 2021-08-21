@@ -44,7 +44,7 @@ export default function SimpleSlider() {
 	};
 
 	const dispatch = useDispatch();
-	const state = useSelector((state) => state.getExploreReducer);
+	const { exploreUsers } = useSelector((state) => state.getExploreReducer);
 	const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
 	// 더미데이터 요청 //
@@ -76,7 +76,7 @@ export default function SimpleSlider() {
 
 			<div className="explore__RandomProfile">
 				<Slider {...settings}>
-					{state === null
+					{exploreUsers.data.users === undefined
 						? fakeData.map((el) => {
 							return (
 								<ExploreProfileList
@@ -87,7 +87,7 @@ export default function SimpleSlider() {
 								/>
 							);
 						})
-						: state.users.users.map((userInfo) => {
+						: exploreUsers.data.users.map((userInfo) => {
 							return (
 								<ExploreProfileList
 									className="explore"

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 //import { getAccessToken } from "../modules/getAccessToken";
 
@@ -7,14 +7,9 @@ export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
 export const GET_PROFILE_FAIL = 'GET_PROFILE_FAIL';
 
 export const getProfile = () => (dispatch) => {
-	const accessToken = localStorage.getItem('accessToken');
-
 	dispatch({ type: GET_PROFILE });
-	axios
-		.get('https://api.recollect.today/profile', {
-			headers: { authorization: `Bearer ${accessToken}` },
-			withCredentials: true,
-		})
+	_axios
+		.get('/profile')
 		.then((res) => {
 			const favorite = res.data.bookmark.reduce((prev, curr) => {
 				return prev.visitCounts > curr.visitCounts ? prev : curr;
@@ -35,13 +30,6 @@ export const getProfile = () => (dispatch) => {
 		})
 		.catch((err) => {
 			dispatch({ type: GET_PROFILE_FAIL, error: err.message });
-
-			// if (err.response.status === 401) {
-			//   dispatch(getAccessToken());
-			//   return;
-			// } else {
-			//   console.log('err');
-			// }
 			dispatch(notify('로드실패.'));
 		});
 };

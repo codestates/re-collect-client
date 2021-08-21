@@ -6,81 +6,81 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { delAccount } from '../actions/delAccount';
 
 function DelAccountModal(props) {
-  const history = useHistory();
-  //const state = useSelector((state) => state.profileReducer);
-  //const { profile } = state;
-  const dispatch = useDispatch();
+	const history = useHistory();
+	//const state = useSelector((state) => state.profileReducer);
+	//const { profile } = state;
+	const dispatch = useDispatch();
 
-  const InputRef = useRef('');
-  const [errorMessage, setErrorMessage] = useState('');
+	const InputRef = useRef('');
+	const [errorMessage, setErrorMessage] = useState('');
 
-  // useEffect(() => {
-  //   setErrorMessage(profile.error);
-  // }, [profile.error]);
+	// useEffect(() => {
+	//   setErrorMessage(profile.error);
+	// }, [profile.error]);
 
-  const delAccountValidCheck = () => {
-    const delAccountmessage = InputRef.current.value;
+	const delAccountValidCheck = () => {
+		const delAccountmessage = InputRef.current.value;
 
-    if (delAccountmessage !== '또 만나요 리콜렉트') {
-      setErrorMessage('문구를 다시 입력해주세요.');
-      return;
-    }
+		if (delAccountmessage !== '또 만나요 리콜렉트') {
+			setErrorMessage('문구를 다시 입력해주세요.');
+			return;
+		}
 
-    handleDelAccount();
-  };
+		handleDelAccount();
+	};
 
-  const handleDelAccount = () => {
-    dispatch(delAccount());
-    setErrorMessage('');
-    InputRef.current.value = '';
+	const handleDelAccount = () => {
+		dispatch(delAccount());
+		setErrorMessage('');
+		InputRef.current.value = '';
 
-    setTimeout(() => {
-      props.setModalMode('');
-    }, 1000);
+		setTimeout(() => {
+			props.setModalMode('');
+		}, 1000);
 
-    setTimeout(() => {
-      history.push('/');
-    }, 1000);
-  };
+		setTimeout(() => {
+			history.push('/');
+		}, 1000);
+	};
 
-  return (
-    <div className="modalpage">
-      <div className="modal">
-        <div className="modal__delAccount">
-          <div
-            className="modal__closeBtn"
-            onClick={() => {
-              props.setModalMode('');
-            }}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </div>
-          <div className="modal__logo"> Recollect </div>
-          <p>
+	return (
+		<div className="modalpage">
+			<div className="modal">
+				<div className="modal__delAccount">
+					<div
+						className="modal__closeBtn"
+						onClick={() => {
+							props.setModalMode('');
+						}}
+					>
+						<FontAwesomeIcon icon={faTimes} />
+					</div>
+					<div className="modal__logo"> Recollect </div>
+					<p>
             아래 문구를 입력하고
-            <br />
+						<br />
             계정을 삭제합니다.
-          </p>
-          <div className="modal__input">
-            <input
-              className="delMessage"
-              type="text"
-              placeholder=" 또 만나요 리콜렉트"
-              ref={InputRef}
-            />
-          </div>
-          <button
-            onClick={() => {
-              delAccountValidCheck();
-            }}
-          >
+					</p>
+					<div className="modal__input">
+						<input
+							className="delMessage"
+							type="text"
+							placeholder=" 또 만나요 리콜렉트"
+							ref={InputRef}
+						/>
+					</div>
+					<button
+						onClick={() => {
+							delAccountValidCheck();
+						}}
+					>
             계정 삭제
-          </button>
-          <div className="modal__error">{errorMessage}</div>
-        </div>
-      </div>
-    </div>
-  );
+					</button>
+					<div className="modal__error">{errorMessage}</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default DelAccountModal;
