@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginInitialize, loginThunk } from '../actions/signInOut';
+import { loginInitialize, loginThunk } from '../redux/actions/signInOut';
 import { IsValidateEmail, IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 function LoginModal(props) {
 	const history = useHistory();
 	const accessToken = localStorage.getItem('accessToken');
+	// eslint-disable-next-line no-unused-vars
 	const { isLogin, error } = useSelector((state) => state.signReducer.user);
 	const dispatch = useDispatch();
 	const [loginInfo, setLoginInfo] = useState({

@@ -1,5 +1,5 @@
 import React from 'react';
-import _axios from '../lib/axiosConfig';
+import _axios from '../redux/lib/axiosConfig';
 import { IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -32,6 +32,7 @@ function SetNewPwdModal(props) {
 				tempPwd: tempPwd,
 				pwd: pwd,
 			})
+			// eslint-disable-next-line no-unused-vars
 			.then((res) => props.setModalMode('successSetNewPwd'));
 	};
 

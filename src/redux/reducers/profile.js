@@ -1,11 +1,11 @@
 import initialState from './initialState'
 
 import {GET_PROFILE, GET_PROFILE_SUCCESS, GET_PROFILE_FAIL} from '../actions/getProfile'
-import {EDIT_USERNAME, EDIT_USERNAME_SUCCESS, EDIT_USERNAME_FAIL} from '../actions/editUsername'
-import {EDIT_COMPANY, EDIT_COMPANY_SUCCESS, EDIT_COMPANY_FAIL} from '../actions/editCompany'
-import {EDIT_GITREPO, EDIT_GITREPO_SUCCESS, EDIT_GITREPO_FAIL} from '../actions/editGitRepo'
-import {EDIT_PWD, EDIT_PWD_SUCCESS, EDIT_PWD_FAIL} from '../actions/editPwd'
-import {DEL_ACCOUNT, DEL_ACCOUNT_SUCCESS, DEL_ACCOUNT_FAIL} from '../actions/delAccount'
+import {EDIT_USERNAME_SUCCESS, EDIT_USERNAME_FAIL} from '../actions/editUsername'
+import {EDIT_COMPANY_SUCCESS, EDIT_COMPANY_FAIL} from '../actions/editCompany'
+import {EDIT_GITREPO_SUCCESS, EDIT_GITREPO_FAIL} from '../actions/editGitRepo'
+import {EDIT_PWD_SUCCESS, EDIT_PWD_FAIL} from '../actions/editPwd'
+import {DEL_ACCOUNT_SUCCESS, DEL_ACCOUNT_FAIL} from '../actions/delAccount'
 
 
 export const profileReducer = (state = initialState, action) => {

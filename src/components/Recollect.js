@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import BigBookmark from './BigBookmark';
 import { useSelector, useDispatch } from 'react-redux';
-import { recollect } from '../actions/getRecollect';
+import { recollect } from '../redux/actions/getRecollect';
 
 function Recollect() {
 	const { bookmarks } = useSelector(

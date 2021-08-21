@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { categoryEditStart } from '../actions/editCategory';
-import { notify } from '../actions/notify';
+import { categoryEditStart } from '../redux/actions/editCategory';
+import { notify } from '../redux/actions/notify';
 
 export default function CategoryBox(props) {
 	const accessToken = localStorage.getItem('accessToken');

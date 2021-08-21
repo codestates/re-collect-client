@@ -13,6 +13,7 @@ export const editPwd = (pwdInfo) => (dispatch) => {
 			pwd: pwdInfo.password,
 			newPwd: pwdInfo.newpassword,
 		})
+		// eslint-disable-next-line no-unused-vars
 		.then((res) => {
 			dispatch({
 				type: EDIT_PWD_SUCCESS,

@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';

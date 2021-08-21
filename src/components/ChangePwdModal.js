@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { editPwd } from '../actions/editPwd';
+import { editPwd } from '../redux/actions/editPwd';
 
 function ChangePwdModal(props) {
+	// eslint-disable-next-line no-unused-vars
 	const state = useSelector((state) => state.profileReducer);
 	//const { profile } = state;
 	const dispatch = useDispatch();

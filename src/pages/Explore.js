@@ -6,7 +6,7 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import ExploreProfileList from '../components/ExploreProfileList';
 import BigBookmark from '../components/BigBookmark';
 import { useSelector, useDispatch } from 'react-redux';
-import { getExploreInfo } from '../actions/getExplore';
+import { getExploreInfo } from '../redux/actions/getExplore';
 import SlickArrow from '../components/SlickArrow';
 
 export default function SimpleSlider() {

@@ -1,4 +1,5 @@
 const customStyles = {
+	// eslint-disable-next-line no-unused-vars
 	container: (provided, state) => ({
 		...provided,
 		width: 160,

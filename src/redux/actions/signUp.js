@@ -23,6 +23,7 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
 	const { username, pwd } = signUpInfo;
 	const email = signUpInfo.email + '@' + signUpInfo.emailService.value;
 	try {
+		// eslint-disable-next-line no-unused-vars
 		const result = await _axios.post(
 			'/signup',
 			{

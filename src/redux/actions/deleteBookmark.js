@@ -24,6 +24,7 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
 		currentCategory
 	);
 
+	// eslint-disable-next-line no-unused-vars
 	newReducedbookmarks.filter((el, idx) => {
 		if (el.bookmarks.length === 1) {
 			delete currentCategory[Number(el.id)];

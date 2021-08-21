@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { addVisitCount } from '../actions/addVisitCount';
+import { addVisitCount } from '../redux/actions/addVisitCount';
 import { useDispatch } from 'react-redux';
 
 export default function BigBookmark({ id, text, color, importance, url }) {

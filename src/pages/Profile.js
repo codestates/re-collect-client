@@ -11,10 +11,10 @@ import {
 	IsValidateGitRepo,
 } from '../util/validation';
 
-import { getProfile } from '../actions/getProfile';
-import { editUsername } from '../actions/editUsername';
-import { editCompany} from '../actions/editCompany';
-import { editGitRepo} from '../actions/editGitRepo';
+import { getProfile } from '../redux/actions/getProfile';
+import { editUsername } from '../redux/actions/editUsername';
+import { editCompany} from '../redux/actions/editCompany';
+import { editGitRepo} from '../redux/actions/editGitRepo';
 
 
 function Profile(props) {

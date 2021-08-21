@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Creatable from 'react-select/creatable';
-import { addBookmark, addGuestBookmark } from '../actions/addBookmark'
-import { editBookmark, editGuestBookmark, editEnd } from '../actions/editBookmark'
-import { deleteBookmark, deleteGuestBookmark } from '../actions/deleteBookmark';
+import { addBookmark, addGuestBookmark } from '../redux/actions/addBookmark'
+import { editBookmark, editGuestBookmark, editEnd } from '../redux/actions/editBookmark'
+import { deleteBookmark, deleteGuestBookmark } from '../redux/actions/deleteBookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { notify } from '../actions/notify';
+import { notify } from '../redux/actions/notify';
 
 const customStyles = {
+	// eslint-disable-next-line no-unused-vars
 	container: (provided, state) => ({
 		...provided,
 		width: '80%',
@@ -42,6 +43,7 @@ const customStyles = {
 function CollectInputBox(props) {
 	const accessToken = localStorage.getItem('accessToken');
 
+	// eslint-disable-next-line no-unused-vars
 	const { reducedbookmarks, category } = useSelector(
 		(state) => state.bookmarkReducer.userBookmarks
 	);
@@ -95,6 +97,7 @@ function CollectInputBox(props) {
 		}
 	}, [category, guestCategory]);
 
+	// eslint-disable-next-line no-unused-vars
 	const handleCategoryChange = (newValue, actionMeta) => {
 		setbookmarkInput({ ...bookmarkInput, category: newValue });
 	};

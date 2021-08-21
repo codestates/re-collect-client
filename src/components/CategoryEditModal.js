@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editCategory, categoryEditEnd } from '../actions/editCategory';
-import { notify } from '../actions/notify';
+import { editCategory, categoryEditEnd } from '../redux/actions/editCategory';
+import { notify } from '../redux/actions/notify';
 
 import CategoryReallyDeleteModal from './CategoryReallyDeleteModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function CategoryEditModal() {
+	// eslint-disable-next-line no-unused-vars
 	const { isCategoryEdit, id, title } = useSelector(
 		(state) => state.categoryReducer
 	);

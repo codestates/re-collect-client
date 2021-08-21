@@ -18,6 +18,7 @@ export const addVisitCount = (id) => (dispatch) => {
 			.then(() => {
 				dispatch(getBookmark());
 			})
+			// eslint-disable-next-line no-unused-vars
 			.catch((err) => {
 				dispatch({ type: ADD_VISITCOUNT_FAIL, error: '에러가 발생했습니다.' });
 			});

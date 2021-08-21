@@ -23,7 +23,7 @@
         "no-multi-spaces": ["error"],
         "indent": ["error", "tab"],
         "eqeqeq": ["error"],
-        "react/prop-types": 0
+        "react/prop-types": "off"
 
     }
 }

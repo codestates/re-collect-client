@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CategoryBox from './CategoryBox';
 import CollectBookmark from './CollectBookmark';
-import { getBookmark, getGuestBookmark } from '../actions/getBookmark';
-import { dragBookmark, dragBookmarkToLast } from '../actions/dragBookmark';
-import { notify } from '../actions/notify';
+import { getBookmark, getGuestBookmark } from '../redux/actions/getBookmark';
+import { dragBookmark, dragBookmarkToLast } from '../redux/actions/dragBookmark';
+import { notify } from '../redux/actions/notify';
 import { useSelector, useDispatch } from 'react-redux';
 
 function BookmarksContainer() {
@@ -122,6 +122,7 @@ function BookmarksContainer() {
 		});
 	};
 
+	// eslint-disable-next-line no-unused-vars
 	const handleDragEnd = (e) => {
 		const original = dragItemNode.current;
 		const changing = dragItem.current;

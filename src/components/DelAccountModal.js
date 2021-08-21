@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { delAccount } from '../actions/delAccount';
+import { delAccount } from '../redux/actions/delAccount';
 
 function DelAccountModal(props) {
 	const history = useHistory();
