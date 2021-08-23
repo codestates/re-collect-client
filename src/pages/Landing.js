@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Flip, Fade, Zoom, Bounce } from 'react-reveal';
 import Pulse from 'react-reveal/Pulse';
@@ -9,12 +9,6 @@ import ExploreProfileList from '../components/ExploreProfileList';
 import { userInfoLists } from '../components/Explore_temp';
 
 function Landing() {
-	///새로고침시 최상단이동//
-	useEffect(() => {
-		window.onbeforeunload = function () {
-			window.scrollTo(0, 0);
-		};
-	}, []);
 
 	return (
 		<>
@@ -97,8 +91,6 @@ function Landing() {
 					<div className="landing__inner--third">
 						<Zoom delay={1000}>
 							<h1>
-								{/* 저장만 해두고 잊혀졌거나, 다시 찾기 힘든 북마크들 
-                <br /> */}
                 이젠 북마크를 찾아 헤매거나 놓치지 말고
 								<br />
                 똑똑하게 관리해요!

@@ -43,7 +43,7 @@ _axios.interceptors.request.use(async (config) => {
 			'accessToken'
 		)}`;
 	}
-	console.log('config!!!', config);
+	
 	return config;
 });
 
