@@ -28,17 +28,6 @@ function Profile(props) {
 		gitrepo: '',
 	});
 
-	// const [inputValue, setInputValue] = useState({
-	//   username: '',
-	//   company: '',
-	//   gitrepo: '',
-	// });
-
-	// const [inputReadMode, setInputReadMode] = useState({
-	//   usernameMode: true,
-	//   companyMode: true,
-	//   gitRepoMode: true,
-	// });
 	const [usernameInputReadMode, setUsernameInputReadMode] = useState(true);
 	const [companyInputReadMode, setCompanyInputReadMode] = useState(true);
 	const [gitRepoInputReadMode, setGitRepoInputReadMode] = useState(true);
@@ -51,39 +40,14 @@ function Profile(props) {
 		dispatch(getProfile());
 	}, [dispatch]);
 
-	// const cancelClick = () => {
-	//   document.addEventListener('click', function(e){
-	//     if(e.target !== userInputRef.current) {
-	//       //console.log(e.target);
-	//       console.log(userInputRef.current, 'what?');//두번찍히는이유?
-	//     }
 
-	//   })
-	// }
-
-	//-------------onchange event 랜더링
-	// const handleInputValue = (e) => {
-	//   const { value, name } = e.target;
-	//   console.log(`${value}`);
-	//     setInputValue({
-	//       ...inputValue,
-	//       [name]: value,
-	//     })
-	// };
-
-	useEffect(() => {
-		//cancelClick();
-	}, []); //빈배열 넣어주어야 두번안찍힘
-
-	/*유저네임 인풋 활성화 후 체크 버튼 눌렀을 때 유저네임 변경patch */
+	/*유저네임 변경*/
 	const handleUsernameInput = (e) => {
 		setUsernameInputReadMode(!usernameInputReadMode);
 		userInputRef.current.readOnly = !userInputRef.current.readOnly;
 		userInputRef.current.disabled = !userInputRef.current.disabled;
 
 		if (e.currentTarget.getAttribute('name') === 'usernamecheck') {
-			//console.log(e.currentTarget.getAttribute("name"), "username target");
-
 			if (!IsValidiateUsername(userInputRef.current.value)) {
 				setErrMessage({
 					...errorMessage,
@@ -96,7 +60,7 @@ function Profile(props) {
 		}
 	};
 
-	/*회사 인풋 활성화 후 체크 버튼 눌렀을 때 회사 변경patch */
+	/*회사 변경*/
 	const handleCompanyInput = (e) => {
 		setCompanyInputReadMode(!companyInputReadMode);
 		companyInputRef.current.readOnly = !companyInputRef.current.readOnly;
@@ -115,7 +79,7 @@ function Profile(props) {
 		}
 	};
 
-	/*깃레포 인풋 활성화 후 체크 버튼 눌렀을 때 깃레포 변경patch */
+	/*깃레포 변경*/
 	const handleGitRepoInput = (e) => {
 		setGitRepoInputReadMode(!gitRepoInputReadMode);
 		gitRepoInputRef.current.readOnly = !gitRepoInputRef.current.readOnly;
@@ -134,11 +98,6 @@ function Profile(props) {
 		}
 	};
 
-	//   useEffect(() => {
-	//   setErrMessage(errorMessage);
-	//   console.log(errorMessage.username);
-	// }, [errorMessage]);
-
 	return (
 		<div className="profile-container">
 			<div className="profile-container__inner profile-container__inner--left">
@@ -155,7 +114,6 @@ function Profile(props) {
 								readOnly
 								disabled
 								ref={userInputRef}
-								//onChange={handleInputValue}
 							/>
 							<FontAwesomeIcon
 								icon={usernameInputReadMode ? faPen : faCheck}
@@ -193,7 +151,7 @@ function Profile(props) {
 								disabled
 								placeholder={
 									profile.company
-										? `Working at ${profile.company}`
+										? profile.company
 										: 'Working at...'
 								}
 								ref={companyInputRef}
@@ -228,7 +186,7 @@ function Profile(props) {
 					<div className="profilebox__btns">
 						<button
 							onClick={() => {
-								props.setModalMode('changePwd');
+								props.setModalMode('editPwd');
 							}}
 						>
               비밀번호 변경

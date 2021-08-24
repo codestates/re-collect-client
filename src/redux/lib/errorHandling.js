@@ -6,6 +6,7 @@ const handleError = (action, status) => {
       errorMessage += '서버에 오류가 발생했습니다.';
       break;
     case 401:
+      // action에 따라서 다른메시지 내보내는 함수 실행
       errorMessage += '인증되지 않은 사용자입니다.';
       break;
     case 422:
@@ -21,4 +22,5 @@ const handleError = (action, status) => {
   return errorMessage;
 };
 
+const handleUnauthorizedCode
 export default handleError;
