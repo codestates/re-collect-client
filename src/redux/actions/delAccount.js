@@ -16,7 +16,19 @@ export const delAccount = () => (dispatch) => {
 			dispatch(notify('계정을 삭제했습니다.'));
 			localStorage.removeItem('accessToken');
 		})
-		.catch((err) => {
-			dispatch({ type: DEL_ACCOUNT_FAIL, error: err.message });
+		.catch((e) => {
+			let error;
+			switch (e.response.status){
+			case 501:
+			case 500:
+				error = '서버 오류';
+				break;
+			case 401:
+				error = '장시간 사용하지 않아 로그아웃되었습니다. 다시 로그인해주세요.';
+				break;
+			default:
+				error = 'Unknown Error';
+			}
+			dispatch({ type: DEL_ACCOUNT_FAIL, error });
 		});
 };

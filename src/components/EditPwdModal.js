@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { editPwd } from '../redux/actions/editPwd';
+import { editPwd, editPwdInitialize } from '../redux/actions/editPwd';
 
-function ChangePwdModal(props) {
+function EditPwdModal(props) {
 	// eslint-disable-next-line no-unused-vars
-	const state = useSelector((state) => state.profileReducer);
-	//const { profile } = state;
+	const { isEditPwdSuccess, error } = useSelector((state) => state.profileReducer.profile);
 	const dispatch = useDispatch();
 
 	const [pwdInfo, setPwdInfo] = useState({
@@ -19,9 +18,13 @@ function ChangePwdModal(props) {
 
 	const [errorMessage, setErrorMessage] = useState('');
 
-	// useEffect(() => {
-	//   setErrorMessage(profile.error);
-	// }, [profile.error]);
+	useEffect(() => {
+		dispatch(editPwdInitialize());
+	},[isEditPwdSuccess]);
+
+	useEffect(() => {		
+		setErrorMessage(error);
+	}, [error]);
 
 	const changePwdValidCheck = () => {
 		const password = pwdInfo.password;
@@ -29,17 +32,17 @@ function ChangePwdModal(props) {
 		const newpasswordcheck = pwdInfo.newpasswordcheck;
 
 		if (!IsValidiatePassword(password)) {
-			setErrorMessage('비밀번호를 확인해주세요');
+			setErrorMessage('현재 비밀번호가 올바르지 않습니다.');
 			return;
 		}
 		if (!IsValidiatePassword(newpassword)) {
 			setErrorMessage(
-				'비밀번호는 영문 대소문자, 숫/자, 특수문자를 포함한 8글자 이상으로 만들어야 합니다.'
+				'비밀번호는 영문대소문자,숫자,특수문자를 포함한 8글자 이상으로 만들어야 합니다.'
 			);
 			return;
 		}
 		if (!(newpassword === newpasswordcheck)) {
-			setErrorMessage('비밀번호가 서로 다릅니다.');
+			setErrorMessage('비밀번호가 일치하지 않습니다.');
 			return;
 		}
 
@@ -56,17 +59,17 @@ function ChangePwdModal(props) {
 
 	const handleChangePwd = () => {
 		dispatch(editPwd(pwdInfo));
-		setPwdInfo({
-			...pwdInfo,
-			password: '',
-			newpassword: '',
-			newpasswordcheck: '',
-		});
-		setErrorMessage('');
-		setTimeout(() => {
-			props.setModalMode('');
-		}, 2000);
 	};
+
+	useEffect (() => {
+		if(isEditPwdSuccess){
+			setErrorMessage('비밀번호를 변경했습니다.')
+			dispatch(editPwdInitialize());
+			setTimeout(() => {
+				props.setModalMode('');
+			}, 2000);
+		}
+	}, [isEditPwdSuccess])
 
 	return (
 		<div className="modalpage">
@@ -128,4 +131,4 @@ function ChangePwdModal(props) {
 	);
 }
 
-export default ChangePwdModal;
+export default EditPwdModal;

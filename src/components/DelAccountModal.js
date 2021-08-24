@@ -1,22 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { delAccount } from '../redux/actions/delAccount';
 
 function DelAccountModal(props) {
 	const history = useHistory();
-	//const state = useSelector((state) => state.profileReducer);
-	//const { profile } = state;
+	const { error } = useSelector((state) => state.profileReducer.profile);
+
 	const dispatch = useDispatch();
 
 	const InputRef = useRef('');
 	const [errorMessage, setErrorMessage] = useState('');
 
-	// useEffect(() => {
-	//   setErrorMessage(profile.error);
-	// }, [profile.error]);
+	useEffect(() => {
+		setErrorMessage(error);
+	}, [error]);
 
 	const delAccountValidCheck = () => {
 		const delAccountmessage = InputRef.current.value;
