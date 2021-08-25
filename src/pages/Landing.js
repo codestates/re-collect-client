@@ -6,7 +6,7 @@ import Jello from 'react-reveal/Jello';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import ExploreProfileList from '../components/ExploreProfileList';
-import { userInfoLists } from '../components/Explore_temp';
+import { userInfoLists } from '../components/UserInfoLists';
 
 function Landing() {
 
@@ -29,7 +29,7 @@ function Landing() {
 							</div>
 
 							<Fade duration={3000}>
-								<img src="draganddrop.gif" alt="introgif" />
+								<img src="img/draganddrop.gif" alt="introgif" />
 							</Fade>
 
 							<div className="mobile-introtext">
@@ -51,7 +51,7 @@ function Landing() {
 					<div className="landing__inner--second">
 						<div className="desc-wrap desc-wrap--1">
 							<Zoom duration={2300}>
-								<img className="desc1-img" src="desc01.png" alt="desc1-img" />
+								<img className="desc1-img" src="img/desc01.png" alt="desc1-img" />
 
 								<p className="desc1">
                   자주 들어가는 웹사이트
@@ -67,12 +67,12 @@ function Landing() {
 									<br />
                   여기저기 흩어져있는 북마크들...
 								</p>
-								<img className="desc2-img" src="desc02.png" alt="desc2-img" />
+								<img className="desc2-img" src="img/desc02.png" alt="desc2-img" />
 							</Zoom>
 						</div>
 						<div className="desc-wrap desc-wrap--3">
 							<Zoom>
-								<img className="desc3-img" src="desc03.png" alt="desc3-img" />
+								<img className="desc3-img" src="img/desc03.png" alt="desc3-img" />
 								<p className="desc3">
                   저장만 해두고
 									<br />
@@ -100,7 +100,7 @@ function Landing() {
 						<div className="desc">
 							<div className="desc__inner">
 								<Zoom duration={800} >
-									<img src="collectvertical.gif" alt="collectvertical-gif" />
+									<img src="img/collectvertical.gif" alt="collectvertical-gif" />
 								</Zoom>
 								<div className="desc-text">
 									<Fade duration={2000}>
@@ -129,7 +129,7 @@ function Landing() {
 							</Fade>
 
 							<Pulse>
-								<img src="draganddrop.gif" alt="draganddrop-gif" />
+								<img src="img/draganddrop.gif" alt="draganddrop-gif" />
 							</Pulse>
 
 							<div className="desc-dragdrop__desc">
@@ -174,7 +174,7 @@ function Landing() {
 							</div>
 							<Fade duration={2000}>
 								<div className="alarm-img">
-									<img src="./alarm.png" alt="alarm-img" />
+									<img src="img/alarm.png" alt="alarm-img" />
 								</div>
 							</Fade>
 						</div>
