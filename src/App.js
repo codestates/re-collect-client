@@ -12,7 +12,7 @@ import SignUpModal from './components/SignUpModal';
 import FindPwdModal from './components/FindPwdModal';
 import SuccessSignUpModal from './components/SuccessSignUpModal';
 import ExploreModal from './components/ExploreModal';
-import ChangePwdModal from './components/ChangePwdModal';
+import EditPwdModal from './components/EditPwdModal';
 import DelAccountModal from './components/DelAccountModal';
 import SetNewPwdModal from './components/SetNewPwdModal';
 import Loading from './components/Loading';
@@ -63,9 +63,6 @@ function App() {
 			{modalMode === 'explore' && (
 				<ExploreModal modalMode={modalMode} setModalMode={setModalMode} />
 			)}
-			{modalMode === 'changePwd' && (
-				<ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
 			{modalMode === 'delAccount' && (
 				<DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
 			)}
@@ -75,8 +72,8 @@ function App() {
 			{modalMode === 'successSetNewPwd' && (
 				<SuccessSetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
 			)}
-			{modalMode === 'changePwd' && (
-				<ChangePwdModal modalMode={modalMode} setModalMode={setModalMode} />
+			{modalMode === 'editPwd' && (
+				<EditPwdModal modalMode={modalMode} setModalMode={setModalMode} />
 			)}
 			{modalMode === 'delAccount' && (
 				<DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />

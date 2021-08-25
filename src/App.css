@@ -1115,13 +1115,16 @@
   justify-content: center;
   width: 50vw;
 }
-.footer .about, .footer a {
+.footer a {
   margin-left: 5%;
   text-decoration: none;
   color: #525151;
 }
-.footer .about:hover, .footer a:hover {
+.footer a:hover {
   color: #214bc8;
+}
+.footer span {
+  margin-left: 5%;
 }
 
 @media (max-width: 834px) {

@@ -1,16 +1,16 @@
 import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getProfile } from './getProfile';
-//import { getAccessToken } from "../modules/getAccessToken";
 
-//const EDIT_USERNAME = 'EDIT_USERNAME';
+export const EDIT_USERNAME = 'EDIT_USERNAME';
 export const EDIT_USERNAME_SUCCESS = 'EDIT_USERNAME_SUCCESS';
 export const EDIT_USERNAME_FAIL = 'EDIT_USERNAME_FAIL';
 
 export const editUsername = (username) => (dispatch) => {
+	dispatch({ type: EDIT_USERNAME });
 	_axios
 		.patch('/profile/username', {
-			username: username, //input.value
+			username: username,
 		})
 		// eslint-disable-next-line no-unused-vars
 		.then((res) => {
@@ -28,6 +28,6 @@ export const editUsername = (username) => (dispatch) => {
 				return;
 			}
 			dispatch({ type: EDIT_USERNAME_FAIL, error: err.message });
-			dispatch(notify('유저네임 변경 실패'));
+			dispatch(notify('유저네임을 변경할 수 없습니다. 다시 시도하세요.'));
 		});
 };

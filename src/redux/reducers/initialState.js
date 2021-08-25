@@ -125,6 +125,7 @@ const initialState = {
 			color: '#214bc8',
 			visitCounts: 0,
 		},
+		isEditPwdSuccess : false,
 		error: null,
 	},
 };

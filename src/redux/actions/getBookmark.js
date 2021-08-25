@@ -1,4 +1,5 @@
 import _axios from '../lib/axiosConfig';
+import handleError from '../lib/errorHandling';
 
 export const GET_BOOKMARK = 'GET_BOOKMARK';
 export const GET_BOOKMARK_SUCCESS = 'GET_BOOKMARK_SUCCESS';
@@ -18,7 +19,10 @@ export const getBookmark = () => (dispatch) => {
 				userBookmarks: res.data,
 			});
 		})
-		.catch((err) => {
-			dispatch({ type: GET_BOOKMARK_FAIL, error: err.message });
+		.catch((e) => {
+			dispatch({
+				type: GET_BOOKMARK_FAIL,
+				error: handleError('북마크 불러오기', e.response.status),
+			});
 		});
 };

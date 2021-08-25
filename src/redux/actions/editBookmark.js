@@ -3,6 +3,7 @@ import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';
+import handleError from '../lib/errorHandling';
 
 export const EDIT_START = 'EDIT_START';
 export const EDIT_END = 'EDIT_END';
@@ -28,8 +29,11 @@ export const editEnd = () => ({ type: EDIT_END });
 export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
 	const editingBookmark = bookmarkConverter(bookmark, true);
 
-	let { bookmarks, category, categoryId } =
-    getState().bookmarkReducer.guestBookmarks;
+	let {
+		bookmarks,
+		category,
+		categoryId,
+	} = getState().bookmarkReducer.guestBookmarks;
 	const currentCategory = { ...category };
 	const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 
@@ -78,23 +82,8 @@ export const editBookmark = (bookmark) => (dispatch) => {
 			dispatch(notify('북마크를 수정했습니다'));
 		})
 		.catch((e) => {
-			let error;
-			switch (e.response.status) {
-			case 401:
-				error = '북마크 수정 실패 : 식별되지 않은 사용자입니다.';
-				break;
-			case 422:
-				error = '북마크 수정 실패 : 해당 북마크가 존재하지 않습니다.';
-				break;
-			case 501:
-				error = '북마크 수정 실패 : 서버 오류';
-				break;
-			default:
-				error = '북마크 수정 실패 : 알 수 없는 오류';
-				break;
-			}
-
-			dispatch({ type: EDIT_BOOKMARK_FAIL, error });
-			dispatch(notify(error));
+			const errorMessage = handleError('북마크 수정', e.response.status);
+			dispatch({ type: EDIT_BOOKMARK_FAIL, error: errorMessage });
+			dispatch(notify(errorMessage));
 		});
 };

@@ -1,4 +1,5 @@
 import _axios from '../lib/axiosConfig';
+import handleError from '../lib/errorHandling';
 
 export const GET_INFO = 'GET_INFO';
 export const GET_INFO_SUCCESS = 'GET_INFO_SUCCESS';
@@ -17,7 +18,10 @@ export const getExploreInfo = () => (dispatch) => {
 				},
 			});
 		})
-		.catch(() => {
-			dispatch({ type: GET_INFO_FAIL, error: '에러가 발생했습니다.' });
+		.catch((e) => {
+			dispatch({
+				type: GET_INFO_FAIL,
+				error: handleError('익스플로어 정보 불러오기', e.response.status),
+			});
 		});
 };

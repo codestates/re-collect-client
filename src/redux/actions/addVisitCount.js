@@ -1,5 +1,6 @@
 import _axios from '../lib/axiosConfig';
 import { getBookmark } from '../actions/getBookmark.js';
+import handleError from '../lib/errorHandling';
 export const ADD_VISITCOUNT = 'ADD_VISITCOUNT';
 export const ADD_VISITCOUNT_SUCCESS = 'ADD_VISITCOUNT_SUCCESS';
 export const ADD_VISITCOUNT_FAIL = 'ADD_VISITCOUNT_FAIL';
@@ -19,8 +20,11 @@ export const addVisitCount = (id) => (dispatch) => {
 				dispatch(getBookmark());
 			})
 			// eslint-disable-next-line no-unused-vars
-			.catch((err) => {
-				dispatch({ type: ADD_VISITCOUNT_FAIL, error: '에러가 발생했습니다.' });
+			.catch((e) => {
+				dispatch({
+					type: ADD_VISITCOUNT_FAIL,
+					error: handleError('북마크 방문 횟수 카운트', e.response.status),
+				});
 			});
 	}
 };

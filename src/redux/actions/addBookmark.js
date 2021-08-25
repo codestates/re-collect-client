@@ -3,6 +3,7 @@ import bookmarkConverter from '../lib/bookmarkConverter';
 import reduceGuestBookmark from '../lib/reduceGuestBookmark';
 import { notify } from './notify';
 import { getBookmark } from './getBookmark';
+import handleError from '../lib/errorHandling';
 
 export const POST_BOOKMARK = 'POST_BOOKMARK';
 export const POST_BOOKMARK_SUCCESS = 'POST_BOOKMARK_SUCCESS';
@@ -14,8 +15,12 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 
 	//현재 등록되어 있는 북마크 아이디, 북마크배열, 카테고리 오브젝트 파악
 
-	let { bookmarks, category, bookmarkId, categoryId } =
-    getState().bookmarkReducer.guestBookmarks;
+	let {
+		bookmarks,
+		category,
+		bookmarkId,
+		categoryId,
+	} = getState().bookmarkReducer.guestBookmarks;
 
 	const currentBookmarkId = bookmarkId;
 	const currentCategory = { ...category };
@@ -75,18 +80,10 @@ export const addBookmark = (bookmark) => (dispatch) => {
 			dispatch(notify('북마크를 추가했습니다'));
 		})
 		.catch((e) => {
-			if (e.response) {
-				dispatch({
-					type: POST_BOOKMARK_FAIL,
-					bookmark: convertedBookmark,
-					error: e.response.data.message,
-				});
-				return;
-			}
 			dispatch({
 				type: POST_BOOKMARK_FAIL,
 				bookmark: convertedBookmark,
-				error: 'unknown error',
+				error: handleError('북마크 추가', e.response.status),
 			});
 		});
 };

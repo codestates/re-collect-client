@@ -13,6 +13,7 @@
     "browser-sync": "^2.27.3",
     "dayjs": "^1.10.6",
     "dotenv": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^9.0.0",

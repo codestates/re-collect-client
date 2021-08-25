@@ -1,5 +1,6 @@
 import _axios from '../lib/axiosConfig';
 import dayjs from 'dayjs';
+import handleError from '../lib/errorHandling';
 export const LOGIN_INITIALIZE = 'LOGIN_INITIALIZE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
@@ -32,11 +33,10 @@ export const loginThunk = (userinfo) => async (dispatch) => {
 			dispatch({ type: LOGIN_FAIL, error: 'Login failed' });
 		}
 	} catch (e) {
-		if (e.response) {
-			dispatch({ type: LOGIN_FAIL, error: e.response.data.message });
-			return;
-		}
-		dispatch({ type: LOGIN_FAIL, error: 'unknown error occured' });
+		dispatch({
+			type: LOGIN_FAIL,
+			error: handleError('로그인', e.response.status),
+		});
 	}
 };
 
