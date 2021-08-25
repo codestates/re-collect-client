@@ -58,10 +58,11 @@ export const deleteBookmark = (bookmark) => (dispatch) => {
       dispatch(notify('북마크를 삭제했습니다'));
     })
     .catch((e) => {
-      dispatch(notify('북마크 삭제 실패했습니다'));
+      const errorMessage = handleError('북마크 삭제', e.response.status);
+      dispatch(notify(errorMessage));
       dispatch({
         type: DELETE_BOOKMARK_FAIL,
-        error: handleError('북마크 삭제', e.response.status),
+        error: errorMessage,
       });
     });
 };
