@@ -49,14 +49,14 @@ export const signupThunk = (signUpInfo) => async (dispatch) => {
 
 export const validationInitialize = (name) => (dispatch) => {
 	switch (name) {
-		case 'email':
-			dispatch({ type: EMAIL_VALIDATION_INITIALIZE });
-			break;
-		case 'username':
-			dispatch({ type: USERNAME_VALIDATION_INITIALIZE });
-			break;
-		default:
-			return;
+	case 'email':
+		dispatch({ type: EMAIL_VALIDATION_INITIALIZE });
+		break;
+	case 'username':
+		dispatch({ type: USERNAME_VALIDATION_INITIALIZE });
+		break;
+	default:
+		return;
 	}
 };
 

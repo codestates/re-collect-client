@@ -5,6 +5,7 @@ import { IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
+//// Todo : useParams사용해보기
 
 function SetNewPwdModal({setModalMode}) {
 	const history = useHistory();

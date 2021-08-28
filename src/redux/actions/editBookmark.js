@@ -29,11 +29,8 @@ export const editEnd = () => ({ type: EDIT_END });
 export const editGuestBookmark = (bookmark) => (dispatch, getState) => {
 	const editingBookmark = bookmarkConverter(bookmark, true);
 
-	let {
-		bookmarks,
-		category,
-		categoryId,
-	} = getState().bookmarkReducer.guestBookmarks;
+	let { bookmarks, category, categoryId } =
+    getState().bookmarkReducer.guestBookmarks;
 	const currentCategory = { ...category };
 	const currentBookmarks = bookmarks.map((el) => ({ ...el }));
 

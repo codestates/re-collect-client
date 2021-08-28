@@ -10,17 +10,17 @@
 	box-shadow: 0px 8px 8px rgba(233, 229, 229, 0.267);
 	align-items: center;
 
-	&__logo {
-		float: left;
-		width: 90px;
-		padding: 0;
-		height: 100%;
-		text-indent: -9999px;
-		margin-left: 6vw;
-		background-image: url('./logo.png');
-		background-repeat: no-repeat;
-		background-size: 95px auto;
-		background-position: center;
+  &__logo {
+    float: left;
+    width: 90px;
+    padding: 0;
+    height: 100%;
+    text-indent: -9999px;
+    margin-left: 6vw;
+    background-image: url('../logo.png');
+    background-repeat: no-repeat;
+    background-size: 95px auto;
+    background-position: center;
 
 		&:hover {
 			transform: scale(1.02); /*  default */

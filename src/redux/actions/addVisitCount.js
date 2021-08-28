@@ -19,7 +19,7 @@ export const addVisitCount = (id) => (dispatch) => {
 			.then(() => {
 				dispatch(getBookmark());
 			})
-			// eslint-disable-next-line no-unused-vars
+		// eslint-disable-next-line no-unused-vars
 			.catch((e) => {
 				dispatch({
 					type: ADD_VISITCOUNT_FAIL,

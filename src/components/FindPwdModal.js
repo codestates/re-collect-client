@@ -29,6 +29,8 @@ function FindPwdModal({setModalMode}) {
 		if (isLoading){
 			console.log('loadingggg')
 			const btn = document.getElementById('requestBtn');
+			const email = document.querySelector('.findPwdEmail');
+			email.disabled = 'true';
 			btn.disabled = 'true';
 			btn.textContent = '요청중입니다';
 			btn.style.color = 'rgb(196, 196, 196)' 

@@ -15,12 +15,8 @@ export const addGuestBookmark = (bookmark) => (dispatch, getState) => {
 
 	//현재 등록되어 있는 북마크 아이디, 북마크배열, 카테고리 오브젝트 파악
 
-	let {
-		bookmarks,
-		category,
-		bookmarkId,
-		categoryId,
-	} = getState().bookmarkReducer.guestBookmarks;
+	let { bookmarks, category, bookmarkId, categoryId } =
+    getState().bookmarkReducer.guestBookmarks;
 
 	const currentBookmarkId = bookmarkId;
 	const currentCategory = { ...category };

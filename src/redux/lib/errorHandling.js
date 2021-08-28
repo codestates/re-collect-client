@@ -1,13 +1,13 @@
-const handleError = ( action, status ) => {
-	let errorMessage = `${ action } 실패 : `;
-	switch ( status ) {
+const handleError = (action, status) => {
+	let errorMessage = `${action} 실패 : `;
+	switch (status) {
 	case 500:
 	case 501:
 		errorMessage += '서버에 오류가 발생했습니다.';
 		break;
 	case 401:
-		// action에 따라서 다른메시지 내보내는 함수 실행
-		errorMessage += '인증되지 않은 사용자입니다.';
+		errorMessage +=
+        '장기간 사용하지 않아 인증이 만료되었습니다. 다시 로그인 해주세요.';
 		break;
 	case 422:
 		errorMessage += '잘못된 정보 입력입니다.';
@@ -18,7 +18,7 @@ const handleError = ( action, status ) => {
 	default:
 		errorMessage += '알 수 없는 오류.';
 	}
-
+  
 	return errorMessage;
 };
 
