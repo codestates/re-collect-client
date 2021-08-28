@@ -125,8 +125,18 @@ const initialState = {
 			color: '#214bc8',
 			visitCounts: 0,
 		},
-		isEditPwdSuccess : false,
+		isEditPwdSuccess: false,
 		error: null,
 	},
+	sendNewPwdMail: {
+		isLoading: false,
+		done: false,
+		error: false,
+	},
+	resetNewPwd: {
+		isLoading: false,
+		done: false,
+		error: false,
+	}
 };
 export default initialState;

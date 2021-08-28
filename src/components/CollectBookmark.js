@@ -10,7 +10,7 @@ export default function CollectBookmark(props) {
 
 	const dispatch = useDispatch();
 
-	const handleEditBtn = () => {
+	const handleEditBtn = () => { 
 		dispatch(editStart(data));
 	};
 
