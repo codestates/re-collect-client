@@ -9,42 +9,42 @@ export const DELETE_BOOKMARK_FAIL = 'DELETE_BOOKMARK_FAIL';
 export const DELETE_GUEST_BOOKMARK = 'DELETE_GUEST_BOOKMARK';
 
 export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
-  const { category, bookmarks } = getState().bookmarkReducer.guestBookmarks;
+	const { category, bookmarks } = getState().bookmarkReducer.guestBookmarks;
 
-  const currentBookmarks = bookmarks.map((el) => ({ ...el }));
-  const currentCategory = { ...category };
-  let findIdx;
-  currentBookmarks.filter((el, idx) => {
-    if (el.id === bookmark.id) {
-      findIdx = idx;
-    }
-  });
-  currentBookmarks.splice(findIdx, 1);
-  const newReducedbookmarks = reduceGuestBookmark(
-    currentBookmarks,
-    currentCategory
-  );
+	const currentBookmarks = bookmarks.map((el) => ({ ...el }));
+	const currentCategory = { ...category };
+	let findIdx;
+	currentBookmarks.filter((el, idx) => {
+		if (el.id === bookmark.id) {
+			findIdx = idx;
+		}
+	});
+	currentBookmarks.splice(findIdx, 1);
+	const newReducedbookmarks = reduceGuestBookmark(
+		currentBookmarks,
+		currentCategory
+	);
 
-  // eslint-disable-next-line no-unused-vars
-  newReducedbookmarks.filter((el, idx) => {
-    if (el.bookmarks.length === 1) {
-      delete currentCategory[Number(el.id)];
-      return false;
-    }
-  });
+	// eslint-disable-next-line no-unused-vars
+	newReducedbookmarks.filter((el, idx) => {
+		if (el.bookmarks.length === 1) {
+			delete currentCategory[Number(el.id)];
+			return false;
+		}
+	});
 
-  dispatch({
-    type: DELETE_GUEST_BOOKMARK,
-    category: currentCategory,
-    bookmarks: currentBookmarks,
-    reducedbookmarks: newReducedbookmarks,
-  });
+	dispatch({
+		type: DELETE_GUEST_BOOKMARK,
+		category: currentCategory,
+		bookmarks: currentBookmarks,
+		reducedbookmarks: newReducedbookmarks,
+	});
 
-  dispatch(notify('북마크를 삭제했습니다'));
+	dispatch(notify('북마크를 삭제했습니다'));
 };
 
 export const deleteBookmark = (bookmark) => (dispatch) => {
-  const id = bookmark.id;
+	const id = bookmark.id;
 
   _axios
     .delete(`/bookmarks/${id}`, {

@@ -8,7 +8,7 @@ export const EDIT_PWD_SUCCESS = 'EDIT_PWD_SUCCESS';
 export const EDIT_PWD_FAIL = 'EDIT_PWD_FAIL';
 
 export const editPwdInitialize = () => ({
-  type: EDIT_PWD_INITIALIZE,
+	type: EDIT_PWD_INITIALIZE,
 });
 
 export const editPwd = (pwdInfo) => (dispatch) => {

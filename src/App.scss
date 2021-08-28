@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: fit-content;
+  font-family: 'IBM Plex Mono', 'Noto Sans KR', monospace, sans-serif;
+}
+
+@import './scss/util';
+@import './scss/bigBookmark';
+@import './scss/bookmarksContainer';
+@import './scss/bottomPopup';
+@import './scss/categoryEditModal';
+@import './scss/categoryReally';
+@import './scss/collect';
+@import './scss/collectInputBox';
+@import './scss/error';
+@import './scss/explore';
+@import './scss/footer';
+@import './scss/landing';
+@import './scss/landingMobile';
+@import './scss/landingTablet';
+@import './scss/loading';
+@import './scss/modal';
+@import './scss/nav';
+@import './scss/notification';
+@import './scss/profile';
+@import './scss/recollect';
+@import './scss/scrollTop';
+@import './scss/searchingBookmarkContainer';
+@import './scss/setNewPwd.scss';
+@import './scss/sidebar';
+@import './scss/slick-theme';
+@import './scss/slick';

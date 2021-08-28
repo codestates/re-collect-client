@@ -1,5 +1,5 @@
 import _axios from '../lib/axiosConfig';
-import handleError from '../lib/errorHandling';
+//import handleError from '../lib/errorHandling';
 import { notify } from './notify';
 
 export const DEL_ACCOUNT = 'DEL_ACCOUNT';
