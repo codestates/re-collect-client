@@ -8,7 +8,7 @@ import Recollect from '../components/Recollect';
 import ToCollectBtn from '../components/ToCollectBtn';
 import BookmarksContainer from '../components/BookmarksContainer';
 import { SearchBookmark } from '../components/SearchBookmark';
-import CategoryEditModal from '../components/CategoryEditModal';
+import CategoryEditModal from '../components/Modal/CategoryEditModal';
 
 export default function Collect() {
 	const { isCategoryEdit } = useSelector((state) => state.categoryReducer);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginInitialize, loginThunk } from '../redux/actions/signInOut';
-import { IsValidateEmail, IsValidiatePassword } from '../util/validation';
+import { loginInitialize, loginThunk } from '../../redux/actions/signInOut';
+import { IsValidateEmail, IsValidiatePassword } from '../../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
-function LoginModal(props) {
+import { setModalMode } from '../../redux/actions/setModalMode';
+function LoginModal() {
 	const history = useHistory();
 	const accessToken = localStorage.getItem('accessToken');
 	// eslint-disable-next-line no-unused-vars
@@ -24,7 +24,7 @@ function LoginModal(props) {
 
 	useEffect(() => {
 		if (accessToken) {
-			props.setModalMode('');
+			dispatch(setModalMode(''));
 			history.push('/loading');
 			setTimeout(() => {
 				history.push('/collect');
@@ -67,7 +67,7 @@ function LoginModal(props) {
 						className="modal__closeBtn"
 						onClick={() => {
 							dispatch(loginInitialize());
-							props.setModalMode('');
+							dispatch(setModalMode(''));
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />
@@ -107,14 +107,14 @@ function LoginModal(props) {
 					<div className="modal__bottomTab">
 						<div
 							onClick={() => {
-								props.setModalMode('signup');
+								dispatch(setModalMode('signup'));
 							}}
 						>
               회원가입
 						</div>
 						<div
 							onClick={() => {
-								props.setModalMode('findPwd');
+								dispatch(setModalMode('findPwd'));
 							}}
 						>
               비밀번호 찾기

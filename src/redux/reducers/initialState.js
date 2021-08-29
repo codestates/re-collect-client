@@ -137,6 +137,7 @@ const initialState = {
 		isLoading: false,
 		done: false,
 		error: false,
-	}
+	},
+	modalMode: '',
 };
 export default initialState;

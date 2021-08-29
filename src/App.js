@@ -1,26 +1,27 @@
 import './App.scss'
-import React, { useState, useEffect } from 'react';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
+import React, { useEffect } from 'react';
 import Landing from './pages/Landing';
-import ScrollToTop from './components/ScrollToTop';
+import SetNewPwd from './pages/SetNewPwd';
 import Collect from './pages/Collect';
 import Explore from './pages/Explore';
 import Profile from './pages/Profile';
-import LoginModal from './components/LoginModal';
-import SignUpModal from './components/SignUpModal';
-import FindPwdModal from './components/FindPwdModal';
-import SuccessSignUpModal from './components/SuccessSignUpModal';
-import ExploreModal from './components/ExploreModal';
-import EditPwdModal from './components/EditPwdModal';
-import DelAccountModal from './components/DelAccountModal';
-import SetNewPwdModal from './components/SetNewPwdModal';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Loading from './components/Loading';
-import SetNewPwd from './pages/SetNewPwd';
-import SuccessSetNewPwd from './components/SuccessSetNewPwd';
-import NofiticationCenter from './components/NotificationCenter';
 import Error from './components/Error';
-import SentEmailModal from './components/SentEmailModal';
+import NofiticationCenter from './components/NotificationCenter';
+import LoginModal from './components/Modal/LoginModal';
+import SignUpModal from './components/Modal/SignUpModal';
+import FindPwdModal from './components/Modal/FindPwdModal';
+import SuccessSignUpModal from './components/Modal/SuccessSignUpModal';
+import ExploreModal from './components/Modal/ExploreModal';
+import EditPwdModal from './components/Modal/EditPwdModal';
+import DelAccountModal from './components/Modal/DelAccountModal';
+import SetNewPwdModal from './components/Modal/SetNewPwdModal';
+import SuccessSetNewPwd from './components/SuccessSetNewPwd';
+import SentEmailModal from './components/Modal/SentEmailModal';
+
 import {
 	Switch,
 	Route,
@@ -28,9 +29,10 @@ import {
 	BrowserRouter as Router,
 	withRouter,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function App() {
-	const [modalMode, setModalMode] = useState('');
+	const { modalMode } = useSelector((state)=>state.setModalModeReducer)
 	const accessToken = localStorage.getItem('accessToken');
 	// 모달창 on인상태, 스크롤 불가 //
 	useEffect(() => {
@@ -45,57 +47,34 @@ function App() {
 	return (
 		<Router>
 			{/* mode 상태값에 따른 모달창*/}
-			{modalMode === 'login' && (
-				<LoginModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'signup' && (
-				<SignUpModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'findPwd' && (
-				<FindPwdModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'sentEmail' && (
-				<SentEmailModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'successSignup' && (
-				<SuccessSignUpModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'explore' && (
-				<ExploreModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'delAccount' && (
-				<DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'setNewPwd' && (
-				<SetNewPwdModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'successSetNewPwd' && (
-				<SuccessSetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'editPwd' && (
-				<EditPwdModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
-			{modalMode === 'delAccount' && (
-				<DelAccountModal modalMode={modalMode} setModalMode={setModalMode} />
-			)}
+			{modalMode === 'login' && <LoginModal />}
+			{modalMode === 'signup' && <SignUpModal/>}
+			{modalMode === 'findPwd' && <FindPwdModal/>}
+			{modalMode === 'sentEmail' && <SentEmailModal/>}
+			{modalMode === 'successSignup' && <SuccessSignUpModal />}
+			{modalMode === 'explore' && <ExploreModal />}
+			{modalMode === 'delAccount' && <DelAccountModal/>}
+			{modalMode === 'setNewPwd' && <SetNewPwdModal />}
+			{modalMode === 'successSetNewPwd' && <SuccessSetNewPwd />}
+			{modalMode === 'editPwd' && <EditPwdModal/>}
 
-			<Nav modalMode={modalMode} setModalMode={setModalMode} />
+			<Nav/>
 			<NofiticationCenter />
 			<Switch>
 				<Route path="/loading" component={Loading}></Route>
 				<Route path="/collect" component={Collect}></Route>
 				<Route path="/auth/pwd">
-					<SetNewPwd modalMode={modalMode} setModalMode={setModalMode} />
+					<SetNewPwd />
 				</Route>
 				<Route path="/profile">
 					{accessToken ? (
-						<Profile modalMode={modalMode} setModalMode={setModalMode} />
+						<Profile />
 					) : (
 						<Redirect to="*" />
 					)}
 				</Route>
 				<Route path="/explore" component={Explore}>
-					<Explore modalMode={modalMode} setModalMode={setModalMode} />
+					<Explore />
 				</Route>
 				<Route exact path="/" component={Landing}></Route>
 				<Route path="*" component={Error}></Route>

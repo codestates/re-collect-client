@@ -6,19 +6,20 @@ import {
 	emailValidation,
 	usernameValidation,
 	validationInitialize,
-} from '../redux/actions/signUp';
+} from '../../redux/actions/signUp';
 import {
 	IsValidateEmail,
 	IsValidiateUsername,
 	IsValidiatePassword,
-} from '../util/validation';
+} from '../../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Creatable from 'react-select/creatable';
-import emailOptions from '../util/emailOptions';
-import customStyles from '../util/signUpCategoryStyle';
+import emailOptions from '../../util/emailOptions';
+import customStyles from '../../util/signUpCategoryStyle';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
-function SignUpModal(props) {
+function SignUpModal() {
 	const { isSignupSuccess, signupError } = useSelector(
 		(state) => state.signReducer
 	);
@@ -85,7 +86,7 @@ function SignUpModal(props) {
 	useEffect(() => {
 		const { overall } = isSignupSuccess;
 		if (overall) {
-			props.setModalMode('successSignup');
+			dispatch(setModalMode('successSignup'));
 			dispatch(signupInitialize());
 		}
 	}, [isSignupSuccess]);
@@ -224,7 +225,7 @@ function SignUpModal(props) {
 				<div
 					className="closeBtn"
 					onClick={() => {
-						props.setModalMode('');
+						dispatch(setModalMode(''));
 						dispatch(signupInitialize());
 					}}
 				>

@@ -3,9 +3,10 @@ import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { delAccount } from '../redux/actions/delAccount';
+import { delAccount } from '../../redux/actions/delAccount';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
-function DelAccountModal(props) {
+function DelAccountModal() {
 	const history = useHistory();
 	const { error } = useSelector((state) => state.profileReducer.profile);
 
@@ -35,7 +36,7 @@ function DelAccountModal(props) {
 		InputRef.current.value = '';
 
 		setTimeout(() => {
-			props.setModalMode('');
+			dispatch(setModalMode(''));
 		}, 1000);
 
 		setTimeout(() => {
@@ -50,7 +51,7 @@ function DelAccountModal(props) {
 					<div
 						className="modal__closeBtn"
 						onClick={() => {
-							props.setModalMode('');
+							dispatch(setModalMode(''));
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />

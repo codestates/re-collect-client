@@ -8,6 +8,7 @@ import { getExploreReducer } from './getExplore';
 import { recollectReducer } from './getRecollect';
 import { visitCountReducer } from './addVisitCount';
 import { findPwdReducer } from './findPwd';
+import { setModalModeReducer } from './setModalMode'
 
 const rootReducer = combineReducers({
 	bookmarkReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
 	recollectReducer,
 	visitCountReducer,
 	findPwdReducer,
+	setModalModeReducer,
 });
 
 export default rootReducer;
