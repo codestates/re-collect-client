@@ -4,8 +4,9 @@ import { logoutThunk } from '../redux/actions/signInOut';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { setModalMode } from '../redux/actions/setModalMode'
 
-function Nav(props) {
+function Nav() {
 	const [isvisible, setVisible] = useState(false);
 	const [isLogin, setIsLogin] = useState(true);
 
@@ -28,7 +29,7 @@ function Nav(props) {
 			<Link
 				to='/'
 				onClick={() => {
-					props.setModalMode('');
+					dispatch(setModalMode(''));
 				}}
 				className='nav-container__logo'>
 				logo
@@ -48,7 +49,7 @@ function Nav(props) {
 				<Link
 					to='/'
 					onClick={() => {
-						props.setModalMode('');
+						dispatch(setModalMode(''));
 						handleToggleBtn();
 					}}>
 					Home
@@ -56,14 +57,14 @@ function Nav(props) {
 				<Link
 					to='/collect'
 					onClick={() => {
-						props.setModalMode('');
+						dispatch(setModalMode(''));
 						handleToggleBtn();
 					}}>
 					Recollect
 				</Link>
 				<Link
 					onClick={() => {
-						setTimeout(() => props.setModalMode('explore'), 2000);
+						setTimeout(() => dispatch(setModalMode('explore')), 2000);
 						handleToggleBtn();
 					}}
 					to='/explore'>
@@ -86,7 +87,7 @@ function Nav(props) {
 				) : (
 					<div
 						onClick={() => {
-							props.setModalMode('login');
+							dispatch(setModalMode('login'));
 							handleToggleBtn();
 							setIsLogin(true);
 						}}>

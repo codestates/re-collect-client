@@ -44,5 +44,5 @@ function ExploreProfileList({ className, ...props }, settings) {
 		</div>
 	);
 }
-
+  
 export default ExploreProfileList;

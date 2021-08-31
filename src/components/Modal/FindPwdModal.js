@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
-import { IsValidateEmail } from '../util/validation';
+import { IsValidateEmail } from '../../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { sendEmail } from '../redux/actions/findPwd';
+import { sendEmail } from '../../redux/actions/findPwd';
 import { useHistory } from 'react-router-dom';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
-//// To do : loading상태 => loadingPage //// 
-
-function FindPwdModal({setModalMode}) {
+function FindPwdModal() {
 	const history = useHistory();
 	const { sendNewPwdMail } = useSelector((state) => state.findPwdReducer);
 	const dispatch = useDispatch();
@@ -27,7 +26,6 @@ function FindPwdModal({setModalMode}) {
 	const { isLoading, done, error } = sendNewPwdMail;
 	useEffect(() => {
 		if (isLoading){
-			console.log('loadingggg')
 			const btn = document.getElementById('requestBtn');
 			const email = document.querySelector('.findPwdEmail');
 			email.disabled = 'true';
@@ -37,12 +35,12 @@ function FindPwdModal({setModalMode}) {
 			history.push('/loading');
 		} 
 		else if (done){
-			setModalMode('sentEmail');
+			dispatch(setModalMode('sentEmail'));
 			console.log(sendNewPwdMail);
 		}
 		else if (error){
 			console.log('error again....wtf')
-			setModalMode('');
+			dispatch(setModalMode(''));
 			history.push('/error');
 		}
 	}, [isLoading, done, error]);
@@ -54,7 +52,7 @@ function FindPwdModal({setModalMode}) {
 					<div
 						className='modal__closeBtn'
 						onClick={() => {
-							setModalMode('');
+							dispatch(setModalMode(''));
 						}}>
 						<FontAwesomeIcon icon={faTimes} />
 					</div>
@@ -81,13 +79,13 @@ function FindPwdModal({setModalMode}) {
 					<div className='modal__bottomTab'>
 						<div
 							onClick={() => {
-								setModalMode('signup');
+								dispatch(setModalMode('signup'));
 							}}>
 							회원가입
 						</div>
 						<div
 							onClick={() => {
-								setModalMode('login');
+								dispatch(setModalMode('login'));
 							}}>
 							로그인
 						</div>

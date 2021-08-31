@@ -15,9 +15,10 @@ import { getProfile } from '../redux/actions/getProfile';
 import { editUsername } from '../redux/actions/editUsername';
 import { editCompany} from '../redux/actions/editCompany';
 import { editGitRepo} from '../redux/actions/editGitRepo';
+import { setModalMode } from '../redux/actions/setModalMode';
 
 
-function Profile(props) {
+function Profile() {
 	const state = useSelector((state) => state.profileReducer);
 	const { profile } = state;
 	const dispatch = useDispatch();
@@ -186,14 +187,14 @@ function Profile(props) {
 					<div className="profilebox__btns">
 						<button
 							onClick={() => {
-								props.setModalMode('editPwd');
+								dispatch(setModalMode('editPwd'));
 							}}
 						>
               비밀번호 변경
 						</button>
 						<button
 							onClick={() => {
-								props.setModalMode('delAccount');
+								dispatch(setModalMode('delAccount'));
 							}}
 						>
               계정 삭제

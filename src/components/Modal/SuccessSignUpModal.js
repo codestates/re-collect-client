@@ -1,8 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
 function SuccessSignUpModal(props) {
+	const dispatch = useDispatch();
 	return (
 		<div className="modalpage">
 			<div className="modal">
@@ -21,7 +24,7 @@ function SuccessSignUpModal(props) {
 					</p>
 					<button
 						onClick={() => {
-							props.setModalMode('login');
+							dispatch(setModalMode('login'));
 						}}
 					>
             로그인하고 시작하기

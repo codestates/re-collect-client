@@ -1,9 +1,12 @@
 import React from 'react';
-import { IsValidateEmail } from '../util/validation';
+import { useDispatch } from 'react-redux';
+import { IsValidateEmail } from '../../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
-function ExploreModal(props) {
+function ExploreModal() {
+	const dispatch = useDispatch();
 	const isValid = () => {
 		const emailForSubscribe = document.querySelector('.modal__explore__input')
 			.value;
@@ -13,7 +16,7 @@ function ExploreModal(props) {
 		} else {
 			const error = document.querySelector('.modal__explore__error');
 			error.style.display = 'none';
-			props.setModalMode('');
+			dispatch(setModalMode(''));
 		}
 	};
 	return (
@@ -23,7 +26,7 @@ function ExploreModal(props) {
 					<div
 						className='modal__closeBtn'
 						onClick={() => {
-							props.setModalMode('');
+							dispatch(setModalMode(''));
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />

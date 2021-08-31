@@ -1,8 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
-function SentEmailModal(props) {
+function SentEmailModal() {
+	const dispatch = useDispatch();
 	return (
 		<div className="modalpage">
 			<div className="modal">
@@ -10,7 +13,7 @@ function SentEmailModal(props) {
 					<div
 						className="modal__closeBtn"
 						onClick={() => {
-							props.setModalMode('');
+							dispatch(setModalMode(''));
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />
@@ -22,7 +25,7 @@ function SentEmailModal(props) {
 					</p>
 					<button
 						onClick={() => {
-							props.setModalMode('');
+							dispatch(setModalMode(''));
 						}}
 					>
             확인
@@ -30,14 +33,14 @@ function SentEmailModal(props) {
 					<div className="modal__bottomTab">
 						<div
 							onClick={() => {
-								props.setModalMode('signup');
+								dispatch(setModalMode('signup'));
 							}}
 						>
               회원가입
 						</div>
 						<div
 							onClick={() => {
-								props.setModalMode('login');
+								dispatch(setModalMode('login'));
 							}}
 						>
               로그인

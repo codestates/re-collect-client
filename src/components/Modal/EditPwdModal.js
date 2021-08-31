@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { IsValidiatePassword } from '../util/validation';
+import { IsValidiatePassword } from '../../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { editPwd, editPwdInitialize } from '../redux/actions/editPwd';
+import { editPwd, editPwdInitialize } from '../../redux/actions/editPwd';
+import { setModalMode } from '../../redux/actions/setModalMode';
 
-function EditPwdModal(props) {
+function EditPwdModal() {
 	// eslint-disable-next-line no-unused-vars
 	const { isEditPwdSuccess, error } = useSelector((state) => state.profileReducer.profile);
 	const dispatch = useDispatch();
@@ -66,7 +67,7 @@ function EditPwdModal(props) {
 			setErrorMessage('비밀번호를 변경했습니다.')
 			dispatch(editPwdInitialize());
 			setTimeout(() => {
-				props.setModalMode('');
+				dispatch(setModalMode(''));
 			}, 2000);
 		}
 	}, [isEditPwdSuccess])
@@ -78,7 +79,7 @@ function EditPwdModal(props) {
 					<div
 						className="modal__closeBtn"
 						onClick={() => {
-							props.setModalMode('');
+							dispatch(setModalMode(''));
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />
