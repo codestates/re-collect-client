@@ -33,7 +33,7 @@ function SignUpModal(props) {
 		username: '',
 	};
 
-	const messageInitialState = {
+	const messageInitialState = { 
 		email: '',
 		pwd: '',
 		pwdCheck: '',

@@ -7,6 +7,7 @@ import { profileReducer } from './profile';
 import { getExploreReducer } from './getExplore';
 import { recollectReducer } from './getRecollect';
 import { visitCountReducer } from './addVisitCount';
+import { findPwdReducer } from './findPwd';
 
 const rootReducer = combineReducers({
 	bookmarkReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
 	getExploreReducer,
 	recollectReducer,
 	visitCountReducer,
+	findPwdReducer,
 });
 
 export default rootReducer;

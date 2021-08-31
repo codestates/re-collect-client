@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import _axios from '../lib/axiosConfig';
 import { notify } from './notify';
 import { getProfile } from './getProfile';

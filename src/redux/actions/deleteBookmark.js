@@ -46,23 +46,23 @@ export const deleteGuestBookmark = (bookmark) => (dispatch, getState) => {
 export const deleteBookmark = (bookmark) => (dispatch) => {
 	const id = bookmark.id;
 
-  _axios
-    .delete(`/bookmarks/${id}`, {
-      params: { id },
-    })
-    .then(() => {
-      dispatch({ type: DELETE_BOOKMARK_SUCCESS });
-    })
-    .then(() => {
-      dispatch(getBookmark());
-      dispatch(notify('북마크를 삭제했습니다'));
-    })
-    .catch((e) => {
-      const errorMessage = handleError('북마크 삭제', e.response.status);
-      dispatch(notify(errorMessage));
-      dispatch({
-        type: DELETE_BOOKMARK_FAIL,
-        error: errorMessage,
-      });
-    });
+	_axios
+		.delete(`/bookmarks/${id}`, {
+			params: { id },
+		})
+		.then(() => {
+			dispatch({ type: DELETE_BOOKMARK_SUCCESS });
+		})
+		.then(() => {
+			dispatch(getBookmark());
+			dispatch(notify('북마크를 삭제했습니다'));
+		})
+		.catch((e) => {
+			const errorMessage = handleError('북마크 삭제', e.response.status);
+			dispatch(notify(errorMessage));
+			dispatch({
+				type: DELETE_BOOKMARK_FAIL,
+				error: errorMessage,
+			});
+		});
 };

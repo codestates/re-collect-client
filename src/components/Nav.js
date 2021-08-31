@@ -24,19 +24,18 @@ function Nav(props) {
 	}, [isvisible]);
 
 	return (
-		<div className="nav-container">
+		<div className='nav-container'>
 			<Link
-				to="/"
+				to='/'
 				onClick={() => {
 					props.setModalMode('');
 				}}
-				className="nav-container__logo"
-			>
-        logo
+				className='nav-container__logo'>
+				logo
 			</Link>
 			<FontAwesomeIcon
 				icon={faBars}
-				className="toggle-btn"
+				className='toggle-btn'
 				onClick={handleToggleBtn}
 			/>
 
@@ -45,48 +44,43 @@ function Nav(props) {
 					isvisible
 						? 'nav-container__inner-container toggle'
 						: 'nav-container__inner-container toggle on'
-				}
-			>
+				}>
 				<Link
-					to="/"
+					to='/'
 					onClick={() => {
 						props.setModalMode('');
 						handleToggleBtn();
-					}}
-				>
-          Home
+					}}>
+					Home
 				</Link>
 				<Link
-					to="/collect"
+					to='/collect'
 					onClick={() => {
 						props.setModalMode('');
 						handleToggleBtn();
-					}}
-				>
-          Recollect
+					}}>
+					Recollect
 				</Link>
 				<Link
 					onClick={() => {
 						setTimeout(() => props.setModalMode('explore'), 2000);
 						handleToggleBtn();
 					}}
-					to="/explore"
-				>
-          Explore
+					to='/explore'>
+					Explore
 				</Link>
 				{accessToken && isLogin ? (
 					<>
-						<Link to="/profile" onClick={handleToggleBtn}>
-              Profile
+						<Link to='/profile' onClick={handleToggleBtn}>
+							Profile
 						</Link>
 						<Link
-							to="/"
+							to='/'
 							onClick={() => {
 								dispatch(logoutThunk());
 								setIsLogin(false);
-							}}
-						>
-              Logout
+							}}>
+							Logout
 						</Link>
 					</>
 				) : (
@@ -95,9 +89,8 @@ function Nav(props) {
 							props.setModalMode('login');
 							handleToggleBtn();
 							setIsLogin(true);
-						}}
-					>
-            Login
+						}}>
+						Login
 					</div>
 				)}
 			</div>

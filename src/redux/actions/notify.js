@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 export const ENQUEUE_NOTIFICATION = 'ENQUEUE_NOTIFICATION';
 export const DEQUEUE_NOTIFICATION = 'DEQUEUE_NOTIFICATION';
 

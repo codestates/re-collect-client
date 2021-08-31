@@ -1,10 +1,16 @@
-import React from 'react';
-import _axios from '../redux/lib/axiosConfig';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setNewPwd } from '../redux/actions/findPwd';
 import { IsValidiatePassword } from '../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
+//// Todo : useParams사용해보기
 
-function SetNewPwdModal(props) {
+function SetNewPwdModal({setModalMode}) {
+	const history = useHistory();
+	const { resetNewPwd } = useSelector((state)=>state.sentEmailReducer)
+	const dispatch = useDispatch();
 	const signUpValidCheck = () => {
 		const password1 = document.querySelector('.resetPwd').value;
 		const password2 = document.querySelector('.resetPwdCheck').value;
@@ -21,20 +27,22 @@ function SetNewPwdModal(props) {
 			return;
 		} else {
 			error.textContent = '';
-			requestNewPwd(tempPwd, password1);
+			const email = window.location.search.slice(1);
+			dispatch(setNewPwd(email, tempPwd, password1));
 		}
 	};
-
-	const requestNewPwd = (tempPwd, pwd) => {
-		const email = window.location.search.slice(1);
-		_axios
-			.post(`/auth/pwd?${email}`, {
-				tempPwd: tempPwd,
-				pwd: pwd,
-			})
-			// eslint-disable-next-line no-unused-vars
-			.then((res) => props.setModalMode('successSetNewPwd'));
-	};
+	const { isLoading, done, error } = resetNewPwd;
+	useEffect(()=>{
+		if(isLoading){
+			history('/loading')
+		}
+		if(done){
+			setModalMode('successSetNewPwd');
+		}
+		if(error){
+			history.push('/error')
+		}
+	}, [ isLoading, done, error ]);
 
 	return (
 		<div className="modalpage">
@@ -43,7 +51,7 @@ function SetNewPwdModal(props) {
 					<div
 						className="modal__closeBtn"
 						onClick={() => {
-							props.setModalMode('');
+							setModalMode('');
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />

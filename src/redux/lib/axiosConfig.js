@@ -11,7 +11,6 @@ const _axios = axios.create({
 });
 
 _axios.interceptors.request.use(async (config) => {
-	// const dispatch = useDispatch();
 	const accessToken = localStorage.getItem('accessToken');
 	// const expiresAt = localStorage.getItem('expiresAt');
 	// const now = dayjs(new Date()); // 둘다 format이 되어있는 상태에서 diff를 사용하려하면 에러
@@ -43,7 +42,7 @@ _axios.interceptors.request.use(async (config) => {
 			'accessToken'
 		)}`;
 	}
-	
+
 	return config;
 });
 

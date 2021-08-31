@@ -17,8 +17,8 @@ export default function SimpleSlider() {
 		slidesToShow: 4, // 한번에 몇개의 슬라이드를 보여줄 지
 		arrows: true, // 옆으로 이동하는 화살표 표시 여부
 		slidesToScroll: 1, // 한번 스크롤시 몇장의 슬라이드를 넘길지
-		prevArrow: <SlickArrow direction={faArrowLeft} />,
-		nextArrow: <SlickArrow direction={faArrowRight} />,
+		prevArrow: <SlickArrow direction={ faArrowLeft } />,
+		nextArrow: <SlickArrow direction={ faArrowRight } />,
 
 		responsive: [
 			// 반응형 웹 구현 옵션
@@ -47,24 +47,23 @@ export default function SimpleSlider() {
 	const { exploreUsers } = useSelector((state) => state.getExploreReducer);
 	const fakeData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
-	// 더미데이터 요청 //
 	useEffect(() => {
 		dispatch(getExploreInfo());
 	}, []);
 
 	return (
-		<div className="explore">
-			<div className="explore__text"> Explore </div>
-			<div className="explore__search">
-				<div className="explore__searchBar">
-					<input type="text" placeholder="search" />
+		<div className='explore'>
+			<div className='explore__text'> Explore </div>
+			<div className='explore__search'>
+				<div className='explore__searchBar'>
+					<input type='text' placeholder='search' />
 					<button>
-						<FontAwesomeIcon icon={faSearch} />
+						<FontAwesomeIcon icon={ faSearch } />
 					</button>
 				</div>
-				<div className="explore__recommendation">
-					<div className="explore__recommendation__title"> Recommendation </div>
-					<div className="explore__recommendation__tags">
+				<div className='explore__recommendation'>
+					<div className='explore__recommendation__title'> Recommendation </div>
+					<div className='explore__recommendation__tags'>
 						<span> 프론트엔드 해외취업 </span>
 						<span> JWT토큰 </span>
 						<span> 비동기 이해하기 </span>
@@ -74,61 +73,61 @@ export default function SimpleSlider() {
 				</div>
 			</div>
 
-			<div className="explore__RandomProfile">
-				<Slider {...settings}>
-					{exploreUsers.data.users === undefined
+			<div className='explore__RandomProfile'>
+				<Slider { ...settings }>
+					{ exploreUsers.data.users === undefined
 						? fakeData.map((el) => {
 							return (
 								<ExploreProfileList
-									className="explore"
-									key={el.id}
-									user={el}
-									id="carousel"
+									className='explore'
+									key={ el.id }
+									user={ el }
+									id='carousel'
 								/>
 							);
 						})
 						: exploreUsers.data.users.map((userInfo) => {
 							return (
 								<ExploreProfileList
-									className="explore"
-									key={userInfo.id}
-									user={userInfo}
-									id="carousel"
+									className='explore'
+									key={ userInfo.id }
+									user={ userInfo }
+									id='carousel'
 								/>
 							);
-						})}
+						}) }
 				</Slider>
 			</div>
 
-			<div className="explore__interestingBookmarks">
+			<div className='explore__interestingBookmarks'>
 				<p> Interesting Bookmarks</p>
 				<ul>
 					<BigBookmark
-						text={'Algebraic Effects'}
-						color={'green'}
-						url={'https://overreacted.io/algebraic-effects-for-the-rest-of-us/'}
+						text={ 'Algebraic Effects' }
+						color={ 'green' }
+						url={ 'https://overreacted.io/algebraic-effects-for-the-rest-of-us/' }
 					/>
 					<BigBookmark
-						text={'redux-thunk로 프로미스다루기'}
-						color={'orange'}
+						text={ 'redux-thunk로 프로미스다루기' }
+						color={ 'orange' }
 						url={
 							'https://react.vlpt.us/redux-middleware/05-redux-thunk-with-promise.html'
 						}
 					/>
 					<BigBookmark
-						text={'day.js 공식문서'}
-						color={'black'}
-						url={'https://day.js.org/docs/en/display/difference'}
+						text={ 'day.js 공식문서' }
+						color={ 'black' }
+						url={ 'https://day.js.org/docs/en/display/difference' }
 					/>
 					<BigBookmark
-						text={'Hook API 참고서'}
-						color={'skyblue'}
-						url={'https://ko.reactjs.org/docs/hooks-reference.html#useref'}
+						text={ 'Hook API 참고서' }
+						color={ 'skyblue' }
+						url={ 'https://ko.reactjs.org/docs/hooks-reference.html#useref' }
 					/>
 					<BigBookmark
-						text={'Interceptor란'}
-						color={'red'}
-						url={'https://docu94.tistory.com/131'}
+						text={ 'Interceptor란' }
+						color={ 'red' }
+						url={ 'https://docu94.tistory.com/131' }
 					/>
 				</ul>
 			</div>
