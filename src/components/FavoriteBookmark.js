@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function FavoriteBookmark(props) {
 	const {favorite} = props;
 	return (

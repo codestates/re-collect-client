@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import CategoryBox from './CategoryBox';
 import CollectBookmark from './CollectBookmark';
 import { getBookmark, getGuestBookmark } from '../redux/actions/getBookmark';

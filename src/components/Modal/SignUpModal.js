@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	signupInitialize,
@@ -113,47 +113,47 @@ function SignUpModal() {
 		setSignUpInfo((state) => {
 			state[name] = value;
 			switch (name) {
-			case 'pwd':
-				if (!IsValidiatePassword(state.pwd)) {
-					setMessage({
-						...message,
-						pwd: '8~16자 영문 대소문자, 숫자, 특수문자를 사용하세요.',
-					});
-				} else {
-					setMessage({
-						...message,
-						pwd: '',
-					});
-				}
-				break;
-			case 'pwdCheck':
-				if (state.pwd !== state.pwdCheck) {
-					setMessage({
-						...message,
-						pwdCheck: '비밀번호가 일치하지 않습니다.',
-					});
-				} else {
-					setMessage({
-						...message,
-						pwdCheck: '',
-					});
-				}
-				break;
-			case 'username':
-				if (!IsValidiateUsername(state.username)) {
-					setMessage({
-						...message,
-						username: '4~16자 영문 대 소문자, 숫자를 사용하세요.',
-					});
-				} else {
-					setMessage({
-						...message,
-						username: '',
-					});
-				}
-				break;
-			default:
-				break;
+				case 'pwd':
+					if (!IsValidiatePassword(state.pwd)) {
+						setMessage({
+							...message,
+							pwd: '8~16자 영문 대소문자, 숫자, 특수문자를 사용하세요.',
+						});
+					} else {
+						setMessage({
+							...message,
+							pwd: '',
+						});
+					}
+					break;
+				case 'pwdCheck':
+					if (state.pwd !== state.pwdCheck) {
+						setMessage({
+							...message,
+							pwdCheck: '비밀번호가 일치하지 않습니다.',
+						});
+					} else {
+						setMessage({
+							...message,
+							pwdCheck: '',
+						});
+					}
+					break;
+				case 'username':
+					if (!IsValidiateUsername(state.username)) {
+						setMessage({
+							...message,
+							username: '4~16자 영문 대 소문자, 숫자를 사용하세요.',
+						});
+					} else {
+						setMessage({
+							...message,
+							username: '',
+						});
+					}
+					break;
+				default:
+					break;
 			}
 			return state;
 		});

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import BigBookmark from './BigBookmark';
 import { useSelector, useDispatch } from 'react-redux';
 import { recollect } from '../redux/actions/getRecollect';
@@ -36,7 +36,6 @@ function Recollect() {
 					})
 				) : (
 					<div className='recollect__skeleton'>
-						<img src='logo_cut.png' className='logoPng' />
 						<p>리콜렉트할 북마크가 없어요!</p>
 					</div>
 				)}

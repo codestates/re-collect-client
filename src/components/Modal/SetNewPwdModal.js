@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNewPwd } from '../../redux/actions/findPwd';
 import { IsValidiatePassword } from '../../util/validation';

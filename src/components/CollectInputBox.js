@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Creatable from 'react-select/creatable';
 import { addBookmark, addGuestBookmark } from '../redux/actions/addBookmark'
 import { editBookmark, editGuestBookmark, editEnd } from '../redux/actions/editBookmark'
@@ -146,14 +146,14 @@ function CollectInputBox(props) {
 		}
 
 		switch (mode) {
-		case 'edit':
-			handleEditBookmark();
-			break;
-		case 'add':
-			handleAddBookmark();
-			break;
-		default:
-			return;
+			case 'edit':
+				handleEditBookmark();
+				break;
+			case 'add':
+				handleAddBookmark();
+				break;
+			default:
+				return;
 		}
 	};
 

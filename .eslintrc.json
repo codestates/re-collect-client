@@ -16,14 +16,17 @@
 			"sourceType": "module"
 	},
 	"plugins": [
-			"react"  
+			"react"
 	],
 	"rules": {
 			"quotes": ["error", "single"],
 			"no-multi-spaces": ["error"],
-			"indent": ["error", "tab"],
+	"indent": ["error", "tab", { "SwitchCase": 1 }],
+			"no-mixed-spaces-and-tabs": ["error","smart-tabs"],
 			"eqeqeq": ["error"],
-			"react/prop-types": "off"
-
+			"react/prop-types": "off",
+			"react/react-in-jsx-scope": "off",
+			"react/jsx-uses-react": "off"
 	}
+	
 }
