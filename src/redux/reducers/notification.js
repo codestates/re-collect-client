@@ -7,16 +7,16 @@ const initialState = {
 
 export const notificationReducer = (state = initialState, action) => {
 	switch (action.type) {
-	case ENQUEUE_NOTIFICATION:
-		return {
-			...state,
-			notifications: [...state.notifications, action.payload],
-		};
+		case ENQUEUE_NOTIFICATION:
+			return {
+				...state,
+				notifications: [...state.notifications, action.payload],
+			};
 
-	case DEQUEUE_NOTIFICATION:
-		return { ...state, notifications: state.notifications.slice(1) };
+		case DEQUEUE_NOTIFICATION:
+			return { ...state, notifications: state.notifications.slice(1) };
 
-	default:
-		return state;
+		default:
+			return state;
 	}
 };

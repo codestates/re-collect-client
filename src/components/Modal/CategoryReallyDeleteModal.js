@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteCategory } from '../../redux/actions/deleteCategory';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

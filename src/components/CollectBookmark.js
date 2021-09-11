@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { editStart } from '../redux/actions/editBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,14 +15,14 @@ export default function CollectBookmark(props) {
 
 	const handleElipsisHoverColor = (color) => {
 		switch (color) {
-		case '#214bc8':
-			return 'blue';
-		case '#f24626':
-			return 'red';
-		case '#0eae61':
-			return 'green';
-		default:
-			return 'blue';
+			case '#214bc8':
+				return 'blue';
+			case '#f24626':
+				return 'red';
+			case '#0eae61':
+				return 'green';
+			default:
+				return 'blue';
 		}
 	};
 

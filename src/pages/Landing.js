@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Flip, Fade, Zoom, Bounce } from 'react-reveal';
 import Pulse from 'react-reveal/Pulse';
@@ -219,7 +218,7 @@ function Landing() {
 					<div className="landing__inner--sixth">
 						<Pulse>
 							<div className="try-wrapper">
-                이 모든 기능을 지금 바로 사용해 보세요!
+                이 모든 기능을 지금 바로 사용해 보세요!
 							</div>
 						</Pulse>
 						<Fade top>
