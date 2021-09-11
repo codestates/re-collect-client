@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IsValidateEmail } from '../../util/validation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

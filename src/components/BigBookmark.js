@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
 import { addVisitCount } from '../redux/actions/addVisitCount';
 import { useDispatch } from 'react-redux';
 

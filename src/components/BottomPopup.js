@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editEnd } from '../redux/actions/editBookmark';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,5 +1,5 @@
 import './App.scss'
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Landing from './pages/Landing';
 import SetNewPwd from './pages/SetNewPwd';
 import Collect from './pages/Collect';
