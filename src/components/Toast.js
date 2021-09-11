@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Toast({ text, dismissTime }) {
-  const [isFading, setIsFading] = useState(false);
+	const [isFading, setIsFading] = useState(false);
 
-  useEffect(() => {
-    let mounted = true;
-    setTimeout(() => {
-      if (mounted) {
-        setIsFading(true);
-      }
-    }, dismissTime - 500);
+	useEffect(() => {
+		let mounted = true;
+		setTimeout(() => {
+			if (mounted) {
+				setIsFading(true);
+			}
+		}, dismissTime - 500);
 
-    return () => {
-      mounted = false;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+		return () => {
+			mounted = false;
+		};
+		
+	}, []);
 
-  return (
-    <div className={`notification__toast ${isFading ? 'fade-out' : ''}`}>
-      {text}
-    </div>
-  );
+	return (
+		<div className={`notification__toast ${isFading ? 'fade-out' : ''}`}>
+			{text}
+		</div>
+	);
 }

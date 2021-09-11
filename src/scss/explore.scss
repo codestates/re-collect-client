@@ -193,7 +193,9 @@
   text-align: center;
   box-shadow: #{$boxshadow};
   border: solid 1px #000;
-  width: 21vw;
+	width: 21vw;
+	max-width : 237px;
+	max-height: 342px;
   aspect-ratio: 3/4;
 }
 .explore__searchProfile {
